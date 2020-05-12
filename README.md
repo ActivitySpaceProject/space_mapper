@@ -1,16 +1,23 @@
-# asm
+# **Space Mapper**
 
-Flutter version of Space Mapper with 2020 upgrades
+Space Mapper is a mobile phone application for studying human mobility.
 
-## Getting Started
+*Features:*
+* Allows you to store, map, and analyze your own movement patterns and to view them in three dimensional spacetime.
+* Minimally intrusive and designed to conserve battery power.
+* Turn it off and on whenever you want.
+* Free, open source software. 
+* More on-phone data visualization and analysis tools coming soon.
+* Application available in English, Spanish and Catalan.
 
-This project is a starting point for a Flutter application.
+For more information, please visit the project [website](<http://activityspaceproject.com>) or its [Google Play page]( http://play.google.com/store/apps/details?id=edu.princeton.jrpalmer.asm).
 
-A few resources to get you started if this is your first Flutter project:
+This repository contains the source code development version of Space Mapper. Previous versions are available at <http://activityspaceproject.com>.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Copyright 2020 John R.B. Palmer
+ 
+Space Mapper is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or  (at your option) any later version.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Space Mapper is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.  If not, see http://www.gnu.org/licenses.

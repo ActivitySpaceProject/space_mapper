@@ -1,4 +1,3 @@
-import 'package:asm/model/spacetime_observation.dart';
 import 'package:asm/util/env.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart' as bg;
 import 'package:background_fetch/background_fetch.dart';
 
-import 'bloc/database_bloc.dart';
 import 'ui/home_view.dart';
 import 'package:uuid/uuid.dart';
 

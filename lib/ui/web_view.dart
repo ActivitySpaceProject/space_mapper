@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:asm/ui/home_view.dart';
 import 'package:asm/util/env.dart';
 import 'package:flutter/material.dart';
 
@@ -91,6 +92,11 @@ class _MyWebViewState extends State<MyWebView> {
 
     // Add a listener to on url changed
     _onUrlChanged = flutterWebViewPlugin.onUrlChanged.listen((String url) {
+
+      if(url == "https://ee.kobotoolbox.org/thanks"){
+        Navigator.pop(context);
+      }
+
       if (mounted) {
         setState(() {
           _history.add('onUrlChanged: $url');
@@ -172,13 +178,13 @@ class _MyWebViewState extends State<MyWebView> {
 
     super.dispose();
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return WebviewScaffold(
       url: selectedUrl,
       appBar: AppBar(
-        title: const Text('Widget WebView'),
+        title: const Text('Survey'),
       ),
       withZoom: true,
       withLocalStorage: true,
@@ -187,30 +193,6 @@ class _MyWebViewState extends State<MyWebView> {
         color: Colors.grey,
         child: const Center(
           child: const Text('Loading...'),
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          children: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.arrow_back_ios),
-              onPressed: () {
-                flutterWebViewPlugin.goBack();
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.arrow_forward_ios),
-              onPressed: () {
-                _setFormUUID(userUuid);
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.autorenew),
-              onPressed: () {
-                flutterWebViewPlugin.reload();
-              },
-            ),
-          ],
         ),
       ),
     );
@@ -231,7 +213,6 @@ class _MyWebViewState extends State<MyWebView> {
         print(_thisId);
         print("URL " + selectedUrl);
   }
-
 
 
 }

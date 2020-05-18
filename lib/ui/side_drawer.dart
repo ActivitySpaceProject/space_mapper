@@ -40,6 +40,15 @@ class SpaceMapperSideDrawer extends StatelessWidget {
             ),
           ),
           Card(
+              child: ListTile(
+                  leading: const Icon(Icons.edit),
+                  title: Text('Take survey'),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MyWebView()));
+                  })),
+/*
+          Card(
             child: ListTile(
               leading: const Icon(Icons.list),
               title: Text('List Locations'),
@@ -49,6 +58,7 @@ class SpaceMapperSideDrawer extends StatelessWidget {
               },
             ),
           ),
+*/
           Card(
             child: ListTile(
               leading: const Icon(Icons.share),
@@ -66,15 +76,7 @@ class SpaceMapperSideDrawer extends StatelessWidget {
                 _launchProjectURL();
               },
             ),
-          ),
-          Card(
-              child: ListTile(
-                  leading: const Icon(Icons.edit),
-                  title: Text('Try webview survey'),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyWebView()));
-                  }))
+          )
         ],
       ),
     );

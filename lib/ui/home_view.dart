@@ -358,13 +358,13 @@ class HomeViewState extends State<HomeView>
             );
           },
         ),
-        actions: <Widget>[
+        actions: <Widget>[/*
           IconButton(
             icon: Icon(Icons.gps_fixed),
             color: Colors.yellow,
             onPressed:
               _onClickGetCurrentPosition,
-          ),
+          ),*/
           Switch(value: _enabled, onChanged: _onClickEnable, activeColor: Colors.yellow,),
         ],
       ),
@@ -373,9 +373,10 @@ class HomeViewState extends State<HomeView>
       body: MapView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => FormView()));
+     //     Navigator.push(context, MaterialPageRoute(builder: (context) => FormView()));
+          _onClickGetCurrentPosition;
         },
-        child: Icon(Icons.add),
+        child: Icon(Icons.gps_fixed),
         backgroundColor: Colors.blue,
       ),
     );

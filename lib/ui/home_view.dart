@@ -13,11 +13,6 @@ import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
 
 import 'map_view.dart';
-import 'web_view.dart';
-
-import 'package:url_launcher/url_launcher.dart';
-
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 import '../util/dialog.dart' as util;
 
@@ -99,7 +94,7 @@ class HomeViewState extends State<HomeView>
             // Convenience option to automatically configure the SDK to post to Transistor Demo server.
             // Logging & Debug
             reset: false,
-            debug: true,
+            debug: false,
             logLevel: bg.Config.LOG_LEVEL_VERBOSE,
             // Geolocation options
             desiredAccuracy: bg.Config.DESIRED_ACCURACY_NAVIGATION,

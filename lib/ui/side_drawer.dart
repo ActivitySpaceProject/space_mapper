@@ -47,7 +47,6 @@ class SpaceMapperSideDrawer extends StatelessWidget {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => MyWebView()));
                   })),
-/*
           Card(
             child: ListTile(
               leading: const Icon(Icons.list),
@@ -58,7 +57,6 @@ class SpaceMapperSideDrawer extends StatelessWidget {
               },
             ),
           ),
-*/
           Card(
             child: ListTile(
               leading: const Icon(Icons.share),

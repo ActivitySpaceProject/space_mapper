@@ -178,7 +178,7 @@ class _MyWebViewState extends State<MyWebView> {
 
     super.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return WebviewScaffold(

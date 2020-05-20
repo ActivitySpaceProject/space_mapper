@@ -57,11 +57,11 @@ class MapViewState extends State<MapView> with AutomaticKeepAliveClientMixin<Map
 
   void _onEnabledChange(bool enabled) {
     if (!enabled) {
-      _locations.clear();
-      _polyline.clear();
-      _stopLocations.clear();
-      _motionChangePolylines.clear();
-      _stationaryMarker.clear();
+//      _locations.clear();
+//      _polyline.clear();
+//      _stopLocations.clear();
+//      _motionChangePolylines.clear();
+ //     _stationaryMarker.clear();
     }
   }
 

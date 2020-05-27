@@ -22,10 +22,6 @@
     <string>This app needs access to location when open and in the background.</string>
     <!-- END FOR GEOLOCATOR -->
 
-    <!-- FOR GOOGLE MAPS -->
-    <key>io.flutter.embedded_views_preview</key>
-    <true/>
-    !-- END FOR GOOGLE MAPS -->
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

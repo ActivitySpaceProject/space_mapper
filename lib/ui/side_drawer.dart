@@ -19,7 +19,8 @@ class SpaceMapperSideDrawer extends StatelessWidget {
   _shareLocations() async {
     var now = new DateTime.now();
     List allLocations = await bg.BackgroundGeolocation.locations;
-    Share.share(allLocations.toString(), subject: "space_mapper_trajectory_" + now.toIso8601String()  + ".json");
+    Share.share(allLocations.toString(),
+        subject: "space_mapper_trajectory_" + now.toIso8601String() + ".json");
   }
 
   @override
@@ -44,8 +45,8 @@ class SpaceMapperSideDrawer extends StatelessWidget {
                   leading: const Icon(Icons.edit),
                   title: Text('Take survey'),
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyWebView()));
+                    /*Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MyWebView()));*/
                   })),
           Card(
             child: ListTile(

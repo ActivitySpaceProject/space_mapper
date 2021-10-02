@@ -1,10 +1,10 @@
-import 'dart:async';
+/*import 'dart:async';
 
 import 'package:asm/ui/home_view.dart';
 import 'package:asm/util/env.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+//import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
@@ -31,9 +31,7 @@ class MyWebView extends StatefulWidget {
 
   @override
   _MyWebViewState createState() => _MyWebViewState();
-
-  }
-
+}
 
 class _MyWebViewState extends State<MyWebView> {
   // Instance of WebView plugin
@@ -73,12 +71,12 @@ class _MyWebViewState extends State<MyWebView> {
 
     flutterWebViewPlugin.close();
 
-    _getUserUUID().then( (_thisId){
-        userUuid = _thisId;
+    _getUserUUID().then((_thisId) {
+      userUuid = _thisId;
     });
 
-      _urlCtrl.addListener(() {
-  //    selectedUrl = _urlCtrl.text;
+    _urlCtrl.addListener(() {
+      //    selectedUrl = _urlCtrl.text;
     });
 
     // Add a listener to on destroy WebView, so you can make came actions.
@@ -92,8 +90,7 @@ class _MyWebViewState extends State<MyWebView> {
 
     // Add a listener to on url changed
     _onUrlChanged = flutterWebViewPlugin.onUrlChanged.listen((String url) {
-
-      if(url == "https://ee.kobotoolbox.org/thanks"){
+      if (url == "https://ee.kobotoolbox.org/thanks") {
         Navigator.pop(context);
       }
 
@@ -106,61 +103,57 @@ class _MyWebViewState extends State<MyWebView> {
 
     _onProgressChanged =
         flutterWebViewPlugin.onProgressChanged.listen((double progress) {
-          if (mounted) {
-            setState(() {
-              _history.add('onProgressChanged: $progress');
-            });
-          }
+      if (mounted) {
+        setState(() {
+          _history.add('onProgressChanged: $progress');
         });
+      }
+    });
 
     _onScrollYChanged =
         flutterWebViewPlugin.onScrollYChanged.listen((double y) {
-          if (mounted) {
-            setState(() {
-              _history.add('Scroll in Y Direction: $y');
+      if (mounted) {
+        setState(() {
+          _history.add('Scroll in Y Direction: $y');
 
-                if (userUuid != null) {
-                  _setFormUUID(userUuid);
-                } else {
-                  _getUserUUID().then((_thisId) {
-                    userUuid = _thisId;
-                    _setFormUUID(userUuid);
-                  });
-                }
-
-
-
+          if (userUuid != null) {
+            _setFormUUID(userUuid);
+          } else {
+            _getUserUUID().then((_thisId) {
+              userUuid = _thisId;
+              _setFormUUID(userUuid);
             });
           }
         });
+      }
+    });
 
     _onScrollXChanged =
         flutterWebViewPlugin.onScrollXChanged.listen((double x) {
-          if (mounted) {
-            setState(() {
-              _history.add('Scroll in X Direction: $x');
-            });
-          }
+      if (mounted) {
+        setState(() {
+          _history.add('Scroll in X Direction: $x');
         });
+      }
+    });
 
     _onStateChanged =
         flutterWebViewPlugin.onStateChanged.listen((viewState) async {
-
-          if (mounted) {
-            setState(() {
-              _history.add('onStateChanged: ${viewState.type} ${viewState.url}');
-            });
-          }
+      if (mounted) {
+        setState(() {
+          _history.add('onStateChanged: ${viewState.type} ${viewState.url}');
         });
+      }
+    });
 
     _onHttpError =
         flutterWebViewPlugin.onHttpError.listen((WebViewHttpError error) {
-          if (mounted) {
-            setState(() {
-              _history.add('onHttpError: ${error.code} ${error.url}');
-            });
-          }
+      if (mounted) {
+        setState(() {
+          _history.add('onHttpError: ${error.code} ${error.url}');
         });
+      }
+    });
   }
 
   @override
@@ -205,14 +198,22 @@ class _MyWebViewState extends State<MyWebView> {
       prefs.setString("user_uuid", Uuid().v4());
     }
     print(_userUuid);
-    return(_userUuid);
+    return (_userUuid);
   }
 
-  void _setFormUUID(_thisId){
-          flutterWebViewPlugin.evalJavascript('var event = new Event("change", {bubbles: true,cancelable: true,}); var this_input = document.getElementsByName("' + userUUID_element + '")[0];this_input.value="' + _thisId + '";this_input.dispatchEvent(event); this_input.style.visibility = "hidden"; var id_labels = document.querySelectorAll("[data-itext-id=\'' + userUUID_label + '\']"); for (var i = 0; i < id_labels.length; i++) id_labels[i].innerHTML = "ID: ' + _thisId + '";');
-        print(_thisId);
-        print("URL " + selectedUrl);
+  void _setFormUUID(_thisId) {
+    flutterWebViewPlugin.evalJavascript(
+        'var event = new Event("change", {bubbles: true,cancelable: true,}); var this_input = document.getElementsByName("' +
+            userUUID_element +
+            '")[0];this_input.value="' +
+            _thisId +
+            '";this_input.dispatchEvent(event); this_input.style.visibility = "hidden"; var id_labels = document.querySelectorAll("[data-itext-id=\'' +
+            userUUID_label +
+            '\']"); for (var i = 0; i < id_labels.length; i++) id_labels[i].innerHTML = "ID: ' +
+            _thisId +
+            '";');
+    print(_thisId);
+    print("URL " + selectedUrl);
   }
-
-
 }
+*/

@@ -1,7 +1,7 @@
-//import 'package:flutter/material.dart';
-//import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-/*class FormView extends StatelessWidget {
+class FormView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,13 +49,13 @@ class MyCustomFormState extends State<MyCustomForm> {
               'date': DateTime.now(),
               'accept_terms': false,
             },
-            autovalidate: true,
+            //autovalidate: true, //TODO: The parameter autovalidate isn't defined
             child: Column(
               children: <Widget>[
-                FormBuilderRadio(
+                FormBuilderChoiceChip(
+                  name: 'gender',
                   decoration: InputDecoration(
                       labelText: 'Was the contact male or female?'),
-                  attribute: "gender",
                   options: [
                     FormBuilderFieldOption(
                       value: 1,
@@ -72,7 +72,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   ],
                 ),
                 FormBuilderDropdown(
-                  attribute: "age",
+                  name: 'age',
                   decoration:
                       InputDecoration(labelText: "About how old were they?"),
                   hint: Text('Select Age Group'),
@@ -116,4 +116,4 @@ class MyCustomFormState extends State<MyCustomForm> {
       )),
     );
   }
-}*/
+}

@@ -47,7 +47,6 @@ class HomeViewState extends State<HomeView>
     _motionActivity = 'UNKNOWN';
     _odometer = '0';
 
-
     initPlatformState();
   }
 
@@ -59,7 +58,6 @@ class HomeViewState extends State<HomeView>
   }
 
   void initPlatformState() async {
-
     SharedPreferences prefs = await _prefs;
     String sample_id = prefs.getString("sample_id");
     String user_uuid = prefs.getString("user_uuid");
@@ -68,7 +66,6 @@ class HomeViewState extends State<HomeView>
       prefs.setString("user_uuid", Uuid().v4());
       prefs.setString("sample_id", ENV.DEFAULT_SAMPLE_ID);
     }
-
 
     _configureBackgroundGeolocation(user_uuid, sample_id);
     _configureBackgroundFetch();
@@ -123,7 +120,6 @@ class HomeViewState extends State<HomeView>
     }).catchError((error) {
       print('[ready] ERROR: $error');
     });
-
   }
 
   // Configure BackgroundFetch (not required by BackgroundGeolocation).
@@ -150,7 +146,6 @@ class HomeViewState extends State<HomeView>
       print('[BackgroundFetch] count: $count');
 
       // Test scheduling a custom-task in fetch event.
-
 
       if (taskId == 'flutter_background_fetch') {
         BackgroundFetch.scheduleTask(TaskConfig(
@@ -300,16 +295,15 @@ class HomeViewState extends State<HomeView>
         "Authorization": "Bearer ${state.authorization.accessToken}"
       }).then((String result) {
         print("[http test] success: $result");
-        bg.BackgroundGeolocation.playSound(util.Dialog.getSoundId("TEST_MODE_CLICK"));
+        bg.BackgroundGeolocation.playSound(
+            util.Dialog.getSoundId("TEST_MODE_CLICK"));
         bg.BackgroundGeolocation.stopBackgroundTask(taskId);
       }).catchError((dynamic error) {
         print("[http test] failed: $error");
         bg.BackgroundGeolocation.stopBackgroundTask(taskId);
       });
     });
-
   }
-
 
   void _onSchedule(bg.State state) {
     print('[${bg.Event.SCHEDULE}] - $state');
@@ -358,14 +352,19 @@ class HomeViewState extends State<HomeView>
             );
           },
         ),
-        actions: <Widget>[/*
+        actions: <Widget>[
+          /*
           IconButton(
             icon: Icon(Icons.gps_fixed),
             color: Colors.yellow,
             onPressed:
               _onClickGetCurrentPosition,
           ),*/
-          Switch(value: _enabled, onChanged: _onClickEnable, activeColor: Colors.yellow,),
+          Switch(
+            value: _enabled,
+            onChanged: _onClickEnable,
+            activeColor: Colors.yellow,
+          ),
         ],
       ),
       //body: body,
@@ -373,7 +372,8 @@ class HomeViewState extends State<HomeView>
       body: MapView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-     //     Navigator.push(context, MaterialPageRoute(builder: (context) => FormView()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => FormView()));
           _onClickGetCurrentPosition;
         },
         child: Icon(Icons.gps_fixed),
@@ -386,6 +386,4 @@ class HomeViewState extends State<HomeView>
   void dispose() {
     super.dispose();
   }
-
 }
-

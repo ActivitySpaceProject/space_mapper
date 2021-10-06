@@ -291,7 +291,7 @@ class HomeViewState extends State<HomeView>
       // Execute an HTTP request to test an async operation completes.
       String url = "${ENV.TRACKER_HOST}/api/devices";
       bg.State state = await bg.BackgroundGeolocation.state;
-      http.read(url, headers: {
+      http.read(Uri.parse(url), headers: {
         "Authorization": "Bearer ${state.authorization.accessToken}"
       }).then((String result) {
         print("[http test] success: $result");

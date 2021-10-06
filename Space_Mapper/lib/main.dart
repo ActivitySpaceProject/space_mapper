@@ -2,7 +2,8 @@ import 'package:asm/util/env.dart';
 import 'package:flutter/material.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_background_geolocation/flutter_background_geolocation.dart' as bg;
+import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
+    as bg;
 import 'package:background_fetch/background_fetch.dart';
 
 import 'ui/home_view.dart';
@@ -12,7 +13,7 @@ import 'package:uuid/uuid.dart';
 void backgroundGeolocationHeadlessTask(bg.HeadlessEvent headlessEvent) async {
   print('📬 --> $headlessEvent');
 
-  switch(headlessEvent.name) {
+  switch (headlessEvent.name) {
     case bg.Event.TERMINATE:
       try {
         //bg.Location location = await bg.BackgroundGeolocation.getCurrentPosition(samples: 1);
@@ -22,7 +23,7 @@ void backgroundGeolocationHeadlessTask(bg.HeadlessEvent headlessEvent) async {
       }
       break;
     case bg.Event.HEARTBEAT:
-    /* DISABLED getCurrentPosition on heartbeat
+      /* DISABLED getCurrentPosition on heartbeat
       try {
         bg.Location location = await bg.BackgroundGeolocation.getCurrentPosition(samples: 1);
         print('[getCurrentPosition] Headless: $location');
@@ -96,12 +97,9 @@ void backgroundFetchHeadlessTask(String taskId) async {
 }
 
 void main() {
-
-
   WidgetsFlutterBinding.ensureInitialized();
 
   SharedPreferences.getInstance().then((SharedPreferences prefs) {
-
     // create random user ID if not yet created
     String sample_id = prefs.getString("sample_id");
     String user_uuid = prefs.getString("user_uuid");
@@ -113,12 +111,14 @@ void main() {
 
     runApp(new MyApp());
   });
+
   /// Register BackgroundGeolocation headless-task.
-  bg.BackgroundGeolocation.registerHeadlessTask(backgroundGeolocationHeadlessTask);
+  bg.BackgroundGeolocation.registerHeadlessTask(
+      backgroundGeolocationHeadlessTask);
+
   /// Register BackgroundFetch headless-task.
   BackgroundFetch.registerHeadlessTask(backgroundFetchHeadlessTask);
 }
-
 
 class MyApp extends StatelessWidget {
   @override
@@ -126,6 +126,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Space Mapper',
       home: HomeView(),
-        );
+    );
   }
 }

@@ -4,23 +4,6 @@
             "outputFile": "C:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-te\\values-te.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\cdcb21ce1a8a7fa61d511923b4b75aa1\\core-1.1.0\\res\\values-te\\values-te.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "48",
-                        "startColumns": "4",
-                        "startOffsets": "5623",
-                        "endColumns": "100",
-                        "endOffsets": "5719"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\a9275bb3354f6d1d34227a45b5737530\\jetified-play-services-base-17.0.0\\res\\values-te\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -69,6 +52,23 @@
                         "startOffsets": "105,219,328,439,529,634,759,841,923,1014,1107,1203,1297,1398,1491,1586,1681,1772,1863,1947,2060,2168,2267,2378,2480,2597,2763,5541",
                         "endColumns": "113,108,110,89,104,124,81,81,90,92,95,93,100,92,94,94,90,90,83,112,107,98,110,101,116,165,100,81",
                         "endOffsets": "214,323,434,524,629,754,836,918,1009,1102,1198,1292,1393,1486,1581,1676,1767,1858,1942,2055,2163,2262,2373,2475,2592,2758,2859,5618"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\62e089180089a465608bc63675af4406\\core-1.3.1\\res\\values-te\\values-te.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "48",
+                        "startColumns": "4",
+                        "startOffsets": "5623",
+                        "endColumns": "100",
+                        "endOffsets": "5719"
                     }
                 }
             ]

@@ -1,0 +1,21 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml:1:1-5:12
+INJECTED from C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml:1:1-5:12
+INJECTED from C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml:1:1-5:12
+	package
+		ADDED from C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml:2:3-55
+		INJECTED from C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml
+		INJECTED from C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml:1:11-69
+application
+ADDED from C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml:3:5-4:19
+uses-sdk
+INJECTED from C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml
+INJECTED from C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml
+		ADDED from C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml
+		INJECTED from C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml

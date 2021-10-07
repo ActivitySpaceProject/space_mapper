@@ -154,142 +154,159 @@
 89                android:resource="@xml/flutter_share_file_paths" />
 89-->[:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-65
 90        </provider>
-91
-92        <receiver android:name="com.transistorsoft.tsbackgroundfetch.FetchAlarmReceiver" />
-92-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:16:9-92
-92-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:16:19-89
-93
-94        <service
-94-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:18:9-21:72
-95            android:name="com.transistorsoft.tsbackgroundfetch.FetchJobService"
-95-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:19:13-80
-96            android:exported="true"
-96-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:20:13-36
-97            android:permission="android.permission.BIND_JOB_SERVICE" />
-97-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:21:13-69
-98
-99        <receiver
-99-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:23:9-30:20
-100            android:name="com.transistorsoft.tsbackgroundfetch.BootReceiver"
-100-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:24:13-77
-101            android:exported="false" >
-101-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:25:13-37
-102            <intent-filter>
-102-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:26:13-29:29
-103                <action android:name="android.intent.action.BOOT_COMPLETED" />
-103-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:27:17-79
-103-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:27:25-76
-104                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-104-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:28:17-84
-104-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:28:25-81
-105            </intent-filter>
-106        </receiver>
+91        <provider
+91-->[:flutter_webview_plugin] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\flutter_webview_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:9:9-18:20
+92            android:name="androidx.core.content.FileProvider"
+92-->[:flutter_webview_plugin] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\flutter_webview_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-62
+93            android:authorities="edu.princeton.jrpalmer.asm.fileprovider"
+93-->[:flutter_webview_plugin] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\flutter_webview_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-64
+94            android:exported="false"
+94-->[:flutter_webview_plugin] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\flutter_webview_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-37
+95            android:grantUriPermissions="true" >
+95-->[:flutter_webview_plugin] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\flutter_webview_plugin\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-47
+96            <meta-data
+96-->[:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:68
+97                android:name="android.support.FILE_PROVIDER_PATHS"
+97-->[:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+98                android:resource="@xml/filepaths" />
+98-->[:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-65
+99        </provider>
+100
+101        <receiver android:name="com.transistorsoft.tsbackgroundfetch.FetchAlarmReceiver" />
+101-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:16:9-92
+101-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:16:19-89
+102
+103        <service
+103-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:18:9-21:72
+104            android:name="com.transistorsoft.tsbackgroundfetch.FetchJobService"
+104-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:19:13-80
+105            android:exported="true"
+105-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:20:13-36
+106            android:permission="android.permission.BIND_JOB_SERVICE" />
+106-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:21:13-69
 107
-108        <activity
-108-->[io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:12:9-15:59
-109            android:name="com.intentfilter.androidpermissions.PermissionsActivity"
-109-->[io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:13:13-83
-110            android:excludeFromRecents="true"
-110-->[io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:14:13-46
-111            android:theme="@style/AppTheme.Transparent" />
-111-->[io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:15:13-56
-112        <activity
-112-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a9275bb3354f6d1d34227a45b5737530\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
-113            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-113-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a9275bb3354f6d1d34227a45b5737530\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
-114            android:exported="false"
-114-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a9275bb3354f6d1d34227a45b5737530\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
-115            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-115-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a9275bb3354f6d1d34227a45b5737530\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+108        <receiver
+108-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:23:9-30:20
+109            android:name="com.transistorsoft.tsbackgroundfetch.BootReceiver"
+109-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:24:13-77
+110            android:exported="false" >
+110-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:25:13-37
+111            <intent-filter>
+111-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:26:13-29:29
+112                <action android:name="android.intent.action.BOOT_COMPLETED" />
+112-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:27:17-79
+112-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:27:25-76
+113                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+113-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:28:17-84
+113-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:28:25-81
+114            </intent-filter>
+115        </receiver>
 116
-117        <meta-data
-117-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a6ce1c457108fb1ae1f05fab47ff313c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
-118            android:name="com.google.android.gms.version"
-118-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a6ce1c457108fb1ae1f05fab47ff313c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
-119            android:value="@integer/google_play_services_version" />
-119-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a6ce1c457108fb1ae1f05fab47ff313c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
-120
+117        <activity
+117-->[io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:12:9-15:59
+118            android:name="com.intentfilter.androidpermissions.PermissionsActivity"
+118-->[io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:13:13-83
+119            android:excludeFromRecents="true"
+119-->[io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:14:13-46
+120            android:theme="@style/AppTheme.Transparent" />
+120-->[io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:15:13-56
 121        <activity
-121-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:26:9-224
-122            android:name="com.transistorsoft.locationmanager.activity.TSLocationManagerActivity"
-122-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:26:19-103
-123            android:excludeFromRecents="true"
-123-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:26:104-137
-124            android:launchMode="singleInstance"
-124-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:26:138-173
-125            android:theme="@style/TSLocationManagerActivity" />
-125-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:26:174-222
-126
-127        <service android:name="com.transistorsoft.locationmanager.service.TrackingService" />
-127-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:27:9-93
-127-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:27:18-91
-128        <service android:name="com.transistorsoft.locationmanager.service.LocationRequestService" />
-128-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:28:9-100
-128-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:28:18-98
-129        <service android:name="com.transistorsoft.locationmanager.service.HeartbeatService" />
-129-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:29:9-94
-129-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:29:18-92
-130        <service android:name="com.transistorsoft.locationmanager.service.ActivityRecognitionService" />
-130-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:30:9-104
-130-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:30:18-102
-131        <service android:name="com.transistorsoft.locationmanager.service.GeofencingService" />
-131-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:31:9-95
-131-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:31:18-93
-132        <service android:name="com.transistorsoft.locationmanager.service.BackgroundTaskService" />
-132-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:32:9-99
-132-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:32:18-97
-133
-134        <receiver
-134-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:33:9-127
-135            android:name="com.transistorsoft.locationmanager.scheduler.ScheduleAlarmReceiver"
-135-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:33:19-100
-136            android:exported="false" />
-136-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:33:101-125
-137
-138        <service android:name="com.transistorsoft.locationmanager.scheduler.ScheduleService" />
-138-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:34:9-95
-138-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:34:18-93
-139        <service
-139-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:35:9-155
-140            android:name="com.transistorsoft.locationmanager.scheduler.ScheduleJobService"
-140-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:35:18-96
-141            android:permission="android.permission.BIND_JOB_SERVICE" />
-141-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:35:97-153
+121-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a9275bb3354f6d1d34227a45b5737530\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+122            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+122-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a9275bb3354f6d1d34227a45b5737530\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+123            android:exported="false"
+123-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a9275bb3354f6d1d34227a45b5737530\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+124            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+124-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a9275bb3354f6d1d34227a45b5737530\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+125
+126        <meta-data
+126-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a6ce1c457108fb1ae1f05fab47ff313c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+127            android:name="com.google.android.gms.version"
+127-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a6ce1c457108fb1ae1f05fab47ff313c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+128            android:value="@integer/google_play_services_version" />
+128-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a6ce1c457108fb1ae1f05fab47ff313c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+129
+130        <activity
+130-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:26:9-224
+131            android:name="com.transistorsoft.locationmanager.activity.TSLocationManagerActivity"
+131-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:26:19-103
+132            android:excludeFromRecents="true"
+132-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:26:104-137
+133            android:launchMode="singleInstance"
+133-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:26:138-173
+134            android:theme="@style/TSLocationManagerActivity" />
+134-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:26:174-222
+135
+136        <service android:name="com.transistorsoft.locationmanager.service.TrackingService" />
+136-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:27:9-93
+136-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:27:18-91
+137        <service android:name="com.transistorsoft.locationmanager.service.LocationRequestService" />
+137-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:28:9-100
+137-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:28:18-98
+138        <service android:name="com.transistorsoft.locationmanager.service.HeartbeatService" />
+138-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:29:9-94
+138-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:29:18-92
+139        <service android:name="com.transistorsoft.locationmanager.service.ActivityRecognitionService" />
+139-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:30:9-104
+139-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:30:18-102
+140        <service android:name="com.transistorsoft.locationmanager.service.GeofencingService" />
+140-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:31:9-95
+140-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:31:18-93
+141        <service android:name="com.transistorsoft.locationmanager.service.BackgroundTaskService" />
+141-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:32:9-99
+141-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:32:18-97
 142
 143        <receiver
-143-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:36:9-41:20
-144            android:name="com.transistorsoft.locationmanager.BootReceiver"
-144-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:36:19-81
-145            android:exported="false" >
-145-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:36:82-106
-146            <intent-filter>
-146-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:26:13-29:29
-147                <action android:name="android.intent.action.BOOT_COMPLETED" />
-147-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:27:17-79
-147-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:27:25-76
-148                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-148-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:28:17-84
-148-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:28:25-81
-149            </intent-filter>
-150        </receiver>
+143-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:33:9-127
+144            android:name="com.transistorsoft.locationmanager.scheduler.ScheduleAlarmReceiver"
+144-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:33:19-100
+145            android:exported="false" />
+145-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:33:101-125
+146
+147        <service android:name="com.transistorsoft.locationmanager.scheduler.ScheduleService" />
+147-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:34:9-95
+147-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:34:18-93
+148        <service
+148-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:35:9-155
+149            android:name="com.transistorsoft.locationmanager.scheduler.ScheduleJobService"
+149-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:35:18-96
+150            android:permission="android.permission.BIND_JOB_SERVICE" />
+150-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:35:97-153
 151
-152        <provider
-152-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:42:9-44:20
-153            android:name="com.transistorsoft.locationmanager.util.LogFileProvider"
-153-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:42:19-89
-154            android:authorities="edu.princeton.jrpalmer.asm.tslocationmanager.fileprovider"
-154-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:42:90-159
-155            android:exported="false"
-155-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:42:160-184
-156            android:grantUriPermissions="true" >
-156-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:42:185-219
-157            <meta-data
-157-->[:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:68
-158                android:name="android.support.FILE_PROVIDER_PATHS"
-158-->[:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
-159                android:resource="@xml/tslocationmanager_file_provider_path" />
-159-->[:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-65
-160        </provider>
-161    </application>
-162
-163</manifest>
+152        <receiver
+152-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:36:9-41:20
+153            android:name="com.transistorsoft.locationmanager.BootReceiver"
+153-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:36:19-81
+154            android:exported="false" >
+154-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:36:82-106
+155            <intent-filter>
+155-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:26:13-29:29
+156                <action android:name="android.intent.action.BOOT_COMPLETED" />
+156-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:27:17-79
+156-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:27:25-76
+157                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+157-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:28:17-84
+157-->[com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:28:25-81
+158            </intent-filter>
+159        </receiver>
+160
+161        <provider
+161-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:42:9-44:20
+162            android:name="com.transistorsoft.locationmanager.util.LogFileProvider"
+162-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:42:19-89
+163            android:authorities="edu.princeton.jrpalmer.asm.tslocationmanager.fileprovider"
+163-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:42:90-159
+164            android:exported="false"
+164-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:42:160-184
+165            android:grantUriPermissions="true" >
+165-->[com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:42:185-219
+166            <meta-data
+166-->[:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:68
+167                android:name="android.support.FILE_PROVIDER_PATHS"
+167-->[:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+168                android:resource="@xml/tslocationmanager_file_provider_path" />
+168-->[:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-65
+169        </provider>
+170    </application>
+171
+172</manifest>

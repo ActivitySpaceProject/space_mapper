@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_dialog_material_background.xml",
+        "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\ff2a86ca87eda252dfe1319c54d53913\\appcompat-1.1.0\\res\\drawable-v21\\abc_dialog_material_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_list_divider_material.xml",
+        "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\ff2a86ca87eda252dfe1319c54d53913\\appcompat-1.1.0\\res\\drawable-v21\\abc_list_divider_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\notification_action_background.xml",
+        "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\cdcb21ce1a8a7fa61d511923b4b75aa1\\core-1.1.0\\res\\drawable-v21\\notification_action_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\ff2a86ca87eda252dfe1319c54d53913\\appcompat-1.1.0\\res\\drawable-v21\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\ff2a86ca87eda252dfe1319c54d53913\\appcompat-1.1.0\\res\\drawable-v21\\abc_edit_text_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\flutter_webview_plugin\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
+        "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\ff2a86ca87eda252dfe1319c54d53913\\appcompat-1.1.0\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+    }
+]

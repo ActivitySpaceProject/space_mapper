@@ -4,23 +4,6 @@
             "outputFile": "C:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ky\\values-ky.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\cdcb21ce1a8a7fa61d511923b4b75aa1\\core-1.1.0\\res\\values-ky\\values-ky.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "48",
-                        "startColumns": "4",
-                        "startOffsets": "5583",
-                        "endColumns": "100",
-                        "endOffsets": "5679"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\a9275bb3354f6d1d34227a45b5737530\\jetified-play-services-base-17.0.0\\res\\values-ky\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -69,6 +52,23 @@
                         "startOffsets": "105,209,304,423,507,614,731,809,888,979,1072,1168,1262,1363,1456,1551,1646,1737,1828,1909,2019,2126,2224,2330,2437,2538,2699,5502",
                         "endColumns": "103,94,118,83,106,116,77,78,90,92,95,93,100,92,94,94,90,90,80,109,106,97,105,106,100,160,102,80",
                         "endOffsets": "204,299,418,502,609,726,804,883,974,1067,1163,1257,1358,1451,1546,1641,1732,1823,1904,2014,2121,2219,2325,2432,2533,2694,2797,5578"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\62e089180089a465608bc63675af4406\\core-1.3.1\\res\\values-ky\\values-ky.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "48",
+                        "startColumns": "4",
+                        "startOffsets": "5583",
+                        "endColumns": "100",
+                        "endOffsets": "5679"
                     }
                 }
             ]

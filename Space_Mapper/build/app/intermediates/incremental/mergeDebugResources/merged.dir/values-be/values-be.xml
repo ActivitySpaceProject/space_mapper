@@ -46,5 +46,5 @@
     <string msgid="3441753203274453993" name="common_signin_button_text">"Увайсцi"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Увайсці праз Google"</string>
     <string msgid="146198913615257606" name="search_menu_title">"Пошук"</string>
-    <string msgid="8106346172024741305" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
 </resources>

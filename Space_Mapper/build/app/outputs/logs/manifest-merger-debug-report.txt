@@ -6,31 +6,27 @@ INJECTED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space
 INJECTED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\main\AndroidManifest.xml:1:1-38:12
 MERGED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\main\AndroidManifest.xml:1:1-38:12
 MERGED from [:flutter_background_geolocation] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\flutter_background_geolocation\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:1:39-40:12
 MERGED from [:background_fetch] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\background_fetch\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-10:12
-MERGED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:2:1-31:12
 MERGED from [:shared_preferences] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:sqflite] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:path_provider] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:url_launcher] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
-MERGED from [:url_launcher_macos] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\url_launcher_macos\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:shared_preferences_macos] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\shared_preferences_macos\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:url_launcher_web] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\url_launcher_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:shared_preferences_web] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\shared_preferences_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:path_provider_macos] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\path_provider_macos\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
-MERGED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:path_provider] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-19:12
+MERGED from [:webview_flutter_android] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\8d4ea7c374dd2b555c5fd3990a615bca\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:2:1-33:12
+MERGED from [io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:2:1-18:12
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\ce4cf89a33ded15216b272ad8910c428\appcompat-1.0.2\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\25e9de6f4c3f24cd7fdfcffa1d2c9af5\vectordrawable-animated-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6aa8be306867c66f75b899dae6fe9b35\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\61f05c7bb5a8ed220c134f99849ecb58\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\b784d122b520ba81304f253e1e005078\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\64ab2c8b242d14af131935eb340bcc0b\webkit-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\ff5dd6d40aec96374d412c2ca7e05d7f\jetified-play-services-location-17.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a9275bb3354f6d1d34227a45b5737530\jetified-play-services-base-17.0.0\AndroidManifest.xml:17:1-29:12
 MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\d9efd1e4b058f183c03b49ab0db67d28\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\e96e343abe1c37f719aeba12089bb59e\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a6ce1c457108fb1ae1f05fab47ff313c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:17:1-28:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\30a750ecc88098c2c138c82b24f245f4\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\25e9de6f4c3f24cd7fdfcffa1d2c9af5\vectordrawable-animated-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6aa8be306867c66f75b899dae6fe9b35\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\61f05c7bb5a8ed220c134f99849ecb58\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\2644abbfa38a451aad18ec800a83ca65\vectordrawable-1.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a24c9eb75af32f06bb42aee820bf6bbf\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a075fff4bab4f27910242c63faee10d6\loader-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -41,20 +37,21 @@ MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Pablo 
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\cf47211c29f3d46233053dff73be8bb2\customview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\1737a0165135ed2c4d977b25d1ead2d5\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f3258004baa5f8e32e4510811be0833f\asynclayoutinflater-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.core:core:1.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\cdcb21ce1a8a7fa61d511923b4b75aa1\core-1.1.0\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.core:core:1.3.1] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\62e089180089a465608bc63675af4406\core-1.3.1\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\b784d122b520ba81304f253e1e005078\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\97995a1e08e1cdd2aa54bce243890506\lifecycle-runtime-2.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\9a275c02f7f23991f9ecf01a2317e7cb\jetified-savedstate-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\58fda21f144ebc67f1032e2e97e2539f\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f0fa602651fa0aa6197a6228ef1be92c\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\30f57287a48e8bfefe83c7f396b3c408\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\9f6f80a61b168ce52e2291785048c36b\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\d8351c8c6399f618347f735b709e67e6\versionedparcelable-1.1.0\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\9f6f80a61b168ce52e2291785048c36b\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\7640d20d03bf709d7fe1f02ef9b49b17\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\9a616a8bc5de2472cf64c845aab85cc5\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\c53786579cfc40fca339fbba36117ed9\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\93841fff0305e4fa6150464508c770cf\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:1:39-46:12
 MERGED from [com.github.tony19:logback-android:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f2fa1744bf69282fe110cf934eb07766\jetified-logback-android-2.0.0\AndroidManifest.xml:2:1-11:12
-MERGED from [com.intentfilter:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6a3445e179cc7c5e4679e39dfc0b2181\jetified-android-permissions-0.1.8\AndroidManifest.xml:2:1-18:12
 INJECTED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 INJECTED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\debug\AndroidManifest.xml:1:1-7:12
 INJECTED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\debug\AndroidManifest.xml:1:1-7:12
@@ -77,26 +74,28 @@ INJECTED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space
 		ADDED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\main\AndroidManifest.xml:1:11-69
 uses-permission#android.permission.ACCESS_FINE_LOCATION
 ADDED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\main\AndroidManifest.xml:4:5-79
-MERGED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:8:5-78
-MERGED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:8:5-78
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:8:5-78
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:8:5-78
 	android:name
 		ADDED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\main\AndroidManifest.xml:4:22-76
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
 ADDED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\main\AndroidManifest.xml:5:5-81
-MERGED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:6:5-80
-MERGED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:6:5-80
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:6:5-80
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:6:5-80
 	android:name
 		ADDED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\main\AndroidManifest.xml:5:22-78
 application
 ADDED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\main\AndroidManifest.xml:12:5-37:19
-MERGED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:19:5-39:19
-MERGED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:19:5-39:19
 MERGED from [:background_fetch] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\background_fetch\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-8:19
 MERGED from [:background_fetch] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\background_fetch\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-8:19
-MERGED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:15:5-29:19
-MERGED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:15:5-29:19
 MERGED from [:url_launcher] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
 MERGED from [:url_launcher] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-12:19
+MERGED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
+MERGED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-17:19
+MERGED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:15:5-31:19
+MERGED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:15:5-31:19
+MERGED from [io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:11:5-16:19
+MERGED from [io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:11:5-16:19
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\ff5dd6d40aec96374d412c2ca7e05d7f\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\ff5dd6d40aec96374d412c2ca7e05d7f\jetified-play-services-location-17.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a9275bb3354f6d1d34227a45b5737530\jetified-play-services-base-17.0.0\AndroidManifest.xml:22:5-27:19
@@ -107,17 +106,17 @@ MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Pablo G
 MERGED from [com.google.android.gms:play-services-tasks:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\e96e343abe1c37f719aeba12089bb59e\jetified-play-services-tasks-17.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a6ce1c457108fb1ae1f05fab47ff313c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:22:5-26:19
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a6ce1c457108fb1ae1f05fab47ff313c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:22:5-26:19
-MERGED from [androidx.core:core:1.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\cdcb21ce1a8a7fa61d511923b4b75aa1\core-1.1.0\AndroidManifest.xml:24:5-89
-MERGED from [androidx.core:core:1.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\cdcb21ce1a8a7fa61d511923b4b75aa1\core-1.1.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.1] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\62e089180089a465608bc63675af4406\core-1.3.1\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.3.1] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\62e089180089a465608bc63675af4406\core-1.3.1\AndroidManifest.xml:24:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\d8351c8c6399f618347f735b709e67e6\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\d8351c8c6399f618347f735b709e67e6\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
-MERGED from [com.intentfilter:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6a3445e179cc7c5e4679e39dfc0b2181\jetified-android-permissions-0.1.8\AndroidManifest.xml:11:5-16:19
-MERGED from [com.intentfilter:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6a3445e179cc7c5e4679e39dfc0b2181\jetified-android-permissions-0.1.8\AndroidManifest.xml:11:5-16:19
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:25:5-45:19
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:25:5-45:19
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\cdcb21ce1a8a7fa61d511923b4b75aa1\core-1.1.0\AndroidManifest.xml:24:18-86
+		ADDED from [androidx.core:core:1.3.1] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\62e089180089a465608bc63675af4406\core-1.3.1\AndroidManifest.xml:24:18-86
 	android:label
 		ADDED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\main\AndroidManifest.xml:15:9-37
-		REJECTED from [com.intentfilter:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6a3445e179cc7c5e4679e39dfc0b2181\jetified-android-permissions-0.1.8\AndroidManifest.xml:11:18-50
+		REJECTED from [io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:11:18-50
 	android:icon
 		ADDED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\main\AndroidManifest.xml:16:9-43
 	tools:replace
@@ -166,44 +165,30 @@ INJECTED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space
 INJECTED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\main\AndroidManifest.xml
 MERGED from [:flutter_background_geolocation] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\flutter_background_geolocation\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:flutter_background_geolocation] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\flutter_background_geolocation\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:2:5-73
-MERGED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:2:5-73
 MERGED from [:background_fetch] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\background_fetch\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:background_fetch] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\background_fetch\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:7:5-9:41
-MERGED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:7:5-9:41
 MERGED from [:shared_preferences] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\shared_preferences\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:path_provider] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:path_provider] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:url_launcher_macos] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\url_launcher_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:url_launcher_macos] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\url_launcher_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences_macos] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\shared_preferences_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences_macos] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\shared_preferences_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:url_launcher_web] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\url_launcher_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:url_launcher_web] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\url_launcher_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences_web] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\shared_preferences_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:shared_preferences_web] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\shared_preferences_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:path_provider_macos] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\path_provider_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
-MERGED from [:path_provider_macos] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\path_provider_macos\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter_android] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter_android] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\8d4ea7c374dd2b555c5fd3990a615bca\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\8d4ea7c374dd2b555c5fd3990a615bca\multidex-2.0.0\AndroidManifest.xml:20:5-43
+MERGED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:7:5-9:41
+MERGED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:7:5-9:41
+MERGED from [io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:7:5-9:41
+MERGED from [io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\ce4cf89a33ded15216b272ad8910c428\appcompat-1.0.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\ce4cf89a33ded15216b272ad8910c428\appcompat-1.0.2\AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\25e9de6f4c3f24cd7fdfcffa1d2c9af5\vectordrawable-animated-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\25e9de6f4c3f24cd7fdfcffa1d2c9af5\vectordrawable-animated-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6aa8be306867c66f75b899dae6fe9b35\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6aa8be306867c66f75b899dae6fe9b35\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\61f05c7bb5a8ed220c134f99849ecb58\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\61f05c7bb5a8ed220c134f99849ecb58\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\b784d122b520ba81304f253e1e005078\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\b784d122b520ba81304f253e1e005078\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\64ab2c8b242d14af131935eb340bcc0b\webkit-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\64ab2c8b242d14af131935eb340bcc0b\webkit-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\ff5dd6d40aec96374d412c2ca7e05d7f\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\ff5dd6d40aec96374d412c2ca7e05d7f\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a9275bb3354f6d1d34227a45b5737530\jetified-play-services-base-17.0.0\AndroidManifest.xml:20:5-44
@@ -216,6 +201,12 @@ MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pabl
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a6ce1c457108fb1ae1f05fab47ff313c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\30a750ecc88098c2c138c82b24f245f4\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\30a750ecc88098c2c138c82b24f245f4\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\25e9de6f4c3f24cd7fdfcffa1d2c9af5\vectordrawable-animated-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\25e9de6f4c3f24cd7fdfcffa1d2c9af5\vectordrawable-animated-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6aa8be306867c66f75b899dae6fe9b35\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6aa8be306867c66f75b899dae6fe9b35\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\61f05c7bb5a8ed220c134f99849ecb58\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\61f05c7bb5a8ed220c134f99849ecb58\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\2644abbfa38a451aad18ec800a83ca65\vectordrawable-1.0.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\2644abbfa38a451aad18ec800a83ca65\vectordrawable-1.0.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a24c9eb75af32f06bb42aee820bf6bbf\viewpager-1.0.0\AndroidManifest.xml:20:5-44
@@ -236,8 +227,10 @@ MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Pabl
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\1737a0165135ed2c4d977b25d1ead2d5\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f3258004baa5f8e32e4510811be0833f\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f3258004baa5f8e32e4510811be0833f\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\cdcb21ce1a8a7fa61d511923b4b75aa1\core-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.core:core:1.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\cdcb21ce1a8a7fa61d511923b4b75aa1\core-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.1] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\62e089180089a465608bc63675af4406\core-1.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.3.1] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\62e089180089a465608bc63675af4406\core-1.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\b784d122b520ba81304f253e1e005078\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\b784d122b520ba81304f253e1e005078\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\97995a1e08e1cdd2aa54bce243890506\lifecycle-runtime-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\97995a1e08e1cdd2aa54bce243890506\lifecycle-runtime-2.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\9a275c02f7f23991f9ecf01a2317e7cb\jetified-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
@@ -248,10 +241,10 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Pablo Ga
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f0fa602651fa0aa6197a6228ef1be92c\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\30f57287a48e8bfefe83c7f396b3c408\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\30f57287a48e8bfefe83c7f396b3c408\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\9f6f80a61b168ce52e2291785048c36b\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\9f6f80a61b168ce52e2291785048c36b\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\d8351c8c6399f618347f735b709e67e6\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\d8351c8c6399f618347f735b709e67e6\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\9f6f80a61b168ce52e2291785048c36b\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\9f6f80a61b168ce52e2291785048c36b\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\7640d20d03bf709d7fe1f02ef9b49b17\documentfile-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\7640d20d03bf709d7fe1f02ef9b49b17\documentfile-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\9a616a8bc5de2472cf64c845aab85cc5\print-1.0.0\AndroidManifest.xml:20:5-44
@@ -260,10 +253,10 @@ MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Pablo Galve\
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\c53786579cfc40fca339fbba36117ed9\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\93841fff0305e4fa6150464508c770cf\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\93841fff0305e4fa6150464508c770cf\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:2:5-73
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:2:5-73
 MERGED from [com.github.tony19:logback-android:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f2fa1744bf69282fe110cf934eb07766\jetified-logback-android-2.0.0\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.tony19:logback-android:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f2fa1744bf69282fe110cf934eb07766\jetified-logback-android-2.0.0\AndroidManifest.xml:7:5-9:41
-MERGED from [com.intentfilter:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6a3445e179cc7c5e4679e39dfc0b2181\jetified-android-permissions-0.1.8\AndroidManifest.xml:7:5-9:41
-MERGED from [com.intentfilter:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6a3445e179cc7c5e4679e39dfc0b2181\jetified-android-permissions-0.1.8\AndroidManifest.xml:7:5-9:41
 INJECTED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\debug\AndroidManifest.xml
 INJECTED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\debug\AndroidManifest.xml
 	android:targetSdkVersion
@@ -274,162 +267,10 @@ INJECTED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space
 		INJECTED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\debug\AndroidManifest.xml
 uses-permission#android.permission.INTERNET
 ADDED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\debug\AndroidManifest.xml:6:5-66
-MERGED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:10:5-66
-MERGED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:10:5-66
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:9:5-66
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:9:5-66
 	android:name
 		ADDED from C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\android\app\src\debug\AndroidManifest.xml:6:22-64
-uses-permission#android.permission.WAKE_LOCK
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:3:5-67
-MERGED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:12:5-68
-MERGED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:12:5-68
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:3:22-65
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:4:5-78
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:4:22-76
-uses-permission#android.permission.ACCESS_BACKGROUND_LOCATION
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:5:5-84
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:5:22-82
-uses-permission#android.permission.ACTIVITY_RECOGNITION
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:7:5-78
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:7:22-76
-uses-permission#android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:9:5-88
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:9:22-86
-uses-permission#android.permission.FOREGROUND_SERVICE
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:11:5-76
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:11:22-74
-uses-permission#com.google.android.gms.permission.ACTIVITY_RECOGNITION
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:12:5-93
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:12:22-91
-uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:13:5-80
-MERGED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:11:5-81
-MERGED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:11:5-81
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:13:22-78
-uses-permission#android.permission.GET_TASKS
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:14:5-67
-MERGED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:13:5-68
-MERGED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:13:5-68
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:14:22-65
-uses-permission#oppo.permission.OPPO_COMPONENT_SAFE
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:16:5-74
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:16:22-72
-uses-permission#com.huawei.permission.external_app_settings.USE_COMPONENT
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:17:5-96
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:17:22-94
-uses-feature#android.hardware.location.gps
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:18:5-90
-	android:required
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:18:64-88
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:18:19-63
-activity#com.transistorsoft.locationmanager.activity.TSLocationManagerActivity
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:20:9-219
-	android:excludeFromRecents
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:20:104-137
-	android:launchMode
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:20:138-173
-	android:theme
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:20:174-217
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:20:19-103
-service#com.transistorsoft.locationmanager.service.TrackingService
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:21:9-93
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:21:18-91
-service#com.transistorsoft.locationmanager.service.LocationRequestService
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:22:9-100
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:22:18-98
-service#com.transistorsoft.locationmanager.service.HeartbeatService
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:23:9-94
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:23:18-92
-service#com.transistorsoft.locationmanager.service.ActivityRecognitionService
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:24:9-104
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:24:18-102
-service#com.transistorsoft.locationmanager.service.GeofencingService
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:25:9-95
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:25:18-93
-service#com.transistorsoft.locationmanager.service.BackgroundTaskService
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:26:9-99
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:26:18-97
-receiver#com.transistorsoft.locationmanager.scheduler.ScheduleAlarmReceiver
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:27:9-102
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:27:19-100
-service#com.transistorsoft.locationmanager.scheduler.ScheduleService
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:28:9-95
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:28:18-93
-service#com.transistorsoft.locationmanager.scheduler.ScheduleJobService
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:29:9-179
-	android:exported
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:29:97-120
-	android:permission
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:29:121-177
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:29:18-96
-receiver#com.transistorsoft.locationmanager.BootReceiver
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:30:9-35:20
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:30:19-81
-intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MY_PACKAGE_REPLACED
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:31:13-34:29
-action#android.intent.action.BOOT_COMPLETED
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:32:17-78
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:32:25-76
-action#android.intent.action.MY_PACKAGE_REPLACED
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:33:17-83
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:33:25-81
-provider#com.transistorsoft.locationmanager.util.LogFileProvider
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:36:9-38:20
-	android:grantUriPermissions
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:36:185-219
-	android:authorities
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:36:90-159
-	android:exported
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:36:160-184
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:36:19-89
-meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:37:13-137
-	android:resource
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:37:75-135
-	android:name
-		ADDED from [tslocationmanager-3.0.54.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\4363749654e8badfa7c6efc35469f382\jetified-tslocationmanager-3.0.54\AndroidManifest.xml:37:24-74
-receiver#com.transistorsoft.tsbackgroundfetch.FetchAlarmReceiver
-ADDED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:16:9-92
-	android:name
-		ADDED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:16:19-89
-service#com.transistorsoft.tsbackgroundfetch.FetchJobService
-ADDED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:18:9-21:72
-	android:exported
-		ADDED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:20:13-36
-	android:permission
-		ADDED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:21:13-69
-	android:name
-		ADDED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:19:13-80
-receiver#com.transistorsoft.tsbackgroundfetch.BootReceiver
-ADDED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:23:9-28:20
-	android:name
-		ADDED from [tsbackgroundfetch-0.4.2.aar] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\744218adc90bbfde2b3b165c5edb6fc9\jetified-tsbackgroundfetch-0.4.2\AndroidManifest.xml:23:19-83
 activity#io.flutter.plugins.urllauncher.WebViewActivity
 ADDED from [:url_launcher] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
 	android:exported
@@ -438,6 +279,76 @@ ADDED from [:url_launcher] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space
 		ADDED from [:url_launcher] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
 	android:name
 		ADDED from [:url_launcher] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
+provider#io.flutter.plugins.share.ShareFileProvider
+ADDED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-16:20
+	android:grantUriPermissions
+		ADDED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-47
+	android:authorities
+		ADDED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-74
+	android:exported
+		ADDED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-70
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-15:68
+	android:resource
+		ADDED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:15:17-65
+	android:name
+		ADDED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:14:17-67
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:11:5-81
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:12:5-80
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:12:5-80
+	android:name
+		ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:11:22-78
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:12:5-68
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:3:5-67
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:3:5-67
+	android:name
+		ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:12:22-65
+uses-permission#android.permission.GET_TASKS
+ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:13:5-68
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:13:5-67
+MERGED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:13:5-67
+	android:name
+		ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:13:22-65
+receiver#com.transistorsoft.tsbackgroundfetch.FetchAlarmReceiver
+ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:16:9-92
+	android:name
+		ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:16:19-89
+service#com.transistorsoft.tsbackgroundfetch.FetchJobService
+ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:18:9-21:72
+	android:exported
+		ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:20:13-36
+	android:permission
+		ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:21:13-69
+	android:name
+		ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:19:13-80
+receiver#com.transistorsoft.tsbackgroundfetch.BootReceiver
+ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:23:9-30:20
+	android:exported
+		ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:25:13-37
+	android:name
+		ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:24:13-77
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MY_PACKAGE_REPLACED
+ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:26:13-29:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:27:17-79
+	android:name
+		ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:27:25-76
+action#android.intent.action.MY_PACKAGE_REPLACED
+ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:28:17-84
+	android:name
+		ADDED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:28:25-81
+activity#com.intentfilter.androidpermissions.PermissionsActivity
+ADDED from [io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:12:9-15:59
+	android:excludeFromRecents
+		ADDED from [io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:14:13-46
+	android:theme
+		ADDED from [io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:15:13-56
+	android:name
+		ADDED from [io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:13:13-83
 activity#com.google.android.gms.common.api.GoogleApiActivity
 ADDED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a9275bb3354f6d1d34227a45b5737530\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
 	android:exported
@@ -452,11 +363,107 @@ ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pablo
 		ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a6ce1c457108fb1ae1f05fab47ff313c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
 	android:name
 		ADDED from [com.google.android.gms:play-services-basement:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a6ce1c457108fb1ae1f05fab47ff313c\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
-activity#com.intentfilter.androidpermissions.PermissionsActivity
-ADDED from [com.intentfilter:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6a3445e179cc7c5e4679e39dfc0b2181\jetified-android-permissions-0.1.8\AndroidManifest.xml:12:9-15:59
-	android:excludeFromRecents
-		ADDED from [com.intentfilter:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6a3445e179cc7c5e4679e39dfc0b2181\jetified-android-permissions-0.1.8\AndroidManifest.xml:14:13-46
-	android:theme
-		ADDED from [com.intentfilter:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6a3445e179cc7c5e4679e39dfc0b2181\jetified-android-permissions-0.1.8\AndroidManifest.xml:15:13-56
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:4:5-78
 	android:name
-		ADDED from [com.intentfilter:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\6a3445e179cc7c5e4679e39dfc0b2181\jetified-android-permissions-0.1.8\AndroidManifest.xml:13:13-83
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:4:22-76
+uses-permission#android.permission.ACCESS_BACKGROUND_LOCATION
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:5:5-84
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:5:22-82
+uses-permission#android.permission.ACTIVITY_RECOGNITION
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:7:5-78
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:7:22-76
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:10:5-76
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:10:22-74
+uses-permission#com.google.android.gms.permission.ACTIVITY_RECOGNITION
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:11:5-93
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:11:22-91
+uses-permission#android.permission.SCHEDULE_EXACT_ALARM
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:14:5-78
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:14:22-76
+uses-permission#oppo.permission.OPPO_COMPONENT_SAFE
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:22:5-74
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:22:22-72
+uses-permission#com.huawei.permission.external_app_settings.USE_COMPONENT
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:23:5-96
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:23:22-94
+uses-feature#android.hardware.location.gps
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:24:5-90
+	android:required
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:24:64-88
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:24:19-63
+activity#com.transistorsoft.locationmanager.activity.TSLocationManagerActivity
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:26:9-224
+	android:excludeFromRecents
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:26:104-137
+	android:launchMode
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:26:138-173
+	android:theme
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:26:174-222
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:26:19-103
+service#com.transistorsoft.locationmanager.service.TrackingService
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:27:9-93
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:27:18-91
+service#com.transistorsoft.locationmanager.service.LocationRequestService
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:28:9-100
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:28:18-98
+service#com.transistorsoft.locationmanager.service.HeartbeatService
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:29:9-94
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:29:18-92
+service#com.transistorsoft.locationmanager.service.ActivityRecognitionService
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:30:9-104
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:30:18-102
+service#com.transistorsoft.locationmanager.service.GeofencingService
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:31:9-95
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:31:18-93
+service#com.transistorsoft.locationmanager.service.BackgroundTaskService
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:32:9-99
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:32:18-97
+receiver#com.transistorsoft.locationmanager.scheduler.ScheduleAlarmReceiver
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:33:9-127
+	android:exported
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:33:101-125
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:33:19-100
+service#com.transistorsoft.locationmanager.scheduler.ScheduleService
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:34:9-95
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:34:18-93
+service#com.transistorsoft.locationmanager.scheduler.ScheduleJobService
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:35:9-155
+	android:permission
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:35:97-153
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:35:18-96
+receiver#com.transistorsoft.locationmanager.BootReceiver
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:36:9-41:20
+	android:exported
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:36:82-106
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:36:19-81
+provider#com.transistorsoft.locationmanager.util.LogFileProvider
+ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:42:9-44:20
+	android:grantUriPermissions
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:42:185-219
+	android:authorities
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:42:90-159
+	android:exported
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:42:160-184
+	android:name
+		ADDED from [com.transistorsoft:tslocationmanager:3.1.33] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\f92f7d555f3bf98099b0c14e056f745a\jetified-tslocationmanager-3.1.33\AndroidManifest.xml:42:19-89

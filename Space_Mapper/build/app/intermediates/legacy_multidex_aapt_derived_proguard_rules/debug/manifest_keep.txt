@@ -1,4 +1,4 @@
-# Referenced at C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:39
+# Referenced at C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:46
 -keep class androidx.core.app.CoreComponentFactory { <init>(); }
-# Referenced at C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:39
+# Referenced at C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:46
 -keep class io.flutter.app.FlutterApplication { <init>(); }

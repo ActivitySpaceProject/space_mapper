@@ -4,23 +4,6 @@
             "outputFile": "C:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-my\\values-my.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\cdcb21ce1a8a7fa61d511923b4b75aa1\\core-1.1.0\\res\\values-my\\values-my.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "48",
-                        "startColumns": "4",
-                        "startOffsets": "5822",
-                        "endColumns": "100",
-                        "endOffsets": "5918"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\a6ce1c457108fb1ae1f05fab47ff313c\\jetified-play-services-basement-17.0.0\\res\\values-my\\values.xml",
                     "from": {
                         "startLines": "4",
@@ -69,6 +52,23 @@
                         "startOffsets": "105,214,319,436,529,641,769,847,926,1017,1110,1206,1300,1401,1494,1589,1683,1774,1865,1951,2074,2186,2288,2414,2525,2635,2795,5738",
                         "endColumns": "108,104,116,92,111,127,77,78,90,92,95,93,100,92,94,93,90,90,85,122,111,101,125,110,109,159,99,83",
                         "endOffsets": "209,314,431,524,636,764,842,921,1012,1105,1201,1295,1396,1489,1584,1678,1769,1860,1946,2069,2181,2283,2409,2520,2630,2790,2890,5817"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\62e089180089a465608bc63675af4406\\core-1.3.1\\res\\values-my\\values-my.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "48",
+                        "startColumns": "4",
+                        "startOffsets": "5822",
+                        "endColumns": "100",
+                        "endOffsets": "5918"
                     }
                 }
             ]

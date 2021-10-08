@@ -1,4 +1,4 @@
-#Tue Oct 05 16:57:56 CEST 2021
+#Fri Oct 08 13:52:41 CEST 2021
 base.1=C\:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\app\\intermediates\\dex\\debug\\out\\classes2.dex
 path.1=classes2.dex
 base.0=C\:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\app\\intermediates\\dex\\debug\\out\\classes.dex

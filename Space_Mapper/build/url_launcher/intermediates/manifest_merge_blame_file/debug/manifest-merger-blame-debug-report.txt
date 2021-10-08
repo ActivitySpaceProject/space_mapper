@@ -3,18 +3,18 @@
 3    package="io.flutter.plugins.urllauncher" >
 4
 5    <uses-sdk android:minSdkVersion="16" />
-5-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\url_launcher-5.4.5\android\src\main\AndroidManifest.xml
+5-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\url_launcher-6.0.12\android\src\main\AndroidManifest.xml
 6
 7    <application>
-7-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\url_launcher-5.4.5\android\src\main\AndroidManifest.xml:3:3-7:17
+7-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\url_launcher-6.0.12\android\src\main\AndroidManifest.xml:3:3-7:17
 8        <activity
-8-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\url_launcher-5.4.5\android\src\main\AndroidManifest.xml:4:5-6:33
+8-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\url_launcher-6.0.12\android\src\main\AndroidManifest.xml:4:5-6:33
 9            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-9-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\url_launcher-5.4.5\android\src\main\AndroidManifest.xml:4:15-76
+9-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\url_launcher-6.0.12\android\src\main\AndroidManifest.xml:4:15-76
 10            android:exported="false"
-10-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\url_launcher-5.4.5\android\src\main\AndroidManifest.xml:6:7-31
+10-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\url_launcher-6.0.12\android\src\main\AndroidManifest.xml:6:7-31
 11            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-11-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\url_launcher-5.4.5\android\src\main\AndroidManifest.xml:5:7-65
+11-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\url_launcher-6.0.12\android\src\main\AndroidManifest.xml:5:7-65
 12    </application>
 13
 14</manifest>

@@ -318,6 +318,8 @@ color abc_tint_spinner
 color abc_tint_switch_track
 color accent_material_dark
 color accent_material_light
+color androidx_core_ripple_material_light
+color androidx_core_secondary_text_default_material_light
 color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
@@ -607,6 +609,7 @@ drawable common_google_signin_btn_text_light_normal_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_launcher_background
+drawable ic_tslocationmanager_location_marker
 drawable launch_background
 drawable notification_action_background
 drawable notification_bg
@@ -622,6 +625,7 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable tslocationmanager_permission_rationale_background
 id ALT
 id CTRL
 id FUNCTION
@@ -692,6 +696,8 @@ id auto
 id beginning
 id blocking
 id bottom
+id btn_negative_action
+id btn_positive_action
 id buttonPanel
 id center
 id center_horizontal
@@ -853,6 +859,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 layout tslocationmanager_notification_layout
+layout tslocationmanager_permission_rationale_layout
 mipmap ic_launcher
 mipmap ic_launcher_background
 mipmap ic_launcher_foreground
@@ -931,6 +938,10 @@ string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string app_name
+string background_permission_rationale_allow_always
+string background_permission_rationale_message
+string background_permission_rationale_title
+string cancel
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
 string common_google_play_services_enable_title
@@ -1117,6 +1128,7 @@ style Base_Widget_AppCompat_TextView_SpinnerItem
 style Base_Widget_AppCompat_Toolbar
 style Base_Widget_AppCompat_Toolbar_Button_Navigation
 style LaunchTheme
+style PermissionRationaleDialog
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_ThemeOverlay_AppCompat
@@ -1144,6 +1156,7 @@ style RtlOverlay_Widget_AppCompat_Search_DropDown_Text
 style RtlOverlay_Widget_AppCompat_SearchView_MagIcon
 style RtlUnderlay_Widget_AppCompat_ActionButton
 style RtlUnderlay_Widget_AppCompat_ActionButton_Overflow
+style TSLocationManagerActivity
 style TextAppearance_AppCompat
 style TextAppearance_AppCompat_Body1
 style TextAppearance_AppCompat_Body2
@@ -1349,4 +1362,5 @@ styleable Toolbar android_gravity android_minHeight buttonGravity collapseConten
 styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewStubCompat android_id android_layout android_inflatedId
+xml flutter_share_file_paths
 xml tslocationmanager_file_provider_path

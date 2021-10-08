@@ -45,8 +45,8 @@ class SpaceMapperSideDrawer extends StatelessWidget {
                   leading: const Icon(Icons.edit),
                   title: Text('Take survey'),
                   onTap: () {
-                    /*Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyWebView()));*/
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MyWebView()));
                   })),
           Card(
             child: ListTile(

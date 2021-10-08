@@ -3,10 +3,10 @@
 3    package="com.transistorsoft.flutter.backgroundfetch" >
 4
 5    <uses-sdk android:minSdkVersion="16" />
-5-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml
+5-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-1.0.1\android\src\main\AndroidManifest.xml
 6
 7    <application>
-7-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-0.5.5\android\src\main\AndroidManifest.xml:3:5-4:19
+7-->C:\flutter\.pub-cache\hosted\pub.dartlang.org\background_fetch-1.0.1\android\src\main\AndroidManifest.xml:3:5-4:19
 8    </application>
 9
 10</manifest>

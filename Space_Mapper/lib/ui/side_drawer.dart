@@ -1,5 +1,6 @@
 import 'package:asm/ui/list_view.dart';
 import 'package:asm/ui/web_view.dart';
+import 'package:asm/ui/web_view2.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share/share.dart';
@@ -45,8 +46,13 @@ class SpaceMapperSideDrawer extends StatelessWidget {
                   leading: const Icon(Icons.edit),
                   title: Text('Take survey'),
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyWebView()));
+                    /*Navigator.push(
+                      context,
+                      //MaterialPageRoute(builder: (context) => MyWebView()));
+                      MaterialPageRoute(
+                        builder: (context) => WebViewExample(),
+                      ),
+                    );*/
                   })),
           Card(
             child: ListTile(

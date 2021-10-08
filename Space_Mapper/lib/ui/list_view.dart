@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_background_geolocation/flutter_background_geolocation.dart' as bg;
+import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
+    as bg;
 
 class STOListView extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class STOListView extends StatelessWidget {
           future: bg.BackgroundGeolocation.locations,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              List data = snapshot.data;
+              List? data = snapshot.data;
               return _jobsListView(data);
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
@@ -26,7 +27,11 @@ class STOListView extends StatelessWidget {
         itemBuilder: (context, index) {
           var thisLocation = data[index];
           return _tile(
-              thisLocation['timestamp'] + " activity: " +  thisLocation['activity']['type'].toString(), thisLocation['coords'].toString(), Icons.gps_fixed);
+              thisLocation['timestamp'] +
+                  " activity: " +
+                  thisLocation['activity']['type'].toString(),
+              thisLocation['coords'].toString(),
+              Icons.gps_fixed);
         });
   }
 

@@ -64,6 +64,8 @@ androidx/appcompat/graphics/drawable/DrawerArrowDrawable$ArrowDirection.class
 androidx/appcompat/view/menu/CascadingMenuPopup$HorizPosition.class
 androidx/appcompat/widget/LinearLayoutCompat$DividerMode.class
 androidx/appcompat/widget/LinearLayoutCompat$OrientationMode.class
+androidx/coordinatorlayout/widget/CoordinatorLayout$DefaultBehavior.class
+androidx/coordinatorlayout/widget/CoordinatorLayout$DispatchChangeEvent.class
 androidx/core/app/CoreComponentFactory$CompatWrapped.class
 androidx/core/app/CoreComponentFactory.class
 androidx/core/app/FrameMetricsAggregator$MetricType.class
@@ -106,6 +108,7 @@ androidx/multidex/MultiDexExtractor$ExtractedDex.class
 androidx/multidex/MultiDexExtractor.class
 androidx/multidex/ZipUtil$CentralDirectory.class
 androidx/multidex/ZipUtil.class
+androidx/swiperefreshlayout/widget/CircularProgressDrawable$ProgressDrawableSize.class
 androidx/versionedparcelable/NonParcelField.class
 androidx/versionedparcelable/ParcelField.class
 androidx/versionedparcelable/VersionedParcelize.class

@@ -29,18 +29,18 @@ class HomeView extends StatefulWidget {
 class HomeViewState extends State<HomeView>
     with TickerProviderStateMixin<HomeView>, WidgetsBindingObserver {
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  TabController _tabController;
+  late TabController _tabController;
 
-  bool _isMoving;
-  bool _enabled;
-  String _motionActivity;
-  String _odometer;
+  late bool _isMoving;
+  late bool _enabled;
+  late String _motionActivity;
+  late String _odometer;
 
   @override
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance!.addObserver(this);
 
     _isMoving = false;
     _enabled = true;
@@ -59,8 +59,8 @@ class HomeViewState extends State<HomeView>
 
   void initPlatformState() async {
     SharedPreferences prefs = await _prefs;
-    String sample_id = prefs.getString("sample_id");
-    String user_uuid = prefs.getString("user_uuid");
+    String? sample_id = prefs.getString("sample_id");
+    String? user_uuid = prefs.getString("user_uuid");
 
     if (sample_id == null || user_uuid == null) {
       prefs.setString("user_uuid", Uuid().v4());
@@ -110,12 +110,12 @@ class HomeViewState extends State<HomeView>
         .then((bg.State state) {
       print('[ready] ${state.toMap()}');
 
-      if (state.schedule.isNotEmpty) {
+      if (state.schedule!.isNotEmpty) {
         bg.BackgroundGeolocation.startSchedule();
       }
       setState(() {
         _enabled = state.enabled;
-        _isMoving = state.isMoving;
+        _isMoving = state.isMoving!;
       });
     }).catchError((error) {
       print('[ready] ERROR: $error');
@@ -140,7 +140,7 @@ class HomeViewState extends State<HomeView>
       SharedPreferences prefs = await SharedPreferences.getInstance();
       int count = 0;
       if (prefs.get("fetch-count") != null) {
-        count = prefs.getInt("fetch-count");
+        count = prefs.getInt("fetch-count")!;
       }
       prefs.setInt("fetch-count", ++count);
       print('[BackgroundFetch] count: $count');
@@ -175,7 +175,7 @@ class HomeViewState extends State<HomeView>
         print('[start] success: $state');
         setState(() {
           _enabled = state.enabled;
-          _isMoving = state.isMoving;
+          _isMoving = state.isMoving!;
         });
       };
       bg.State state = await bg.BackgroundGeolocation.state;
@@ -189,7 +189,7 @@ class HomeViewState extends State<HomeView>
         print('[stop] success: $state');
         setState(() {
           _enabled = state.enabled;
-          _isMoving = state.isMoving;
+          _isMoving = state.isMoving!;
         });
       };
       bg.BackgroundGeolocation.stop().then(callback);
@@ -292,7 +292,7 @@ class HomeViewState extends State<HomeView>
       String url = "${ENV.TRACKER_HOST}/api/devices";
       bg.State state = await bg.BackgroundGeolocation.state;
       http.read(Uri.parse(url), headers: {
-        "Authorization": "Bearer ${state.authorization.accessToken}"
+        "Authorization": "Bearer ${state.authorization!.accessToken}"
       }).then((String result) {
         print("[http test] success: $result");
         bg.BackgroundGeolocation.playSound(

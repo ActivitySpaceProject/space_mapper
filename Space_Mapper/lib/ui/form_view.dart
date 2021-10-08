@@ -99,15 +99,15 @@ class MyCustomFormState extends State<MyCustomForm> {
               MaterialButton(
                 child: Text("Submit"),
                 onPressed: () {
-                  if (_fbKey.currentState.saveAndValidate()) {
-                    print(_fbKey.currentState.value);
+                  if (_fbKey.currentState!.saveAndValidate()) {
+                    print(_fbKey.currentState!.value);
                   }
                 },
               ),
               MaterialButton(
                 child: Text("Reset"),
                 onPressed: () {
-                  _fbKey.currentState.reset();
+                  _fbKey.currentState!.reset();
                 },
               ),
             ],

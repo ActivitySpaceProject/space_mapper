@@ -17,7 +17,7 @@ class MapViewState extends State<MapView>
     return true;
   }
 
-  bg.Location _stationaryLocation;
+  late bg.Location _stationaryLocation;
 
   List<CircleMarker> _currentPosition = [];
   List<LatLng> _polyline = [];
@@ -27,8 +27,8 @@ class MapViewState extends State<MapView>
   List<CircleMarker> _stationaryMarker = [];
 
   LatLng _center = new LatLng(51.5, -0.09);
-  MapController _mapController;
-  MapOptions _mapOptions;
+  late MapController _mapController;
+  late MapOptions _mapOptions;
 
   @override
   void initState() {
@@ -102,8 +102,10 @@ class MapViewState extends State<MapView>
 
     _updateCurrentPositionMarker(ll);
 
-    if (location.sample) {
-      return;
+    if (location.sample != null) {
+      if (location.sample == true) {
+        return;
+      }
     }
 
     // Add a point to the tracking polyline.
@@ -135,7 +137,7 @@ class MapViewState extends State<MapView>
         useRadiusInMeter: true,
         radius: (state.trackingMode == 1)
             ? 200
-            : (state.geofenceProximityRadius / 2));
+            : (state.geofenceProximityRadius! / 2));
   }
 
   Polyline _buildMotionChangePolyline(bg.Location from, bg.Location to) {

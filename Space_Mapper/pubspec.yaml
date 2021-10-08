@@ -14,7 +14,7 @@ description: Flutter version of Space Mapper with 2020 upgrades
 version: 3.0.2+18
 
 environment:
-  sdk: ">=2.2.2 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -25,7 +25,7 @@ dependencies:
   url_launcher: ^6.0.12
   http: ^0.13.4
   flutter_map: ^0.14.0
-  flutter_webview_plugin: ^0.4.0
+  # flutter_webview_plugin: ^0.4.0
   # webview_flutter: ^2.1.1
   sqflite: ^2.0.0+4
   path_provider: ^2.0.5

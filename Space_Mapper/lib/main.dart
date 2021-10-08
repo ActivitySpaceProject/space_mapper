@@ -88,7 +88,7 @@ void backgroundFetchHeadlessTask(String taskId) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   int count = 0;
   if (prefs.get("fetch-count") != null) {
-    count = prefs.getInt("fetch-count");
+    count = prefs.getInt("fetch-count")!;
   }
   prefs.setInt("fetch-count", ++count);
   print('[BackgroundFetch] count: $count');
@@ -101,8 +101,8 @@ void main() {
 
   SharedPreferences.getInstance().then((SharedPreferences prefs) {
     // create random user ID if not yet created
-    String sample_id = prefs.getString("sample_id");
-    String user_uuid = prefs.getString("user_uuid");
+    String? sample_id = prefs.getString("sample_id");
+    String? user_uuid = prefs.getString("user_uuid");
 
     if (sample_id == null || user_uuid == null) {
       prefs.setString("user_uuid", Uuid().v4());

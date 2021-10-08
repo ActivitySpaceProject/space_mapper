@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\webview_flutter_android\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\cdcb21ce1a8a7fa61d511923b4b75aa1\\core-1.1.0\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\webview_flutter_android\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\cdcb21ce1a8a7fa61d511923b4b75aa1\\core-1.1.0\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\webview_flutter_android\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\cdcb21ce1a8a7fa61d511923b4b75aa1\\core-1.1.0\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\webview_flutter_android\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
+        "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\cdcb21ce1a8a7fa61d511923b4b75aa1\\core-1.1.0\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\webview_flutter_android\\intermediates\\res\\merged\\debug\\layout\\custom_dialog.xml",
+        "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\cdcb21ce1a8a7fa61d511923b4b75aa1\\core-1.1.0\\res\\layout\\custom_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pablo Galve\\OneDrive\\Documentos\\GitHub\\space_mapper\\Space_Mapper\\build\\webview_flutter_android\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\Pablo Galve\\.gradle\\caches\\transforms-2\\files-2.1\\cdcb21ce1a8a7fa61d511923b4b75aa1\\core-1.1.0\\res\\layout\\notification_template_icon_group.xml"
+    }
+]

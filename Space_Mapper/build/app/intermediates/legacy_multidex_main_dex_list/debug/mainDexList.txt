@@ -113,6 +113,11 @@ androidx/versionedparcelable/NonParcelField.class
 androidx/versionedparcelable/ParcelField.class
 androidx/versionedparcelable/VersionedParcelize.class
 androidx/viewpager/widget/ViewPager$DecorView.class
+androidx/webkit/ServiceWorkerWebSettingsCompat$CacheMode.class
+androidx/webkit/WebResourceErrorCompat$NetErrorCode.class
+androidx/webkit/WebSettingsCompat$MenuItemFlags.class
+androidx/webkit/WebViewClientCompat$SafeBrowsingThreat.class
+androidx/webkit/WebViewFeature$WebViewSupportFeature.class
 ch/qos/logback/core/joran/spi/DefaultClass.class
 ch/qos/logback/core/joran/spi/NoAutoStart.class
 com/google/android/gms/common/GoogleSignatureVerifier.class

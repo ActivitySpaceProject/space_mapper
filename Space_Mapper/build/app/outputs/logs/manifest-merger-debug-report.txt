@@ -12,10 +12,12 @@ MERGED from [:sqflite] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_map
 MERGED from [:url_launcher] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [:path_provider] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-19:12
+MERGED from [:webview_flutter_android] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\8d4ea7c374dd2b555c5fd3990a615bca\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:2:1-33:12
 MERGED from [io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:2:1-18:12
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\ce4cf89a33ded15216b272ad8910c428\appcompat-1.0.2\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\64ab2c8b242d14af131935eb340bcc0b\webkit-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\ff5dd6d40aec96374d412c2ca7e05d7f\jetified-play-services-location-17.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a9275bb3354f6d1d34227a45b5737530\jetified-play-services-base-17.0.0\AndroidManifest.xml:17:1-29:12
 MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\d9efd1e4b058f183c03b49ab0db67d28\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:17:1-24:12
@@ -175,6 +177,8 @@ MERGED from [:path_provider] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\spa
 MERGED from [:path_provider] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:share] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\share\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter_android] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:webview_flutter_android] C:\Users\Pablo Galve\OneDrive\Documentos\GitHub\space_mapper\Space_Mapper\build\webview_flutter_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\8d4ea7c374dd2b555c5fd3990a615bca\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\8d4ea7c374dd2b555c5fd3990a615bca\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [com.transistorsoft:tsbackgroundfetch:0.5.4] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\936fc5dcb520572b4c1328ab9e930cd8\jetified-tsbackgroundfetch-0.5.4\AndroidManifest.xml:7:5-9:41
@@ -183,6 +187,8 @@ MERGED from [io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve
 MERGED from [io.github.nishkarsh:android-permissions:0.1.8] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\60fb53cd5697d0179c8d7c7604012ead\jetified-android-permissions-0.1.8\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\ce4cf89a33ded15216b272ad8910c428\appcompat-1.0.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.0.2] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\ce4cf89a33ded15216b272ad8910c428\appcompat-1.0.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\64ab2c8b242d14af131935eb340bcc0b\webkit-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.webkit:webkit:1.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\64ab2c8b242d14af131935eb340bcc0b\webkit-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\ff5dd6d40aec96374d412c2ca7e05d7f\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-location:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\ff5dd6d40aec96374d412c2ca7e05d7f\jetified-play-services-location-17.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-base:17.0.0] C:\Users\Pablo Galve\.gradle\caches\transforms-2\files-2.1\a9275bb3354f6d1d34227a45b5737530\jetified-play-services-base-17.0.0\AndroidManifest.xml:20:5-44

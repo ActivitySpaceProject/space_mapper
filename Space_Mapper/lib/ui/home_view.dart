@@ -22,8 +22,11 @@ JsonEncoder encoder = new JsonEncoder.withIndent("     ");
 /// The main home-screen of the AdvancedApp.  Builds the Scaffold of the App.
 ///
 class HomeView extends StatefulWidget {
+  HomeView(this.appName);
+  final String appName;
+
   @override
-  State createState() => HomeViewState();
+  State createState() => HomeViewState(appName);
 }
 
 class HomeViewState extends State<HomeView>
@@ -31,10 +34,13 @@ class HomeViewState extends State<HomeView>
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   late TabController _tabController;
 
+  late String appName;
   late bool _isMoving;
   late bool _enabled;
   late String _motionActivity;
   late String _odometer;
+
+  HomeViewState(this.appName);
 
   @override
   void initState() {
@@ -338,7 +344,7 @@ class HomeViewState extends State<HomeView>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Space Mapper'),
+        title: Text(appName),
         centerTitle: true,
         backgroundColor: Colors.blueGrey,
         brightness: Brightness.light,

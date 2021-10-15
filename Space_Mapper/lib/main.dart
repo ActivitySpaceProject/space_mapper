@@ -121,11 +121,12 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  final String appName = "Space Mapper";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Space Mapper',
-      home: HomeView(),
+      title: appName,
+      home: HomeView(appName),
     );
   }
 }

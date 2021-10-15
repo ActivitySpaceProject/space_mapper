@@ -16,6 +16,9 @@ jobs:
     - uses: subosito/flutter-action@v1
       with:
           channel: 'beta'
+   # Enter into the flutter project.
+    - run: cd Space_Mapper       
+          
    # Get flutter dependencies.
     - run: flutter pub get
     

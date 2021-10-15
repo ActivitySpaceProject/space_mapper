@@ -53,6 +53,7 @@ class HomeViewState extends State<HomeView>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     print("[home_view didChangeAppLifecycleState] : $state");
+    //TODO: The interior of these 'if statements' is empty
     if (state == AppLifecycleState.paused) {
     } else if (state == AppLifecycleState.resumed) {}
   }

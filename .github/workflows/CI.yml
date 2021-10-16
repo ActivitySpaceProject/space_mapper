@@ -16,14 +16,15 @@ jobs:
     - uses: subosito/flutter-action@v1
       with:
           channel: 'beta'
-   # Enter into the flutter project.
-   # - run: cd Space_Mapper       
-          
-   # Get flutter dependencies.
-    - run: flutter pub get
+         
+    - name: Get flutter dependencies
+      run: flutter pub get
+      working-directory: Space_Mapper
     
-    # Statically analyze the Dart code for any errors.
-    - run: flutter analyze .
+    - name: Statically analyze the Dart code for any errors.
+      run: flutter analyze .
+      working-directory: Space_Mapper
     
-    # Run widget tests for our flutter project.
-    - run: flutter test
+    - name: Run widget tests for our flutter project.
+      run: flutter test
+      working-directory: Space_Mapper

@@ -20,7 +20,7 @@ jobs:
     - run: cd Space_Mapper       
           
    # Get flutter dependencies.
-    - run: flutter pub get
+    - run: flutter pub get --manifest-path Space_Mapper
     
     # Statically analyze the Dart code for any errors.
     - run: flutter analyze .

@@ -17,7 +17,7 @@ jobs:
       with:
           channel: 'beta'
    # Enter into the flutter project.
-    - run: cd Space_Mapper       
+   # - run: cd Space_Mapper       
           
    # Get flutter dependencies.
     - run: flutter pub get --manifest-path Space_Mapper

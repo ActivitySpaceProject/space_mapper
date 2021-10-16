@@ -1,5 +1,5 @@
-import 'package:test/test.dart';
-import '../../lib/util/spacemapper_auth.dart';
+//import 'package:test/test.dart';
+//import '../../lib/util/spacemapper_auth.dart';
 
 void main() {
   /*test('TransistorAuth.register()', () {

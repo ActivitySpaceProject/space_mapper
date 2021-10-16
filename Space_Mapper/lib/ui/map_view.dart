@@ -77,9 +77,9 @@ class MapViewState extends State<MapView>
     _stationaryMarker.clear();
 
     if (location.isMoving) {
-      if (_stationaryLocation == null) {
-        _stationaryLocation = location;
-      }
+      //if (_stationaryLocation == null) { //TODO: The operand can't be null, so the condition is always false
+      _stationaryLocation = location;
+      //}
       // Add previous stationaryLocation as a small red stop-circle.
       _stopLocations.add(_buildStopCircleMarker(_stationaryLocation));
       // Create the green motionchange polyline to show where tracking engaged from.
@@ -129,7 +129,7 @@ class MapViewState extends State<MapView>
         .add(CircleMarker(point: ll, color: Colors.blue, radius: 7));
   }
 
-  CircleMarker _buildStationaryCircleMarker(
+  /*CircleMarker _buildStationaryCircleMarker(
       bg.Location location, bg.State state) {
     return new CircleMarker(
         point: LatLng(location.coords.latitude, location.coords.longitude),
@@ -138,7 +138,7 @@ class MapViewState extends State<MapView>
         radius: (state.trackingMode == 1)
             ? 200
             : (state.geofenceProximityRadius! / 2));
-  }
+  }*/
 
   Polyline _buildMotionChangePolyline(bg.Location from, bg.Location to) {
     return new Polyline(points: [

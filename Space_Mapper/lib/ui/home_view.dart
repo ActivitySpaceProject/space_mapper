@@ -2,6 +2,7 @@ import 'package:asm/ui/form_view.dart';
 import 'package:asm/ui/side_drawer.dart';
 import 'package:asm/util/env.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:async';
 import 'dart:convert';
 
@@ -32,13 +33,13 @@ class HomeView extends StatefulWidget {
 class HomeViewState extends State<HomeView>
     with TickerProviderStateMixin<HomeView>, WidgetsBindingObserver {
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  late TabController _tabController;
+  //late TabController _tabController;
 
   late String appName;
-  late bool _isMoving;
+  //late bool _isMoving;
   late bool _enabled;
-  late String _motionActivity;
-  late String _odometer;
+  //late String _motionActivity;
+  //late String _odometer;
 
   HomeViewState(this.appName);
 
@@ -48,10 +49,10 @@ class HomeViewState extends State<HomeView>
 
     WidgetsBinding.instance!.addObserver(this);
 
-    _isMoving = false;
+    //_isMoving = false;
     _enabled = true;
-    _motionActivity = 'UNKNOWN';
-    _odometer = '0';
+    //_motionActivity = 'UNKNOWN';
+    //_odometer = '0';
 
     initPlatformState();
   }
@@ -66,7 +67,9 @@ class HomeViewState extends State<HomeView>
 
   void initPlatformState() async {
     SharedPreferences prefs = await _prefs;
+    // ignore: non_constant_identifier_names
     String? sample_id = prefs.getString("sample_id");
+    // ignore: non_constant_identifier_names
     String? user_uuid = prefs.getString("user_uuid");
 
     if (sample_id == null || user_uuid == null) {
@@ -78,6 +81,7 @@ class HomeViewState extends State<HomeView>
     _configureBackgroundFetch();
   }
 
+  // ignore: non_constant_identifier_names
   void _configureBackgroundGeolocation(user_uuid, sample_id) async {
     // 1.  Listen to events (See docs for all 13 available events).
     bg.BackgroundGeolocation.onLocation(_onLocation, _onLocationError);
@@ -122,7 +126,7 @@ class HomeViewState extends State<HomeView>
       }
       setState(() {
         _enabled = state.enabled;
-        _isMoving = state.isMoving!;
+        //_isMoving = state.isMoving!;
       });
     }).catchError((error) {
       print('[ready] ERROR: $error');
@@ -182,7 +186,7 @@ class HomeViewState extends State<HomeView>
         print('[start] success: $state');
         setState(() {
           _enabled = state.enabled;
-          _isMoving = state.isMoving!;
+          //_isMoving = state.isMoving!;
         });
       };
       bg.State state = await bg.BackgroundGeolocation.state;
@@ -196,7 +200,7 @@ class HomeViewState extends State<HomeView>
         print('[stop] success: $state');
         setState(() {
           _enabled = state.enabled;
-          _isMoving = state.isMoving!;
+          //_isMoving = state.isMoving!;
         });
       };
       bg.BackgroundGeolocation.stop().then(callback);
@@ -204,7 +208,7 @@ class HomeViewState extends State<HomeView>
   }
 
   // Manually toggle the tracking state:  moving vs stationary
-  void _onClickChangePace() {
+  /*void _onClickChangePace() {
     setState(() {
       _isMoving = !_isMoving;
     });
@@ -217,7 +221,7 @@ class HomeViewState extends State<HomeView>
     });
 
     if (!_isMoving) {}
-  }
+  }*/
 
   // Manually fetch the current position.
   void _onClickGetCurrentPosition() async {
@@ -247,7 +251,7 @@ class HomeViewState extends State<HomeView>
     print('[${bg.Event.LOCATION}] - $location');
 
     setState(() {
-      _odometer = (location.odometer / 1000.0).toStringAsFixed(1);
+      //_odometer = (location.odometer / 1000.0).toStringAsFixed(1);
     });
   }
 
@@ -259,14 +263,14 @@ class HomeViewState extends State<HomeView>
   void _onMotionChange(bg.Location location) {
     print('[${bg.Event.MOTIONCHANGE}] - $location');
     setState(() {
-      _isMoving = location.isMoving;
+      //_isMoving = location.isMoving;
     });
   }
 
   void _onActivityChange(bg.ActivityChangeEvent event) {
     print('[${bg.Event.ACTIVITYCHANGE}] - $event');
     setState(() {
-      _motionActivity = event.activity;
+      //_motionActivity = event.activity;
     });
   }
 
@@ -347,7 +351,8 @@ class HomeViewState extends State<HomeView>
         title: Text(appName),
         centerTitle: true,
         backgroundColor: Colors.blueGrey,
-        brightness: Brightness.light,
+        systemOverlayStyle:
+            SystemUiOverlayStyle(statusBarBrightness: Brightness.light),
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
@@ -381,7 +386,7 @@ class HomeViewState extends State<HomeView>
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => FormView()));
-          _onClickGetCurrentPosition;
+          _onClickGetCurrentPosition();
         },
         child: Icon(Icons.gps_fixed),
         backgroundColor: Colors.blue,

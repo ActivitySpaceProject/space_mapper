@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
@@ -33,7 +31,9 @@ class TransistorAuth {
     try {
       SharedPreferences prefs = await _prefs;
       // Request a JWT from server
+      // ignore: non_constant_identifier_names
       String? sample_id = prefs.getString("sample_id");
+      // ignore: non_constant_identifier_names
       String? user_uuid = prefs.getString("user_uuid");
       if (sample_id == null || user_uuid == null) {
         // TODO throw an Error instead.

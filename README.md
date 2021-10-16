@@ -1,4 +1,4 @@
-# **Space Mapper**
+# **Space Mapper** 
 
 Space Mapper is a mobile phone application for studying human mobility.
 

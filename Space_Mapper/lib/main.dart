@@ -101,7 +101,9 @@ void main() {
 
   SharedPreferences.getInstance().then((SharedPreferences prefs) {
     // create random user ID if not yet created
+    // ignore: non_constant_identifier_names
     String? sample_id = prefs.getString("sample_id");
+    // ignore: non_constant_identifier_names
     String? user_uuid = prefs.getString("user_uuid");
 
     if (sample_id == null || user_uuid == null) {
@@ -121,11 +123,12 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  final String appName = "Space Mapper";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Space Mapper',
-      home: HomeView(),
+      title: appName,
+      home: HomeView(appName),
     );
   }
 }

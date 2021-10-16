@@ -29,10 +29,10 @@ class MyCustomFormState extends State<MyCustomForm> {
   bool readOnly = false;
   bool showSegmentedControl = true;
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
-  final GlobalKey<FormFieldState> _specifyTextFieldKey =
-      GlobalKey<FormFieldState>();
+  //final GlobalKey<FormFieldState> _specifyTextFieldKey =
+  //GlobalKey<FormFieldState>();
 
-  ValueChanged _onChanged = (val) => print(val);
+  //ValueChanged _onChanged = (val) => print(val);
   var genderOptions = ['Male', 'Female', 'Other'];
 
   @override

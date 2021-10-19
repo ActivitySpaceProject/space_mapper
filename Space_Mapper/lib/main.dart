@@ -2,7 +2,8 @@ import 'package:asm/util/env.dart';
 import 'package:flutter/material.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_background_geolocation/flutter_background_geolocation.dart' as bg;
+import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
+    as bg;
 import 'package:background_fetch/background_fetch.dart';
 
 import 'ui/home_view.dart';
@@ -12,7 +13,7 @@ import 'package:uuid/uuid.dart';
 void backgroundGeolocationHeadlessTask(bg.HeadlessEvent headlessEvent) async {
   print('📬 --> $headlessEvent');
 
-  switch(headlessEvent.name) {
+  switch (headlessEvent.name) {
     case bg.Event.TERMINATE:
       try {
         //bg.Location location = await bg.BackgroundGeolocation.getCurrentPosition(samples: 1);
@@ -22,7 +23,7 @@ void backgroundGeolocationHeadlessTask(bg.HeadlessEvent headlessEvent) async {
       }
       break;
     case bg.Event.HEARTBEAT:
-    /* DISABLED getCurrentPosition on heartbeat
+      /* DISABLED getCurrentPosition on heartbeat
       try {
         bg.Location location = await bg.BackgroundGeolocation.getCurrentPosition(samples: 1);
         print('[getCurrentPosition] Headless: $location');
@@ -87,7 +88,7 @@ void backgroundFetchHeadlessTask(String taskId) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   int count = 0;
   if (prefs.get("fetch-count") != null) {
-    count = prefs.getInt("fetch-count");
+    count = prefs.getInt("fetch-count")!;
   }
   prefs.setInt("fetch-count", ++count);
   print('[BackgroundFetch] count: $count');
@@ -96,15 +97,14 @@ void backgroundFetchHeadlessTask(String taskId) async {
 }
 
 void main() {
-
-
   WidgetsFlutterBinding.ensureInitialized();
 
   SharedPreferences.getInstance().then((SharedPreferences prefs) {
-
     // create random user ID if not yet created
-    String sample_id = prefs.getString("sample_id");
-    String user_uuid = prefs.getString("user_uuid");
+    // ignore: non_constant_identifier_names
+    String? sample_id = prefs.getString("sample_id");
+    // ignore: non_constant_identifier_names
+    String? user_uuid = prefs.getString("user_uuid");
 
     if (sample_id == null || user_uuid == null) {
       prefs.setString("user_uuid", Uuid().v4());
@@ -113,19 +113,22 @@ void main() {
 
     runApp(new MyApp());
   });
+
   /// Register BackgroundGeolocation headless-task.
-  bg.BackgroundGeolocation.registerHeadlessTask(backgroundGeolocationHeadlessTask);
+  bg.BackgroundGeolocation.registerHeadlessTask(
+      backgroundGeolocationHeadlessTask);
+
   /// Register BackgroundFetch headless-task.
   BackgroundFetch.registerHeadlessTask(backgroundFetchHeadlessTask);
 }
 
-
 class MyApp extends StatelessWidget {
+  final String appName = "Space Mapper";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Space Mapper',
-      home: HomeView(),
-        );
+      title: appName,
+      home: HomeView(appName),
+    );
   }
 }

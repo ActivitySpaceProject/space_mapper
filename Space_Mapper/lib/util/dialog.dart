@@ -40,7 +40,8 @@ const SOUND_MAP = {
 /// - [showLoading]
 ///
 class Dialog {
-  static void confirm(BuildContext context, String title, String message, Function(bool) callback) {
+  static void confirm(BuildContext context, String title, String message,
+      Function(bool) callback) {
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -49,14 +50,14 @@ class Dialog {
           title: Text(title),
           content: Text(message),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text('Cancel'),
               onPressed: () {
                 callback(false);
                 Navigator.of(context).pop();
               },
             ),
-            FlatButton(
+            TextButton(
               child: Text('Confirm'),
               onPressed: () {
                 callback(true);
@@ -69,7 +70,8 @@ class Dialog {
     );
   }
 
-  static void alert(BuildContext context, String title, String message, [Function callback]) {
+  static void alert(BuildContext context, String title, String message,
+      [Function? callback]) {
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -78,7 +80,7 @@ class Dialog {
           title: Text(title),
           content: Text(message),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: Text("Ok"),
               onPressed: () {
                 if (callback != null) {
@@ -93,56 +95,54 @@ class Dialog {
     );
   }
 
-  static Future<String> prompt(BuildContext context, {String title, String labelText, String hintText, String value}) {
+  static Future<dynamic> prompt(BuildContext context,
+      {String? title, String? labelText, String? hintText, String? value}) {
     TextEditingController controller = new TextEditingController(text: value);
 
     Completer completer = new Completer<String>();
 
-    String submittedValue = value;
+    String submittedValue = value!;
 
     showDialog<String>(
       context: context,
       builder: (BuildContext context) {
         return new AlertDialog(
-          title: Text(title),
+          title: Text(title!),
           contentPadding: const EdgeInsets.all(16.0),
           content: SizedBox(
             height: 100.0,
-            child: Column(
+            child: Column(children: <Widget>[
+              //new Text(''),  TODO could add some paragrah here before text-field.
+              new Row(
                 children: <Widget>[
-                  //new Text(''),  TODO could add some paragrah here before text-field.
-                  new Row(
-                    children: <Widget>[
-                      Expanded(
-                          child: new TextField(
-                            controller: controller,
-                            onChanged: (String value) {
-                              submittedValue = value;
-                            },
-                            autofocus: true,
-                            decoration: new InputDecoration(
-                              labelText: labelText, hintText: hintText,
-                            ),
-                          ))
-                    ],
-                  ),
-                ]
-            ),
+                  Expanded(
+                      child: new TextField(
+                    controller: controller,
+                    onChanged: (String value) {
+                      submittedValue = value;
+                    },
+                    autofocus: true,
+                    decoration: new InputDecoration(
+                      labelText: labelText,
+                      hintText: hintText,
+                    ),
+                  ))
+                ],
+              ),
+            ]),
           ),
           actions: <Widget>[
-            new FlatButton(
+            new TextButton(
                 child: Text('Cancel'),
                 onPressed: () {
                   Navigator.of(context).pop();
-                }
-            ),
-            new FlatButton(
+                }),
+            new TextButton(
                 child: Text('Submit'),
                 onPressed: () {
                   Navigator.of(context).pop();
                   completer.complete(submittedValue);
-                }
-            )
+                })
           ],
         );
       },
@@ -150,20 +150,20 @@ class Dialog {
     return completer.future;
   }
 
-  static Future<CircularProgressIndicator> showLoading(BuildContext context, String message) {
+  static Future<dynamic> showLoading(BuildContext context, String message) {
     return showDialog(
         context: context,
         barrierDismissible: false,
         builder: (BuildContext context) {
           return CircularProgressIndicator();
-        }
-    );
+        });
   }
+
   // TODO return dynamic until iOS supports String sound ids.
   static dynamic getSoundId(String key) {
     key = key.toUpperCase();
     dynamic soundId = -1;
-    Map<String, Object> soundMap;
+    Map<String, Object>? soundMap;
     if (defaultTargetPlatform == TargetPlatform.android) {
       soundMap = SOUND_MAP["android"];
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {

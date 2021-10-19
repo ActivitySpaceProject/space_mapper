@@ -19,7 +19,8 @@ class SpaceMapperSideDrawer extends StatelessWidget {
   _shareLocations() async {
     var now = new DateTime.now();
     List allLocations = await bg.BackgroundGeolocation.locations;
-    Share.share(allLocations.toString(), subject: "space_mapper_trajectory_" + now.toIso8601String()  + ".json");
+    Share.share(allLocations.toString(),
+        subject: "space_mapper_trajectory_" + now.toIso8601String() + ".json");
   }
 
   @override

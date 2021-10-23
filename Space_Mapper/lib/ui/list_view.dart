@@ -6,7 +6,7 @@ class STOListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Location List")),
+        appBar: AppBar(title: Text("Location History")),
         body: FutureBuilder<List>(
           future: bg.BackgroundGeolocation.locations,
           builder: (context, snapshot) {

@@ -1,4 +1,5 @@
 import 'package:asm/ui/list_view.dart';
+import 'package:asm/ui/report_an_issue.dart';
 import 'package:asm/ui/web_view.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -7,6 +8,13 @@ import 'package:flutter_background_geolocation/flutter_background_geolocation.da
     as bg;
 
 class SpaceMapperSideDrawer extends StatelessWidget {
+  _shareLocations() async {
+    var now = new DateTime.now();
+    List allLocations = await bg.BackgroundGeolocation.locations;
+    Share.share(allLocations.toString(),
+        subject: "space_mapper_trajectory_" + now.toIso8601String() + ".json");
+  }
+
   _launchProjectURL() async {
     const url = 'http://activityspaceproject.com/';
     if (await canLaunch(url)) {
@@ -14,13 +22,6 @@ class SpaceMapperSideDrawer extends StatelessWidget {
     } else {
       throw 'Could not launch $url';
     }
-  }
-
-  _shareLocations() async {
-    var now = new DateTime.now();
-    List allLocations = await bg.BackgroundGeolocation.locations;
-    Share.share(allLocations.toString(),
-        subject: "space_mapper_trajectory_" + now.toIso8601String() + ".json");
   }
 
   @override
@@ -51,7 +52,7 @@ class SpaceMapperSideDrawer extends StatelessWidget {
           Card(
             child: ListTile(
               leading: const Icon(Icons.list),
-              title: Text('List Locations'),
+              title: Text('Locations History'),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => STOListView()));
@@ -73,6 +74,16 @@ class SpaceMapperSideDrawer extends StatelessWidget {
               title: Text('Visit Project Website'),
               onTap: () {
                 _launchProjectURL();
+              },
+            ),
+          ),
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.report_problem_outlined),
+              title: Text('Report an Issue'),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ReportAnIssue()));
               },
             ),
           )

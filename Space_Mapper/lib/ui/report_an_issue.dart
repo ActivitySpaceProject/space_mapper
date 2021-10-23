@@ -22,7 +22,7 @@ Widget reportIssueBody(BuildContext context) {
             "Help us improve by either reporting an issue or requesting a useful feature.",
             style: TextStyle(fontSize: 17.0),
           ),
-          DisplayService(
+          displayService(
               "Github",
               Icon(
                 AntDesign.github,
@@ -35,7 +35,7 @@ Widget reportIssueBody(BuildContext context) {
               style: TextStyle(fontSize: 17.0),
             ),
           ),
-          CustomButtonWithUrl(
+          customButtonWithUrl(
               "Go to Github Issues",
               "https://github.com/ActivitySpaceProject/space_mapper/issues",
               MaterialStateProperty.all(Colors.lightBlue[100]),
@@ -44,7 +44,7 @@ Widget reportIssueBody(BuildContext context) {
             //Container only to add more margin
             margin: EdgeInsets.only(bottom: 10.0),
           ),
-          DisplayService(
+          displayService(
               "Email",
               Icon(
                 Icons.email_outlined,
@@ -56,12 +56,12 @@ Widget reportIssueBody(BuildContext context) {
                 "As an alternative, you can send us an email.",
                 style: TextStyle(fontSize: 17.0),
               )),
-          CustomButtonWithUrl(
+          customButtonWithUrl(
               "Report an issue by email",
               "https://github.com/ActivitySpaceProject/space_mapper/issues",
               MaterialStateProperty.all(Colors.red[100]),
               context),
-          CustomButtonWithUrl(
+          customButtonWithUrl(
               "Request a feature by email",
               "https://github.com/ActivitySpaceProject/space_mapper/issues",
               MaterialStateProperty.all(Colors.lightBlue[100]),
@@ -78,7 +78,7 @@ _launchUrl(String url) async {
   }
 }
 
-Widget DisplayService(String name, Icon icon) {
+Widget displayService(String name, Icon icon) {
   return Container(
     margin: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
     child: Row(
@@ -96,7 +96,7 @@ Widget DisplayService(String name, Icon icon) {
   );
 }
 
-Widget CustomButtonWithUrl(String text, String openUrl,
+Widget customButtonWithUrl(String text, String openUrl,
     MaterialStateProperty<Color?> backgroundColor, BuildContext context) {
   return Container(
       width: MediaQuery.of(context).size.width * 0.6,

@@ -15,13 +15,15 @@ class ReportAnIssue extends StatelessWidget {
 }
 
 Widget reportIssueBody(BuildContext context) {
+  List<String> emails = ['john.palmer@upf.edu', 'pablogalve100@gmail.com'];
+
   return Padding(
-      padding: EdgeInsets.all(20.0),
+      padding: EdgeInsets.all(ReportAnIssueStyle.screenPadding),
       child: Column(
         children: [
           Text(
             "Help us improve by either reporting an issue or requesting a useful feature.",
-            style: TextStyle(fontSize: 17.0),
+            style: TextStyle(fontSize: ReportAnIssueStyle.normalTextSize),
           ),
           displayService(
               "Github",
@@ -30,20 +32,22 @@ Widget reportIssueBody(BuildContext context) {
                 size: ReportAnIssueStyle.iconSize,
               )),
           Container(
-            margin: EdgeInsets.only(bottom: 10.0),
+            margin: EdgeInsets.only(
+                bottom: ReportAnIssueStyle.marginBetweenTextAndButtons),
             child: Text(
               "Report issues on github to get the fastest solution.",
-              style: TextStyle(fontSize: 17.0),
+              style: TextStyle(fontSize: ReportAnIssueStyle.normalTextSize),
             ),
           ),
           customButtonWithUrl(
               "Go to Github Issues",
               "https://github.com/ActivitySpaceProject/space_mapper/issues",
-              MaterialStateProperty.all(Colors.lightBlue[100]),
+              ReportAnIssueStyle.requestFeatureColor,
               context),
           Container(
             //Container only to add more margin
-            margin: EdgeInsets.only(bottom: 10.0),
+            margin: EdgeInsets.only(
+                bottom: ReportAnIssueStyle.marginBetweenTextAndButtons),
           ),
           displayService(
               "Email",
@@ -52,26 +56,21 @@ Widget reportIssueBody(BuildContext context) {
                 size: ReportAnIssueStyle.iconSize,
               )),
           Container(
-              margin: EdgeInsets.only(bottom: 10.0),
+              margin: EdgeInsets.only(
+                  bottom: ReportAnIssueStyle.marginBetweenTextAndButtons),
               child: Text(
                 "As an alternative, you can send us an email.",
-                style: TextStyle(fontSize: 17.0),
+                style: TextStyle(fontSize: ReportAnIssueStyle.normalTextSize),
               )),
-          customButtonWithUrl(
-              "Report an issue by email",
-              "https://github.com/ActivitySpaceProject/space_mapper/issues",
-              MaterialStateProperty.all(Colors.red[100]),
-              context,
-              emails: ['john.palmer@upf.edu', 'pablogalve100@gmail.com'],
+          customButtonWithUrl("Report an issue by email", null,
+              ReportAnIssueStyle.reportIssueColor, context,
+              emails: emails,
               subject: 'Space Mapper: Report Issue',
               body:
                   'Dear Space Mapper support, \n\n I want to report the following issue:'),
-          customButtonWithUrl(
-              "Request a feature by email",
-              "https://github.com/ActivitySpaceProject/space_mapper/issues",
-              MaterialStateProperty.all(Colors.lightBlue[100]),
-              context,
-              emails: ['john.palmer@upf.edu', 'pablogalve100@gmail.com'],
+          customButtonWithUrl("Request a feature by email", null,
+              ReportAnIssueStyle.requestFeatureColor, context,
+              emails: emails,
               subject: 'Space Mapper: Feature Request',
               body:
                   'Dear Space Mapper support, \n\n I want to request the following feature:'),
@@ -101,38 +100,42 @@ _launchMailto(List<String> emails, String? subject, String? body) async {
 
 Widget displayService(String name, Icon icon) {
   return Container(
-    margin: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
+    margin: EdgeInsets.fromLTRB(0.0, ReportAnIssueStyle.marginIconTopAndBottom,
+        0.0, ReportAnIssueStyle.marginIconTopAndBottom),
     child: Row(
       children: [
         icon,
         Container(
-          margin: EdgeInsets.only(right: 25.0),
+          margin: EdgeInsets.only(
+              right: ReportAnIssueStyle.marginBetweenIconAndTitle),
         ),
         Text(
           name,
-          style: TextStyle(fontSize: 25.0),
+          style: TextStyle(fontSize: ReportAnIssueStyle.titleSize),
         ),
       ],
     ),
   );
 }
 
-Widget customButtonWithUrl(String text, String openUrl,
+Widget customButtonWithUrl(String text, String? openUrl,
     MaterialStateProperty<Color?> backgroundColor, BuildContext context,
     {List<String>? emails, String? subject, String? body}) {
   return Container(
-      width: MediaQuery.of(context).size.width * 0.6,
+      width: MediaQuery.of(context).size.width *
+          ReportAnIssueStyle.buttonWidthPercentage,
       child: TextButton(
         style: ButtonStyle(
             backgroundColor: backgroundColor,
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
+                    borderRadius: BorderRadius.circular(
+                        ReportAnIssueStyle.buttonBorderRadius),
                     side: BorderSide(color: Colors.black)))),
         onPressed: () {
           //If emails list is null, this buttons opens a link on click, otherwise it sends an email with introduced data
           emails == null
-              ? _launchUrl(openUrl)
+              ? _launchUrl(openUrl!)
               : _launchMailto(emails, subject!, body!);
         },
         child: Text(

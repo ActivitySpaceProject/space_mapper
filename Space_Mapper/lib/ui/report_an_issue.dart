@@ -2,12 +2,13 @@ import 'package:asm/ui_style/report_an_issue_style.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:mailto/mailto.dart';
 
 class ReportAnIssue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Report an Issue/Feature Request")),
+      appBar: AppBar(title: Text("Report an Issue")),
       body: reportIssueBody(context),
     );
   }
@@ -60,12 +61,20 @@ Widget reportIssueBody(BuildContext context) {
               "Report an issue by email",
               "https://github.com/ActivitySpaceProject/space_mapper/issues",
               MaterialStateProperty.all(Colors.red[100]),
-              context),
+              context,
+              emails: ['john.palmer@upf.edu', 'pablogalve100@gmail.com'],
+              subject: 'Space Mapper: Report Issue',
+              body:
+                  'Dear Space Mapper support, \n\n I want to report the following issue:'),
           customButtonWithUrl(
               "Request a feature by email",
               "https://github.com/ActivitySpaceProject/space_mapper/issues",
               MaterialStateProperty.all(Colors.lightBlue[100]),
-              context),
+              context,
+              emails: ['john.palmer@upf.edu', 'pablogalve100@gmail.com'],
+              subject: 'Space Mapper: Feature Request',
+              body:
+                  'Dear Space Mapper support, \n\n I want to request the following feature:'),
         ],
       ));
 }
@@ -76,6 +85,18 @@ _launchUrl(String url) async {
   } else {
     throw 'Could not launch $url';
   }
+}
+
+_launchMailto(List<String> emails, String? subject, String? body) async {
+  final mailtoLink = Mailto(
+    to: emails,
+    subject: subject,
+    body: body,
+  );
+  // Convert the Mailto instance into a string.
+  // Use either Dart's string interpolation
+  // or the toString() method.
+  await launch('$mailtoLink');
 }
 
 Widget displayService(String name, Icon icon) {
@@ -97,7 +118,8 @@ Widget displayService(String name, Icon icon) {
 }
 
 Widget customButtonWithUrl(String text, String openUrl,
-    MaterialStateProperty<Color?> backgroundColor, BuildContext context) {
+    MaterialStateProperty<Color?> backgroundColor, BuildContext context,
+    {List<String>? emails, String? subject, String? body}) {
   return Container(
       width: MediaQuery.of(context).size.width * 0.6,
       child: TextButton(
@@ -108,7 +130,10 @@ Widget customButtonWithUrl(String text, String openUrl,
                     borderRadius: BorderRadius.circular(18.0),
                     side: BorderSide(color: Colors.black)))),
         onPressed: () {
-          _launchUrl(openUrl);
+          //If emails list is null, this buttons opens a link on click, otherwise it sends an email with introduced data
+          emails == null
+              ? _launchUrl(openUrl)
+              : _launchMailto(emails, subject!, body!);
         },
         child: Text(
           text,

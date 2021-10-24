@@ -79,6 +79,8 @@ Widget reportIssueBody(BuildContext context) {
 }
 
 _launchUrl(String url) async {
+  //The url must be valid
+
   if (await canLaunch(url)) {
     await launch(url);
   } else {
@@ -86,7 +88,17 @@ _launchUrl(String url) async {
   }
 }
 
-_launchMailto(List<String> emails, String? subject, String? body) async {
+Future<bool> launchMailto(
+    List<String> emails, String? subject, String? body) async {
+  //All emails must be valid
+  for (int i = 0; i < emails.length; i++) {
+    if (RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+            .hasMatch(emails[i]) ==
+        false) {
+      return false;
+    }
+  }
+
   final mailtoLink = Mailto(
     to: emails,
     subject: subject,
@@ -96,6 +108,7 @@ _launchMailto(List<String> emails, String? subject, String? body) async {
   // Use either Dart's string interpolation
   // or the toString() method.
   await launch('$mailtoLink');
+  return true;
 }
 
 Widget displayService(String name, Icon icon) {
@@ -136,7 +149,7 @@ Widget customButtonWithUrl(String text, String? openUrl,
           //If emails list is null, this buttons opens a link on click, otherwise it sends an email with introduced data
           emails == null
               ? _launchUrl(openUrl!)
-              : _launchMailto(emails, subject!, body!);
+              : launchMailto(emails, subject!, body!);
         },
         child: Text(
           text,

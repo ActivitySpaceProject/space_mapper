@@ -111,8 +111,8 @@ class STOListView extends StatelessWidget {
                   thisLocation.subAdministrativeArea +
                   ", " +
                   thisLocation.ISOCountry,
-              thisLocation.timestamp +
-                  " \nActivity: " +
+              thisLocation.timestamp,
+              " \nActivity: " +
                   thisLocation.activity +
                   " \nSpeed: " +
                   thisLocation.speed.toString() +
@@ -122,13 +122,29 @@ class STOListView extends StatelessWidget {
         });
   }
 
-  ListTile _tile(String title, String subtitle, IconData icon) => ListTile(
+  ListTile _tile(String title, String subtitle, String text, IconData icon) =>
+      ListTile(
         title: Text(title,
             style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 20,
             )),
-        subtitle: Text(subtitle),
+        subtitle: new RichText(
+          text: new TextSpan(
+            // Note: Styles for TextSpans must be explicitly defined.
+            // Child text spans will inherit styles from parent
+            style: new TextStyle(
+              fontSize: 14.0,
+              color: Colors.black,
+            ),
+            children: <TextSpan>[
+              new TextSpan(
+                  text: subtitle,
+                  style: new TextStyle(fontWeight: FontWeight.bold)),
+              new TextSpan(text: text),
+            ],
+          ),
+        ),
         leading: Icon(
           icon,
           color: Colors.blue[500],

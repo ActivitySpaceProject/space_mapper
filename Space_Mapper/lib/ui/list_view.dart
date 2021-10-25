@@ -54,7 +54,9 @@ Future<List<dynamic>>? buildLocationsList() async {
 
 class DisplayLocation {
   DisplayLocation(this.locality, this.subAdministrativeArea, this.ISOCountry,
-      this.timestamp, this.activity, this.speed, this.altitude);
+      timestamp, this.activity, this.speed, this.altitude) {
+    this.timestamp = formatTimestamp(timestamp);
+  }
   late String locality;
   late String subAdministrativeArea;
   // ignore: non_constant_identifier_names
@@ -63,6 +65,20 @@ class DisplayLocation {
   late String activity;
   late num speed;
   late num altitude;
+
+  String formatTimestamp(String timestamp) {
+    //2021-10-25T21:25:08.210Z <- This is the original format
+    //2021-10-25 | 21:25:08       <- This is the result
+    String result = "";
+    for (int i = 0; i < timestamp.length; ++i) {
+      if (timestamp[i] != "T" && timestamp[i] != ".")
+        result += timestamp[i];
+      else if (timestamp[i] == "T")
+        result += " | ";
+      else if (timestamp[i] == ".") break;
+    }
+    return result;
+  }
 }
 
 class STOListView extends StatelessWidget {
@@ -96,11 +112,11 @@ class STOListView extends StatelessWidget {
                   ", " +
                   thisLocation.ISOCountry,
               thisLocation.timestamp +
-                  " Activity: " +
+                  " \nActivity: " +
                   thisLocation.activity +
-                  " Speed: " +
+                  " \nSpeed: " +
                   thisLocation.speed.toString() +
-                  " Altitude: " +
+                  " \nAltitude: " +
                   thisLocation.altitude.toString(),
               Icons.gps_fixed);
         });

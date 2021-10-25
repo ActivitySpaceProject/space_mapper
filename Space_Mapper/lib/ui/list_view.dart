@@ -36,6 +36,7 @@ Future<List<dynamic>>? buildLocationsList() async {
         "subAdministrativeArea",
         locations[i]['coords']['latitude'],
         locations[i]['coords']['longitude']);
+    // ignore: non_constant_identifier_names
     String? ISOCountry = await getLocationData(
         "ISOCountry",
         locations[i]['coords']['latitude'],
@@ -44,18 +45,19 @@ Future<List<dynamic>>? buildLocationsList() async {
     String activity = locations[i]['activity']['type'];
     num speed = locations[i]['coords']['speed'];
     num altitude = locations[i]['coords']['altitude'];
-    var add = new displayLocation(locality!, administrativeArea!, ISOCountry!,
+    var add = new DisplayLocation(locality!, administrativeArea!, ISOCountry!,
         timestamp, activity, speed, altitude);
     ret.add(add);
   }
   return ret;
 }
 
-class displayLocation {
-  displayLocation(this.locality, this.subAdministrativeArea, this.ISOCountry,
+class DisplayLocation {
+  DisplayLocation(this.locality, this.subAdministrativeArea, this.ISOCountry,
       this.timestamp, this.activity, this.speed, this.altitude);
   late String locality;
   late String subAdministrativeArea;
+  // ignore: non_constant_identifier_names
   late String ISOCountry;
   late String timestamp;
   late String activity;
@@ -86,7 +88,7 @@ class STOListView extends StatelessWidget {
     return ListView.builder(
         itemCount: data.length,
         itemBuilder: (context, index) {
-          displayLocation thisLocation = data[index];
+          DisplayLocation thisLocation = data[index];
           return _tile(
               thisLocation.locality +
                   ", " +

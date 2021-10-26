@@ -1,3 +1,4 @@
+import '../models/list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
@@ -44,41 +45,14 @@ Future<List<dynamic>>? buildLocationsList() async {
     String timestamp = locations[i]['timestamp'];
     String activity = locations[i]['activity']['type'];
     num speed = locations[i]['coords']['speed'];
+    num speedAccuracy = locations[i]['coords']['speed_accuracy'];
     num altitude = locations[i]['coords']['altitude'];
+    num altitudeAccuracy = locations[i]['coords']['altitude_accuracy'];
     var add = new DisplayLocation(locality!, administrativeArea!, ISOCountry!,
-        timestamp, activity, speed, altitude);
+        timestamp, activity, speed, speedAccuracy, altitude, altitudeAccuracy);
     ret.add(add);
   }
   return ret;
-}
-
-class DisplayLocation {
-  DisplayLocation(this.locality, this.subAdministrativeArea, this.ISOCountry,
-      timestamp, this.activity, this.speed, this.altitude) {
-    this.timestamp = formatTimestamp(timestamp);
-  }
-  late String locality;
-  late String subAdministrativeArea;
-  // ignore: non_constant_identifier_names
-  late String ISOCountry;
-  late String timestamp;
-  late String activity;
-  late num speed;
-  late num altitude;
-
-  String formatTimestamp(String timestamp) {
-    //2021-10-25T21:25:08.210Z <- This is the original format
-    //2021-10-25 | 21:25:08       <- This is the result
-    String result = "";
-    for (int i = 0; i < timestamp.length; ++i) {
-      if (timestamp[i] != "T" && timestamp[i] != ".")
-        result += timestamp[i];
-      else if (timestamp[i] == "T")
-        result += " | ";
-      else if (timestamp[i] == ".") break;
-    }
-    return result;
-  }
 }
 
 class STOListView extends StatelessWidget {
@@ -114,12 +88,7 @@ class STOListView extends StatelessWidget {
                   ", " +
                   thisLocation.ISOCountry,
               thisLocation.timestamp,
-              " \nActivity: " +
-                  thisLocation.activity +
-                  " \nSpeed: " +
-                  thisLocation.speed.toString() +
-                  " \nAltitude: " +
-                  thisLocation.altitude.toString(),
+              thisLocation.displayCustomText(),
               Icons.gps_fixed);
         });
   }

@@ -388,7 +388,7 @@ class HomeViewState extends State<HomeView>
               context, MaterialPageRoute(builder: (context) => FormView()));
           _onClickGetCurrentPosition();
         },
-        child: Icon(Icons.gps_fixed),
+        child: Icon(Icons.person),
         backgroundColor: Colors.blue,
       ),
     );

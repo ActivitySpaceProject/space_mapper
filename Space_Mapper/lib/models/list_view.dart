@@ -38,17 +38,17 @@ class DisplayLocation {
   }
 
   /// Checks if data is valid and then displays 3 lines with: Activity, Speed and Altitude
-  String displayCustomText() {
+  String displayCustomText(num maxSpeedAccuracy, num maxAltitudeAccuracy) {
     String ret = "";
 
     ret += " \nActivity: " + activity;
 
     /// Speed has to be both valid and accurate
     if (speed != -1 && speedAccuracy != -1) {
-      if (speedAccuracy <= 10.0) //TODO: This number should not be hard-coded
+      if (speedAccuracy <= maxSpeedAccuracy)
         ret += " \nSpeed: " + speed.toString() + " m/s";
     }
-    if (altitudeAccuracy <= 10.0) //TODO: This number should not be hard-coded
+    if (altitudeAccuracy <= maxAltitudeAccuracy)
       ret += "\nAltitude: " + altitude.toString() + " m";
 
     return ret;

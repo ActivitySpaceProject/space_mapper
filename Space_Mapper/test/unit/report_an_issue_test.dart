@@ -1,9 +1,5 @@
-import 'package:flutter/material.dart';
 import '../../lib/ui/report_an_issue.dart';
 import 'package:test/test.dart';
-import 'package:mockito/mockito.dart';
-
-class MockBuildContext extends Mock implements BuildContext {}
 
 void main() {
   group('Report an Issue Screen - Unit Tests', () {

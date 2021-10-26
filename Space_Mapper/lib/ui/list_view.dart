@@ -59,7 +59,7 @@ class STOListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Location History")),
+        appBar: AppBar(title: Text("Locations History")),
         body: FutureBuilder<List>(
           future: buildLocationsList(),
           builder: (context, snapshot) {
@@ -88,7 +88,7 @@ class STOListView extends StatelessWidget {
                   ", " +
                   thisLocation.ISOCountry,
               thisLocation.timestamp,
-              thisLocation.displayCustomText(),
+              thisLocation.displayCustomText(10.0, 10.0),
               Icons.gps_fixed);
         });
   }

@@ -4,24 +4,24 @@ import 'package:flutter_background_geolocation/flutter_background_geolocation.da
     as bg;
 import 'package:geocoding/geocoding.dart';
 
-Future<String?> getLocationData(
-    String dataType, double lat, double long) async {
+Future<DisplayLocation?> getLocationData(double lat, double long) async {
   try {
     List<Placemark> placemarks = await placemarkFromCoordinates(
       lat,
       long,
     );
-    switch (dataType) {
-      case "locality":
-        return placemarks[0].locality;
-      case "subAdministrativeArea":
-        return placemarks[0].subAdministrativeArea;
-      case "ISOCountry":
-        return placemarks[0].isoCountryCode;
-      default:
-        return "";
-    }
-  } catch (err) {}
+    String? locality = placemarks[0].locality;
+    String? subAdminArea = placemarks[0].subAdministrativeArea;
+    // ignore: non_constant_identifier_names
+    String? ISO = placemarks[0].isoCountryCode;
+    DisplayLocation location = new DisplayLocation(
+        locality: locality,
+        subAdministrativeArea: subAdminArea,
+        ISOCountry: ISO);
+    return location;
+  } catch (err) {
+    return new DisplayLocation();
+  }
 }
 
 Future<List<dynamic>>? buildLocationsList() async {
@@ -29,28 +29,19 @@ Future<List<dynamic>>? buildLocationsList() async {
   List ret = [];
 
   for (int i = 0; i < locations.length; ++i) {
-    String? locality = await getLocationData(
-        "locality",
+    DisplayLocation? location = await getLocationData(
         locations[i]['coords']['latitude'],
         locations[i]['coords']['longitude']);
-    String? administrativeArea = await getLocationData(
-        "subAdministrativeArea",
-        locations[i]['coords']['latitude'],
-        locations[i]['coords']['longitude']);
-    // ignore: non_constant_identifier_names
-    String? ISOCountry = await getLocationData(
-        "ISOCountry",
-        locations[i]['coords']['latitude'],
-        locations[i]['coords']['longitude']);
-    String timestamp = locations[i]['timestamp'];
-    String activity = locations[i]['activity']['type'];
-    num speed = locations[i]['coords']['speed'];
-    num speedAccuracy = locations[i]['coords']['speed_accuracy'];
-    num altitude = locations[i]['coords']['altitude'];
-    num altitudeAccuracy = locations[i]['coords']['altitude_accuracy'];
-    var add = new DisplayLocation(locality!, administrativeArea!, ISOCountry!,
-        timestamp, activity, speed, speedAccuracy, altitude, altitudeAccuracy);
-    ret.add(add);
+
+    if (location != null) {
+      location.timestamp = locations[i]['timestamp'];
+      location.activity = locations[i]['activity']['type'];
+      location.speed = locations[i]['coords']['speed'];
+      location.speedAccuracy = locations[i]['coords']['speed_accuracy'];
+      location.altitude = locations[i]['coords']['altitude'];
+      location.altitudeAccuracy = locations[i]['coords']['altitude_accuracy'];
+      ret.add(location);
+    }
   }
   return ret;
 }

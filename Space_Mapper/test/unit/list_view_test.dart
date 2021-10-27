@@ -1,9 +1,9 @@
-import 'package:asm/models/list_view.dart';
+//import 'package:asm/models/list_view.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Locations History Screen - Unit Tests', () {
-    group('DisplayLocation class', () {
+    /*group('DisplayLocation class', () {
       group('formatTimestamp function', () {
         test('formatTimestamp: input a correct timestamp', () {
           String timestamp = "2021-10-25T21:25:08.210Z";
@@ -108,6 +108,6 @@ void main() {
           expect(ret, equals(" \nActivity: " + activity));
         });
       });
-    });
+    });*/
   });
 }

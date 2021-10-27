@@ -1,15 +1,25 @@
 class DisplayLocation {
   DisplayLocation(
-      this.locality,
-      this.subAdministrativeArea,
-      this.ISOCountry,
-      timestamp,
-      this.activity,
-      this.speed,
-      this.speedAccuracy,
-      this.altitude,
-      this.altitudeAccuracy) {
-    this.timestamp = formatTimestamp(timestamp);
+      {String? locality,
+      String? subAdministrativeArea,
+      // ignore: non_constant_identifier_names
+      String? ISOCountry,
+      String? timestamp,
+      String? activity,
+      num? speed,
+      num? speedAccuracy,
+      num? altitude,
+      num? altitudeAccuracy}) {
+    if (locality != null) this.locality = locality;
+    if (subAdministrativeArea != null)
+      this.subAdministrativeArea = subAdministrativeArea;
+    if (ISOCountry != null) this.ISOCountry = ISOCountry;
+    if (timestamp != null) this.timestamp = formatTimestamp(timestamp);
+    if (activity != null) this.activity = activity;
+    if (speed != null) this.speed = speed;
+    if (speedAccuracy != null) this.speedAccuracy = speedAccuracy;
+    if (altitude != null) this.altitude = altitude;
+    if (altitudeAccuracy != null) this.altitudeAccuracy = altitudeAccuracy;
   }
   late String locality;
   late String subAdministrativeArea;

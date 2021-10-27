@@ -1,5 +1,13 @@
-class DisplayLocation {
-  DisplayLocation(
+class CustomLocationsManager {
+  static List<CustomLocation> customLocations = [];
+//addtolist
+  static List<CustomLocation> fetchAll() {
+    return CustomLocationsManager.customLocations;
+  }
+}
+
+class CustomLocation {
+  CustomLocation(
       {String? locality,
       String? subAdministrativeArea,
       // ignore: non_constant_identifier_names
@@ -10,27 +18,29 @@ class DisplayLocation {
       num? speedAccuracy,
       num? altitude,
       num? altitudeAccuracy}) {
-    if (locality != null) this.locality = locality;
+    setUUID();
+    CustomLocationsManager.customLocations.add(this);
+    if (locality != null) setLocality(locality);
     if (subAdministrativeArea != null)
-      this.subAdministrativeArea = subAdministrativeArea;
-    if (ISOCountry != null) this.ISOCountry = ISOCountry;
-    if (timestamp != null) this.timestamp = formatTimestamp(timestamp);
-    if (activity != null) this.activity = activity;
-    if (speed != null) this.speed = speed;
-    if (speedAccuracy != null) this.speedAccuracy = speedAccuracy;
-    if (altitude != null) this.altitude = altitude;
-    if (altitudeAccuracy != null) this.altitudeAccuracy = altitudeAccuracy;
+      setSubAdministrativeArea(subAdministrativeArea);
+    if (ISOCountry != null) setISOCountry(ISOCountry);
+    if (timestamp != null) setTimestamp(timestamp);
+    if (activity != null) setActivity(activity);
+    if (speed != null && speedAccuracy != null) setSpeed(speed, speedAccuracy);
+    if (altitude != null && altitudeAccuracy != null)
+      setAltitude(altitude, altitudeAccuracy);
   }
-  late String locality;
-  late String subAdministrativeArea;
+  late final num _uuid;
+  late String _locality = "";
+  late String _subAdministrativeArea = "";
   // ignore: non_constant_identifier_names
-  late String ISOCountry; // 2 letter code
-  late String timestamp; // ex: 2021-10-25T21:25:08.210Z
-  late String activity;
-  late num speed; //in meters / second
-  late num speedAccuracy; //in meters / second
-  late num altitude; //in meters
-  late num altitudeAccuracy; // in meters
+  late String _ISOCountry = ""; // 2 letter code
+  late String _timestamp = ""; // ex: 2021-10-25T21:25:08.210Z
+  late String _activity = "";
+  late num _speed = -1; //in meters / second
+  late num _speedAccuracy = -1; //in meters / second
+  late num _altitude = -1; //in meters
+  late num _altitudeAccuracy = -1; // in meters
 
   /// Makes timestamp readable by a human
   String formatTimestamp(String timestamp) {
@@ -51,16 +61,92 @@ class DisplayLocation {
   String displayCustomText(num maxSpeedAccuracy, num maxAltitudeAccuracy) {
     String ret = "";
 
-    ret += " \nActivity: " + activity;
+    ret += " \nActivity: " + _activity;
 
     /// Speed has to be both valid and accurate
-    if (speed != -1 && speedAccuracy != -1) {
-      if (speedAccuracy <= maxSpeedAccuracy)
-        ret += " \nSpeed: " + speed.toString() + " m/s";
+    if (_speed != -1 && _speedAccuracy != -1) {
+      if (_speedAccuracy <= maxSpeedAccuracy)
+        ret += " \nSpeed: " + _speed.toString() + " m/s";
     }
-    if (altitudeAccuracy <= maxAltitudeAccuracy)
-      ret += "\nAltitude: " + altitude.toString() + " m";
+    if (_altitudeAccuracy <= maxAltitudeAccuracy)
+      ret += "\nAltitude: " + _altitude.toString() + " m";
 
     return ret;
+  }
+
+  /// Variable setters
+  void setUUID() {
+    _uuid = CustomLocationsManager.customLocations.length;
+  }
+
+  void setLocality(String locality) {
+    _locality = locality;
+  }
+
+  void setSubAdministrativeArea(String subAdminArea) {
+    _subAdministrativeArea = subAdminArea;
+  }
+
+  void setISOCountry(String iso) {
+    _ISOCountry = iso;
+  }
+
+  void setTimestamp(String timestamp) {
+    _timestamp = formatTimestamp(timestamp);
+  }
+
+  void setActivity(String activity) {
+    _activity = activity;
+  }
+
+  void setSpeed(num speed, num speedAcc) {
+    _speed = speed;
+    _speedAccuracy = speedAcc;
+  }
+
+  void setAltitude(num altitude, num altitudeAcc) {
+    _altitude = altitude;
+    _altitudeAccuracy = altitudeAcc;
+  }
+
+  /// Variable getters
+  num getUUID() {
+    return _uuid;
+  }
+
+  String getLocality() {
+    return _locality;
+  }
+
+  String getSubAdministrativeArea() {
+    return _subAdministrativeArea;
+  }
+
+  String getISOCountryCode() {
+    return _ISOCountry;
+  }
+
+  String getTimestamp() {
+    return _timestamp;
+  }
+
+  String getActivity() {
+    return _activity;
+  }
+
+  num getSpeed() {
+    return _speed;
+  }
+
+  num getSpeedAcc() {
+    return _speedAccuracy;
+  }
+
+  num getAltitude() {
+    return _altitude;
+  }
+
+  num getAltitudeAcc() {
+    return _altitude;
   }
 }

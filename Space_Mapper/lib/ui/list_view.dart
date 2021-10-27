@@ -4,7 +4,8 @@ import 'package:flutter_background_geolocation/flutter_background_geolocation.da
     as bg;
 import 'package:geocoding/geocoding.dart';
 
-Future<DisplayLocation?> getLocationData(double lat, double long) async {
+///Get data such as city, province, postal code, street name, country...
+Future<CustomLocation> getLocationData(double lat, double long) async {
   try {
     List<Placemark> placemarks = await placemarkFromCoordinates(
       lat,
@@ -14,13 +15,13 @@ Future<DisplayLocation?> getLocationData(double lat, double long) async {
     String? subAdminArea = placemarks[0].subAdministrativeArea;
     // ignore: non_constant_identifier_names
     String? ISO = placemarks[0].isoCountryCode;
-    DisplayLocation location = new DisplayLocation(
+    CustomLocation location = new CustomLocation(
         locality: locality,
         subAdministrativeArea: subAdminArea,
         ISOCountry: ISO);
     return location;
   } catch (err) {
-    return new DisplayLocation();
+    return new CustomLocation();
   }
 }
 
@@ -29,19 +30,18 @@ Future<List<dynamic>>? buildLocationsList() async {
   List ret = [];
 
   for (int i = 0; i < locations.length; ++i) {
-    DisplayLocation? location = await getLocationData(
+    CustomLocation location = await getLocationData(
         locations[i]['coords']['latitude'],
         locations[i]['coords']['longitude']);
 
-    if (location != null) {
-      location.timestamp = locations[i]['timestamp'];
-      location.activity = locations[i]['activity']['type'];
-      location.speed = locations[i]['coords']['speed'];
-      location.speedAccuracy = locations[i]['coords']['speed_accuracy'];
-      location.altitude = locations[i]['coords']['altitude'];
-      location.altitudeAccuracy = locations[i]['coords']['altitude_accuracy'];
-      ret.add(location);
-    }
+    location.setTimestamp(locations[i]['timestamp']);
+    location.setActivity(locations[i]['activity']['type']);
+    location.setSpeed(locations[i]['coords']['speed'],
+        locations[i]['coords']['speed_accuracy']);
+    location.setAltitude(locations[i]['coords']['altitude'],
+        locations[i]['coords']['altitude_accuracy']);
+
+    ret.add(location);
   }
   return ret;
 }
@@ -71,14 +71,15 @@ class STOListView extends StatelessWidget {
     return ListView.builder(
         itemCount: data.length,
         itemBuilder: (context, index) {
-          DisplayLocation thisLocation = data[index];
+          CustomLocation thisLocation = data[index];
           return _tile(
-              thisLocation.locality +
+              thisLocation.getUUID().toString() +
+                  thisLocation.getLocality() +
                   ", " +
-                  thisLocation.subAdministrativeArea +
+                  thisLocation.getSubAdministrativeArea() +
                   ", " +
-                  thisLocation.ISOCountry,
-              thisLocation.timestamp,
+                  thisLocation.getISOCountryCode(),
+              thisLocation.getTimestamp(),
               thisLocation.displayCustomText(10.0, 10.0),
               Icons.gps_fixed);
         });

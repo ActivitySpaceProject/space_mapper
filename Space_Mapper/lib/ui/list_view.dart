@@ -5,48 +5,164 @@ import 'package:flutter_background_geolocation/flutter_background_geolocation.da
 import 'package:geocoding/geocoding.dart';
 
 ///Get data such as city, province, postal code, street name, country...
-Future<CustomLocation> getLocationData(double lat, double long) async {
+Future<Placemark?> getLocationData(double lat, double long) async {
   try {
     List<Placemark> placemarks = await placemarkFromCoordinates(
       lat,
       long,
     );
-    String? locality = placemarks[0].locality;
-    String? subAdminArea = placemarks[0].subAdministrativeArea;
-    // ignore: non_constant_identifier_names
-    String? ISO = placemarks[0].isoCountryCode;
-    CustomLocation location = new CustomLocation(
-        locality: locality,
-        subAdministrativeArea: subAdminArea,
-        ISOCountry: ISO);
-    return location;
+    return placemarks[0];
   } catch (err) {
-    return new CustomLocation();
+    return null;
   }
 }
 
-Future<List<dynamic>>? buildLocationsList() async {
-  List locations = await bg.BackgroundGeolocation.locations;
-  List ret = [];
+void createCustomLocation(var recordedLocation, Placemark? placemark) {
+  CustomLocation location = new CustomLocation();
+  //Add location to list
+  CustomLocationsManager.customLocations.add(location);
 
-  for (int i = 0; i < locations.length; ++i) {
-    CustomLocation location = await getLocationData(
-        locations[i]['coords']['latitude'],
-        locations[i]['coords']['longitude']);
+  //Save data from flutter_background_geolocation library
+  location.setUUID(recordedLocation['uuid']);
+  location.setTimestamp(recordedLocation['timestamp']);
+  location.setActivity(recordedLocation['activity']['type']);
+  location.setSpeed(recordedLocation['coords']['speed'],
+      recordedLocation['coords']['speed_accuracy']);
+  location.setAltitude(recordedLocation['coords']['altitude'],
+      recordedLocation['coords']['altitude_accuracy']);
 
-    location.setTimestamp(locations[i]['timestamp']);
-    location.setActivity(locations[i]['activity']['type']);
-    location.setSpeed(locations[i]['coords']['speed'],
-        locations[i]['coords']['speed_accuracy']);
-    location.setAltitude(locations[i]['coords']['altitude'],
-        locations[i]['coords']['altitude_accuracy']);
+  //Add our custom data
+  if (placemark != null) {
+    String? locality = placemark.locality;
+    String? subAdminArea = placemark.subAdministrativeArea;
+    // ignore: non_constant_identifier_names
+    String? ISO = placemark.isoCountryCode;
 
-    ret.add(location);
+    location.setLocality(locality!);
+    location.setSubAdministrativeArea(subAdminArea!);
+    location.setISOCountry(ISO!);
   }
-  return ret;
 }
 
-class STOListView extends StatelessWidget {
+Future<void> recalculateLocations() async {
+  List recordedLocations = await bg.BackgroundGeolocation.locations;
+  int recordedLocationsSize = recordedLocations.length;
+  List<CustomLocation> customLocations = CustomLocationsManager.fetchAll();
+
+  /// We check if there are new location entries that we haven't saved in our list
+  if (recordedLocationsSize != customLocations.length) {
+    for (int i = 0; i < recordedLocationsSize; ++i) {
+      //for (int i = 0; i < 10; ++i) {
+      //TODO: This is a mock to delete
+      // TODO: This nested 'for' has a complexity of O(n^2), we could make it more efficient
+      for (int j = 0; j < customLocations.length; ++j) {
+        if (recordedLocations[i]['uuid'] ==
+            CustomLocationsManager.customLocations[j].getUUID()) continue;
+      }
+      //Match not found, we add the location
+      createCustomLocation(
+          recordedLocations[i],
+          await getLocationData(recordedLocations[i]['coords']['latitude'],
+              recordedLocations[i]['coords']['longitude']));
+    }
+    //We update the state to display the new locations
+
+  }
+}
+
+class STOListView extends StatefulWidget {
+  const STOListView({Key? key}) : super(key: key);
+
+  @override
+  _STOListViewState createState() => _STOListViewState();
+}
+
+class _STOListViewState extends State<STOListView> {
+  late List<CustomLocation> items = CustomLocationsManager.fetchAll();
+
+  Future<void> _recalculateLocations() async {
+    await recalculateLocations();
+    setState(() {
+      items = CustomLocationsManager.fetchAll();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _recalculateLocations();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text("Locations History v1")),
+        body: ListView.builder(
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            CustomLocation thisLocation = items[index];
+            return _tile(
+                thisLocation.getLocality() +
+                    ", " +
+                    thisLocation.getSubAdministrativeArea() +
+                    ", " +
+                    thisLocation.getISOCountryCode(),
+                thisLocation.getTimestamp(),
+                thisLocation.displayCustomText(10.0, 10.0),
+                Icons.gps_fixed);
+          },
+        ));
+  }
+
+  ListView _jobsListView(data) {
+    return ListView.builder(
+        itemCount: data.length,
+        itemBuilder: (context, index) {
+          CustomLocation thisLocation = data[index];
+          return _tile(
+              thisLocation.getUUID().toString() +
+                  thisLocation.getLocality() +
+                  ", " +
+                  thisLocation.getSubAdministrativeArea() +
+                  ", " +
+                  thisLocation.getISOCountryCode(),
+              thisLocation.getTimestamp(),
+              thisLocation.displayCustomText(10.0, 10.0),
+              Icons.gps_fixed);
+        });
+  }
+
+  ListTile _tile(String title, String subtitle, String text, IconData icon) =>
+      ListTile(
+        title: Text(title,
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 20,
+            )),
+        subtitle: new RichText(
+          text: new TextSpan(
+            // Note: Styles for TextSpans must be explicitly defined.
+            // Child text spans will inherit styles from parent
+            style: new TextStyle(
+              fontSize: 14.0,
+              color: Colors.black,
+            ),
+            children: <TextSpan>[
+              new TextSpan(
+                  text: subtitle,
+                  style: new TextStyle(fontWeight: FontWeight.bold)),
+              new TextSpan(text: text),
+            ],
+          ),
+        ),
+        leading: Icon(
+          icon,
+          color: Colors.blue[500],
+        ),
+      );
+}
+
+/*class STOListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,4 +229,4 @@ class STOListView extends StatelessWidget {
           color: Colors.blue[500],
         ),
       );
-}
+}*/

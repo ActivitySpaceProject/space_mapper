@@ -1,6 +1,6 @@
 class CustomLocationsManager {
   static List<CustomLocation> customLocations = [];
-//addtolist
+
   static List<CustomLocation> fetchAll() {
     return CustomLocationsManager.customLocations;
   }
@@ -18,8 +18,6 @@ class CustomLocation {
       num? speedAccuracy,
       num? altitude,
       num? altitudeAccuracy}) {
-    setUUID();
-    CustomLocationsManager.customLocations.add(this);
     if (locality != null) setLocality(locality);
     if (subAdministrativeArea != null)
       setSubAdministrativeArea(subAdministrativeArea);
@@ -30,7 +28,7 @@ class CustomLocation {
     if (altitude != null && altitudeAccuracy != null)
       setAltitude(altitude, altitudeAccuracy);
   }
-  late final num _uuid;
+  late final String _uuid;
   late String _locality = "";
   late String _subAdministrativeArea = "";
   // ignore: non_constant_identifier_names
@@ -75,8 +73,8 @@ class CustomLocation {
   }
 
   /// Variable setters
-  void setUUID() {
-    _uuid = CustomLocationsManager.customLocations.length;
+  void setUUID(String uuid) {
+    _uuid = uuid;
   }
 
   void setLocality(String locality) {
@@ -110,7 +108,7 @@ class CustomLocation {
   }
 
   /// Variable getters
-  num getUUID() {
+  String getUUID() {
     return _uuid;
   }
 

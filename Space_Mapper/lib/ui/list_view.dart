@@ -55,27 +55,16 @@ class STOListView extends StatefulWidget {
 }
 
 class _STOListViewState extends State<STOListView> {
-  late List<CustomLocation> items = CustomLocationsManager.fetchAll();
-
-  /*Future<void> _recalculateLocations() async {
-    await recalculateLocations();
-    setState(() {
-      items = CustomLocationsManager.fetchAll();
-    });
-  }*/
+  late List<CustomLocation> customLocations =
+      CustomLocationsManager.fetchAll(sortByNewest: true);
 
   Future<void> recalculateLocations() async {
     List recordedLocations = await bg.BackgroundGeolocation.locations;
-    int recordedLocationsSize = recordedLocations.length;
-    List<CustomLocation> customLocations = CustomLocationsManager.fetchAll();
 
     /// We check if there are new location entries that we haven't saved in our list
-    if (recordedLocationsSize != customLocations.length) {
-      for (int i = 0; i < recordedLocationsSize; ++i) {
-        //for (int i = 0; i < 10; ++i) {
-        //TODO: This is a mock to delete
-        // TODO: This nested 'for' has a complexity of O(n^2), we could make it more efficient
-        for (int j = 0; j < customLocations.length; ++j) {
+    if (recordedLocations.length != customLocations.length) {
+      for (int i = recordedLocations.length - 1; i >= 0; --i) {
+        for (int j = customLocations.length - 1; j >= 0; --j) {
           if (recordedLocations[i]['uuid'] ==
               CustomLocationsManager.customLocations[j].getUUID()) continue;
         }
@@ -90,7 +79,12 @@ class _STOListViewState extends State<STOListView> {
             .mounted) // We check if this screen is active. If we do 'setState' while it's not active, it'll crash (throw exception)
         {
           setState(() {
-            items = CustomLocationsManager.fetchAll();
+            customLocations =
+                CustomLocationsManager.fetchAll(sortByNewest: true);
+            print("Loading positions: " +
+                customLocations.length.toString() +
+                " out of " +
+                recordedLocations.length.toString());
           });
         }
       }
@@ -108,9 +102,9 @@ class _STOListViewState extends State<STOListView> {
     return Scaffold(
         appBar: AppBar(title: Text("Locations History")),
         body: ListView.builder(
-          itemCount: items.length,
+          itemCount: customLocations.length,
           itemBuilder: (context, index) {
-            CustomLocation thisLocation = items[index];
+            CustomLocation thisLocation = customLocations[index];
             return _tile(
                 thisLocation.getLocality() +
                     ", " +

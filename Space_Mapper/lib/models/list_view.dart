@@ -1,8 +1,24 @@
+import 'package:collection/collection.dart';
+
 class CustomLocationsManager {
   static List<CustomLocation> customLocations = [];
 
-  static List<CustomLocation> fetchAll() {
-    return CustomLocationsManager.customLocations;
+  static List<CustomLocation> fetchAll({required bool sortByNewest}) {
+    if (sortByNewest) {
+      return customLocations;
+    } else {
+      return new List.from(customLocations.reversed);
+    }
+  }
+
+  static CustomLocation? fetchByUUID(String uuid) {
+    CustomLocation? ret = customLocations
+        .firstWhereOrNull((element) => element.getUUID() == uuid);
+    return ret;
+  }
+
+  static RemoveByUUID(String uuid) {
+    customLocations.removeWhere((element) => element.getUUID() == uuid);
   }
 }
 
@@ -52,7 +68,7 @@ class CustomLocation {
     return ret;
   }
 
-  /// Variable setters
+  // Variable setters
   void setUUID(String uuid) {
     _uuid = uuid;
   }
@@ -91,7 +107,7 @@ class CustomLocation {
     _altitudeAccuracy = altitudeAcc;
   }
 
-  /// Variable getters
+  // Variable getters
   String getUUID() {
     return _uuid;
   }

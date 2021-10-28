@@ -35,38 +35,15 @@ void createCustomLocation(var recordedLocation, Placemark? placemark) {
   if (placemark != null) {
     String? locality = placemark.locality;
     String? subAdminArea = placemark.subAdministrativeArea;
+    String? street = placemark.street;
+    if (street != null) street += ", ${placemark.name}";
     // ignore: non_constant_identifier_names
     String? ISO = placemark.isoCountryCode;
 
     location.setLocality(locality!);
     location.setSubAdministrativeArea(subAdminArea!);
+    location.setStreet(street!);
     location.setISOCountry(ISO!);
-  }
-}
-
-Future<void> recalculateLocations() async {
-  List recordedLocations = await bg.BackgroundGeolocation.locations;
-  int recordedLocationsSize = recordedLocations.length;
-  List<CustomLocation> customLocations = CustomLocationsManager.fetchAll();
-
-  /// We check if there are new location entries that we haven't saved in our list
-  if (recordedLocationsSize != customLocations.length) {
-    for (int i = 0; i < recordedLocationsSize; ++i) {
-      //for (int i = 0; i < 10; ++i) {
-      //TODO: This is a mock to delete
-      // TODO: This nested 'for' has a complexity of O(n^2), we could make it more efficient
-      for (int j = 0; j < customLocations.length; ++j) {
-        if (recordedLocations[i]['uuid'] ==
-            CustomLocationsManager.customLocations[j].getUUID()) continue;
-      }
-      //Match not found, we add the location
-      createCustomLocation(
-          recordedLocations[i],
-          await getLocationData(recordedLocations[i]['coords']['latitude'],
-              recordedLocations[i]['coords']['longitude']));
-    }
-    //We update the state to display the new locations
-
   }
 }
 
@@ -80,23 +57,56 @@ class STOListView extends StatefulWidget {
 class _STOListViewState extends State<STOListView> {
   late List<CustomLocation> items = CustomLocationsManager.fetchAll();
 
-  Future<void> _recalculateLocations() async {
+  /*Future<void> _recalculateLocations() async {
     await recalculateLocations();
     setState(() {
       items = CustomLocationsManager.fetchAll();
     });
+  }*/
+
+  Future<void> recalculateLocations() async {
+    List recordedLocations = await bg.BackgroundGeolocation.locations;
+    int recordedLocationsSize = recordedLocations.length;
+    List<CustomLocation> customLocations = CustomLocationsManager.fetchAll();
+
+    /// We check if there are new location entries that we haven't saved in our list
+    if (recordedLocationsSize != customLocations.length) {
+      for (int i = 0; i < recordedLocationsSize; ++i) {
+        //for (int i = 0; i < 10; ++i) {
+        //TODO: This is a mock to delete
+        // TODO: This nested 'for' has a complexity of O(n^2), we could make it more efficient
+        for (int j = 0; j < customLocations.length; ++j) {
+          if (recordedLocations[i]['uuid'] ==
+              CustomLocationsManager.customLocations[j].getUUID()) continue;
+        }
+        //Match not found, we add the location
+        createCustomLocation(
+            recordedLocations[i],
+            await getLocationData(recordedLocations[i]['coords']['latitude'],
+                recordedLocations[i]['coords']['longitude']));
+
+        //We update the state to display the new locations
+        if (this
+            .mounted) // We check if this screen is active. If we do 'setState' while it's not active, it'll crash (throw exception)
+        {
+          setState(() {
+            items = CustomLocationsManager.fetchAll();
+          });
+        }
+      }
+    }
   }
 
   @override
   void initState() {
     super.initState();
-    _recalculateLocations();
+    recalculateLocations();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Locations History v1")),
+        appBar: AppBar(title: Text("Locations History")),
         body: ListView.builder(
           itemCount: items.length,
           itemBuilder: (context, index) {
@@ -107,7 +117,7 @@ class _STOListViewState extends State<STOListView> {
                     thisLocation.getSubAdministrativeArea() +
                     ", " +
                     thisLocation.getISOCountryCode(),
-                thisLocation.getTimestamp(),
+                thisLocation.getTimestamp() + "\n" + thisLocation.getStreet(),
                 thisLocation.displayCustomText(10.0, 10.0),
                 Icons.gps_fixed);
           },

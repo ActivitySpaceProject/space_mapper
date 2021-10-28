@@ -7,30 +7,10 @@ class CustomLocationsManager {
 }
 
 class CustomLocation {
-  CustomLocation(
-      {String? locality,
-      String? subAdministrativeArea,
-      // ignore: non_constant_identifier_names
-      String? ISOCountry,
-      String? timestamp,
-      String? activity,
-      num? speed,
-      num? speedAccuracy,
-      num? altitude,
-      num? altitudeAccuracy}) {
-    if (locality != null) setLocality(locality);
-    if (subAdministrativeArea != null)
-      setSubAdministrativeArea(subAdministrativeArea);
-    if (ISOCountry != null) setISOCountry(ISOCountry);
-    if (timestamp != null) setTimestamp(timestamp);
-    if (activity != null) setActivity(activity);
-    if (speed != null && speedAccuracy != null) setSpeed(speed, speedAccuracy);
-    if (altitude != null && altitudeAccuracy != null)
-      setAltitude(altitude, altitudeAccuracy);
-  }
   late final String _uuid;
   late String _locality = "";
   late String _subAdministrativeArea = "";
+  late String _street = "";
   // ignore: non_constant_identifier_names
   late String _ISOCountry = ""; // 2 letter code
   late String _timestamp = ""; // ex: 2021-10-25T21:25:08.210Z
@@ -85,6 +65,10 @@ class CustomLocation {
     _subAdministrativeArea = subAdminArea;
   }
 
+  void setStreet(String street) {
+    _street = street;
+  }
+
   void setISOCountry(String iso) {
     _ISOCountry = iso;
   }
@@ -118,6 +102,10 @@ class CustomLocation {
 
   String getSubAdministrativeArea() {
     return _subAdministrativeArea;
+  }
+
+  String getStreet() {
+    return _street;
   }
 
   String getISOCountryCode() {

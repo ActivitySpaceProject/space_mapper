@@ -124,24 +124,6 @@ class _STOListViewState extends State<STOListView> {
         ));
   }
 
-  ListView _jobsListView(data) {
-    return ListView.builder(
-        itemCount: data.length,
-        itemBuilder: (context, index) {
-          CustomLocation thisLocation = data[index];
-          return _tile(
-              thisLocation.getUUID().toString() +
-                  thisLocation.getLocality() +
-                  ", " +
-                  thisLocation.getSubAdministrativeArea() +
-                  ", " +
-                  thisLocation.getISOCountryCode(),
-              thisLocation.getTimestamp(),
-              thisLocation.displayCustomText(10.0, 10.0),
-              Icons.gps_fixed);
-        });
-  }
-
   ListTile _tile(String title, String subtitle, String text, IconData icon) =>
       ListTile(
         title: Text(title,

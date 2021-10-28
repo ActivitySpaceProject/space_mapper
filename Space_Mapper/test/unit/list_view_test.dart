@@ -1,113 +1,96 @@
-//import 'package:asm/models/list_view.dart';
+import '../../lib/models/list_view.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('Locations History Screen - Unit Tests', () {
-    /*group('DisplayLocation class', () {
+    group('DisplayLocation class', () {
       group('formatTimestamp function', () {
         test('formatTimestamp: input a correct timestamp', () {
           String timestamp = "2021-10-25T21:25:08.210Z";
-          DisplayLocation dL =
-              new DisplayLocation("", "", "", timestamp, "", 0, 0, 0, 0);
-          String ret = dL.formatTimestamp(dL.timestamp);
+          CustomLocation dL = new CustomLocation();
+          dL.setTimestamp(timestamp);
+          String ret = dL.formatTimestamp(dL.getTimestamp());
           expect(ret, "2021-10-25 | 21:25:08");
         });
       });
 
       group('displayCustomText function', () {
         test('displayCustomText: Result when all data is valid', () {
-          String activity = "walking";
-          num speed = 5;
-          num speedAccuracy = 1;
-          num altitude = 315;
-          num altitudeAccuracy = 3;
+          CustomLocation location = new CustomLocation();
+          location.setActivity("walking");
+          location.setSpeed(5, 1);
+          location.setAltitude(315, 3);
 
           num maxSpeedAcc = 5;
           num maxAltitudeAcc = 5;
 
-          DisplayLocation dL = new DisplayLocation("", "", "", "", activity,
-              speed, speedAccuracy, altitude, altitudeAccuracy);
-
-          String ret = dL.displayCustomText(maxSpeedAcc, maxAltitudeAcc);
+          String ret = location.displayCustomText(maxSpeedAcc, maxAltitudeAcc);
           expect(
               ret,
               equals(" \nActivity: " +
-                  activity +
+                  location.getActivity() +
                   " \nSpeed: " +
-                  speed.toString() +
+                  location.getSpeed().toString() +
                   " m/s" +
                   "\nAltitude: " +
-                  altitude.toString() +
+                  location.getAltitude().toString() +
                   " m"));
         });
         test('displayCustomText: Result when altitude in not accurate', () {
-          String activity = "walking";
-          num speed = 1;
-          num speedAccuracy = 1;
-          num altitude = 5;
-          num altitudeAccuracy =
-              50; //Is higher than max allowed altitude, so it should not print altitude
+          CustomLocation location = new CustomLocation();
+          location.setActivity("walking");
+          location.setSpeed(1, 1);
+          location.setAltitude(5,
+              50); //It'ss higher than max allowed altitude, so it should not print altitude
 
           num maxSpeedAcc = 5;
           num maxAltitudeAcc = 10;
 
-          DisplayLocation dL = new DisplayLocation("", "", "", "", activity,
-              speed, speedAccuracy, altitude, altitudeAccuracy);
-
-          String ret = dL.displayCustomText(maxSpeedAcc, maxAltitudeAcc);
+          String ret = location.displayCustomText(maxSpeedAcc, maxAltitudeAcc);
           expect(
               ret,
               equals(" \nActivity: " +
-                  activity +
+                  location.getActivity() +
                   " \nSpeed: " +
-                  speed.toString() +
+                  location.getSpeed().toString() +
                   " m/s"));
         });
         test(
             'displayCustomText: Result when speed and speedAccuracy is -1 (gps not used)',
             () {
-          String activity = "walking";
-          num speed = -1;
-          num speedAccuracy = -1;
-          num altitude = 5;
-          num altitudeAccuracy = 10;
+          CustomLocation location = new CustomLocation();
+          location.setActivity("walking");
+          location.setSpeed(-1, -1);
+          location.setAltitude(5, 10);
 
           num maxSpeedAcc = 5;
           num maxAltitudeAcc = 10;
 
-          DisplayLocation dL = new DisplayLocation("", "", "", "", activity,
-              speed, speedAccuracy, altitude, altitudeAccuracy);
-
-          String ret = dL.displayCustomText(maxSpeedAcc, maxAltitudeAcc);
+          String ret = location.displayCustomText(maxSpeedAcc, maxAltitudeAcc);
           expect(
               ret,
               equals(" \nActivity: " +
-                  activity +
+                  location.getActivity() +
                   "\nAltitude: " +
-                  altitude.toString() +
+                  location.getAltitude().toString() +
                   " m"));
         });
         test(
             'displayCustomText: Result when both speed and altitude are invalid',
             () {
-          String activity = "walking";
-          num speed = -1; //Invalid input, should not print speed
-          num speedAccuracy =
-              -1; //Invalid input. But anyway this numbers doesn't matter, because speed is already invalid
-          num altitude = 5;
-          num altitudeAccuracy =
-              50; //Is higher than max allowed altitude, so it should not print altitude
+          CustomLocation location = new CustomLocation();
+          location.setActivity("walking");
+          location.setSpeed(-1, -1); //Invalid input, should not print speed
+          location.setAltitude(5,
+              50); //Accuracy is higher than max allowed altitude, so it should not print altitude
 
           num maxSpeedAcc = 5;
           num maxAltitudeAcc = 10;
 
-          DisplayLocation dL = new DisplayLocation("", "", "", "", activity,
-              speed, speedAccuracy, altitude, altitudeAccuracy);
-
-          String ret = dL.displayCustomText(maxSpeedAcc, maxAltitudeAcc);
-          expect(ret, equals(" \nActivity: " + activity));
+          String ret = location.displayCustomText(maxSpeedAcc, maxAltitudeAcc);
+          expect(ret, equals(" \nActivity: " + location.getActivity()));
         });
       });
-    });*/
+    });
   });
 }

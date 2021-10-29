@@ -1,91 +1,158 @@
+import '../models/list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
 import 'package:geocoding/geocoding.dart';
 
-Future<String?> getLocationData(
-    String dataType, double lat, double long) async {
+///Get data such as city, province, postal code, street name, country...
+Future<Placemark?> getLocationData(double lat, double long) async {
   try {
     List<Placemark> placemarks = await placemarkFromCoordinates(
       lat,
       long,
     );
-    switch (dataType) {
-      case "locality":
-        return placemarks[0].locality;
-      case "subAdministrativeArea":
-        return placemarks[0].subAdministrativeArea;
-      case "ISOCountry":
-        return placemarks[0].isoCountryCode;
-      default:
-        return "";
-    }
-  } catch (err) {}
+    return placemarks[0];
+  } catch (err) {
+    return null;
+  }
 }
 
-Future<List<dynamic>>? buildLocationsList() async {
-  List locations = await bg.BackgroundGeolocation.locations;
-  List ret = [];
+void createCustomLocation(var recordedLocation, Placemark? placemark) {
+  CustomLocation location = new CustomLocation();
+  //Add location to list
+  CustomLocationsManager.customLocations.add(location);
 
-  for (int i = 0; i < locations.length; ++i) {
-    String? locality = await getLocationData(
-        "locality",
-        locations[i]['coords']['latitude'],
-        locations[i]['coords']['longitude']);
-    String? administrativeArea = await getLocationData(
-        "subAdministrativeArea",
-        locations[i]['coords']['latitude'],
-        locations[i]['coords']['longitude']);
+  //Save data from flutter_background_geolocation library
+  location.setUUID(recordedLocation['uuid']);
+  location.setTimestamp(recordedLocation['timestamp']);
+  location.setActivity(recordedLocation['activity']['type']);
+  location.setSpeed(recordedLocation['coords']['speed'],
+      recordedLocation['coords']['speed_accuracy']);
+  location.setAltitude(recordedLocation['coords']['altitude'],
+      recordedLocation['coords']['altitude_accuracy']);
+
+  //Add our custom data
+  if (placemark != null) {
+    String? locality = placemark.locality;
+    String? subAdminArea = placemark.subAdministrativeArea;
+    String? street = placemark.street;
+    if (street != null) street += ", ${placemark.name}";
     // ignore: non_constant_identifier_names
-    String? ISOCountry = await getLocationData(
-        "ISOCountry",
-        locations[i]['coords']['latitude'],
-        locations[i]['coords']['longitude']);
-    String timestamp = locations[i]['timestamp'];
-    String activity = locations[i]['activity']['type'];
-    num speed = locations[i]['coords']['speed'];
-    num altitude = locations[i]['coords']['altitude'];
-    var add = new DisplayLocation(locality!, administrativeArea!, ISOCountry!,
-        timestamp, activity, speed, altitude);
-    ret.add(add);
+    String? ISO = placemark.isoCountryCode;
+
+    location.setLocality(locality!);
+    location.setSubAdministrativeArea(subAdminArea!);
+    location.setStreet(street!);
+    location.setISOCountry(ISO!);
   }
-  return ret;
 }
 
-class DisplayLocation {
-  DisplayLocation(this.locality, this.subAdministrativeArea, this.ISOCountry,
-      timestamp, this.activity, this.speed, this.altitude) {
-    this.timestamp = formatTimestamp(timestamp);
-  }
-  late String locality;
-  late String subAdministrativeArea;
-  // ignore: non_constant_identifier_names
-  late String ISOCountry;
-  late String timestamp;
-  late String activity;
-  late num speed;
-  late num altitude;
+class STOListView extends StatefulWidget {
+  const STOListView({Key? key}) : super(key: key);
 
-  String formatTimestamp(String timestamp) {
-    //2021-10-25T21:25:08.210Z <- This is the original format
-    //2021-10-25 | 21:25:08       <- This is the result
-    String result = "";
-    for (int i = 0; i < timestamp.length; ++i) {
-      if (timestamp[i] != "T" && timestamp[i] != ".")
-        result += timestamp[i];
-      else if (timestamp[i] == "T")
-        result += " | ";
-      else if (timestamp[i] == ".") break;
+  @override
+  _STOListViewState createState() => _STOListViewState();
+}
+
+class _STOListViewState extends State<STOListView> {
+  late List<CustomLocation> customLocations =
+      CustomLocationsManager.fetchAll(sortByNewest: true);
+
+  Future<void> recalculateLocations() async {
+    List recordedLocations = await bg.BackgroundGeolocation.locations;
+
+    /// We check if there are new location entries that we haven't saved in our list
+    if (recordedLocations.length != customLocations.length) {
+      for (int i = recordedLocations.length - 1; i >= 0; --i) {
+        for (int j = customLocations.length - 1; j >= 0; --j) {
+          if (recordedLocations[i]['uuid'] ==
+              CustomLocationsManager.customLocations[j].getUUID()) continue;
+        }
+        //Match not found, we add the location
+        createCustomLocation(
+            recordedLocations[i],
+            await getLocationData(recordedLocations[i]['coords']['latitude'],
+                recordedLocations[i]['coords']['longitude']));
+
+        //We update the state to display the new locations
+        if (this
+            .mounted) // We check if this screen is active. If we do 'setState' while it's not active, it'll crash (throw exception)
+        {
+          setState(() {
+            customLocations =
+                CustomLocationsManager.fetchAll(sortByNewest: true);
+            print("Loading positions: " +
+                customLocations.length.toString() +
+                " out of " +
+                recordedLocations.length.toString());
+          });
+        }
+      }
     }
-    return result;
   }
-}
 
-class STOListView extends StatelessWidget {
+  @override
+  void initState() {
+    super.initState();
+    recalculateLocations();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Location History")),
+        appBar: AppBar(title: Text("Locations History")),
+        body: ListView.builder(
+          itemCount: customLocations.length,
+          itemBuilder: (context, index) {
+            CustomLocation thisLocation = customLocations[index];
+            return _tile(
+                thisLocation.getLocality() +
+                    ", " +
+                    thisLocation.getSubAdministrativeArea() +
+                    ", " +
+                    thisLocation.getISOCountryCode(),
+                thisLocation.getTimestamp() + "\n" + thisLocation.getStreet(),
+                thisLocation.displayCustomText(10.0, 10.0),
+                Icons.gps_fixed);
+          },
+        ));
+  }
+
+  ListTile _tile(String title, String subtitle, String text, IconData icon) =>
+      ListTile(
+        title: Text(title,
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 20,
+            )),
+        subtitle: new RichText(
+          text: new TextSpan(
+            // Note: Styles for TextSpans must be explicitly defined.
+            // Child text spans will inherit styles from parent
+            style: new TextStyle(
+              fontSize: 14.0,
+              color: Colors.black,
+            ),
+            children: <TextSpan>[
+              new TextSpan(
+                  text: subtitle,
+                  style: new TextStyle(fontWeight: FontWeight.bold)),
+              new TextSpan(text: text),
+            ],
+          ),
+        ),
+        leading: Icon(
+          icon,
+          color: Colors.blue[500],
+        ),
+      );
+}
+
+/*class STOListView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text("Locations History")),
         body: FutureBuilder<List>(
           future: buildLocationsList(),
           builder: (context, snapshot) {
@@ -95,7 +162,9 @@ class STOListView extends StatelessWidget {
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
             }
-            return CircularProgressIndicator();
+            return Center(
+              child: CircularProgressIndicator(),
+            );
           },
         ));
   }
@@ -104,20 +173,16 @@ class STOListView extends StatelessWidget {
     return ListView.builder(
         itemCount: data.length,
         itemBuilder: (context, index) {
-          DisplayLocation thisLocation = data[index];
+          CustomLocation thisLocation = data[index];
           return _tile(
-              thisLocation.locality +
+              thisLocation.getUUID().toString() +
+                  thisLocation.getLocality() +
                   ", " +
-                  thisLocation.subAdministrativeArea +
+                  thisLocation.getSubAdministrativeArea() +
                   ", " +
-                  thisLocation.ISOCountry,
-              thisLocation.timestamp,
-              " \nActivity: " +
-                  thisLocation.activity +
-                  " \nSpeed: " +
-                  thisLocation.speed.toString() +
-                  " \nAltitude: " +
-                  thisLocation.altitude.toString(),
+                  thisLocation.getISOCountryCode(),
+              thisLocation.getTimestamp(),
+              thisLocation.displayCustomText(10.0, 10.0),
               Icons.gps_fixed);
         });
   }
@@ -150,4 +215,4 @@ class STOListView extends StatelessWidget {
           color: Colors.blue[500],
         ),
       );
-}
+}*/

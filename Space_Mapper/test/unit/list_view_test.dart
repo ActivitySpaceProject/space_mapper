@@ -1,9 +1,10 @@
-import '../../lib/models/list_view.dart';
+import 'package:asm/models/list_view.dart';
 import 'package:test/test.dart';
+import 'package:faker/faker.dart';
 
 void main() {
   group('Locations History Screen - Unit Tests', () {
-    group('DisplayLocation class', () {
+    group('CustomLocation class', () {
       group('formatTimestamp function', () {
         test('formatTimestamp: input a correct timestamp', () {
           String timestamp = "2021-10-25T21:25:08.210Z";
@@ -90,6 +91,63 @@ void main() {
           String ret = location.displayCustomText(maxSpeedAcc, maxAltitudeAcc);
           expect(ret, equals(" \nActivity: " + location.getActivity()));
         });
+      });
+    });
+    group("CustomLocationsManager class", () {
+      test("fetchAll and fetchByUUID", () async {
+        //We create 50 fake locations to do the test
+        for (int i = 0; i < 50; i++) {
+          CustomLocation location = new CustomLocation();
+          location.setUUID(faker.guid.guid());
+          location.setActivity("walk");
+          location.setAltitude(
+              faker.randomGenerator
+                  .numbers(8848, 1)[0], //8848 metres is Mount Everest height
+              faker.randomGenerator.numbers(300, 1)[0]);
+          location.setSpeed(faker.randomGenerator.numbers(600, 1)[0],
+              faker.randomGenerator.numbers(300, 1)[0]);
+          location.setISOCountry(faker.address.countryCode());
+          location.setLocality(faker.address.city());
+          location.setStreet(faker.address.streetAddress());
+          location.setSubAdministrativeArea(faker.address.state());
+          location.setTimestamp(faker.date.random.toString());
+          CustomLocationsManager.customLocations.add(location);
+        }
+
+        List<CustomLocation> locations =
+            CustomLocationsManager.fetchAll(sortByNewest: true);
+        for (var location in locations) {
+          expect(location.getUUID(), isNotEmpty);
+
+          CustomLocation? fetchedLocation =
+              CustomLocationsManager.fetchByUUID(location.getUUID());
+
+          expect(fetchedLocation,
+              isNotNull); // Not null because we get the UUID from the list, so it must exist
+
+          if (fetchedLocation != null) {
+            // Test that every fetched location is exactly equal as the current location
+            expect(fetchedLocation.getUUID(), equals(location.getUUID()));
+            expect(
+                fetchedLocation.getActivity(), equals(location.getActivity()));
+            expect(
+                fetchedLocation.getAltitude(), equals(location.getAltitude()));
+            expect(fetchedLocation.getAltitudeAcc(),
+                equals(location.getAltitudeAcc()));
+            expect(fetchedLocation.getISOCountryCode(),
+                equals(location.getISOCountryCode()));
+            expect(
+                fetchedLocation.getLocality(), equals(location.getLocality()));
+            expect(fetchedLocation.getSpeed(), equals(location.getSpeed()));
+            expect(
+                fetchedLocation.getSpeedAcc(), equals(location.getSpeedAcc()));
+            expect(fetchedLocation.getStreet(), equals(location.getStreet()));
+            expect(fetchedLocation.getSubAdministrativeArea(),
+                equals(location.getSubAdministrativeArea()));
+            expect(fetchedLocation.getTimestamp(),
+                equals(location.getTimestamp()));
+          }
+        }
       });
     });
   });

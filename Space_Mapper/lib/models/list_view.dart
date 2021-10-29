@@ -16,10 +16,6 @@ class CustomLocationsManager {
         .firstWhereOrNull((element) => element.getUUID() == uuid);
     return ret;
   }
-
-  static RemoveByUUID(String uuid) {
-    customLocations.removeWhere((element) => element.getUUID() == uuid);
-  }
 }
 
 class CustomLocation {

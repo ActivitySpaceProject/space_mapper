@@ -105,114 +105,69 @@ class _STOListViewState extends State<STOListView> {
           itemCount: customLocations.length,
           itemBuilder: (context, index) {
             CustomLocation thisLocation = customLocations[index];
-            return _tile(
-                thisLocation.getLocality() +
-                    ", " +
-                    thisLocation.getSubAdministrativeArea() +
-                    ", " +
-                    thisLocation.getISOCountryCode(),
-                thisLocation.getTimestamp() + "\n" + thisLocation.getStreet(),
-                thisLocation.displayCustomText(10.0, 10.0),
-                Icons.gps_fixed);
-          },
-        ));
-  }
-
-  ListTile _tile(String title, String subtitle, String text, IconData icon) =>
-      ListTile(
-        title: Text(title,
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 20,
-            )),
-        subtitle: new RichText(
-          text: new TextSpan(
-            // Note: Styles for TextSpans must be explicitly defined.
-            // Child text spans will inherit styles from parent
-            style: new TextStyle(
-              fontSize: 14.0,
-              color: Colors.black,
-            ),
-            children: <TextSpan>[
-              new TextSpan(
-                  text: subtitle,
-                  style: new TextStyle(fontWeight: FontWeight.bold)),
-              new TextSpan(text: text),
-            ],
-          ),
-        ),
-        leading: Icon(
-          icon,
-          color: Colors.blue[500],
-        ),
-      );
-}
-
-/*class STOListView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: Text("Locations History")),
-        body: FutureBuilder<List>(
-          future: buildLocationsList(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              List? data = snapshot.data;
-              return _jobsListView(data);
-            } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
-            }
-            return Center(
-              child: CircularProgressIndicator(),
+            return Dismissible(
+              child: _tile(thisLocation),
+              background: Container(
+                child: Container(
+                  margin: EdgeInsets.only(right: 10.0),
+                  alignment: Alignment.centerRight,
+                  child: new LayoutBuilder(builder: (context, constraint) {
+                    return new Icon(Icons.delete_forever,
+                        size: constraint.biggest.height * 0.5);
+                  }),
+                ),
+                color: Colors.red,
+              ),
+              key: ValueKey<CustomLocation>(customLocations[index]),
+              confirmDismiss: (DismissDirection direction) async {
+                await thisLocation.deleteThisLocation();
+                setState(() {
+                  customLocations =
+                      CustomLocationsManager.fetchAll(sortByNewest: true);
+                  thisLocation = customLocations[index];
+                });
+                return true;
+              },
             );
           },
         ));
   }
 
-  ListView _jobsListView(data) {
-    return ListView.builder(
-        itemCount: data.length,
-        itemBuilder: (context, index) {
-          CustomLocation thisLocation = data[index];
-          return _tile(
-              thisLocation.getUUID().toString() +
-                  thisLocation.getLocality() +
-                  ", " +
-                  thisLocation.getSubAdministrativeArea() +
-                  ", " +
-                  thisLocation.getISOCountryCode(),
-              thisLocation.getTimestamp(),
-              thisLocation.displayCustomText(10.0, 10.0),
-              Icons.gps_fixed);
-        });
-  }
-
-  ListTile _tile(String title, String subtitle, String text, IconData icon) =>
-      ListTile(
-        title: Text(title,
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 20,
-            )),
-        subtitle: new RichText(
-          text: new TextSpan(
-            // Note: Styles for TextSpans must be explicitly defined.
-            // Child text spans will inherit styles from parent
-            style: new TextStyle(
-              fontSize: 14.0,
-              color: Colors.black,
-            ),
-            children: <TextSpan>[
-              new TextSpan(
-                  text: subtitle,
-                  style: new TextStyle(fontWeight: FontWeight.bold)),
-              new TextSpan(text: text),
-            ],
+  ListTile _tile(CustomLocation thisLocation) {
+    String title = thisLocation.getLocality() +
+        ", " +
+        thisLocation.getSubAdministrativeArea() +
+        ", " +
+        thisLocation.getISOCountryCode();
+    String subtitle =
+        thisLocation.getTimestamp() + "\n" + thisLocation.getStreet();
+    String text = thisLocation.displayCustomText(10.0, 10.0);
+    return ListTile(
+      title: Text(title,
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 20,
+          )),
+      subtitle: new RichText(
+        text: new TextSpan(
+          // Note: Styles for TextSpans must be explicitly defined.
+          // Child text spans will inherit styles from parent
+          style: new TextStyle(
+            fontSize: 14.0,
+            color: Colors.black,
           ),
+          children: <TextSpan>[
+            new TextSpan(
+                text: subtitle,
+                style: new TextStyle(fontWeight: FontWeight.bold)),
+            new TextSpan(text: text),
+          ],
         ),
-        leading: Icon(
-          icon,
-          color: Colors.blue[500],
-        ),
-      );
-}*/
+      ),
+      leading: Icon(
+        Icons.gps_fixed,
+        color: Colors.blue[500],
+      ),
+    );
+  }
+}

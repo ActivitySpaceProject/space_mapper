@@ -1,4 +1,6 @@
 import 'package:collection/collection.dart';
+import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
+    as bg;
 
 class CustomLocationsManager {
   static List<CustomLocation> customLocations = [];
@@ -31,6 +33,7 @@ class CustomLocation {
   late num _speedAccuracy = -1; //in meters / second
   late num _altitude = -1; //in meters
   late num _altitudeAccuracy = -1; // in meters
+  late bool to_delete = false;
 
   /// Makes timestamp readable by a human
   String formatTimestamp(String timestamp) {
@@ -62,6 +65,16 @@ class CustomLocation {
       ret += "\nAltitude: " + _altitude.toString() + " m";
 
     return ret;
+  }
+
+  Future<void> deleteThisLocation() async {
+    if (to_delete == false) {
+      /// We need this checker to ensure that the user doesn't send the delete request twice, causing an exception
+      to_delete = true;
+      await bg.BackgroundGeolocation.destroyLocation(this.getUUID());
+      CustomLocationsManager.customLocations
+          .removeWhere((element) => element.getUUID() == this.getUUID());
+    }
   }
 
   // Variable setters

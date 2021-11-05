@@ -33,7 +33,7 @@ class CustomLocation {
   late num _speedAccuracy = -1; //in meters / second
   late num _altitude = -1; //in meters
   late num _altitudeAccuracy = -1; // in meters
-  late bool to_delete = false;
+  late bool _toDelete = false;
 
   /// Makes timestamp readable by a human
   String formatTimestamp(String timestamp) {
@@ -68,9 +68,9 @@ class CustomLocation {
   }
 
   Future<void> deleteThisLocation() async {
-    if (to_delete == false) {
+    if (_toDelete == false) {
       /// We need this checker to ensure that the user doesn't send the delete request twice, causing an exception
-      to_delete = true;
+      _toDelete = true;
       await bg.BackgroundGeolocation.destroyLocation(this.getUUID());
       CustomLocationsManager.customLocations
           .removeWhere((element) => element.getUUID() == this.getUUID());

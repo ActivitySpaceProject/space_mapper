@@ -1,4 +1,6 @@
 import 'package:collection/collection.dart';
+import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
+    as bg;
 
 class CustomLocationsManager {
   static List<CustomLocation> customLocations = [];
@@ -16,24 +18,9 @@ class CustomLocationsManager {
         .firstWhereOrNull((element) => element.getUUID() == uuid);
     return ret;
   }
-}
-
-class CustomLocation {
-  late final String _uuid;
-  late String _locality = "";
-  late String _subAdministrativeArea = "";
-  late String _street = "";
-  // ignore: non_constant_identifier_names
-  late String _ISOCountry = ""; // 2 letter code
-  late String _timestamp = ""; // ex: 2021-10-25T21:25:08.210Z
-  late String _activity = "";
-  late num _speed = -1; //in meters / second
-  late num _speedAccuracy = -1; //in meters / second
-  late num _altitude = -1; //in meters
-  late num _altitudeAccuracy = -1; // in meters
 
   /// Makes timestamp readable by a human
-  String formatTimestamp(String timestamp) {
+  static String formatTimestamp(String timestamp) {
     //2021-10-25T21:25:08.210Z <- This is the original format
     //2021-10-25 | 21:25:08    <- This is the result
     String result = "";
@@ -46,6 +33,22 @@ class CustomLocation {
     }
     return result;
   }
+}
+
+class CustomLocation {
+  late final String _uuid;
+  late String _locality = "";
+  late String _subAdministrativeArea = "";
+  late String _street = "";
+  // ignore: non_constant_identifier_names
+  late String _ISOCountry = ""; // 2 letter code
+  late String _timestamp = "";
+  late String _activity = "";
+  late num _speed = -1; //in meters / second
+  late num _speedAccuracy = -1; //in meters / second
+  late num _altitude = -1; //in meters
+  late num _altitudeAccuracy = -1; // in meters
+  late bool _toDelete = false;
 
   /// Checks if data is valid and then displays 3 lines with: Activity, Speed and Altitude
   String displayCustomText(num maxSpeedAccuracy, num maxAltitudeAccuracy) {
@@ -62,6 +65,16 @@ class CustomLocation {
       ret += "\nAltitude: " + _altitude.toString() + " m";
 
     return ret;
+  }
+
+  Future<void> deleteThisLocation() async {
+    if (_toDelete == false) {
+      /// We need this checker to ensure that the user doesn't send the delete request twice, causing an exception
+      _toDelete = true;
+      await bg.BackgroundGeolocation.destroyLocation(this.getUUID());
+      CustomLocationsManager.customLocations
+          .removeWhere((element) => element.getUUID() == this.getUUID());
+    }
   }
 
   // Variable setters
@@ -86,7 +99,7 @@ class CustomLocation {
   }
 
   void setTimestamp(String timestamp) {
-    _timestamp = formatTimestamp(timestamp);
+    _timestamp = CustomLocationsManager.formatTimestamp(timestamp);
   }
 
   void setActivity(String activity) {

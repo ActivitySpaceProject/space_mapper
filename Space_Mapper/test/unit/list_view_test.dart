@@ -10,7 +10,8 @@ void main() {
           String timestamp = "2021-10-25T21:25:08.210Z";
           CustomLocation dL = new CustomLocation();
           dL.setTimestamp(timestamp);
-          String ret = dL.formatTimestamp(dL.getTimestamp());
+          String ret =
+              CustomLocationsManager.formatTimestamp(dL.getTimestamp());
           expect(ret, "2021-10-25 | 21:25:08");
         });
       });

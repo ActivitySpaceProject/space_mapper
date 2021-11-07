@@ -33,21 +33,19 @@ class SpaceMapperSideDrawer extends StatelessWidget {
     List allLocations = await bg.BackgroundGeolocation.locations;
     List<ShareLocation> customLocation = [];
 
+    // We get only timestamp and coordinates into our custom class
     for (var thisLocation in allLocations) {
       ShareLocation _loc = new ShareLocation(
           bg.Location(thisLocation).timestamp,
           bg.Location(thisLocation).coords.latitude,
-          bg.Location(thisLocation).coords.latitude);
+          bg.Location(thisLocation).coords.longitude);
       customLocation.add(_loc);
     }
 
-    String text = jsonEncode(customLocation);
-    /*for (var thisLocation in customLocation) {
-      text += jsonEncode(thisLocation);
-    }*/
+    String prettyString = JsonEncoder.withIndent('  ').convert(customLocation);
     String subject =
         "space_mapper_trajectory_" + now.toIso8601String() + ".json";
-    Share.share(text, subject: subject);
+    Share.share(prettyString, subject: subject);
   }
 
   _launchProjectURL() async {

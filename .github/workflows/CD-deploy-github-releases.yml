@@ -1,0 +1,48 @@
+name: Deploy App (Android) Release to Github Releases
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:  
+
+  build:
+    if: github.event.base_ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-java@v1
+      with:
+        java-version: '12.x'
+    - uses: subosito/flutter-action@v1
+      with:
+        channel: 'stable'
+
+    - name: Get flutter dependencies
+      run: flutter pub get
+      working-directory: Space_Mapper
+
+    - name: Statically analyze the Dart code for any errors.
+      run: flutter analyze
+      working-directory: Space_Mapper
+    
+    - name: Run widget tests for our flutter project.
+      run: flutter test
+      working-directory: Space_Mapper
+
+    - name: Build apk
+      run: flutter build apk --debug
+      working-directory: Space_Mapper
+
+    - name: Build appbundle
+      run: flutter build appbundle --debug
+      working-directory: Space_Mapper
+    
+    - name: Create a Release in GitHub
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "././Space_Mapper/build/app/outputs/flutter-apk/app-debug.apk,././Space_Mapper/build/app/outputs/bundle/debug/app-debug.aab"
+        token: ${{ secrets.GH_TOKEN }}
+        tag: ${{ steps.version.outputs.content }}
+        commit: ${{ github.sha }}

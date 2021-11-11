@@ -3,6 +3,20 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+const kAndroidUserAgent =
+    'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Mobile Safari/537.36';
+const String selectedUrl = 'https://ee.kobotoolbox.org/single/asCwpCjZ';
+const String userUUID_element = '/asRrkkAw4mUtpTDkjdzZzt/group_survey/userUUID';
+const String userUUID_label = userUUID_element + ':label';
+
+final Set<JavascriptChannel> jsChannels = [
+  JavascriptChannel(
+      name: 'Print',
+      onMessageReceived: (JavascriptMessage message) {
+        print(message.message);
+      }),
+].toSet();
+
 class MyWebView extends StatefulWidget {
   @override
   _MyWebViewState createState() => _MyWebViewState();
@@ -32,9 +46,7 @@ class _MyWebViewState extends State<MyWebView> {
       // to allow calling Scaffold.of(context) so we can show a snackbar.
       body: Builder(builder: (BuildContext context) {
         return WebView(
-          //initialUrl: 'https://ee.kobotoolbox.org/single/asCwpCjZ', //Original form for beta-testing
-          initialUrl:
-              'https://ee.kobotoolbox.org/x/8528dfMs', //Form to upload a json file
+          initialUrl: selectedUrl,
           javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: (WebViewController webViewController) {
             _controller.complete(webViewController);

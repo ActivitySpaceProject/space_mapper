@@ -3,15 +3,21 @@
 Space Mapper is a mobile phone application that lets you see your daily movements in a map. Additionally, you can participate in citizen science by sharing your anonymized location history with research institutions to help scientists research about human mobility.
 
 ## Screenshots
-<img src="https://github.com/activityspaceproject/space_mapper/blob/development/assets/images/3.0.2+18_map_view.jpg"  width="22%"></img>
-<img src="https://github.com/activityspaceproject/space_mapper/blob/development/assets/images/3.0.2+18_side_drawer.jpg"  width="22%"></img>
-<img src="https://github.com/activityspaceproject/space_mapper/blob/development/assets/images/3.0.2+18_location_history.jpg"  width="22%"></img>
-<img src="https://github.com/activityspaceproject/space_mapper/blob/development/assets/images/3.0.2+18_report_an_issue.jpg."  width="22%"></img>
+<img src="https://github.com/ActivitySpaceProject/space_mapper/blob/development/Assets/images/3.0.2%2B18_map_view.jpg"  width="22%"></img>
+<img src="https://github.com/ActivitySpaceproject/space_mapper/blob/development/Assets/images/3.0.2+18_side_drawer.jpg"  width="22%"></img>
+<img src="https://github.com/ActivitySpaceproject/space_mapper/blob/development/Assets/images/3.0.2+18_location_history.jpg"  width="22%"></img>
+<img src="https://github.com/ActivitySpaceproject/space_mapper/blob/development/Assets/images/3.0.2+18_report_an_issue.jpg"  width="22%"></img>
 
 ## How to contribute
 Do you want to contribute?
-Feel free to fork our repository, create a new branch, make your changes and submit a pull request. We'll review it as soon as possible and merge it.
-It would be awesome if you assign yourself to an existing task or you open a new issue in (https://github.com/ActivitySpaceProject/space_mapper/issues)[https://github.com/ActivitySpaceProject/space_mapper/issues], to keep other contributors informed on what you're working on.
+
+Feel free to fork our repository, create a new branch, make your changes and submit a pull request(*). We'll review it as soon as possible and merge it.
+
+(*)Before opening the pull request, please run the commands "flutter analyze" and "flutter test" locally to ensure that your PR passes all the tests successfully in our continuous integration (CI) workflow.
+
+It would be awesome if you assign yourself to an existing task or you open a new issue in [Github Issues](https://github.com/ActivitySpaceProject/space_mapper/issues), to keep other contributors informed on what you're working on.
+
+If this project is useful for you, please consider starring this repository and giving us 5 stars on the app stores to give us more visibility.
 
 ## Contributors
 - Universitat Pompeu Fabra

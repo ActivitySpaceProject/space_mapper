@@ -1,5 +1,14 @@
 {
-    "first_string": "Hello! This is the first message",
-    "second_string": "Second message",
-    "side_drawer_menu": "Space Mapper Menu"
+    "side_drawer_title": "Space Mapper Menu",
+    "take_survey": "Take Survey",
+    "locations_history": "Locations History",
+    "share_locations": "Share Locations",
+    "visit_project_website": "Visit Project Website",
+    "report_an_issue": "Report an Issue",
+    "report_summary": "Help us improve by either reporting an issue or requesting a useful feature.",
+    "github_description": "Report issues on github to get the fastest solution.",
+    "github_button": "Go to Github Issues",
+    "email_description": "As an alternative, you can send us an email.",
+    "report_email_btn1": "Report an issue by email",
+    "report_email_btn2": "Request a feature by email"
 }

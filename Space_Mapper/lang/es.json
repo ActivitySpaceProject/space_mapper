@@ -1,5 +1,14 @@
 {
-    "first_string": "Hola! Este es el primer mensaje",
-    "second_string": "Segundo mensaje",
-    "side_drawer_menu": "Menú de Space Mapper"
+    "side_drawer_title": "Menú de Space Mapper",
+    "take_survey": "Haz una encuesta",
+    "locations_history": "Historial de ubicaciones",
+    "share_locations": "Compartir ubicaciones",
+    "visit_project_website": "Visita nuestra web",
+    "report_an_issue": "Reporta un problema",
+    "report_summary": "Ayúdanos a mejorar informando un problema o solicitando una mejora.",
+    "github_description": "Informe problemas en github para obtener la solución más rápida.",
+    "github_button": "Ir a Github Issues",
+    "email_description": "Como alternativa, puede enviarnos un email.",
+    "report_email_btn1": "Reporta un problema por email",
+    "report_email_btn2": "Solicita una mejora por email"
 }

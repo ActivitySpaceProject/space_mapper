@@ -1,3 +1,4 @@
+import '../app_localizations.dart';
 import '../models/list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
@@ -100,7 +101,9 @@ class _STOListViewState extends State<STOListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Locations History")),
+        appBar: AppBar(
+            title: Text(
+                AppLocalizations.of(context)!.translate("locations_history"))),
         body: ListView.builder(
           itemCount: customLocations.length,
           itemBuilder: (context, index) {

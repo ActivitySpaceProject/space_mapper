@@ -19,12 +19,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations: 
+    sdk: flutter
   flutter_background_geolocation: ^4.3.0
   shared_preferences: ^2.0.8
   background_fetch: ^1.0.1  
   http: ^0.13.4
   flutter_map: ^0.14.0
-  # flutter_webview_plugin: ^0.4.0
   webview_flutter: ^2.1.1
   sqflite: ^2.0.0+4
   path_provider: ^2.0.5
@@ -60,9 +61,9 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #  - images/a_dot_burr.jpeg
-  #  - images/a_dot_ham.jpeg
+  assets:
+   - lang/en.json
+   - lang/es.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:asm/app_localizations.dart';
 import 'package:asm/models/list_view.dart';
 import 'package:asm/ui/list_view.dart';
 import 'package:asm/ui/report_an_issue.dart';
@@ -67,7 +68,8 @@ class SpaceMapperSideDrawer extends StatelessWidget {
           Container(
             height: 100,
             child: DrawerHeader(
-              child: Text('Space Mapper Menu',
+              child: Text(
+                  AppLocalizations.of(context)!.translate("side_drawer_menu"),
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
               decoration: BoxDecoration(
                 color: Colors.blueGrey[200],

@@ -22,6 +22,12 @@ class CustomLocationsManager {
     return ret;
   }
 
+  static void RemoveAllCustomLocations() {
+    print("Removing " + customLocations.length.toString() + " customLocations");
+    customLocations.clear();
+    print("All customLocations removed");
+  }
+
   /// Makes timestamp readable by a human
   static String formatTimestamp(String timestamp) {
     //2021-10-25T21:25:08.210Z <- This is the original format

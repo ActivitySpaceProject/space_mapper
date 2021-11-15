@@ -57,39 +57,51 @@ class STOListView extends StatefulWidget {
 
 class _STOListViewState extends State<STOListView> {
   late List<CustomLocation> customLocations =
-      CustomLocationsManager.fetchAll(sortByNewest: true);
+      CustomLocationsManager.fetchAll(sortByNewest: false);
+
+  final int maxElements = 25; // Maximum amount of elements displayed on screen
+  bool recalculationFinished = false;
 
   Future<void> recalculateLocations() async {
+    // Make the current list to be empty. We want to fill it according to our custom parameters
+    CustomLocationsManager.RemoveAllCustomLocations();
+
+    // Get a list of locations from the flutter_background_geolocation plugin database
     List recordedLocations = await bg.BackgroundGeolocation.locations;
 
-    /// We check if there are new location entries that we haven't saved in our list
-    if (recordedLocations.length != customLocations.length) {
-      for (int i = recordedLocations.length - 1; i >= 0; --i) {
-        for (int j = customLocations.length - 1; j >= 0; --j) {
-          if (recordedLocations[i]['uuid'] ==
-              CustomLocationsManager.customLocations[j].getUUID()) continue;
-        }
-        //Match not found, we add the location
-        createCustomLocation(
-            recordedLocations[i],
-            await getLocationData(recordedLocations[i]['coords']['latitude'],
-                recordedLocations[i]['coords']['longitude']));
+    // n is the minimum value of either the specified maximum amount of elements (maxElements), or the current size of recordedLocations
+    int n;
+    if (maxElements <= recordedLocations.length)
+      n = maxElements;
+    else
+      n = recordedLocations.length;
 
-        //We update the state to display the new locations
-        if (this
-            .mounted) // We check if this screen is active. If we do 'setState' while it's not active, it'll crash (throw exception)
-        {
-          setState(() {
-            customLocations =
-                CustomLocationsManager.fetchAll(sortByNewest: true);
-            print("Loading positions: " +
-                customLocations.length.toString() +
-                " out of " +
-                recordedLocations.length.toString());
-          });
-        }
+    // Fill the custom locations list, to display beautiful tiles instead of json data
+    for (int i = 0; i < n; ++i) {
+      // Check if there's already a location with the same UUID
+      for (int j = customLocations.length - 1; j >= 0; --j) {
+        if (recordedLocations[i]['uuid'] ==
+            CustomLocationsManager.customLocations[j].getUUID()) continue;
       }
+      // Match not found, we add the location
+      createCustomLocation(
+          recordedLocations[i],
+          await getLocationData(recordedLocations[i]['coords']['latitude'],
+              recordedLocations[i]['coords']['longitude']));
     }
+    // Update the state to display the new locations
+    if (this
+        .mounted) // Check if this screen is active. If we do 'setState' while it's not active, it'll crash (throw exception)
+    {
+      setState(() {
+        customLocations = CustomLocationsManager.fetchAll(sortByNewest: true);
+        print("Loading positions: " +
+            customLocations.length.toString() +
+            " out of " +
+            recordedLocations.length.toString());
+      });
+    }
+    recalculationFinished = true;
   }
 
   @override
@@ -105,7 +117,9 @@ class _STOListViewState extends State<STOListView> {
             title: Text(
                 AppLocalizations.of(context)!.translate("locations_history"))),
         body: ListView.builder(
-          itemCount: customLocations.length,
+          itemCount: customLocations.length < maxElements
+              ? customLocations.length
+              : maxElements,
           itemBuilder: (context, index) {
             CustomLocation thisLocation = customLocations[index];
             return Dismissible(

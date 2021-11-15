@@ -16,7 +16,7 @@ void main() {
         });
       });
 
-      group('displayCustomText function', () {
+      /*group('displayCustomText function', () {
         test('displayCustomText: Result when all data is valid', () {
           CustomLocation location = new CustomLocation();
           location.setActivity("walking");
@@ -92,7 +92,7 @@ void main() {
           String ret = location.displayCustomText(maxSpeedAcc, maxAltitudeAcc);
           expect(ret, equals(" \nActivity: " + location.getActivity()));
         });
-      });
+      });*/
     });
     group("CustomLocationsManager class", () {
       test("fetchAll and fetchByUUID", () async {

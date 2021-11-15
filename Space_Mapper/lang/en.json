@@ -10,5 +10,18 @@
     "github_button": "Go to Github Issues",
     "email_description": "As an alternative, you can send us an email.",
     "report_email_btn1": "Report an issue by email",
-    "report_email_btn2": "Request a feature by email"
+    "report_email_btn2": "Request a feature by email",
+    "activity": "Activity",
+    "speed": "Speed",
+    "altitude": "Altitude",
+    "record_contact": "Record Contact",
+    "male": "Male",
+    "female": "Female",
+    "other": "Other",
+    "was_the_contact_male_female?": "Was the contact male or female?",
+    "about_how_old_were_they": "About how old were they",
+    "select_age_group": "Select age group",
+    "submit": "Submit",
+    "reset": "Reset",
+    "gender": "gender"
 }

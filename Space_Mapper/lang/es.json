@@ -10,5 +10,18 @@
     "github_button": "Ir a Github Issues",
     "email_description": "Como alternativa, puede enviarnos un email.",
     "report_email_btn1": "Reporta un problema por email",
-    "report_email_btn2": "Solicita una mejora por email"
+    "report_email_btn2": "Solicita una mejora por email",
+    "activity": "Actividad",
+    "speed": "Velocidad",
+    "altitude": "Altitud",
+    "record_contact": "Registrar Contacto",
+    "male": "Hombre",
+    "female": "Mujer",
+    "other": "Otro",
+    "was_the_contact_male_female?": "¿El contacto fué hombre o mujer?",
+    "about_how_old_were_they": "¿Qué edad tenían?",
+    "select_age_group": "Selecciona grupo de edad",
+    "submit": "Enviar",
+    "reset": "Restablecer",
+    "gender": "género"
 }

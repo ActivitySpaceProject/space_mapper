@@ -1,6 +1,9 @@
 import 'package:collection/collection.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
+
+import '../app_localizations.dart';
 
 class CustomLocationsManager {
   static List<CustomLocation> customLocations = [];
@@ -51,18 +54,23 @@ class CustomLocation {
   late bool _toDelete = false;
 
   /// Checks if data is valid and then displays 3 lines with: Activity, Speed and Altitude
-  String displayCustomText(num maxSpeedAccuracy, num maxAltitudeAccuracy) {
+  String displayCustomText(
+      num maxSpeedAccuracy, num maxAltitudeAccuracy, BuildContext context) {
     String ret = "";
 
-    ret += " \nActivity: " + _activity;
+    String activity = AppLocalizations.of(context)!.translate("activity");
+    String speed = AppLocalizations.of(context)!.translate("speed");
+    String altitude = AppLocalizations.of(context)!.translate("altitude");
+
+    ret += " \n$activity: $_activity";
 
     /// Speed has to be both valid and accurate
     if (_speed != -1 && _speedAccuracy != -1) {
       if (_speedAccuracy <= maxSpeedAccuracy)
-        ret += " \nSpeed: " + _speed.toString() + " m/s";
+        ret += " \n$speed: " + _speed.toString() + " m/s";
     }
     if (_altitudeAccuracy <= maxAltitudeAccuracy)
-      ret += "\nAltitude: " + _altitude.toString() + " m";
+      ret += "\n$altitude: " + _altitude.toString() + " m";
 
     return ret;
   }

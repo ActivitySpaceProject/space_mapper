@@ -109,7 +109,7 @@ class _STOListViewState extends State<STOListView> {
           itemBuilder: (context, index) {
             CustomLocation thisLocation = customLocations[index];
             return Dismissible(
-              child: _tile(thisLocation),
+              child: _tile(thisLocation, context),
               background: Container(
                 child: Container(
                   margin: EdgeInsets.only(right: 10.0),
@@ -136,7 +136,7 @@ class _STOListViewState extends State<STOListView> {
         ));
   }
 
-  ListTile _tile(CustomLocation thisLocation) {
+  ListTile _tile(CustomLocation thisLocation, BuildContext context) {
     String title = thisLocation.getLocality() +
         ", " +
         thisLocation.getSubAdministrativeArea() +
@@ -144,7 +144,7 @@ class _STOListViewState extends State<STOListView> {
         thisLocation.getISOCountryCode();
     String subtitle =
         thisLocation.getTimestamp() + "\n" + thisLocation.getStreet();
-    String text = thisLocation.displayCustomText(10.0, 10.0);
+    String text = thisLocation.displayCustomText(10.0, 10.0, context);
     return ListTile(
       title: Text(title,
           style: TextStyle(

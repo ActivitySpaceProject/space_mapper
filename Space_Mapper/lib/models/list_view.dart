@@ -22,7 +22,7 @@ class CustomLocationsManager {
     return ret;
   }
 
-  static void RemoveAllCustomLocations() {
+  static void removeAllCustomLocations() {
     print("Removing " + customLocations.length.toString() + " customLocations");
     customLocations.clear();
     print("All customLocations removed");
@@ -86,8 +86,8 @@ class CustomLocation {
       /// We need this checker to ensure that the user doesn't send the delete request twice, causing an exception
       _toDelete = true;
       await bg.BackgroundGeolocation.destroyLocation(this.getUUID());
-      CustomLocationsManager.customLocations
-          .removeWhere((element) => element.getUUID() == this.getUUID());
+      //CustomLocationsManager.customLocations
+      //    .removeWhere((element) => element.getUUID() == this.getUUID());
     }
   }
 

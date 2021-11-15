@@ -1,11 +1,13 @@
 import 'package:asm/util/env.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
 import 'package:background_fetch/background_fetch.dart';
 
+import 'app_localizations.dart';
 import 'ui/home_view.dart';
 import 'package:uuid/uuid.dart';
 
@@ -128,6 +130,32 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: appName,
+      supportedLocales: [
+        Locale('en',
+            ''), // English, no country code. The first element of this list is the default language
+        Locale('es', ''), // Spanish, no country code
+        //Locale('ca', '') // Catalan, no country code
+      ],
+      localizationsDelegates: [
+        //A class which loads the translations from JSON files
+        AppLocalizations.delegate,
+        // Built-in localization of basic text for Material widgets
+        GlobalMaterialLocalizations.delegate,
+        // Built-in localization for text direction LTR/RTL
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      // Returns a locale which will be used by the app
+      localeResolutionCallback: (locale, supportedLocales) {
+        // Check if the current device locale is supported
+        for (var supportedLocale in supportedLocales) {
+          if (supportedLocale.languageCode == locale!.languageCode) {
+            return supportedLocale;
+          }
+        }
+        // If the locale of the device is not supported, use the first one
+        // from the list (English, in this case).
+        return supportedLocales.first;
+      },
       home: HomeView(appName),
     );
   }

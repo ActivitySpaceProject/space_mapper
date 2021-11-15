@@ -1,3 +1,4 @@
+import '../app_localizations.dart';
 import '../models/list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
@@ -100,13 +101,15 @@ class _STOListViewState extends State<STOListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Locations History")),
+        appBar: AppBar(
+            title: Text(
+                AppLocalizations.of(context)!.translate("locations_history"))),
         body: ListView.builder(
           itemCount: customLocations.length,
           itemBuilder: (context, index) {
             CustomLocation thisLocation = customLocations[index];
             return Dismissible(
-              child: _tile(thisLocation),
+              child: _tile(thisLocation, context),
               background: Container(
                 child: Container(
                   margin: EdgeInsets.only(right: 10.0),
@@ -133,7 +136,7 @@ class _STOListViewState extends State<STOListView> {
         ));
   }
 
-  ListTile _tile(CustomLocation thisLocation) {
+  ListTile _tile(CustomLocation thisLocation, BuildContext context) {
     String title = thisLocation.getLocality() +
         ", " +
         thisLocation.getSubAdministrativeArea() +
@@ -141,7 +144,7 @@ class _STOListViewState extends State<STOListView> {
         thisLocation.getISOCountryCode();
     String subtitle =
         thisLocation.getTimestamp() + "\n" + thisLocation.getStreet();
-    String text = thisLocation.displayCustomText(10.0, 10.0);
+    String text = thisLocation.displayCustomText(10.0, 10.0, context);
     return ListTile(
       title: Text(title,
           style: TextStyle(

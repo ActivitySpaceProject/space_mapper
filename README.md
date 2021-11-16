@@ -3,7 +3,7 @@
 Space Mapper is a mobile phone application that lets you see your daily movements in a map. Additionally, you can participate in citizen science by sharing your anonymized location history with research institutions to help scientists research about human mobility.
 
 ## Screenshots
-<img src="https://github.com/ActivitySpaceProject/space_mapper/blob/master/Assets/images/3.0.2%2B18_screenshots.png"  width="95%"></img>
+<img src="Assets/images/3.0.2%2B18_screenshots.png"  width="95%"></img>
 
 ## How to contribute
 Do you want to contribute?

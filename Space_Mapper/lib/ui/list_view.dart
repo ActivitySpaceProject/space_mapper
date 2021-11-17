@@ -121,7 +121,37 @@ class _STOListViewState extends State<STOListView> {
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
                   CustomLocation thisLocation = snapshot.data![index];
-                  return _tile(thisLocation, context);
+                  return Dismissible(
+                    child: _tile(thisLocation, context),
+                    background: Container(
+                      child: Container(
+                        margin: EdgeInsets.only(right: 10.0),
+                        alignment: Alignment.centerRight,
+                        child:
+                            new LayoutBuilder(builder: (context, constraint) {
+                          return new Icon(Icons.delete_forever,
+                              size: constraint.biggest.height * 0.5);
+                        }),
+                      ),
+                      color: Colors.red,
+                    ),
+                    key: new UniqueKey(),
+                    onDismissed: (direction) async => {
+                      await thisLocation.deleteThisLocation(),
+                      Scaffold.of(context).showSnackBar(
+                          new SnackBar(content: new Text("Location removed")))
+                    },
+                    /*confirmDismiss: (DismissDirection direction) async {
+                      //if(direction == DismissDirection.)
+                      // if (direction == left)
+                      await thisLocation.deleteThisLocation();
+                      setState(() {
+                        //recalculateLocations();
+                        //thisLocation = snapshot.data![index];
+                      });
+                      return true;
+                    },*/
+                  );
                 });
           },
         ));

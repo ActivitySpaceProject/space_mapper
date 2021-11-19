@@ -1,33 +1,9 @@
-//import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
-
 import '../app_localizations.dart';
 
 class CustomLocationsManager {
-  //static List<CustomLocation> customLocations = [];
-
-  /*static List<CustomLocation> fetchAll({required bool sortByNewest}) {
-    if (sortByNewest) {
-      return customLocations;
-    } else {
-      return new List.from(customLocations.reversed);
-    }
-  }*/
-
-  /*static CustomLocation? fetchByUUID(String uuid) {
-    CustomLocation? ret = customLocations
-        .firstWhereOrNull((element) => element.getUUID() == uuid);
-    return ret;
-  }*/
-
-  /*static void removeAllCustomLocations() {
-    print("Removing " + customLocations.length.toString() + " customLocations");
-    customLocations.clear();
-    print("All customLocations removed");
-  }*/
-
   /// Makes timestamp readable by a human
   static String formatTimestamp(String timestamp) {
     //2021-10-25T21:25:08.210Z <- This is the original format
@@ -86,8 +62,6 @@ class CustomLocation {
       /// We need this checker to ensure that the user doesn't send the delete request twice, causing an exception
       _toDelete = true;
       await bg.BackgroundGeolocation.destroyLocation(this.getUUID());
-      //CustomLocationsManager.customLocations
-      //    .removeWhere((element) => element.getUUID() == this.getUUID());
     }
   }
 

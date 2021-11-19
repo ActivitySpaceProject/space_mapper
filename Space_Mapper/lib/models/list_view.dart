@@ -1,32 +1,41 @@
-//import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
-
+import 'package:geocoding/geocoding.dart';
 import '../app_localizations.dart';
 
 class CustomLocationsManager {
-  //static List<CustomLocation> customLocations = [];
+  static Future<List<CustomLocation>> getLocations(int maxElements) async {
+    List<CustomLocation> customLocations = [];
 
-  /*static List<CustomLocation> fetchAll({required bool sortByNewest}) {
-    if (sortByNewest) {
-      return customLocations;
-    } else {
-      return new List.from(customLocations.reversed);
+    // Make the current list to be empty. We want to fill it according to our custom parameters
+    //CustomLocationsManager.removeAllCustomLocations();
+
+    // Get a list of locations from the flutter_background_geolocation plugin database
+    List recordedLocations = await bg.BackgroundGeolocation.locations;
+
+    // n is the minimum value of either the specified maximum amount of elements (maxElements), or the current size of recordedLocations
+    int n;
+    if (maxElements <= recordedLocations.length)
+      n = maxElements;
+    else
+      n = recordedLocations.length;
+
+    // Fill the custom locations list, to display beautiful tiles instead of json data
+    for (int i = 0; i < n; ++i) {
+      // Check if there's already a location with the same UUID
+      for (int j = customLocations.length - 1; j >= 0; --j) {
+        if (recordedLocations[i]['uuid'] == customLocations[j].getUUID())
+          continue; //CustomLocationsManager.customLocations[j].getUUID()) continue;
+      }
+      // Match not found, we add the location
+      CustomLocation newLocation = await CustomLocationsManager.createCustomLocation(
+          recordedLocations[i]
+          );
+      customLocations.add(newLocation);
     }
-  }*/
-
-  /*static CustomLocation? fetchByUUID(String uuid) {
-    CustomLocation? ret = customLocations
-        .firstWhereOrNull((element) => element.getUUID() == uuid);
-    return ret;
-  }*/
-
-  /*static void removeAllCustomLocations() {
-    print("Removing " + customLocations.length.toString() + " customLocations");
-    customLocations.clear();
-    print("All customLocations removed");
-  }*/
+    return customLocations;
+  }
 
   /// Makes timestamp readable by a human
   static String formatTimestamp(String timestamp) {
@@ -41,6 +50,51 @@ class CustomLocationsManager {
       else if (timestamp[i] == ".") break;
     }
     return result;
+  }
+
+  static Future<CustomLocation> createCustomLocation(
+      var recordedLocation) async {
+    CustomLocation location = new CustomLocation();  
+
+    //Save data from flutter_background_geolocation library
+    location.setUUID(recordedLocation['uuid']);
+    location.setTimestamp(recordedLocation['timestamp']);
+    location.setActivity(recordedLocation['activity']['type']);
+    location.setSpeed(recordedLocation['coords']['speed'],
+        recordedLocation['coords']['speed_accuracy']);
+    location.setAltitude(recordedLocation['coords']['altitude'],
+        recordedLocation['coords']['altitude_accuracy']);
+
+    Placemark? placemark = await getLocationData(recordedLocation['coords']['latitude'],
+                recordedLocation['coords']['longitude']);
+
+    //Add our custom data
+    if (placemark != null) {
+      String? locality = placemark.locality;
+      String? subAdminArea = placemark.subAdministrativeArea;
+      String? street = placemark.street;
+      if (street != null) street += ", ${placemark.name}";
+      // ignore: non_constant_identifier_names
+      String? ISO = placemark.isoCountryCode;
+
+      location.setLocality(locality!);
+      location.setSubAdministrativeArea(subAdminArea!);
+      location.setStreet(street!);
+      location.setISOCountry(ISO!);
+    }
+    return location;
+  }
+  ///Get data such as city, province, postal code, street name, country...
+  static Future<Placemark?> getLocationData(double lat, double long) async {
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(
+        lat,
+        long,
+      );
+      return placemarks[0];
+    } catch (err) {
+      return null;
+    }
   }
 }
 

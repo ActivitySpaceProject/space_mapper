@@ -1,6 +1,6 @@
 import 'package:asm/models/list_view.dart';
 import 'package:test/test.dart';
-import 'package:faker/faker.dart';
+//import 'package:faker/faker.dart';
 
 void main() {
   group('Locations History Screen - Unit Tests', () {
@@ -94,7 +94,7 @@ void main() {
         });
       });*/
     });
-    group("CustomLocationsManager class", () {
+    /*group("CustomLocationsManager class", () {
       test("fetchAll and fetchByUUID", () async {
         //We create 50 fake locations to do the test
         for (int i = 0; i < 50; i++) {
@@ -150,6 +150,6 @@ void main() {
           }
         }
       });
-    });
+    });*/
   });
 }

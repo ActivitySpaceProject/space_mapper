@@ -1,4 +1,4 @@
-import 'package:collection/collection.dart';
+//import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
@@ -6,27 +6,27 @@ import 'package:flutter_background_geolocation/flutter_background_geolocation.da
 import '../app_localizations.dart';
 
 class CustomLocationsManager {
-  static List<CustomLocation> customLocations = [];
+  //static List<CustomLocation> customLocations = [];
 
-  static List<CustomLocation> fetchAll({required bool sortByNewest}) {
+  /*static List<CustomLocation> fetchAll({required bool sortByNewest}) {
     if (sortByNewest) {
       return customLocations;
     } else {
       return new List.from(customLocations.reversed);
     }
-  }
+  }*/
 
-  static CustomLocation? fetchByUUID(String uuid) {
+  /*static CustomLocation? fetchByUUID(String uuid) {
     CustomLocation? ret = customLocations
         .firstWhereOrNull((element) => element.getUUID() == uuid);
     return ret;
-  }
+  }*/
 
-  static void removeAllCustomLocations() {
+  /*static void removeAllCustomLocations() {
     print("Removing " + customLocations.length.toString() + " customLocations");
     customLocations.clear();
     print("All customLocations removed");
-  }
+  }*/
 
   /// Makes timestamp readable by a human
   static String formatTimestamp(String timestamp) {

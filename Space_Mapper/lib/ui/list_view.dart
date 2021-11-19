@@ -136,9 +136,10 @@ class _STOListViewState extends State<STOListView> {
                       color: Colors.red,
                     ),
                     key: new UniqueKey(),
+                    direction: DismissDirection.endToStart,
                     onDismissed: (direction) async => {
                       await thisLocation.deleteThisLocation(),
-                      Scaffold.of(context).showSnackBar(
+                      ScaffoldMessenger.of(context).showSnackBar(
                           new SnackBar(content: new Text("Location removed")))
                     },
                     /*confirmDismiss: (DismissDirection direction) async {

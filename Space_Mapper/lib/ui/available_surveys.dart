@@ -1,7 +1,10 @@
+import 'package:asm/mocks/mock_survey.dart';
 import 'package:flutter/material.dart';
 
 import '../app_localizations.dart';
 import '../models/surveys.dart';
+
+const ListItemHeight = 245.0;
 
 class AvailableSurveysScreen extends StatefulWidget {
   @override
@@ -38,7 +41,7 @@ class _AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
   Future<void> loadData() async {
     if (this.mounted) {
       setState(() => this.loading = true);
-      final surveys = await Survey.fetchAll();
+      final surveys = await MockSurvey.fetchAll();
       setState(() {
         this.surveys = surveys;
         this.loading = false;
@@ -61,14 +64,14 @@ class _AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
   }
 
   Widget _listViewItemBuilder(BuildContext context, int index) {
-    final location = this.surveys[index];
+    final survey = this.surveys[index];
     return GestureDetector(
-      onTap: () => _navigationToLocationDetail(context, location.id),
+      onTap: () => _navigationToLocationDetail(context, survey.id),
       child: Container(
-        //height: ListItemHeight,
-        height: 100.0,
+        height: ListItemHeight,
         child: Stack(
           children: [
+            Text(survey.name),
             //BannerImage(url: location.url, height: 300.0),
             //_tileFooter(location),
           ],

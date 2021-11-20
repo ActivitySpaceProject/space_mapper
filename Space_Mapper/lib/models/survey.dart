@@ -1,13 +1,15 @@
 class Survey {
   final int id;
   final String name;
+  final String webUrl;
   final String imageUrl;
   final String summary;
-  Survey(this.id, this.name, this.imageUrl, this.summary);
+  Survey(this.id, this.name, this.webUrl, this.imageUrl, this.summary);
 
   Survey.blank()
       : id = 0,
         name = ' ',
+        webUrl = ' ',
         imageUrl = ' ',
         summary = ' ';
 

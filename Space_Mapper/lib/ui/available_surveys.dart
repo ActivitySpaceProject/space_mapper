@@ -1,3 +1,4 @@
+import 'package:asm/ui/web_view.dart';
 import 'package:flutter/material.dart';
 
 import '../app_localizations.dart';
@@ -5,6 +6,7 @@ import '../components/banner_image.dart';
 import '../components/survey_tile.dart';
 import '../mocks/mock_survey.dart';
 import '../models/survey.dart';
+import '../ui/web_view.dart';
 import '../styles.dart';
 
 const ListItemHeight = 245.0;
@@ -69,7 +71,7 @@ class _AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
   Widget _listViewItemBuilder(BuildContext context, int index) {
     final survey = this.surveys[index];
     return GestureDetector(
-      onTap: () => _navigationToLocationDetail(context, survey.id),
+      onTap: () => _navigationToLocationDetail(context, survey.webUrl),
       child: Container(
         height: ListItemHeight,
         child: Stack(
@@ -82,9 +84,9 @@ class _AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
     );
   }
 
-  void _navigationToLocationDetail(BuildContext context, int locationID) {
-    //Navigator.push(context,
-    //    MaterialPageRoute(builder: (context) => LocationDetail(locationID)));
+  void _navigationToLocationDetail(BuildContext context, String surveyWebUrl) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => MyWebView(surveyWebUrl)));
   }
 
   Widget _tileFooter(Survey survey) {

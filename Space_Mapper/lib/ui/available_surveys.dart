@@ -1,8 +1,11 @@
-import 'package:asm/mocks/mock_survey.dart';
 import 'package:flutter/material.dart';
 
 import '../app_localizations.dart';
-import '../models/surveys.dart';
+import '../components/banner_image.dart';
+import '../components/survey_tile.dart';
+import '../mocks/mock_survey.dart';
+import '../models/survey.dart';
+import '../styles.dart';
 
 const ListItemHeight = 245.0;
 
@@ -71,9 +74,8 @@ class _AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
         height: ListItemHeight,
         child: Stack(
           children: [
-            Text(survey.name),
-            //BannerImage(url: location.url, height: 300.0),
-            //_tileFooter(location),
+            BannerImage(url: survey.imageUrl, height: 300.0),
+            _tileFooter(survey),
           ],
         ),
       ),
@@ -83,5 +85,20 @@ class _AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
   void _navigationToLocationDetail(BuildContext context, int locationID) {
     //Navigator.push(context,
     //    MaterialPageRoute(builder: (context) => LocationDetail(locationID)));
+  }
+
+  Widget _tileFooter(Survey survey) {
+    final info = SurveyTile(survey: survey, darkTheme: true);
+    final overlay = Container(
+      padding: EdgeInsets.symmetric(
+          vertical: 5.0, horizontal: Styles.horizontalPaddingDefault),
+      decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
+      child: info,
+    );
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [overlay],
+    );
   }
 }

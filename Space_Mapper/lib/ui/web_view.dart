@@ -5,7 +5,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 const kAndroidUserAgent =
     'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Mobile Safari/537.36';
-const String selectedUrl = 'https://ee.kobotoolbox.org/single/asCwpCjZ';
+
 const String userUUID_element = '/asRrkkAw4mUtpTDkjdzZzt/group_survey/userUUID';
 const String userUUID_label = userUUID_element + ':label';
 
@@ -17,15 +17,19 @@ final Set<JavascriptChannel> jsChannels = [
       }),
 ].toSet();
 
+// ignore: must_be_immutable
 class MyWebView extends StatefulWidget {
+  String selectedUrl;
+  MyWebView(this.selectedUrl);
   @override
-  _MyWebViewState createState() => _MyWebViewState();
+  _MyWebViewState createState() => _MyWebViewState(selectedUrl);
 }
 
 class _MyWebViewState extends State<MyWebView> {
+  String selectedUrl;
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
-
+  _MyWebViewState(this.selectedUrl);
   @override
   void initState() {
     super.initState();

@@ -18,7 +18,7 @@ If this project is useful for you, please consider starring this repository and 
 
 ## Contributors
 - Universitat Pompeu Fabra
-    - John Palmer
+    - John R.B. Palmer
         - [github.com/johnpalmer](https://github.com/johnpalmer)
 - CEAB-CSIC
     - Pablo Galve Millán
@@ -44,7 +44,7 @@ This repository contains the source code development version of Space Mapper. Pr
 
 This project is licensed under the [GNU GENERAL PUBLIC LICENSE](https://github.com/ActivitySpaceProject/space_mapper/blob/master/LICENSE)
 
-Copyright 2020 John R.B. Palmer
+Copyright 2021 John R.B. Palmer and Pablo Galve Millán
  
 Space Mapper is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 

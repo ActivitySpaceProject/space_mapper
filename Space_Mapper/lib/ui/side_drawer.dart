@@ -3,12 +3,13 @@ import 'package:asm/app_localizations.dart';
 import 'package:asm/models/list_view.dart';
 import 'package:asm/ui/list_view.dart';
 import 'package:asm/ui/report_an_issue.dart';
-import 'package:asm/ui/web_view.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share/share.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
+
+import 'available_surveys.dart';
 
 class ShareLocation {
   late final String _timestamp;
@@ -82,8 +83,10 @@ class SpaceMapperSideDrawer extends StatelessWidget {
                   title: Text(
                       AppLocalizations.of(context)!.translate("take_survey")),
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyWebView()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AvailableSurveysScreen()));
                   })),
           Card(
             child: ListTile(

@@ -1,4 +1,7 @@
-import 'package:asm/ui/web_view.dart';
+import 'dart:convert';
+
+import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
+    as bg;
 import 'package:flutter/material.dart';
 
 import '../app_localizations.dart';
@@ -6,6 +9,8 @@ import '../components/banner_image.dart';
 import '../components/survey_tile.dart';
 import '../mocks/mock_survey.dart';
 import '../models/survey.dart';
+import '../models/custom_locations.dart';
+import '../ui/web_view.dart';
 import '../styles.dart';
 
 const BannerImageHeight = 300.0;
@@ -157,9 +162,35 @@ class _SurveyDetailState extends State<SurveyDetail> {
     );
   }
 
-  void _navigationToSurvey(BuildContext context) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => MyWebView(survey.webUrl)));
+  Future<void> _navigationToSurvey(BuildContext context) async {
+    String locationHistoryJSON = "";
+
+    // If we have consent, send location history. Otherwise, send empty string
+    if (consent) {
+      List allLocations = await bg.BackgroundGeolocation.locations;
+      List<ShareLocation> customLocation = [];
+
+      // We get only timestamp and coordinates into our custom class
+      for (var thisLocation in allLocations) {
+        ShareLocation _loc = new ShareLocation(
+            bg.Location(thisLocation).timestamp,
+            bg.Location(thisLocation).coords.latitude,
+            bg.Location(thisLocation).coords.longitude);
+        customLocation.add(_loc);
+      }
+
+      locationHistoryJSON = jsonEncode(customLocation);
+      locationHistoryJSON = locationHistoryJSON.replaceAll("\"",
+          "'"); //We replace " into ' to avoid a javascript exception when we post it in the webview's form
+    } else {
+      locationHistoryJSON = "I do not agree to share my location history.";
+    }
+
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                MyWebView(survey.webUrl, locationHistoryJSON)));
   }
 
   Widget _renderBottomSpacer() {

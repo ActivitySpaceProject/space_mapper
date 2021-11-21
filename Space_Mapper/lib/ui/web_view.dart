@@ -19,17 +19,26 @@ final Set<JavascriptChannel> jsChannels = [
 
 // ignore: must_be_immutable
 class MyWebView extends StatefulWidget {
-  String selectedUrl;
-  MyWebView(this.selectedUrl);
+  final String selectedUrl;
+  final String locationHistoryJSON;
+  MyWebView(this.selectedUrl, this.locationHistoryJSON);
   @override
-  _MyWebViewState createState() => _MyWebViewState(selectedUrl);
+  _MyWebViewState createState() =>
+      _MyWebViewState(selectedUrl, locationHistoryJSON);
 }
 
 class _MyWebViewState extends State<MyWebView> {
-  String selectedUrl;
+  final String selectedUrl;
+  final String locationHistoryJSON;
+  final String testJSON =
+      "[timestamp: 2019] fdsgdfgdfsg dfgdsf gdfsgdf sgdfs gdfsgdf 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789  gfsagsfhas";
+
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
-  _MyWebViewState(this.selectedUrl);
+  late WebViewController _webViewcontroller;
+
+  _MyWebViewState(this.selectedUrl, this.locationHistoryJSON);
+
   @override
   void initState() {
     super.initState();
@@ -54,6 +63,7 @@ class _MyWebViewState extends State<MyWebView> {
           javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: (WebViewController webViewController) {
             _controller.complete(webViewController);
+            _webViewcontroller = webViewController;
           },
           onProgress: (int progress) {
             print("WebView is loading (progress : $progress%)");
@@ -65,6 +75,7 @@ class _MyWebViewState extends State<MyWebView> {
             print('Page started loading: $url');
           },
           onPageFinished: (String url) {
+            _setFormLocationHistory();
             print('Page finished loading: $url');
           },
           gestureNavigationEnabled: true,
@@ -77,11 +88,17 @@ class _MyWebViewState extends State<MyWebView> {
     return JavascriptChannel(
         name: 'Toaster',
         onMessageReceived: (JavascriptMessage message) {
-          // ignore: deprecated_member_use
-          Scaffold.of(context).showSnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(message.message)),
           );
         });
+  }
+
+  void _setFormLocationHistory() async {
+    sleep(Duration(seconds: 10));
+    await _webViewcontroller.runJavascript(
+        'var this_input = document.getElementsByName("/awLRwRXn4GTpdcq3aJE2WQ/Location_History")[0];this_input.value="${locationHistoryJSON}"');
+    print("Location History updated in webview.");
   }
 }
 

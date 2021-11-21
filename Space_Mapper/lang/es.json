@@ -23,5 +23,6 @@
     "select_age_group": "Selecciona grupo de edad",
     "submit": "Enviar",
     "reset": "Restablecer",
-    "gender": "género"
+    "gender": "género",
+    "about_the_project": "Sobre el proyecto"
 }

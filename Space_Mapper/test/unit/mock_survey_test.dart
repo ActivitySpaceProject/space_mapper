@@ -15,7 +15,7 @@ void main() {
   });
 
   test('test fetch', () {
-    final mockSurvey = MockSurvey.fetch(0);
+    final mockSurvey = MockSurvey.fetchByID(0);
     expect(mockSurvey, isNotNull);
     expect(mockSurvey.name, isNotEmpty);
   });

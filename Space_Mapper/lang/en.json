@@ -23,5 +23,6 @@
     "select_age_group": "Select age group",
     "submit": "Submit",
     "reset": "Reset",
-    "gender": "gender"
+    "gender": "gender",
+    "about_the_project": "About the project"
 }

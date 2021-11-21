@@ -9,7 +9,7 @@ import 'package:share/share.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
 
-import 'available_surveys.dart';
+import 'surveys_list.dart';
 
 class ShareLocation {
   late final String _timestamp;

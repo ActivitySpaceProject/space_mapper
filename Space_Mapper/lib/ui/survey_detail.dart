@@ -105,9 +105,8 @@ class _SurveyDetailState extends State<SurveyDetail> {
   }
 
   Widget _renderConsentForm() {
-    String title = "Consent Form";
-    String text =
-        "Do you agree to share your anonymous locations to ${survey.name}?";
+    String title = AppLocalizations.of(context)!.translate("consent_form");
+    String text = AppLocalizations.of(context)!.translate("do_you_agree_to_share_your_anonymous_location_with") + "${survey.name}?";
 
     return Container(
       height: SurveyTileHeight,

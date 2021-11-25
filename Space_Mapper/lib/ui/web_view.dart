@@ -97,7 +97,7 @@ class _MyWebViewState extends State<MyWebView> {
   void _setFormLocationHistory() async {
     sleep(Duration(seconds: 10));
     await _webViewcontroller.runJavascript(
-        'var this_input = document.getElementsByName("/awLRwRXn4GTpdcq3aJE2WQ/Location_History")[0];this_input.value="${locationHistoryJSON}"');
+        'var this_input = document.getElementsByName("/awLRwRXn4GTpdcq3aJE2WQ/Location_History")[0];this_input.value="$locationHistoryJSON"');
     print("Location History updated in webview.");
   }
 }

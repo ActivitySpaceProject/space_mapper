@@ -23,5 +23,8 @@
     "select_age_group": "Selecciona grupo de edad",
     "submit": "Enviar",
     "reset": "Restablecer",
-    "gender": "género"
+    "gender": "género",
+    "about_the_project": "Sobre el proyecto",
+    "consent_form" : "Consentimiento",
+    "do_you_agree_to_share_your_anonymous_location_with" : "¿Estás de acuerdo en compartir tu historial de ubicaciones anónimo con "
 }

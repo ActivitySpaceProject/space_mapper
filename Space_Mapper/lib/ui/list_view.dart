@@ -1,5 +1,5 @@
 import '../app_localizations.dart';
-import '../models/list_view.dart';
+import '../models/custom_locations.dart';
 import 'package:flutter/material.dart';
 
 class STOListView extends StatefulWidget {
@@ -9,8 +9,7 @@ class STOListView extends StatefulWidget {
   _STOListViewState createState() => _STOListViewState();
 }
 
-class _STOListViewState extends State<STOListView> { 
-
+class _STOListViewState extends State<STOListView> {
   @override
   void initState() {
     super.initState();

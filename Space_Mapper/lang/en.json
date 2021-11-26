@@ -23,5 +23,8 @@
     "select_age_group": "Select age group",
     "submit": "Submit",
     "reset": "Reset",
-    "gender": "gender"
+    "gender": "gender",
+    "about_the_project": "About the project",
+    "consent_form" : "Consent Form",
+    "do_you_agree_to_share_your_anonymous_location_with" : "Do you agree to share your anonymous locations to "
 }

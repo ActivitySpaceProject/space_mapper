@@ -29,9 +29,9 @@ class CustomLocationsManager {
           continue; //CustomLocationsManager.customLocations[j].getUUID()) continue;
       }
       // Match not found, we add the location
-      CustomLocation newLocation = await CustomLocationsManager.createCustomLocation(
-          recordedLocations[i]
-          );
+      CustomLocation newLocation =
+          await CustomLocationsManager.createCustomLocation(
+              recordedLocations[i]);
       customLocations.add(newLocation);
     }
     return customLocations;
@@ -54,7 +54,7 @@ class CustomLocationsManager {
 
   static Future<CustomLocation> createCustomLocation(
       var recordedLocation) async {
-    CustomLocation location = new CustomLocation();  
+    CustomLocation location = new CustomLocation();
 
     //Save data from flutter_background_geolocation library
     location.setUUID(recordedLocation['uuid']);
@@ -65,8 +65,9 @@ class CustomLocationsManager {
     location.setAltitude(recordedLocation['coords']['altitude'],
         recordedLocation['coords']['altitude_accuracy']);
 
-    Placemark? placemark = await getLocationData(recordedLocation['coords']['latitude'],
-                recordedLocation['coords']['longitude']);
+    Placemark? placemark = await getLocationData(
+        recordedLocation['coords']['latitude'],
+        recordedLocation['coords']['longitude']);
 
     //Add our custom data
     if (placemark != null) {
@@ -84,6 +85,7 @@ class CustomLocationsManager {
     }
     return location;
   }
+
   ///Get data such as city, province, postal code, street name, country...
   static Future<Placemark?> getLocationData(double lat, double long) async {
     try {
@@ -96,6 +98,23 @@ class CustomLocationsManager {
       return null;
     }
   }
+}
+
+/// This class should be used to share your location history to other people
+class ShareLocation {
+  late final String _timestamp;
+  final double _lat;
+  final double _long;
+
+  ShareLocation(this._timestamp, this._lat, this._long);
+
+  Map<String, dynamic> toJson() => {
+        'timestamp': _timestamp,
+        'coords': {
+          'latitude': _lat,
+          'longitude': _long,
+        }
+      };
 }
 
 class CustomLocation {

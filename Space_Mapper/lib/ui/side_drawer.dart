@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:asm/app_localizations.dart';
-import 'package:asm/models/list_view.dart';
+import 'package:asm/models/custom_locations.dart';
 import 'package:asm/ui/list_view.dart';
 import 'package:asm/ui/report_an_issue.dart';
 import 'package:flutter/material.dart';
@@ -9,25 +9,7 @@ import 'package:share/share.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
 
-import 'available_surveys.dart';
-
-class ShareLocation {
-  late final String _timestamp;
-  final double _lat;
-  final double _long;
-
-  ShareLocation(timestamp, this._lat, this._long) {
-    _timestamp = CustomLocationsManager.formatTimestamp(timestamp);
-  }
-
-  Map<String, dynamic> toJson() => {
-        'timestamp': _timestamp,
-        'coords': {
-          'latitude': _lat,
-          'longitude': _long,
-        }
-      };
-}
+import 'surveys_list.dart';
 
 class SpaceMapperSideDrawer extends StatelessWidget {
   _shareLocations() async {

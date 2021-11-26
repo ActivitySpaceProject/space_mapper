@@ -1,4 +1,4 @@
-import 'package:asm/models/list_view.dart';
+import 'package:asm/models/custom_locations.dart';
 import 'package:test/test.dart';
 //import 'package:faker/faker.dart';
 

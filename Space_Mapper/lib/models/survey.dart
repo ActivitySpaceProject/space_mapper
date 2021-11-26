@@ -10,7 +10,8 @@ class Survey {
       : id = 0,
         name = ' ',
         webUrl = ' ',
-        imageUrl = ' ',
+        imageUrl =
+            '', // Leave this without space ('' instead of ' ') to avoid an exception
         summary = ' ';
 
   static Future<List<Survey>> fetchAll() async {

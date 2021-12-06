@@ -49,7 +49,6 @@ class _SurveyDetailState extends State<SurveyDetail> {
         children: [
           _renderBody(context, survey),
           _renderFooter(context),
-          //_renderConsentForm(),
         ],
       ),
     );
@@ -70,6 +69,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
     result.add(BannerImage(url: survey.imageUrl, height: BannerImageHeight));
     result.add(_renderHeader());
     result.add(_renderConsentForm());
+    result.add(_renderFrequencyChooser());
     result.add(_renderBottomSpacer());
     return SingleChildScrollView(
         child: Column(
@@ -139,6 +139,41 @@ class _SurveyDetailState extends State<SurveyDetail> {
               )
             ],
           ),
+        ],
+      ),
+    );
+  }
+
+  Widget _renderFrequencyChooser(){
+    String title = "Choose frequency";
+String dropdownValue = 'Last week';
+
+    return Container(
+      height: SurveyTileHeight,
+      padding: EdgeInsets.symmetric(
+          //vertical: BodyVerticalPadding,
+          horizontal: Styles.horizontalPaddingDefault),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('$title',
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: Styles.surveyTileTitleLight),
+          DropdownButton(
+            value: dropdownValue,
+            onChanged: (String? newValue) {
+        setState(() {
+          dropdownValue = newValue!;
+        });
+      },items: <String>['Last week', 'Last month', 'All-time']
+          .map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),),
         ],
       ),
     );

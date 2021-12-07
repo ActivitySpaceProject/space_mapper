@@ -199,46 +199,43 @@ class _SurveyDetailState extends State<SurveyDetail> {
     );
   }
 
-  Future<String> GetLocationsToShare() async {
+  Future<String> getLocationsToShare(int maxDays) async {
     if (!consent)
       return "I do not consent to share my location history.";
-    else
-      return await CalculateJSON(dropdownValue);
-  }
+    else {
+      String ret = "";
+      DateTime now = DateTime.now();
 
-  Future<String> CalculateJSON(int maxDays) async {
-    String ret = "";
-    DateTime now = DateTime.now();
+      /// var difference = berlinWallFell.difference(moonLanding);
+      /// assert(difference.inDays == 7416);
+      List allLocations = await bg.BackgroundGeolocation.locations;
+      List<ShareLocation> customLocation = [];
 
-    /// var difference = berlinWallFell.difference(moonLanding);
-    /// assert(difference.inDays == 7416);
-    List allLocations = await bg.BackgroundGeolocation.locations;
-    List<ShareLocation> customLocation = [];
+      for (var thisLocation in allLocations) {
+        ShareLocation _loc = new ShareLocation(
+            bg.Location(thisLocation).timestamp,
+            bg.Location(thisLocation).coords.latitude,
+            bg.Location(thisLocation).coords.longitude);
 
-    for (var thisLocation in allLocations) {
-      ShareLocation _loc = new ShareLocation(
-          bg.Location(thisLocation).timestamp,
-          bg.Location(thisLocation).coords.latitude,
-          bg.Location(thisLocation).coords.longitude);
+        // Filter locations to share based on the dates provided by the user
+        var difference =
+            now.difference(_loc.timestampToDateTime(_loc.getTimestamp()));
+        if (difference.inDays <= maxDays)
+          customLocation.add(_loc);
+        else
+          break;
+      }
 
-      // Filter locations to share based on the dates provided by the user
-      var difference =
-          now.difference(_loc.timestampToDateTime(_loc.GetTimestamp()));
-      if (difference.inDays <= maxDays)
-        customLocation.add(_loc);
-      else
-        break;
+      ret = jsonEncode(customLocation);
+      ret = ret.replaceAll("\"",
+          "'"); //We replace " into ' to avoid a javascript exception when we post it in the webview's form
+
+      return ret;
     }
-
-    ret = jsonEncode(customLocation);
-    ret = ret.replaceAll("\"",
-        "'"); //We replace " into ' to avoid a javascript exception when we post it in the webview's form
-
-    return ret;
   }
 
   Future<void> _navigationToSurvey(BuildContext context) async {
-    String locationHistoryJSON = await GetLocationsToShare();
+    String locationHistoryJSON = await getLocationsToShare(dropdownValue);
 
     Navigator.push(
         context,

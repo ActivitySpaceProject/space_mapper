@@ -116,7 +116,7 @@ class ShareLocation {
         }
       };
 
-  String GetTimestamp() {
+  String getTimestamp() {
     return _timestamp;
   }
 

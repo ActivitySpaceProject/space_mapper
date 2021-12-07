@@ -30,7 +30,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
   final int surveyID;
   Survey survey = Survey.blank();
   bool consent = false;
-  String dropdownValue = 'Last week';
+  int dropdownValue = 7;
 
   _SurveyDetailState(this.surveyID);
 
@@ -70,7 +70,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
     result.add(BannerImage(url: survey.imageUrl, height: BannerImageHeight));
     result.add(_renderHeader());
     result.add(_renderConsentForm());
-    result.add(_renderFrequencyChooser());
+    if (consent) result.add(_renderFrequencyChooser());
     result.add(_renderBottomSpacer());
     return SingleChildScrollView(
         child: Column(
@@ -148,7 +148,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
   }
 
   Widget _renderFrequencyChooser() {
-    String title = "Choose frequency";
+    String title = "Days to share";
 
     return Container(
       height: SurveyTileHeight,
@@ -165,16 +165,15 @@ class _SurveyDetailState extends State<SurveyDetail> {
               style: Styles.surveyTileTitleLight),
           DropdownButton(
             value: dropdownValue,
-            onChanged: (String? newValue) {
+            onChanged: (int? newValue) {
               setState(() {
                 dropdownValue = newValue!;
               });
             },
-            items: <String>['Last week', 'Last month', 'All-time']
-                .map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
+            items: <int>[7, 30, 365].map<DropdownMenuItem<int>>((int value) {
+              return DropdownMenuItem<int>(
                 value: value,
-                child: Text(value),
+                child: Text("$value"),
               );
             }).toList(),
           ),
@@ -200,29 +199,46 @@ class _SurveyDetailState extends State<SurveyDetail> {
     );
   }
 
-  Future<void> _navigationToSurvey(BuildContext context) async {
-    String locationHistoryJSON = "";
+  Future<String> GetLocationsToShare() async {
+    if (!consent)
+      return "I do not consent to share my location history.";
+    else
+      return await CalculateJSON(dropdownValue);
+  }
 
-    // If we have consent, send location history. Otherwise, send empty string
-    if (consent) {
-      List allLocations = await bg.BackgroundGeolocation.locations;
-      List<ShareLocation> customLocation = [];
+  Future<String> CalculateJSON(int maxDays) async {
+    String ret = "";
+    DateTime now = DateTime.now();
 
-      // We get only timestamp and coordinates into our custom class
-      for (var thisLocation in allLocations) {
-        ShareLocation _loc = new ShareLocation(
-            bg.Location(thisLocation).timestamp,
-            bg.Location(thisLocation).coords.latitude,
-            bg.Location(thisLocation).coords.longitude);
+    /// var difference = berlinWallFell.difference(moonLanding);
+    /// assert(difference.inDays == 7416);
+    List allLocations = await bg.BackgroundGeolocation.locations;
+    List<ShareLocation> customLocation = [];
+
+    for (var thisLocation in allLocations) {
+      ShareLocation _loc = new ShareLocation(
+          bg.Location(thisLocation).timestamp,
+          bg.Location(thisLocation).coords.latitude,
+          bg.Location(thisLocation).coords.longitude);
+
+      // Filter locations to share based on the dates provided by the user
+      var difference =
+          now.difference(_loc.timestampToDateTime(_loc.GetTimestamp()));
+      if (difference.inDays <= maxDays)
         customLocation.add(_loc);
-      }
-
-      locationHistoryJSON = jsonEncode(customLocation);
-      locationHistoryJSON = locationHistoryJSON.replaceAll("\"",
-          "'"); //We replace " into ' to avoid a javascript exception when we post it in the webview's form
-    } else {
-      locationHistoryJSON = "I do not agree to share my location history.";
+      else
+        break;
     }
+
+    ret = jsonEncode(customLocation);
+    ret = ret.replaceAll("\"",
+        "'"); //We replace " into ' to avoid a javascript exception when we post it in the webview's form
+
+    return ret;
+  }
+
+  Future<void> _navigationToSurvey(BuildContext context) async {
+    String locationHistoryJSON = await GetLocationsToShare();
 
     Navigator.push(
         context,

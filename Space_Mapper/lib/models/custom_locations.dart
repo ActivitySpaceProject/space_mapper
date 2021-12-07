@@ -115,6 +115,17 @@ class ShareLocation {
           'longitude': _long,
         }
       };
+
+  String GetTimestamp() {
+    return _timestamp;
+  }
+
+  DateTime timestampToDateTime(String timestamp) {
+    int year = int.parse(timestamp.substring(0, 4));
+    int month = int.parse(timestamp.substring(5, 7));
+    int day = int.parse(timestamp.substring(8, 10));
+    return DateTime(year, month, day);
+  }
 }
 
 class CustomLocation {

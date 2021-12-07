@@ -30,6 +30,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
   final int surveyID;
   Survey survey = Survey.blank();
   bool consent = false;
+  int dropdownValue = 7;
 
   _SurveyDetailState(this.surveyID);
 
@@ -49,7 +50,6 @@ class _SurveyDetailState extends State<SurveyDetail> {
         children: [
           _renderBody(context, survey),
           _renderFooter(context),
-          //_renderConsentForm(),
         ],
       ),
     );
@@ -70,6 +70,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
     result.add(BannerImage(url: survey.imageUrl, height: BannerImageHeight));
     result.add(_renderHeader());
     result.add(_renderConsentForm());
+    if (consent) result.add(_renderFrequencyChooser());
     result.add(_renderBottomSpacer());
     return SingleChildScrollView(
         child: Column(
@@ -106,7 +107,9 @@ class _SurveyDetailState extends State<SurveyDetail> {
 
   Widget _renderConsentForm() {
     String title = AppLocalizations.of(context)!.translate("consent_form");
-    String text = AppLocalizations.of(context)!.translate("do_you_agree_to_share_your_anonymous_location_with") + "${survey.name}?";
+    String text = AppLocalizations.of(context)!
+            .translate("do_you_agree_to_share_your_anonymous_location_with") +
+        "${survey.name}?";
 
     return Container(
       height: SurveyTileHeight,
@@ -144,6 +147,41 @@ class _SurveyDetailState extends State<SurveyDetail> {
     );
   }
 
+  Widget _renderFrequencyChooser() {
+    String title = "Days to share";
+
+    return Container(
+      height: SurveyTileHeight,
+      padding: EdgeInsets.symmetric(
+          //vertical: BodyVerticalPadding,
+          horizontal: Styles.horizontalPaddingDefault),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('$title',
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: Styles.surveyTileTitleLight),
+          DropdownButton(
+            value: dropdownValue,
+            onChanged: (int? newValue) {
+              setState(() {
+                dropdownValue = newValue!;
+              });
+            },
+            items: <int>[7, 30, 365].map<DropdownMenuItem<int>>((int value) {
+              return DropdownMenuItem<int>(
+                value: value,
+                child: Text("$value"),
+              );
+            }).toList(),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _renderTakeSurveyButton() {
     return TextButton(
       //color: Styles.accentColor,
@@ -161,29 +199,43 @@ class _SurveyDetailState extends State<SurveyDetail> {
     );
   }
 
-  Future<void> _navigationToSurvey(BuildContext context) async {
-    String locationHistoryJSON = "";
+  Future<String> getLocationsToShare(int maxDays) async {
+    if (!consent)
+      return "I do not consent to share my location history.";
+    else {
+      String ret = "";
+      DateTime now = DateTime.now();
 
-    // If we have consent, send location history. Otherwise, send empty string
-    if (consent) {
+      /// var difference = berlinWallFell.difference(moonLanding);
+      /// assert(difference.inDays == 7416);
       List allLocations = await bg.BackgroundGeolocation.locations;
       List<ShareLocation> customLocation = [];
 
-      // We get only timestamp and coordinates into our custom class
       for (var thisLocation in allLocations) {
         ShareLocation _loc = new ShareLocation(
             bg.Location(thisLocation).timestamp,
             bg.Location(thisLocation).coords.latitude,
             bg.Location(thisLocation).coords.longitude);
-        customLocation.add(_loc);
+
+        // Filter locations to share based on the dates provided by the user
+        var difference =
+            now.difference(_loc.timestampToDateTime(_loc.getTimestamp()));
+        if (difference.inDays <= maxDays)
+          customLocation.add(_loc);
+        else
+          break;
       }
 
-      locationHistoryJSON = jsonEncode(customLocation);
-      locationHistoryJSON = locationHistoryJSON.replaceAll("\"",
+      ret = jsonEncode(customLocation);
+      ret = ret.replaceAll("\"",
           "'"); //We replace " into ' to avoid a javascript exception when we post it in the webview's form
-    } else {
-      locationHistoryJSON = "I do not agree to share my location history.";
+
+      return ret;
     }
+  }
+
+  Future<void> _navigationToSurvey(BuildContext context) async {
+    String locationHistoryJSON = await getLocationsToShare(dropdownValue);
 
     Navigator.push(
         context,

@@ -30,6 +30,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
   final int surveyID;
   Survey survey = Survey.blank();
   bool consent = false;
+  String dropdownValue = 'Last week';
 
   _SurveyDetailState(this.surveyID);
 
@@ -106,7 +107,9 @@ class _SurveyDetailState extends State<SurveyDetail> {
 
   Widget _renderConsentForm() {
     String title = AppLocalizations.of(context)!.translate("consent_form");
-    String text = AppLocalizations.of(context)!.translate("do_you_agree_to_share_your_anonymous_location_with") + "${survey.name}?";
+    String text = AppLocalizations.of(context)!
+            .translate("do_you_agree_to_share_your_anonymous_location_with") +
+        "${survey.name}?";
 
     return Container(
       height: SurveyTileHeight,
@@ -144,9 +147,8 @@ class _SurveyDetailState extends State<SurveyDetail> {
     );
   }
 
-  Widget _renderFrequencyChooser(){
+  Widget _renderFrequencyChooser() {
     String title = "Choose frequency";
-String dropdownValue = 'Last week';
 
     return Container(
       height: SurveyTileHeight,
@@ -164,16 +166,18 @@ String dropdownValue = 'Last week';
           DropdownButton(
             value: dropdownValue,
             onChanged: (String? newValue) {
-        setState(() {
-          dropdownValue = newValue!;
-        });
-      },items: <String>['Last week', 'Last month', 'All-time']
-          .map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),),
+              setState(() {
+                dropdownValue = newValue!;
+              });
+            },
+            items: <String>['Last week', 'Last month', 'All-time']
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+          ),
         ],
       ),
     );

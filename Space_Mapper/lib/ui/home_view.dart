@@ -365,13 +365,11 @@ class HomeViewState extends State<HomeView>
           },
         ),
         actions: <Widget>[
-          /*
           IconButton(
             icon: Icon(Icons.gps_fixed),
             color: Colors.yellow,
-            onPressed:
-              _onClickGetCurrentPosition,
-          ),*/
+            onPressed: _onClickGetCurrentPosition,
+          ),
           Switch(
             value: _enabled,
             onChanged: _onClickEnable,
@@ -388,7 +386,7 @@ class HomeViewState extends State<HomeView>
               context, MaterialPageRoute(builder: (context) => FormView()));
           _onClickGetCurrentPosition();
         },
-        child: Icon(Icons.gps_fixed),
+        child: Icon(Icons.person),
         backgroundColor: Colors.blue,
       ),
     );

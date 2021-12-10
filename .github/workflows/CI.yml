@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - development
+  pull_request:
+    branches:
+      - master
+      - development
 
 jobs:
 
@@ -15,7 +19,7 @@ jobs:
         java-version: '12.x'
     - uses: subosito/flutter-action@v1
       with:
-          channel: 'beta'
+          channel: 'stable'
          
     - name: Get flutter dependencies
       run: flutter pub get
@@ -25,6 +29,6 @@ jobs:
       run: flutter analyze
       working-directory: Space_Mapper
     
-    - name: Run widget tests for our flutter project.
+    - name: Run tests for our flutter project.
       run: flutter test
       working-directory: Space_Mapper

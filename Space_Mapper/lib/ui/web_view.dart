@@ -3,29 +3,41 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-const String kNavigationExamplePage = '''
-<!DOCTYPE html><html>
-<head><title>Navigation Delegate Example</title></head>
-<body>
-<p>
-The navigation delegate is set to block navigation to the youtube website.
-</p>
-<ul>
-<ul><a href="https://www.youtube.com/">https://www.youtube.com/</a></ul>
-<ul><a href="https://www.google.com/">https://www.google.com/</a></ul>
-</ul>
-</body>
-</html>
-''';
+const kAndroidUserAgent =
+    'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Mobile Safari/537.36';
 
+const String userUUID_element = '/asRrkkAw4mUtpTDkjdzZzt/group_survey/userUUID';
+const String userUUID_label = userUUID_element + ':label';
+
+final Set<JavascriptChannel> jsChannels = [
+  JavascriptChannel(
+      name: 'Print',
+      onMessageReceived: (JavascriptMessage message) {
+        print(message.message);
+      }),
+].toSet();
+
+// ignore: must_be_immutable
 class MyWebView extends StatefulWidget {
+  final String selectedUrl;
+  final String locationHistoryJSON;
+  MyWebView(this.selectedUrl, this.locationHistoryJSON);
   @override
-  _MyWebViewState createState() => _MyWebViewState();
+  _MyWebViewState createState() =>
+      _MyWebViewState(selectedUrl, locationHistoryJSON);
 }
 
 class _MyWebViewState extends State<MyWebView> {
+  final String selectedUrl;
+  final String locationHistoryJSON;
+  final String testJSON =
+      "[timestamp: 2019] fdsgdfgdfsg dfgdsf gdfsgdf sgdfs gdfsgdf 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789  gfsagsfhas";
+
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
+  late WebViewController _webViewcontroller;
+
+  _MyWebViewState(this.selectedUrl, this.locationHistoryJSON);
 
   @override
   void initState() {
@@ -47,10 +59,11 @@ class _MyWebViewState extends State<MyWebView> {
       // to allow calling Scaffold.of(context) so we can show a snackbar.
       body: Builder(builder: (BuildContext context) {
         return WebView(
-          initialUrl: 'https://ee.kobotoolbox.org/single/asCwpCjZ',
+          initialUrl: selectedUrl,
           javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: (WebViewController webViewController) {
             _controller.complete(webViewController);
+            _webViewcontroller = webViewController;
           },
           onProgress: (int progress) {
             print("WebView is loading (progress : $progress%)");
@@ -58,18 +71,11 @@ class _MyWebViewState extends State<MyWebView> {
           javascriptChannels: <JavascriptChannel>{
             _toasterJavascriptChannel(context),
           },
-          navigationDelegate: (NavigationRequest request) {
-            if (request.url.startsWith('https://www.youtube.com/')) {
-              print('blocking navigation to $request}');
-              return NavigationDecision.prevent;
-            }
-            print('allowing navigation to $request');
-            return NavigationDecision.navigate;
-          },
           onPageStarted: (String url) {
             print('Page started loading: $url');
           },
           onPageFinished: (String url) {
+            _setFormLocationHistory();
             print('Page finished loading: $url');
           },
           gestureNavigationEnabled: true,
@@ -82,11 +88,17 @@ class _MyWebViewState extends State<MyWebView> {
     return JavascriptChannel(
         name: 'Toaster',
         onMessageReceived: (JavascriptMessage message) {
-          // ignore: deprecated_member_use
-          Scaffold.of(context).showSnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(message.message)),
           );
         });
+  }
+
+  void _setFormLocationHistory() async {
+    sleep(Duration(seconds: 10));
+    await _webViewcontroller.runJavascript(
+        'var this_input = document.getElementsByName("/awLRwRXn4GTpdcq3aJE2WQ/Location_History")[0];this_input.value="$locationHistoryJSON"');
+    print("Location History updated in webview.");
   }
 }
 

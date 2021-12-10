@@ -1,12 +1,37 @@
+import 'dart:convert';
+import 'package:asm/app_localizations.dart';
+import 'package:asm/models/custom_locations.dart';
 import 'package:asm/ui/list_view.dart';
-import 'package:asm/ui/web_view.dart';
+import 'package:asm/ui/report_an_issue.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share/share.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
 
+import 'surveys_list.dart';
+
 class SpaceMapperSideDrawer extends StatelessWidget {
+  _shareLocations() async {
+    var now = new DateTime.now();
+    List allLocations = await bg.BackgroundGeolocation.locations;
+    List<ShareLocation> customLocation = [];
+
+    // We get only timestamp and coordinates into our custom class
+    for (var thisLocation in allLocations) {
+      ShareLocation _loc = new ShareLocation(
+          bg.Location(thisLocation).timestamp,
+          bg.Location(thisLocation).coords.latitude,
+          bg.Location(thisLocation).coords.longitude);
+      customLocation.add(_loc);
+    }
+
+    String prettyString = JsonEncoder.withIndent('  ').convert(customLocation);
+    String subject =
+        "space_mapper_trajectory_" + now.toIso8601String() + ".json";
+    Share.share(prettyString, subject: subject);
+  }
+
   _launchProjectURL() async {
     const url = 'http://activityspaceproject.com/';
     if (await canLaunch(url)) {
@@ -14,13 +39,6 @@ class SpaceMapperSideDrawer extends StatelessWidget {
     } else {
       throw 'Could not launch $url';
     }
-  }
-
-  _shareLocations() async {
-    var now = new DateTime.now();
-    List allLocations = await bg.BackgroundGeolocation.locations;
-    Share.share(allLocations.toString(),
-        subject: "space_mapper_trajectory_" + now.toIso8601String() + ".json");
   }
 
   @override
@@ -33,7 +51,8 @@ class SpaceMapperSideDrawer extends StatelessWidget {
           Container(
             height: 100,
             child: DrawerHeader(
-              child: Text('Space Mapper Menu',
+              child: Text(
+                  AppLocalizations.of(context)!.translate("side_drawer_title"),
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
               decoration: BoxDecoration(
                 color: Colors.blueGrey[200],
@@ -43,15 +62,19 @@ class SpaceMapperSideDrawer extends StatelessWidget {
           Card(
               child: ListTile(
                   leading: const Icon(Icons.edit),
-                  title: Text('Take survey'),
+                  title: Text(
+                      AppLocalizations.of(context)!.translate("take_survey")),
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyWebView()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AvailableSurveysScreen()));
                   })),
           Card(
             child: ListTile(
               leading: const Icon(Icons.list),
-              title: Text('List Locations'),
+              title: Text(
+                  AppLocalizations.of(context)!.translate("locations_history")),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => STOListView()));
@@ -61,7 +84,8 @@ class SpaceMapperSideDrawer extends StatelessWidget {
           Card(
             child: ListTile(
               leading: const Icon(Icons.share),
-              title: Text('Share Locations'),
+              title: Text(
+                  AppLocalizations.of(context)!.translate("share_locations")),
               onTap: () {
                 _shareLocations();
               },
@@ -70,9 +94,21 @@ class SpaceMapperSideDrawer extends StatelessWidget {
           Card(
             child: ListTile(
               leading: const Icon(Icons.web),
-              title: Text('Visit Project Website'),
+              title: Text(AppLocalizations.of(context)!
+                  .translate("visit_project_website")),
               onTap: () {
                 _launchProjectURL();
+              },
+            ),
+          ),
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.report_problem_outlined),
+              title: Text(
+                  AppLocalizations.of(context)!.translate("report_an_issue")),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ReportAnIssue()));
               },
             ),
           )

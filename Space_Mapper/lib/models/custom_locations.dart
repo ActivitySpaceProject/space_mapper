@@ -22,7 +22,7 @@ class CustomLocationsManager {
       n = recordedLocations.length;
 
     // Fill the custom locations list, to display beautiful tiles instead of json data
-    for (int i = 0; i < n; ++i) {
+    for (int i = n - 1; i >= 0; --i) {
       // Check if there's already a location with the same UUID
       for (int j = customLocations.length - 1; j >= 0; --j) {
         if (recordedLocations[i]['uuid'] == customLocations[j].getUUID())

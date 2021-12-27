@@ -28,7 +28,7 @@ dependencies:
   http: ^0.13.4
   flutter_map: ^0.14.0
   webview_flutter: ^2.8.0
-  sqflite: ^2.0.0+4
+  sqflite: ^2.0.1
   path_provider: ^2.0.5
   share: ^2.0.4
   uuid: 3.0.5

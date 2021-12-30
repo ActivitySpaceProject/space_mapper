@@ -27,15 +27,65 @@ class StorageDatabase {
   Future _createDB(Database db, int version) async {
     final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     final stringType = 'STRING NOT NULL';
-    final integerType = 'INTEGER NOT NULL';
+    //final integerType = 'INTEGER NOT NULL';
 
     await db.execute('''
       CREATE TABLE $tableContacts(
         ${ContactFields.id} $idType,
         ${ContactFields.gender} $stringType,
-        ${ContactFields.ageGroup} $integerType,
+        ${ContactFields.ageGroup} $stringType
       )   
     ''');
+  }
+
+  Future<Contact> create(Contact contact) async {
+    final db = await instance.database;
+
+    final id = await db.insert(tableContacts, contact.toJson());
+    return contact.copy(id: id);
+  }
+
+  Future<Contact> readContact(int id) async {
+    final db = await instance.database;
+
+    final maps = await db.query(
+      tableContacts,
+      columns: ContactFields.values,
+      where: '${ContactFields.id} = ?',
+      whereArgs: [id],
+    );
+
+    if (maps.isNotEmpty) {
+      return Contact.fromJson(maps.first);
+    } else {
+      throw Exception('ID $id not found');
+    }
+  }
+
+  Future<List<Contact>> readAllContacts() async {
+    final db = await instance.database;
+
+    final result = await db.query(tableContacts);
+
+    return result.map((json) => Contact.fromJson(json)).toList();
+  }
+
+  Future<int> update(Contact contact) async {
+    final db = await instance.database;
+
+    return db.update(
+      tableContacts,
+      contact.toJson(),
+      where: '${ContactFields.id} = ?',
+      whereArgs: [contact.id],
+    );
+  }
+
+  Future<int> delete(int id) async {
+    final db = await instance.database;
+
+    return await db.delete(tableContacts,
+        where: '${ContactFields.id} = ?', whereArgs: [id]);
   }
 
   Future close() async {

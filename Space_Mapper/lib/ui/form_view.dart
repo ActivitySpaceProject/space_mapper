@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 import '../app_localizations.dart';
+import '../db/database.dart';
+import '../models/contacts.dart';
 
 class FormView extends StatelessWidget {
   @override
@@ -26,6 +28,7 @@ class MyCustomForm extends StatefulWidget {
 // Create a corresponding State class.
 // This class holds data related to the form.
 class MyCustomFormState extends State<MyCustomForm> {
+  MyCustomFormState();
   var data;
   bool autoValidate = true;
   bool readOnly = false;
@@ -35,6 +38,16 @@ class MyCustomFormState extends State<MyCustomForm> {
   //GlobalKey<FormFieldState>();
 
   //ValueChanged _onChanged = (val) => print(val);
+
+  @override
+  void initState() {
+    super.initState();
+    testGetFromDatabase();
+  }
+
+  //Data to share
+  String? gender = "not_set";
+  String? ageGroup = "not_set";
 
   @override
   Widget build(BuildContext context) {
@@ -60,21 +73,24 @@ class MyCustomFormState extends State<MyCustomForm> {
                           .translate("was_the_contact_male_female?")),
                   options: [
                     FormBuilderFieldOption(
-                      value: 1,
+                      value: "male",
                       child:
                           Text(AppLocalizations.of(context)!.translate("male")),
                     ),
                     FormBuilderFieldOption(
-                      value: 2,
+                      value: "female",
                       child: Text(
                           AppLocalizations.of(context)!.translate("female")),
                     ),
                     FormBuilderFieldOption(
-                      value: 3,
+                      value: "other",
                       child: Text(
                           AppLocalizations.of(context)!.translate("other")),
                     ),
                   ],
+                  onChanged: (value) => setState(() {
+                    gender = value as String?;
+                  }),
                 ),
                 FormBuilderDropdown(
                   name: 'age',
@@ -99,6 +115,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                       .map((age) =>
                           DropdownMenuItem(value: age, child: Text("$age")))
                       .toList(),
+                  onChanged: (value) => setState(() {
+                    ageGroup = value as String?;
+                  }),
                 ),
               ],
             ),
@@ -107,8 +126,10 @@ class MyCustomFormState extends State<MyCustomForm> {
             children: <Widget>[
               MaterialButton(
                 child: Text(AppLocalizations.of(context)!.translate("submit")),
-                onPressed: () {
+                onPressed: () async {
                   if (_fbKey.currentState!.saveAndValidate()) {
+                    await addContact();
+                    Navigator.of(context).pop();
                     print(_fbKey.currentState!.value);
                   }
                 },
@@ -124,5 +145,24 @@ class MyCustomFormState extends State<MyCustomForm> {
         ],
       )),
     );
+  }
+
+  Future addContact() async {
+    final contact = Contact(gender: gender!, ageGroup: ageGroup!);
+
+    await StorageDatabase.instance.create(contact);
+  }
+
+  // TODO: Remove this test function
+  Future<Widget> testGetFromDatabase() async {
+    List<Contact> contacts = await StorageDatabase.instance.readAllContacts();
+    String ret = "";
+    for (int i = 0; i < contacts.length; ++i) {
+      ret += "gender: " +
+          contacts[i].gender +
+          " | ageGroup: " +
+          contacts[i].ageGroup;
+    }
+    return Text(ret);
   }
 }

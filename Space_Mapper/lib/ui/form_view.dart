@@ -148,7 +148,8 @@ class MyCustomFormState extends State<MyCustomForm> {
   }
 
   Future addContact() async {
-    final contact = Contact(gender: gender!, ageGroup: ageGroup!);
+    DateTime date = DateTime.now();
+    final contact = Contact(gender: gender!, ageGroup: ageGroup!, date: date);
 
     await StorageDatabase.instance.create(contact);
   }
@@ -161,7 +162,9 @@ class MyCustomFormState extends State<MyCustomForm> {
       ret += "gender: " +
           contacts[i].gender +
           " | ageGroup: " +
-          contacts[i].ageGroup;
+          contacts[i].ageGroup +
+          " | date: " +
+          contacts[i].date.toString();
     }
     return Text(ret);
   }

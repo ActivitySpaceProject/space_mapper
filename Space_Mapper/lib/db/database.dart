@@ -33,7 +33,8 @@ class StorageDatabase {
       CREATE TABLE $tableContacts(
         ${ContactFields.id} $idType,
         ${ContactFields.gender} $stringType,
-        ${ContactFields.ageGroup} $stringType
+        ${ContactFields.ageGroup} $stringType,
+        ${ContactFields.millisecondsSinceEpoch} $stringType
       )   
     ''');
   }

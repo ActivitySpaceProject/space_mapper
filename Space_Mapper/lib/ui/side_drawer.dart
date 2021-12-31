@@ -3,6 +3,7 @@ import 'package:asm/app_localizations.dart';
 import 'package:asm/models/custom_locations.dart';
 import 'package:asm/ui/list_view.dart';
 import 'package:asm/ui/report_an_issue.dart';
+import 'package:asm/ui/statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share/share.dart';
@@ -109,6 +110,16 @@ class SpaceMapperSideDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => ReportAnIssue()));
+              },
+            ),
+          ),
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.bar_chart),
+              title: Text("Statistics"),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyStatistics()));
               },
             ),
           )

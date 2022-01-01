@@ -62,8 +62,22 @@ class _MyStatisticsState extends State<MyStatistics>
             )),
         body: TabBarView(
           children: [
-            displayMonthlyContacts(),
-            displayContactsByGender(),
+            ListView(
+              children: <Widget>[
+                new Card(
+                  margin: EdgeInsets.only(top: 20.0),
+                  child: displayMonthlyContacts(),
+                ),
+              ],
+            ),
+            ListView(
+              children: <Widget>[
+                new Card(
+                  margin: EdgeInsets.only(top: 20.0),
+                  child: displayContactsByGender(),
+                ),
+              ],
+            )
           ],
         ),
       ),
@@ -124,7 +138,7 @@ class _MyStatisticsState extends State<MyStatistics>
     if (_monthlyContactData.length > 0) {
       final List<Charts.Series<MonthlyContactData, DateTime>> seriesList = [
         Charts.Series<MonthlyContactData, DateTime>(
-          id: 'chart000',
+          id: 'monthlyContactsChart',
           domainFn: (MonthlyContactData chartData, _) => chartData.date,
           measureFn: (MonthlyContactData chartData, _) => chartData.value,
           colorFn: (MonthlyContactData chartData, _) =>
@@ -135,6 +149,16 @@ class _MyStatisticsState extends State<MyStatistics>
       final Charts.TimeSeriesChart chart = Charts.TimeSeriesChart(
         seriesList,
         animate: true,
+        behaviors: [
+          new Charts.ChartTitle('Date',
+              behaviorPosition: Charts.BehaviorPosition.bottom,
+              titleOutsideJustification:
+                  Charts.OutsideJustification.middleDrawArea),
+          new Charts.ChartTitle('# of contacts',
+              behaviorPosition: Charts.BehaviorPosition.start,
+              titleOutsideJustification:
+                  Charts.OutsideJustification.middleDrawArea),
+        ],
       );
       widgets.add(Text(
         "Contacts in the last 12 months",
@@ -154,24 +178,40 @@ class _MyStatisticsState extends State<MyStatistics>
     );
   }
 
+  // Display gender as string
+  String datas(int gender, int value) {
+    if (gender == 0) {
+      return value.toString() + ": Male";
+    } else if (gender == 1) {
+      return value.toString() + ": Female";
+    } else if (gender == 2) {
+      return value.toString() + ": Other";
+    }
+    return "error";
+  }
+
   Widget displayContactsByGender() {
     final List<Widget> widgets = <Widget>[];
+
     if (_contactByGenderData.length > 0) {
       final List<Charts.Series<ContactByGenderData, int>> seriesList = [
         Charts.Series<ContactByGenderData, int>(
-          id: 'gender',
-          domainFn: (ContactByGenderData chartData, _) => chartData.gender,
-          measureFn: (ContactByGenderData chartData, _) => chartData.value,
-          colorFn: (ContactByGenderData chartData, _) =>
-              Charts.MaterialPalette.blue.shadeDefault,
-          data: _contactByGenderData,
-        ),
+            id: 'genderChart',
+            domainFn: (ContactByGenderData chartData, _) => chartData.gender,
+            measureFn: (ContactByGenderData chartData, _) => chartData.value,
+            //colorFn: (ContactByGenderData chartData, _) =>
+            //    Charts.MaterialPalette.blue.shadeDefault,
+            data: _contactByGenderData,
+            labelAccessorFn: (ContactByGenderData row, _) =>
+                datas(row.gender, row.value)),
       ];
-      final Charts.PieChart chart = Charts.PieChart<int>(seriesList,
-          animate: true,
-          defaultRenderer: new Charts.ArcRendererConfig(
-              arcWidth: 60,
-              arcRendererDecorators: [new Charts.ArcLabelDecorator()]));
+      final Charts.PieChart chart = Charts.PieChart<int>(
+        seriesList,
+        animate: true,
+        defaultRenderer: new Charts.ArcRendererConfig(
+            arcWidth: 60,
+            arcRendererDecorators: [new Charts.ArcLabelDecorator()]),
+      );
       widgets.add(Text(
         "Contacts by gender",
         style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
@@ -180,6 +220,7 @@ class _MyStatisticsState extends State<MyStatistics>
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         child: SizedBox(
           height: 250,
+          //width: 100,
           child: chart,
         ),
       ));

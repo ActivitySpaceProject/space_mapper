@@ -17,9 +17,8 @@ class MonthlyContactData {
 }
 
 class ContactByGenderData {
-  final int
-      gender; //TODO: Change to string. Currently it's -> 0=male, 1=female, 2=other
-  int value = 0;
+  final int gender;
+  int value;
 
   ContactByGenderData(this.gender, this.value);
 }

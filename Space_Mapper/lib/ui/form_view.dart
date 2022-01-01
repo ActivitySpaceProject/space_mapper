@@ -42,7 +42,6 @@ class MyCustomFormState extends State<MyCustomForm> {
   @override
   void initState() {
     super.initState();
-    testGetFromDatabase();
   }
 
   //Data to share
@@ -152,20 +151,5 @@ class MyCustomFormState extends State<MyCustomForm> {
     final contact = Contact(gender: gender!, ageGroup: ageGroup!, date: date);
 
     await StorageDatabase.instance.create(contact);
-  }
-
-  // TODO: Remove this test function
-  Future<Widget> testGetFromDatabase() async {
-    List<Contact> contacts = await StorageDatabase.instance.readAllContacts();
-    String ret = "";
-    for (int i = 0; i < contacts.length; ++i) {
-      ret += "gender: " +
-          contacts[i].gender +
-          " | ageGroup: " +
-          contacts[i].ageGroup +
-          " | date: " +
-          contacts[i].date.toString();
-    }
-    return Text(ret);
   }
 }

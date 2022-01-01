@@ -3,9 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-const kAndroidUserAgent =
-    'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Mobile Safari/537.36';
-
 const String userUUID_element = '/asRrkkAw4mUtpTDkjdzZzt/group_survey/userUUID';
 const String userUUID_label = userUUID_element + ':label';
 
@@ -30,8 +27,6 @@ class MyWebView extends StatefulWidget {
 class _MyWebViewState extends State<MyWebView> {
   final String selectedUrl;
   final String locationHistoryJSON;
-  final String testJSON =
-      "[timestamp: 2019] fdsgdfgdfsg dfgdsf gdfsgdf sgdfs gdfsgdf 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789 123456789  gfsagsfhas";
 
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
@@ -95,9 +90,10 @@ class _MyWebViewState extends State<MyWebView> {
   }
 
   void _setFormLocationHistory() async {
-    sleep(Duration(seconds: 10));
+    sleep(Duration(seconds: 1));
+
     await _webViewcontroller.runJavascript(
-        'var this_input = document.getElementsByName("/awLRwRXn4GTpdcq3aJE2WQ/Location_History")[0];this_input.value="$locationHistoryJSON"');
+        'var event = new Event("change", {bubbles: true,});                                                                                             var this_input = document.getElementsByName("/awLRwRXn4GTpdcq3aJE2WQ/Location_History")[0];                                               this_input.value = "test2";                                                                                                                 this_input.dispatchEvent(event);');
     print("Location History updated in webview.");
   }
 }

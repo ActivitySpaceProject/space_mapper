@@ -15,20 +15,20 @@ version: 3.1.0+19
 publish_to: none
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.14.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_localizations: 
+  flutter_localizations:
     sdk: flutter
   flutter_background_geolocation: ^4.3.0
   shared_preferences: ^2.0.8
-  background_fetch: ^1.0.1  
+  background_fetch: ^1.0.1
   http: ^0.13.4
   flutter_map: ^0.14.0
-  webview_flutter: ^2.3.1
-  sqflite: ^2.0.0+4
+  webview_flutter: ^2.8.0
+  sqflite: ^2.0.1
   path_provider: ^2.0.5
   share: ^2.0.4
   uuid: 3.0.5
@@ -38,33 +38,32 @@ dependencies:
   mailto: ^2.0.0
   geocoding: ^2.0.1
   faker: ^2.0.0
-  
+  charts_flutter: ^0.12.0
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.3
   flutter_vector_icons: ^1.0.0
-  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   test: ^1.17.10
   network_image_mock: ^2.0.1
 
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-   - lang/en.json
-   - lang/es.json
+    - lang/en.json
+    - lang/es.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

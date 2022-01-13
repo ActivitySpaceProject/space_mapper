@@ -38,7 +38,7 @@ class ContactByGenderData {
     return _contactByGenderData;
   }
 
-  static Widget display(List<ContactByGenderData> data){
+  static Widget display(List<ContactByGenderData> data) {
     final List<Widget> widgets = <Widget>[];
 
     if (data.length > 0) {
@@ -56,14 +56,16 @@ class ContactByGenderData {
       final Charts.PieChart chart = Charts.PieChart<int>(
         seriesList,
         animate: true,
+        behaviors: [
+          new Charts.ChartTitle('By gender',
+              behaviorPosition: Charts.BehaviorPosition.top,
+              titleOutsideJustification: Charts.OutsideJustification.start,
+              innerPadding: 18),
+        ],
         defaultRenderer: new Charts.ArcRendererConfig(
             arcWidth: 60,
             arcRendererDecorators: [new Charts.ArcLabelDecorator()]),
       );
-      widgets.add(Text(
-        "Contacts by gender",
-        style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-      ));
       widgets.add(Padding(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         child: SizedBox(
@@ -73,9 +75,12 @@ class ContactByGenderData {
         ),
       ));
     }
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: widgets,
+    return Material(
+      color: Colors.white,
+      elevation: 14.0,
+      borderRadius: BorderRadius.circular(24.0),
+      shadowColor: Color(0x802196F3),
+      child: Column(children: widgets),
     );
   }
 

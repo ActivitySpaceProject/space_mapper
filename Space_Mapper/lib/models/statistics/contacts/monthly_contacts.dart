@@ -35,10 +35,9 @@ class MonthlyContactData {
     return _monthlyContactData;
   }
 
-  static Widget display(List<MonthlyContactData> data){
+  static Widget display(List<MonthlyContactData> data) {
+    final List<Widget> widgets = <Widget>[];
 
-
-final List<Widget> widgets = <Widget>[];
     if (data.length > 0) {
       final List<Charts.Series<MonthlyContactData, DateTime>> seriesList = [
         Charts.Series<MonthlyContactData, DateTime>(
@@ -54,6 +53,10 @@ final List<Widget> widgets = <Widget>[];
         seriesList,
         animate: true,
         behaviors: [
+          new Charts.ChartTitle('Contacts in the last 12 months',
+              behaviorPosition: Charts.BehaviorPosition.top,
+              titleOutsideJustification: Charts.OutsideJustification.start,
+              innerPadding: 18),
           new Charts.ChartTitle('Date',
               behaviorPosition: Charts.BehaviorPosition.bottom,
               titleOutsideJustification:
@@ -64,10 +67,6 @@ final List<Widget> widgets = <Widget>[];
                   Charts.OutsideJustification.middleDrawArea),
         ],
       );
-      widgets.add(Text(
-        "Contacts in the last 12 months",
-        style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-      ));
       widgets.add(Padding(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         child: SizedBox(
@@ -76,10 +75,14 @@ final List<Widget> widgets = <Widget>[];
         ),
       ));
     }
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: widgets,
+    return Material(
+      color: Colors.white,
+      elevation: 14.0,
+      borderRadius: BorderRadius.circular(24.0),
+      shadowColor: Color(0x802196F3),
+      child: Column(children: widgets),
     );
-    
   }
+
+  
 }

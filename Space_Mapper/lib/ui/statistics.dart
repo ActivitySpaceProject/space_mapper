@@ -89,7 +89,7 @@ class _MyStatisticsState extends State<MyStatistics>
               mainAxisCellCount: 3.3,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: ContactByGenderData.display(_contactByGenderData),
+                child: ContactByGenderData.display(_contactByGenderData, context),
               ),
             ),
             StaggeredGridTile.count(

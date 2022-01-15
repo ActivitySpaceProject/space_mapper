@@ -100,35 +100,8 @@ class ContactByGenderData {
       );
     }
 
-    return Padding(
-      padding: EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              drawCircle(data[0].color),
-              Text(ContactByGenderData.datas(data[0].gender, data[0].value)),
-            ],
-          ),
-          Row(
-            children: [
-              drawCircle(data[1].color),
-              Text(ContactByGenderData.datas(data[1].gender, data[1].value)),
-            ],
-          ),
-          Row(
-            children: [
-              drawCircle(data[2].color),
-              Text(ContactByGenderData.datas(data[2].gender, data[2].value)),
-            ],
-          )
-        ],
-      ),
-    );
-  }
-
-  // Display gender as string
-  static String datas(int gender, int value) {
+    // Display gender as string
+  String genderToString(int gender, int value) {
     if (gender == 0) {
       return " " + value.toString() + " Males";
     } else if (gender == 1) {
@@ -138,4 +111,31 @@ class ContactByGenderData {
     }
     return "error";
   }
+
+    return Padding(
+      padding: EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              drawCircle(data[0].color),
+              Text(genderToString(data[0].gender, data[0].value)),
+            ],
+          ),
+          Row(
+            children: [
+              drawCircle(data[1].color),
+              Text(genderToString(data[1].gender, data[1].value)),
+            ],
+          ),
+          Row(
+            children: [
+              drawCircle(data[2].color),
+              Text(genderToString(data[2].gender, data[2].value)),
+            ],
+          )
+        ],
+      ),
+    );
+  }  
 }

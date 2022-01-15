@@ -1,24 +1,22 @@
 import 'package:asm/models/statistics/contacts/contacts_by_gender.dart';
 import 'package:asm/models/statistics/contacts/contacts_data.dart';
 import 'package:asm/models/statistics/contacts/monthly_contacts.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-class MyStatistics extends StatefulWidget {
+class StatsContacts extends StatefulWidget {
+  const StatsContacts({ Key? key }) : super(key: key);
+
   @override
-  _MyStatisticsState createState() => _MyStatisticsState();
+  _StatsContactsState createState() => _StatsContactsState();
 }
 
-class _MyStatisticsState extends State<MyStatistics>
-    with SingleTickerProviderStateMixin {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
-
+class _StatsContactsState extends State<StatsContacts> {
   List<MonthlyContactData> _monthlyContactData = [];
   List<ContactByGenderData> _contactByGenderData = [];
   num _avgMonthlyContacts = 0;
   num _totalContacts = 0;
-
+  
   @override
   void initState() {
     super.initState();
@@ -27,45 +25,14 @@ class _MyStatisticsState extends State<MyStatistics>
     getAverageMonthlyContacts();
     getTotalContacts();
   }
-
+  
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-            bottom: TabBar(
-              tabs: [
-                Tab(icon: Icon(Icons.bar_chart)),
-                Tab(icon: Icon(Icons.pie_chart)),
-              ],
-            ),
-            title: Text("Statistics"),
-            leading: IconButton(
-              icon: Icon(
-                Icons.arrow_back,
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            )),
-        body: TabBarView(
-          children: [
-            ListView(
+    return ListView(
               children: <Widget>[
                 displayContactsStatistics(),
               ],
-            ),
-            ListView(
-              children: <Widget>[
-                displayContactsStatistics(),
-              ],
-            )
-          ],
-        ),
-      ),
-    ));
+            );
   }
 
   Widget displayContactsStatistics() {
@@ -120,8 +87,8 @@ class _MyStatisticsState extends State<MyStatistics>
             ),
           ],
         ));
+        
   }
-
   void getMonthlyContactsData() async {
     List<MonthlyContactData> data = await MonthlyContactData.getData();
 

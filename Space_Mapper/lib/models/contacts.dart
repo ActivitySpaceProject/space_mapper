@@ -27,6 +27,12 @@ class Contact {
       required this.ageGroup,
       required this.date});
 
+  Contact.blank()
+      : id = 0,
+        gender = ' ',
+        ageGroup = ' ',
+        date = DateTime.fromMillisecondsSinceEpoch(0);
+
   static Contact fromJson(Map<String, Object?> json) => Contact(
       id: json[ContactFields.id] as int?,
       gender: json[ContactFields.gender] as String,

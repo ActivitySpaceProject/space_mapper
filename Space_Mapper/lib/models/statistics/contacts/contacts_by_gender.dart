@@ -16,9 +16,9 @@ class ContactByGenderData {
     List<ContactByGenderData> _contactByGenderData = [];
 
     // Initialize data
-    _contactByGenderData.add(ContactByGenderData(0, 0, Colors.blue));
-    _contactByGenderData.add(ContactByGenderData(1, 0, Colors.red));
-    _contactByGenderData.add(ContactByGenderData(2, 0, Colors.green));
+    _contactByGenderData.add(ContactByGenderData(0, 0, Colors.blue.shade700));
+    _contactByGenderData.add(ContactByGenderData(1, 0, Colors.blue.shade400));
+    _contactByGenderData.add(ContactByGenderData(2, 0, Colors.blue.shade200));
 
     // Fill data
     for (int i = 0; i < contacts.length; ++i) {

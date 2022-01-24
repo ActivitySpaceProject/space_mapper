@@ -1,3 +1,4 @@
+import 'package:asm/models/statistics/contacts/contacts_by_age.dart';
 import 'package:asm/models/statistics/contacts/contacts_by_gender.dart';
 import 'package:asm/models/statistics/contacts/contacts_data.dart';
 import 'package:asm/models/statistics/contacts/monthly_contacts.dart';
@@ -5,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class StatsContacts extends StatefulWidget {
-  const StatsContacts({ Key? key }) : super(key: key);
+  const StatsContacts({Key? key}) : super(key: key);
 
   @override
   _StatsContactsState createState() => _StatsContactsState();
@@ -14,9 +15,10 @@ class StatsContacts extends StatefulWidget {
 class _StatsContactsState extends State<StatsContacts> {
   List<MonthlyContactData> _monthlyContactData = [];
   List<ContactByGenderData> _contactByGenderData = [];
+  List<ContactsByAgeData> _contactByAgeData = [];
   num _avgMonthlyContacts = 0;
   num _totalContacts = 0;
-  
+
   @override
   void initState() {
     super.initState();
@@ -24,15 +26,16 @@ class _StatsContactsState extends State<StatsContacts> {
     getContactsByGenderData();
     getAverageMonthlyContacts();
     getTotalContacts();
+    getContactsByAge();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return ListView(
-              children: <Widget>[
-                displayContactsStatistics(),
-              ],
-            );
+      children: <Widget>[
+        displayContactsStatistics(),
+      ],
+    );
   }
 
   Widget displayContactsStatistics() {
@@ -43,52 +46,80 @@ class _StatsContactsState extends State<StatsContacts> {
           crossAxisSpacing: 0.0,
           mainAxisSpacing: 0.0,
           children: <Widget>[
-            StaggeredGridTile.count(
-              crossAxisCellCount: 4,
-              mainAxisCellCount: 3.5,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: MonthlyContactData.display(_monthlyContactData),
-              ),
-            ),
-            StaggeredGridTile.count(
-              crossAxisCellCount: 2,
-              mainAxisCellCount: 3.3,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ContactByGenderData.display(_contactByGenderData, context),
-              ),
-            ),
-            StaggeredGridTile.count(
-              crossAxisCellCount: 2,
-              mainAxisCellCount: 1.65,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ContactsData.displayText(
-                  "Avg Contacts",
-                  "people",
-                  "/month",
-                  _avgMonthlyContacts,
-                ),
-              ),
-            ),
-            StaggeredGridTile.count(
-              crossAxisCellCount: 2,
-              mainAxisCellCount: 1.65,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ContactsData.displayText(
-                  "Total Contacts",
-                  "contacts",
-                  "per year",
-                  _totalContacts,
-                ),
-              ),
-            ),
+            displayNumberOfContacts(4, 3.3),
+            displayContactsByGender(2, 3.3),
+            displayAvgContacts(2, 1.65),
+            displayTotalContacts(2, 1.65),
+            displayContactsByAgeGroup(4, 2.5),
           ],
         ));
-        
   }
+
+  Widget displayNumberOfContacts(int width, num height) {
+    return StaggeredGridTile.count(
+      crossAxisCellCount: width,
+      mainAxisCellCount: height,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: MonthlyContactData.display(_monthlyContactData),
+      ),
+    );
+  }
+
+  Widget displayContactsByGender(int width, num height) {
+    return StaggeredGridTile.count(
+      crossAxisCellCount: width,
+      mainAxisCellCount: height,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ContactByGenderData.display(_contactByGenderData, context),
+      ),
+    );
+  }
+
+  Widget displayAvgContacts(int width, num height) {
+    return StaggeredGridTile.count(
+      crossAxisCellCount: width,
+      mainAxisCellCount: height,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ContactsData.displayText(
+          "Avg Contacts",
+          "people",
+          "/month",
+          _avgMonthlyContacts,
+        ),
+      ),
+    );
+  }
+
+  Widget displayTotalContacts(int width, num height) {
+    return StaggeredGridTile.count(
+      crossAxisCellCount: width,
+      mainAxisCellCount: height,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ContactsData.displayText(
+          "Total Contacts",
+          "contacts",
+          "per year",
+          _totalContacts,
+        ),
+      ),
+    );
+  }
+
+  Widget displayContactsByAgeGroup(int width, num height) {
+    return StaggeredGridTile.count(
+      crossAxisCellCount: width,
+      mainAxisCellCount: height,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ContactsByAgeData.display(_contactByAgeData, context),
+      ),
+    );
+  }
+
   void getMonthlyContactsData() async {
     List<MonthlyContactData> data = await MonthlyContactData.getData();
 
@@ -118,6 +149,14 @@ class _StatsContactsState extends State<StatsContacts> {
 
     setState(() {
       _totalContacts = data;
+    });
+  }
+
+  void getContactsByAge() async {
+    List<ContactsByAgeData> data = await ContactsByAgeData.getData();
+
+    setState(() {
+      _contactByAgeData = data;
     });
   }
 }

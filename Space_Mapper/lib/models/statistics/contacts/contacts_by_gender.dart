@@ -48,18 +48,20 @@ class ContactByGenderData {
           id: 'genderChart',
           domainFn: (ContactByGenderData chartData, _) => chartData.gender,
           measureFn: (ContactByGenderData chartData, _) => chartData.value,
-          colorFn: (ContactByGenderData chartData, _) => Charts.ColorUtil.fromDartColor(chartData.color),
+          colorFn: (ContactByGenderData chartData, _) =>
+              Charts.ColorUtil.fromDartColor(chartData.color),
           data: data,
         ),
       ];
-      final Charts.PieChart chart = Charts.PieChart<int>(seriesList,
-          animate: true,
-          behaviors: [
-            new Charts.ChartTitle('By gender',
-                behaviorPosition: Charts.BehaviorPosition.top,
-                titleOutsideJustification: Charts.OutsideJustification.start,
-                innerPadding: 18),
-          ],
+      final Charts.PieChart chart = Charts.PieChart<int>(
+        seriesList,
+        animate: true,
+        behaviors: [
+          new Charts.ChartTitle('By gender',
+              behaviorPosition: Charts.BehaviorPosition.top,
+              titleOutsideJustification: Charts.OutsideJustification.start,
+              innerPadding: 18),
+        ],
       );
       // Pie Chart added to widgets
       widgets.add(
@@ -101,16 +103,16 @@ class ContactByGenderData {
     }
 
     // Display gender as string
-  String genderToString(int gender, int value) {
-    if (gender == 0) {
-      return " " + value.toString() + " Males";
-    } else if (gender == 1) {
-      return " " + value.toString() + " Females";
-    } else if (gender == 2) {
-      return " " + value.toString() + " Others";
+    String genderToString(int gender, int value) {
+      if (gender == 0) {
+        return " " + value.toString() + " Males";
+      } else if (gender == 1) {
+        return " " + value.toString() + " Females";
+      } else if (gender == 2) {
+        return " " + value.toString() + " Others";
+      }
+      return "error";
     }
-    return "error";
-  }
 
     return Padding(
       padding: EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 8.0),
@@ -137,5 +139,5 @@ class ContactByGenderData {
         ],
       ),
     );
-  }  
+  }
 }

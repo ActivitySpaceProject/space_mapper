@@ -46,6 +46,9 @@ class _StatsContactsState extends State<StatsContacts> {
           crossAxisSpacing: 0.0,
           mainAxisSpacing: 0.0,
           children: <Widget>[
+            // The following functions require 2 arguments: width and height
+            // Width is an int that goes from 1 to 4 and it's relative to the screen's size => 1=25% of the screen's width, 2=50%, 3=75% and 4=100%
+            // Height is a float
             displayNumberOfContacts(4, 3.3),
             displayContactsByGender(2, 3.3),
             displayAvgContacts(2, 1.65),

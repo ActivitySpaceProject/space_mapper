@@ -33,6 +33,10 @@ class ContactsByAgeData {
         }
       }
     }
+
+    // Remove data that is empty
+    _contactByAgeData.removeWhere((element) => element.value == 0);
+
     return _contactByAgeData;
   }
 

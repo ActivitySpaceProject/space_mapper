@@ -41,7 +41,8 @@ class _StatsContactsState extends State<StatsContacts> {
   Widget displayContactsStatistics() {
     return Container(
         color: Color(0xffE5E5E5),
-        child: StaggeredGrid.count(
+        child: SingleChildScrollView(
+            child: StaggeredGrid.count(
           crossAxisCount: 4,
           crossAxisSpacing: 0.0,
           mainAxisSpacing: 0.0,
@@ -55,7 +56,7 @@ class _StatsContactsState extends State<StatsContacts> {
             displayTotalContacts(2, 1.65),
             displayContactsByAgeGroup(4, 2.5),
           ],
-        ));
+        )));
   }
 
   Widget displayNumberOfContacts(int width, num height) {

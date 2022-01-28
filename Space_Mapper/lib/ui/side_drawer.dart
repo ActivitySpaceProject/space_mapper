@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:asm/app_localizations.dart';
+import 'package:asm/models/app_localizations.dart';
 import 'package:asm/models/custom_locations.dart';
 import 'package:asm/ui/list_view.dart';
 import 'package:asm/ui/report_an_issue.dart';
@@ -53,7 +53,9 @@ class SpaceMapperSideDrawer extends StatelessWidget {
             height: 100,
             child: DrawerHeader(
               child: Text(
-                  AppLocalizations.of(context)!.translate("side_drawer_title"),
+                  AppLocalizations.of(context)
+                          ?.translate("side_drawer_title") ??
+                      "",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
               decoration: BoxDecoration(
                 color: Colors.blueGrey[200],
@@ -64,7 +66,8 @@ class SpaceMapperSideDrawer extends StatelessWidget {
               child: ListTile(
                   leading: const Icon(Icons.edit),
                   title: Text(
-                      AppLocalizations.of(context)!.translate("take_survey")),
+                      AppLocalizations.of(context)?.translate("take_survey") ??
+                          ""),
                   onTap: () {
                     Navigator.push(
                         context,
@@ -74,8 +77,9 @@ class SpaceMapperSideDrawer extends StatelessWidget {
           Card(
             child: ListTile(
               leading: const Icon(Icons.list),
-              title: Text(
-                  AppLocalizations.of(context)!.translate("locations_history")),
+              title: Text(AppLocalizations.of(context)
+                      ?.translate("locations_history") ??
+                  ""),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => STOListView()));
@@ -86,7 +90,8 @@ class SpaceMapperSideDrawer extends StatelessWidget {
             child: ListTile(
               leading: const Icon(Icons.share),
               title: Text(
-                  AppLocalizations.of(context)!.translate("share_locations")),
+                  AppLocalizations.of(context)?.translate("share_locations") ??
+                      ""),
               onTap: () {
                 _shareLocations();
               },
@@ -95,8 +100,9 @@ class SpaceMapperSideDrawer extends StatelessWidget {
           Card(
             child: ListTile(
               leading: const Icon(Icons.web),
-              title: Text(AppLocalizations.of(context)!
-                  .translate("visit_project_website")),
+              title: Text(AppLocalizations.of(context)
+                      ?.translate("visit_project_website") ??
+                  ""),
               onTap: () {
                 _launchProjectURL();
               },
@@ -106,7 +112,8 @@ class SpaceMapperSideDrawer extends StatelessWidget {
             child: ListTile(
               leading: const Icon(Icons.report_problem_outlined),
               title: Text(
-                  AppLocalizations.of(context)!.translate("report_an_issue")),
+                  AppLocalizations.of(context)?.translate("report_an_issue") ??
+                      ""),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => ReportAnIssue()));

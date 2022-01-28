@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
 import 'package:geocoding/geocoding.dart';
-import '../app_localizations.dart';
+import 'app_localizations.dart';
 
 class CustomLocationsManager {
   static Future<List<CustomLocation>> getLocations(int maxElements) async {
@@ -148,9 +148,9 @@ class CustomLocation {
       num maxSpeedAccuracy, num maxAltitudeAccuracy, BuildContext context) {
     String ret = "";
 
-    String activity = AppLocalizations.of(context)!.translate("activity");
-    String speed = AppLocalizations.of(context)!.translate("speed");
-    String altitude = AppLocalizations.of(context)!.translate("altitude");
+    String activity = AppLocalizations.of(context)?.translate("activity") ?? "";
+    String speed = AppLocalizations.of(context)?.translate("speed") ?? "";
+    String altitude = AppLocalizations.of(context)?.translate("altitude") ?? "";
 
     ret += " \n$activity: $_activity";
 

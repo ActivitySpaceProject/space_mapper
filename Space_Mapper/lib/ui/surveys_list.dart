@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../app_localizations.dart';
+import '../models/app_localizations.dart';
 import '../components/banner_image.dart';
 import '../components/survey_tile.dart';
 import '../mocks/mock_survey.dart';
@@ -30,8 +30,8 @@ class _AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title:
-                Text(AppLocalizations.of(context)!.translate("take_survey"))),
+            title: Text(
+                AppLocalizations.of(context)?.translate("take_survey") ?? "")),
         body: RefreshIndicator(
           onRefresh: loadData,
           child: Column(

@@ -4,7 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:mailto/mailto.dart';
 
-import '../app_localizations.dart';
+import '../models/app_localizations.dart';
 
 class ReportAnIssue extends StatelessWidget {
   @override
@@ -24,7 +24,7 @@ Widget reportIssueBody(BuildContext context) {
       child: Column(
         children: [
           Text(
-            AppLocalizations.of(context)!.translate("report_summary"),
+            AppLocalizations.of(context)?.translate("report_summary") ?? "",
             style: TextStyle(fontSize: ReportAnIssueStyle.normalTextSize),
           ),
           displayService(
@@ -37,12 +37,13 @@ Widget reportIssueBody(BuildContext context) {
             margin: EdgeInsets.only(
                 bottom: ReportAnIssueStyle.marginBetweenTextAndButtons),
             child: Text(
-              AppLocalizations.of(context)!.translate("github_description"),
+              AppLocalizations.of(context)?.translate("github_description") ??
+                  "",
               style: TextStyle(fontSize: ReportAnIssueStyle.normalTextSize),
             ),
           ),
           customButtonWithUrl(
-              AppLocalizations.of(context)!.translate("github_button"),
+              AppLocalizations.of(context)?.translate("github_button") ?? "",
               "https://github.com/ActivitySpaceProject/space_mapper/issues",
               ReportAnIssueStyle.requestFeatureColor,
               context),
@@ -61,11 +62,13 @@ Widget reportIssueBody(BuildContext context) {
               margin: EdgeInsets.only(
                   bottom: ReportAnIssueStyle.marginBetweenTextAndButtons),
               child: Text(
-                AppLocalizations.of(context)!.translate("email_description"),
+                AppLocalizations.of(context)?.translate("email_description") ??
+                    "",
                 style: TextStyle(fontSize: ReportAnIssueStyle.normalTextSize),
               )),
           customButtonWithUrl(
-              AppLocalizations.of(context)!.translate("report_email_btn1"),
+              AppLocalizations.of(context)?.translate("report_email_btn1") ??
+                  "",
               null,
               ReportAnIssueStyle.reportIssueColor,
               context,
@@ -74,7 +77,8 @@ Widget reportIssueBody(BuildContext context) {
               body:
                   'Dear Space Mapper support, \n\n I want to report the following issue:'),
           customButtonWithUrl(
-              AppLocalizations.of(context)!.translate("report_email_btn2"),
+              AppLocalizations.of(context)?.translate("report_email_btn2") ??
+                  "",
               null,
               ReportAnIssueStyle.requestFeatureColor,
               context,

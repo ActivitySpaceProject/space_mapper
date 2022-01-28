@@ -4,7 +4,7 @@ import 'package:flutter_background_geolocation/flutter_background_geolocation.da
     as bg;
 import 'package:flutter/material.dart';
 
-import '../app_localizations.dart';
+import '../models/app_localizations.dart';
 import '../components/banner_image.dart';
 import '../components/survey_tile.dart';
 import '../mocks/mock_survey.dart';
@@ -45,7 +45,8 @@ class _SurveyDetailState extends State<SurveyDetail> {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-              AppLocalizations.of(context)!.translate("about_the_project"))),
+              AppLocalizations.of(context)?.translate("about_the_project") ??
+                  "")),
       body: Stack(
         children: [
           _renderBody(context, survey),
@@ -106,10 +107,11 @@ class _SurveyDetailState extends State<SurveyDetail> {
   }
 
   Widget _renderConsentForm() {
-    String title = AppLocalizations.of(context)!.translate("consent_form");
-    String text = AppLocalizations.of(context)!
-            .translate("do_you_agree_to_share_your_anonymous_location_with") +
-        "${survey.name}?";
+    String title =
+        AppLocalizations.of(context)?.translate("consent_form") ?? "";
+    String text = AppLocalizations.of(context)
+            ?.translate("do_you_agree_to_share_your_anonymous_location_with") ??
+        "" + "${survey.name}?";
 
     return Container(
       height: SurveyTileHeight,

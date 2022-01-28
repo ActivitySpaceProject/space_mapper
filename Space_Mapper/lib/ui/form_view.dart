@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import '../app_localizations.dart';
+import '../models/app_localizations.dart';
 import '../db/database.dart';
 import '../models/contacts.dart';
 
@@ -10,7 +10,8 @@ class FormView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.translate("record_contact")),
+        title: Text(
+            AppLocalizations.of(context)?.translate("record_contact") ?? ""),
       ),
       body: MyCustomForm(),
     );
@@ -45,8 +46,8 @@ class MyCustomFormState extends State<MyCustomForm> {
   }
 
   //Data to share
-  String? gender = "not_set";
-  String? ageGroup = "not_set";
+  String gender = "not_set";
+  String ageGroup = "not_set";
 
   @override
   Widget build(BuildContext context) {
@@ -66,39 +67,45 @@ class MyCustomFormState extends State<MyCustomForm> {
             child: Column(
               children: <Widget>[
                 FormBuilderChoiceChip(
-                  name: AppLocalizations.of(context)!.translate("gender"),
+                  name: AppLocalizations.of(context)?.translate("gender") ?? "",
                   decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context)!
-                          .translate("was_the_contact_male_female?")),
+                      labelText: AppLocalizations.of(context)
+                          ?.translate("was_the_contact_male_female?")),
                   options: [
                     FormBuilderFieldOption(
                       value: "male",
-                      child:
-                          Text(AppLocalizations.of(context)!.translate("male")),
+                      child: Text(
+                          AppLocalizations.of(context)?.translate("male") ??
+                              ""),
                     ),
                     FormBuilderFieldOption(
                       value: "female",
                       child: Text(
-                          AppLocalizations.of(context)!.translate("female")),
+                          AppLocalizations.of(context)?.translate("female") ??
+                              ""),
                     ),
                     FormBuilderFieldOption(
                       value: "other",
                       child: Text(
-                          AppLocalizations.of(context)!.translate("other")),
+                          AppLocalizations.of(context)?.translate("other") ??
+                              ""),
                     ),
                   ],
                   onChanged: (value) => setState(() {
-                    gender = value as String?;
+                    gender = value as String;
                   }),
                 ),
                 FormBuilderDropdown(
                   name: 'age',
                   decoration: InputDecoration(
-                    labelText: AppLocalizations.of(context)!
-                        .translate("about_how_old_were_they"),
+                    labelText: AppLocalizations.of(context)
+                            ?.translate("about_how_old_were_they") ??
+                        "",
                   ),
                   hint: Text(
-                    AppLocalizations.of(context)!.translate("select_age_group"),
+                    AppLocalizations.of(context)
+                            ?.translate("select_age_group") ??
+                        "",
                   ),
                   items: [
                     '0-9',
@@ -115,7 +122,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                           DropdownMenuItem(value: age, child: Text("$age")))
                       .toList(),
                   onChanged: (value) => setState(() {
-                    ageGroup = value as String?;
+                    ageGroup = value as String;
                   }),
                 ),
               ],
@@ -124,7 +131,8 @@ class MyCustomFormState extends State<MyCustomForm> {
           Row(
             children: <Widget>[
               MaterialButton(
-                child: Text(AppLocalizations.of(context)!.translate("submit")),
+                child: Text(
+                    AppLocalizations.of(context)?.translate("submit") ?? ""),
                 onPressed: () async {
                   if (_fbKey.currentState!.saveAndValidate()) {
                     await addContact();
@@ -134,7 +142,8 @@ class MyCustomFormState extends State<MyCustomForm> {
                 },
               ),
               MaterialButton(
-                child: Text(AppLocalizations.of(context)!.translate("reset")),
+                child: Text(
+                    AppLocalizations.of(context)?.translate("reset") ?? ""),
                 onPressed: () {
                   _fbKey.currentState!.reset();
                 },
@@ -148,7 +157,7 @@ class MyCustomFormState extends State<MyCustomForm> {
 
   Future addContact() async {
     DateTime date = DateTime.now();
-    final contact = Contact(gender: gender!, ageGroup: ageGroup!, date: date);
+    final contact = Contact(gender: gender, ageGroup: ageGroup, date: date);
 
     await StorageDatabase.instance.create(contact);
   }

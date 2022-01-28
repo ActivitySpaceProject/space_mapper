@@ -35,11 +35,10 @@ class AppLocalizations {
   }
 
   // This method will be called from every widget which needs a localized text
-  String translate(String key) {
-    if (_localizedStrings[key] == null)
-      return "Error. No translation found";
-    else
-      return _localizedStrings[key]!;
+  // How to call this function with an example:
+  // AppLocalizations.of(context)?.translate("your_word") ?? ""; // You have to do it like that to avoid null values and pass the tests
+  String? translate(String key) {
+    return _localizedStrings[key]!;
   }
 }
 

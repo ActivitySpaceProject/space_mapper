@@ -1,4 +1,4 @@
-import '../app_localizations.dart';
+import '../models/app_localizations.dart';
 import '../models/custom_locations.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,8 @@ class _STOListViewState extends State<STOListView> {
     return Scaffold(
         appBar: AppBar(
             title: Text(
-                AppLocalizations.of(context)!.translate("locations_history"))),
+                AppLocalizations.of(context)?.translate("locations_history") ??
+                    "")),
         body: FutureBuilder<List<CustomLocation>>(
           future: CustomLocationsManager.getLocations(25),
           builder: (context, snapshot) {

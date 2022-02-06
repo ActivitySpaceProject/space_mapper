@@ -10,6 +10,7 @@ class MyStatistics extends StatefulWidget {
 class _MyStatisticsState extends State<MyStatistics>
     with SingleTickerProviderStateMixin {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final int numberOfScreens = 2;
 
   @override
   void initState() {
@@ -20,7 +21,7 @@ class _MyStatisticsState extends State<MyStatistics>
   Widget build(BuildContext context) {
     return MaterialApp(
         home: DefaultTabController(
-      length: 2,
+      length: numberOfScreens,
       child: Scaffold(
         appBar: AppBar(
             bottom: TabBar(
@@ -41,11 +42,7 @@ class _MyStatisticsState extends State<MyStatistics>
         body: TabBarView(
           children: [
             StatsContacts(),
-            ListView(
-              children: <Widget>[
-                //displayContactsStatistics(),
-              ],
-            )
+            StatsContacts(),
           ],
         ),
       ),

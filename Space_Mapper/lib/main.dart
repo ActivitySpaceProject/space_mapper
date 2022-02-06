@@ -7,7 +7,7 @@ import 'package:flutter_background_geolocation/flutter_background_geolocation.da
     as bg;
 import 'package:background_fetch/background_fetch.dart';
 
-import 'app_localizations.dart';
+import 'models/app_localizations.dart';
 import 'ui/home_view.dart';
 import 'package:uuid/uuid.dart';
 

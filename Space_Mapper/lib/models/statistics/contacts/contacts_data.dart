@@ -29,8 +29,9 @@ class ContactsData {
     return total;
   }
 
-  static Widget displayText(String title, String subtitle, String subtitle2, num avgContacts){
-return Material(
+  static Widget displayText(
+      String title, String subtitle, String subtitle2, num avgContacts) {
+    return Material(
       color: Colors.white,
       elevation: 14.0,
       borderRadius: BorderRadius.circular(24.0),

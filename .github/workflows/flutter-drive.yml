@@ -2,7 +2,7 @@
 # https://github.com/nazarcybulskij/CI_CD_Flutter_Demo
 # https://weilu.blog.csdn.net/article/details/114744416
 # Name of your workflow.
-name: flutter_deer driver
+name: flutter end-to-end test
 
 # Trigger the workflow on push or pull request.
 on: [push, pull_request]
@@ -56,8 +56,10 @@ jobs:
           flutter-version: '2.10.0'
           channel: 'stable' # or: 'dev' or 'beta'
       - run: "flutter clean"
+        working-directory: Space_Mapper
       - name: "Run Flutter Driver tests"
         run: "flutter drive --target=integration_test/app_test.dart"
+        working-directory: Space_Mapper
         
   drive_android:
     # The type of machine to run the job on.

@@ -85,4 +85,5 @@ jobs:
           target: ${{ matrix.target }}
           arch: x86_64
           profile: Nexus 6
-          script: "flutter drive --target=Space_Mapper/test_driver/driver.dart"
+          script: "flutter drive --target=test_driver/driver.dart"
+          working-directory: Space_Mapper

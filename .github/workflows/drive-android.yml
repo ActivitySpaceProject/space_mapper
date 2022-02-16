@@ -1,4 +1,4 @@
-name: flutter end-to-end test
+name: drive_test Android
 
 # Trigger the workflow on push or pull request.
 on: [push, pull_request]

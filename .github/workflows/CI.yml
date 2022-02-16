@@ -31,6 +31,6 @@ jobs:
       working-directory: Space_Mapper
       
     - name: Upload coverage to codecov
-      run: curl -s https://codecov.io/bash
-      working-directory: Space_Mapper
-      shell: bash
+      uses: codecov/codecov-action@v1
+      with:
+        file: coverage/lcov.info

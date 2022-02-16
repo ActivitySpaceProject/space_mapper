@@ -13,8 +13,8 @@ jobs:
     strategy:
       # set of different configurations of the virtual environment.
       matrix:
-        api-level: [21] # api-level: [21, 23, 29]
-        target: [default] # target: [default, google_apis]
+        api-level: [21, 23, 29]
+        target: [default, google_apis]
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1

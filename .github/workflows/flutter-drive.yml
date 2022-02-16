@@ -86,3 +86,4 @@ jobs:
           arch: x86_64
           profile: Nexus 6
           script: "flutter drive --target=test_driver/driver.dart"
+          working-directory: Space_Mapper

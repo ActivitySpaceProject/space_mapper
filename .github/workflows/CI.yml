@@ -32,6 +32,5 @@ jobs:
       
     - name: Upload coverage to codecov
       uses: codecov/codecov-action@v1
-      working-directory: Space_Mapper
       with:
         file: coverage/lcov.info

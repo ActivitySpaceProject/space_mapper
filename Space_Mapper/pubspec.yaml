@@ -51,6 +51,8 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
+  flutter_driver:
+    sdk: flutter
   test: ^1.17.10
   network_image_mock: ^2.0.1
 

@@ -1,4 +1,3 @@
-import 'package:asm/models/custom_locations.dart';
 import 'package:asm/ui/list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';

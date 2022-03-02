@@ -1,4 +1,4 @@
-import 'package:asm/ui_style/report_an_issue_style.dart';
+import 'package:asm/ui_style/style_report_an_issue.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -11,7 +11,7 @@ class ReportAnIssue extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Report an Issue")),
-      body: reportIssueBody(context),
+      body: SingleChildScrollView(child: reportIssueBody(context)),
     );
   }
 }

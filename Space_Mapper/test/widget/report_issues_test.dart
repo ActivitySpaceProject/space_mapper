@@ -1,4 +1,4 @@
-import 'package:asm/ui/report_an_issue.dart';
+import 'package:asm/ui/report_issues.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

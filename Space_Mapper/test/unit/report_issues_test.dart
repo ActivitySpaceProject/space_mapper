@@ -1,4 +1,4 @@
-import '../../lib/ui/report_an_issue.dart';
+import '../../lib/ui/report_issues.dart';
 import 'package:test/test.dart';
 
 void main() {

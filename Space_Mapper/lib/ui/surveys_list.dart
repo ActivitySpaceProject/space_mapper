@@ -13,10 +13,10 @@ const ListItemHeight = 245.0;
 
 class AvailableSurveysScreen extends StatefulWidget {
   @override
-  _AvailableSurveysScreenState createState() => _AvailableSurveysScreenState();
+  AvailableSurveysScreenState createState() => AvailableSurveysScreenState();
 }
 
-class _AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
+class AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
   List<Survey> surveys = [];
   bool loading = false;
 

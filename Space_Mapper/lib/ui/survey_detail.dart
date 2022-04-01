@@ -10,7 +10,6 @@ import '../components/survey_tile.dart';
 import '../mocks/mock_survey.dart';
 import '../models/survey.dart';
 import '../models/custom_locations.dart';
-import '../ui/web_view.dart';
 import '../styles.dart';
 
 const BannerImageHeight = 300.0;
@@ -239,11 +238,13 @@ class _SurveyDetailState extends State<SurveyDetail> {
   Future<void> _navigationToSurvey(BuildContext context) async {
     String locationHistoryJSON = await getLocationsToShare(dropdownValue);
 
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) =>
-                MyWebView(survey.webUrl, locationHistoryJSON)));
+    // Store the values in a map to pass them as arguments in the new screen
+    Map<String, String> arguments = Map();
+    arguments['selectedUrl'] = survey.webUrl;
+    arguments['locationHistoryJSON'] = locationHistoryJSON;
+
+    Navigator.of(context)
+        .pushNamed('/navigation_to_survey', arguments: arguments);
   }
 
   Widget _renderBottomSpacer() {

@@ -1,16 +1,11 @@
 import 'dart:convert';
 import 'package:asm/models/app_localizations.dart';
 import 'package:asm/models/custom_locations.dart';
-import 'package:asm/ui/list_view.dart';
-import 'package:asm/ui/report_issues.dart';
-import 'package:asm/ui/statistics/statistics.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share/share.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
-
-import 'surveys_list.dart';
 
 class SpaceMapperSideDrawer extends StatelessWidget {
   _shareLocations() async {
@@ -69,10 +64,7 @@ class SpaceMapperSideDrawer extends StatelessWidget {
                       AppLocalizations.of(context)?.translate("take_survey") ??
                           ""),
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AvailableSurveysScreen()));
+                    Navigator.of(context).pushNamed('/take_survey');
                   })),
           Card(
             child: ListTile(
@@ -81,8 +73,7 @@ class SpaceMapperSideDrawer extends StatelessWidget {
                       ?.translate("locations_history") ??
                   ""),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => STOListView()));
+                Navigator.of(context).pushNamed('/locations_history');
               },
             ),
           ),
@@ -115,8 +106,7 @@ class SpaceMapperSideDrawer extends StatelessWidget {
                   AppLocalizations.of(context)?.translate("report_an_issue") ??
                       ""),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ReportAnIssue()));
+                Navigator.of(context).pushNamed('/report_an_issue');
               },
             ),
           ),
@@ -125,8 +115,7 @@ class SpaceMapperSideDrawer extends StatelessWidget {
               leading: const Icon(Icons.bar_chart),
               title: Text("Statistics"),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => MyStatistics()));
+                Navigator.of(context).pushNamed('/my_statistics');
               },
             ),
           )

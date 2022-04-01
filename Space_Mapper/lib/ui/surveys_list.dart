@@ -7,8 +7,6 @@ import '../mocks/mock_survey.dart';
 import '../models/survey.dart';
 import '../styles.dart';
 
-import 'survey_detail.dart';
-
 const ListItemHeight = 245.0;
 
 class AvailableSurveysScreen extends StatefulWidget {
@@ -71,7 +69,7 @@ class _AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
   Widget _listViewItemBuilder(BuildContext context, int index) {
     final survey = this.surveys[index];
     return GestureDetector(
-      onTap: () => _navigationToLocationDetail(context, survey.id),
+      onTap: () => _navigationToSurveyDetail(context, survey.id),
       child: Container(
         height: ListItemHeight,
         child: Stack(
@@ -84,9 +82,8 @@ class _AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
     );
   }
 
-  void _navigationToLocationDetail(BuildContext context, int surveyID) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => SurveyDetail(surveyID)));
+  void _navigationToSurveyDetail(BuildContext context, int surveyID) {
+    Navigator.of(context).pushNamed('/survey_detail', arguments: surveyID);
   }
 
   Widget _tileFooter(Survey survey) {

@@ -1,13 +1,13 @@
 import 'package:asm/components/survey_tile.dart';
 import 'package:asm/mocks/mock_survey.dart';
-import 'package:asm/models/survey.dart';
+import 'package:asm/models/project.dart';
 import 'package:asm/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('survey_tile', (WidgetTester tester) async {
-    Survey survey = MockSurvey.fetchFirst();
+    Project survey = MockSurvey.fetchFirst();
     bool darkTheme = true;
 
     await tester.pumpWidget(
@@ -21,12 +21,12 @@ void main() {
     expect(find.text(survey.name.toUpperCase()), findsOneWidget);
     expect(find.text(survey.summary), findsOneWidget);
 
-    expect(find.text(survey.webUrl), findsNothing);
+    //expect(find.text(survey.webUrl), findsNothing);
     expect(find.text(survey.imageUrl), findsNothing);
   });
 
   testWidgets('survey_tile with dark style', (WidgetTester tester) async {
-    Survey survey = MockSurvey.fetchFirst();
+    Project survey = MockSurvey.fetchFirst();
     bool darkTheme = true;
 
     await tester.pumpWidget(
@@ -45,7 +45,7 @@ void main() {
   });
 
   testWidgets('survey_tile with light style', (WidgetTester tester) async {
-    Survey survey = MockSurvey.fetchFirst();
+    Project survey = MockSurvey.fetchFirst();
     bool darkTheme = false;
 
     await tester.pumpWidget(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../external_projects/tiger_in_car/main.dart';
 import '../ui/form_view.dart';
 import '../ui/home_view.dart';
 import '../ui/list_view.dart';
@@ -25,7 +26,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => ReportAnIssue());
       case '/my_statistics':
         return MaterialPageRoute(builder: (_) => MyStatistics());
-      case '/navigation_to_survey':
+      case '/navigation_to_webview':
         if (args is Map<String, String>) {
           return MaterialPageRoute(
               builder: (_) => MyWebView(args['selectedUrl'] ?? '',
@@ -39,6 +40,8 @@ class RouteGenerator {
           return MaterialPageRoute(builder: (_) => SurveyDetail(args));
         }
         return _errorRoute();
+        case '/project_tiger_in_car':
+        return MaterialPageRoute(builder: (_) => TigerInCar());
       default:
         // If there is no such named route in the switch statement, e.g. /third
         return _errorRoute();

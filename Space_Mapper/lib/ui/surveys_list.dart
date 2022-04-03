@@ -4,7 +4,7 @@ import '../models/app_localizations.dart';
 import '../components/banner_image.dart';
 import '../components/survey_tile.dart';
 import '../mocks/mock_survey.dart';
-import '../models/survey.dart';
+import '../models/project.dart';
 import '../styles.dart';
 
 const ListItemHeight = 245.0;
@@ -15,7 +15,7 @@ class AvailableSurveysScreen extends StatefulWidget {
 }
 
 class AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
-  List<Survey> surveys = [];
+  List<Project> surveys = [];
   bool loading = false;
 
   @override
@@ -29,7 +29,7 @@ class AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
     return Scaffold(
         appBar: AppBar(
             title: Text(
-                AppLocalizations.of(context)?.translate("take_survey") ?? "")),
+                AppLocalizations.of(context)?.translate("participate_in_a_project") ?? "")),
         body: RefreshIndicator(
           onRefresh: loadData,
           child: Column(
@@ -86,7 +86,7 @@ class AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
     Navigator.of(context).pushNamed('/survey_detail', arguments: surveyID);
   }
 
-  Widget _tileFooter(Survey survey) {
+  Widget _tileFooter(Project survey) {
     final overlay = Container(
       padding: EdgeInsets.symmetric(
           vertical: 5.0, horizontal: Styles.horizontalPaddingDefault),

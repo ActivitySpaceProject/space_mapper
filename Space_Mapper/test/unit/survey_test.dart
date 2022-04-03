@@ -1,9 +1,9 @@
-import 'package:asm/models/survey.dart';
+import 'package:asm/models/project.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('Survey.blank', () {
-    Survey survey = Survey.blank();
+    Project survey = Project.blank();
 
     expect(survey.id, 0);
     expect(survey.name, ' ');
@@ -13,7 +13,7 @@ void main() {
   });
 
   test('Survey: fetchAll', () async {
-    List<Survey> ret = await Survey.fetchAll();
+    List<Project> ret = await Project.fetchAll();
 
     expect(ret.length,
         0); //This function hasn't been implemented yet. So for the moment it has to return a list of length 0.

@@ -8,7 +8,7 @@ import '../models/app_localizations.dart';
 import '../components/banner_image.dart';
 import '../components/survey_tile.dart';
 import '../mocks/mock_survey.dart';
-import '../models/survey.dart';
+import '../models/project.dart';
 import '../models/custom_locations.dart';
 import '../styles.dart';
 
@@ -27,7 +27,7 @@ class SurveyDetail extends StatefulWidget {
 
 class _SurveyDetailState extends State<SurveyDetail> {
   final int surveyID;
-  Survey survey = Survey.blank();
+  Project survey = Project.blank();
   bool consent = false;
   int dropdownValue = 7;
 
@@ -65,7 +65,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
     }
   }
 
-  Widget _renderBody(BuildContext context, Survey survey) {
+  Widget _renderBody(BuildContext context, Project survey) {
     var result = <Widget>[];
     result.add(BannerImage(url: survey.imageUrl, height: BannerImageHeight));
     result.add(_renderHeader());
@@ -194,7 +194,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
         _navigationToSurvey(context),
       },
       child: Text(
-        'Take Survey'.toUpperCase(),
+        'Participate'.toUpperCase(),
         style: Styles.textCTAButton,
       ),
     );
@@ -238,13 +238,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
   Future<void> _navigationToSurvey(BuildContext context) async {
     String locationHistoryJSON = await getLocationsToShare(dropdownValue);
 
-    // Store the values in a map to pass them as arguments in the new screen
-    Map<String, String> arguments = Map();
-    arguments['selectedUrl'] = survey.webUrl;
-    arguments['locationHistoryJSON'] = locationHistoryJSON;
-
-    Navigator.of(context)
-        .pushNamed('/navigation_to_survey', arguments: arguments);
+    survey.participate(context, locationHistoryJSON);
   }
 
   Widget _renderBottomSpacer() {

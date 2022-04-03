@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../models/survey.dart';
+import '../models/project.dart';
 import '../styles.dart';
 
 const SurveyTileHeight = 100.0;
 
 class SurveyTile extends StatelessWidget {
-  final Survey survey;
+  final Project survey;
   final bool darkTheme;
 
   SurveyTile({required this.survey, required this.darkTheme});

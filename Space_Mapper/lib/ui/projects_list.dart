@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 import '../models/app_localizations.dart';
 import '../components/banner_image.dart';
-import '../components/survey_tile.dart';
+import '../components/project_tile.dart';
 import '../mocks/mock_survey.dart';
 import '../models/project.dart';
 import '../styles.dart';
 
 const ListItemHeight = 245.0;
 
-class AvailableSurveysScreen extends StatefulWidget {
+class AvailableProjectsScreen extends StatefulWidget {
   @override
-  AvailableSurveysScreenState createState() => AvailableSurveysScreenState();
+  AvailableProjectsScreenState createState() => AvailableProjectsScreenState();
 }
 
-class AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
+class AvailableProjectsScreenState extends State<AvailableProjectsScreen> {
   List<Project> surveys = [];
   bool loading = false;
 
@@ -44,7 +44,7 @@ class AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
   Future<void> loadData() async {
     if (this.mounted) {
       setState(() => this.loading = true);
-      final surveys = await MockSurvey.fetchAll();
+      final surveys = await MockProject.fetchAll();
       setState(() {
         this.surveys = surveys;
         this.loading = false;
@@ -91,7 +91,7 @@ class AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
       padding: EdgeInsets.symmetric(
           vertical: 5.0, horizontal: Styles.horizontalPaddingDefault),
       decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
-      child: SurveyTile(survey: survey, darkTheme: true),
+      child: ProjectTile(project: survey, darkTheme: true),
     );
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,

@@ -36,9 +36,9 @@ void main() {
       await tester.tap(menuBtn);
       await tester.pumpAndSettle();
 
-      // ListView Element => Take a Survey
-      final Finder surveyBtn = find.byIcon(Icons.edit);
-      await tester.tap(surveyBtn);
+      // ListView Element => Participate in a project
+      final Finder projectBtn = find.byIcon(Icons.edit);
+      await tester.tap(projectBtn);
       await tester.pumpAndSettle();
       // Finds and presses go back button
       arrowBackBtn = find.byIcon(Icons.arrow_back);

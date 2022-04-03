@@ -16,19 +16,19 @@ class Styles {
     color: textColorBright,
   );
 
-  static final surveyTileTitleLight = TextStyle(
+  static final projectTileTitleLight = TextStyle(
     fontFamily: _fontNameDefault,
     fontSize: _textSizeLarge,
     color: _textColorStrong,
   );
 
-  static final surveyTileTitleDark = TextStyle(
+  static final projectTileTitleDark = TextStyle(
     fontFamily: _fontNameDefault,
     fontSize: _textSizeLarge,
     color: textColorBright,
   );
 
-  static final surveyTileCaption = TextStyle(
+  static final projectTileCaption = TextStyle(
     fontFamily: _fontNameDefault,
     fontSize: _textSizeSmall,
     color: _textColorFaint,

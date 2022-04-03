@@ -2,17 +2,18 @@ import 'package:asm/models/project.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('Survey.blank', () {
-    Project survey = Project.blank();
+  test('Project.blank', () {
+    Project project = Project.blank();
 
-    expect(survey.id, 0);
-    expect(survey.name, ' ');
-    expect(survey.webUrl, ' ');
-    expect(survey.imageUrl, '');
-    expect(survey.summary, ' ');
+    expect(project.id, 0);
+    expect(project.name, ' ');
+    expect(project.webUrl, null);
+    expect(project.projectScreen, null);
+    expect(project.imageUrl, '');
+    expect(project.summary, ' ');
   });
 
-  test('Survey: fetchAll', () async {
+  test('Project: fetchAll', () async {
     List<Project> ret = await Project.fetchAll();
 
     expect(ret.length,

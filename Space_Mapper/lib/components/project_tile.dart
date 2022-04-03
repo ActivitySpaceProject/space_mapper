@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 import '../models/project.dart';
 import '../styles.dart';
 
-const SurveyTileHeight = 100.0;
+const ProjectTileHeight = 100.0;
 
-class SurveyTile extends StatelessWidget {
-  final Project survey;
+class ProjectTile extends StatelessWidget {
+  final Project project;
   final bool darkTheme;
 
-  SurveyTile({required this.survey, required this.darkTheme});
+  ProjectTile({required this.project, required this.darkTheme});
 
   @override
   Widget build(BuildContext context) {
-    final title = survey.name.toUpperCase();
-    final summary = survey.summary;
+    final title = project.name.toUpperCase();
+    final summary = project.summary;
 
     return Container(
       padding: EdgeInsets.all(0),
-      height: SurveyTileHeight,
+      height: ProjectTileHeight,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,12 +27,12 @@ class SurveyTile extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
               style: this.darkTheme
-                  ? Styles.surveyTileTitleDark
-                  : Styles.surveyTileTitleLight),
+                  ? Styles.projectTileTitleDark
+                  : Styles.projectTileTitleLight),
           Text('$summary',
               overflow: TextOverflow.ellipsis,
               maxLines: 3,
-              style: Styles.surveyTileCaption),
+              style: Styles.projectTileCaption),
         ],
       ),
     );

@@ -1,6 +1,6 @@
 import '../models/project.dart';
 
-mixin MockSurvey implements Project {
+mixin MockProject implements Project {
   static final List<Project> items = [
     Project(
       0,

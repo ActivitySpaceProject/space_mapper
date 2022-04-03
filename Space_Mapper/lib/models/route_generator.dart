@@ -6,8 +6,8 @@ import '../ui/home_view.dart';
 import '../ui/list_view.dart';
 import '../ui/report_issues.dart';
 import '../ui/statistics/statistics.dart';
-import '../ui/survey_detail.dart';
-import '../ui/surveys_list.dart';
+import '../ui/project_detail.dart';
+import '../ui/projects_list.dart';
 import '../ui/web_view.dart';
 
 class RouteGenerator {
@@ -18,8 +18,8 @@ class RouteGenerator {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => HomeView('Space Mapper'));
-      case '/take_survey':
-        return MaterialPageRoute(builder: (_) => AvailableSurveysScreen());
+      case '/participate_in_a_project':
+        return MaterialPageRoute(builder: (_) => AvailableProjectsScreen());
       case '/locations_history':
         return MaterialPageRoute(builder: (_) => STOListView());
       case '/report_an_issue':
@@ -35,9 +35,9 @@ class RouteGenerator {
         return _errorRoute();
       case '/record_contact':
         return MaterialPageRoute(builder: (_) => FormView());
-      case '/survey_detail':
+      case '/project_detail':
         if (args is int) {
-          return MaterialPageRoute(builder: (_) => SurveyDetail(args));
+          return MaterialPageRoute(builder: (_) => ProjectDetail(args));
         }
         return _errorRoute();
         case '/project_tiger_in_car':

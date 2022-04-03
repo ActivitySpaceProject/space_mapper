@@ -1,4 +1,4 @@
-import 'package:asm/ui/surveys_list.dart';
+import 'package:asm/ui/projects_list.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -14,19 +14,19 @@ void main() {
      _mockContext = MockBuildContext();
    });
 
-  testWidgets('survey_list has basic widgets', (WidgetTester tester) async {  
+  testWidgets('project_list has basic widgets', (WidgetTester tester) async {  
     await tester.pumpWidget(
-        MaterialApp(home: AvailableSurveysScreen()));
+        MaterialApp(home: AvailableProjectsScreen()));
 
     expect(find.byType(AppBar), findsOneWidget);
     expect(find.byType(RefreshIndicator), findsOneWidget);
   });  
 
-  testWidgets('survey_list: renderListView', (WidgetTester tester) async {
+  testWidgets('project_list: renderListView', (WidgetTester tester) async {
     await tester.pumpWidget(
-        MaterialApp(home: AvailableSurveysScreen()));
+        MaterialApp(home: AvailableProjectsScreen()));
 
-    final AvailableSurveysScreenState myWidgetState = tester.state(find.byType(AvailableSurveysScreen));
+    final AvailableProjectsScreenState myWidgetState = tester.state(find.byType(AvailableProjectsScreen));
 
     final Widget expectedWidget = myWidgetState.renderListView(_mockContext);
     
@@ -39,11 +39,11 @@ void main() {
   });
 
 
-  testWidgets('survey_list: renderProgressBar returns an empty container if(loading==false)', (WidgetTester tester) async {  
+  testWidgets('project_list: renderProgressBar returns an empty container if(loading==false)', (WidgetTester tester) async {  
     await tester.pumpWidget(
-        MaterialApp(home: AvailableSurveysScreen()));
+        MaterialApp(home: AvailableProjectsScreen()));
 
-    final AvailableSurveysScreenState myWidgetState = tester.state(find.byType(AvailableSurveysScreen));
+    final AvailableProjectsScreenState myWidgetState = tester.state(find.byType(AvailableProjectsScreen));
 
     myWidgetState.loading = false;
     final Widget expectedWidget = myWidgetState.renderProgressBar(_mockContext);    
@@ -56,11 +56,11 @@ void main() {
     expect(find.byType(LinearProgressIndicator), findsNothing);
   });
 
-  testWidgets('survey_list: _listViewItemBuilder onTap navigates to SurveyDetail screen', (WidgetTester tester) async {  
+  testWidgets('project_list: _listViewItemBuilder onTap navigates to ProjectDetail screen', (WidgetTester tester) async {  
     await tester.pumpWidget(
-        MaterialApp(home: AvailableSurveysScreen()));
+        MaterialApp(home: AvailableProjectsScreen()));
 
-    final AvailableSurveysScreenState myWidgetState = tester.state(find.byType(AvailableSurveysScreen));
+    final AvailableProjectsScreenState myWidgetState = tester.state(find.byType(AvailableProjectsScreen));
 
     final Widget expectedWidget = myWidgetState.renderListView(_mockContext);
     

@@ -64,7 +64,7 @@ class SpaceMapperSideDrawer extends StatelessWidget {
                       AppLocalizations.of(context)?.translate("participate_in_a_project") ??
                           ""),
                   onTap: () {
-                    Navigator.of(context).pushNamed('/take_survey');
+                    Navigator.of(context).pushNamed('/participate_in_a_project');
                   })),
           Card(
             child: ListTile(

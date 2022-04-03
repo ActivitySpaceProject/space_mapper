@@ -40,7 +40,7 @@ class RouteGenerator {
           return MaterialPageRoute(builder: (_) => ProjectDetail(args));
         }
         return _errorRoute();
-        case '/project_tiger_in_car':
+      case '/project_tiger_in_car':
         return MaterialPageRoute(builder: (_) => TigerInCar());
       default:
         // If there is no such named route in the switch statement, e.g. /third

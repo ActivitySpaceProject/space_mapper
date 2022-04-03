@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/app_localizations.dart';
 import '../components/banner_image.dart';
 import '../components/project_tile.dart';
-import '../mocks/mock_survey.dart';
+import '../mocks/mock_project.dart';
 import '../models/project.dart';
 import '../styles.dart';
 
@@ -15,7 +15,7 @@ class AvailableProjectsScreen extends StatefulWidget {
 }
 
 class AvailableProjectsScreenState extends State<AvailableProjectsScreen> {
-  List<Project> surveys = [];
+  List<Project> projects = [];
   bool loading = false;
 
   @override
@@ -44,9 +44,9 @@ class AvailableProjectsScreenState extends State<AvailableProjectsScreen> {
   Future<void> loadData() async {
     if (this.mounted) {
       setState(() => this.loading = true);
-      final surveys = await MockProject.fetchAll();
+      final projects = await MockProject.fetchAll();
       setState(() {
-        this.surveys = surveys;
+        this.projects = projects;
         this.loading = false;
       });
     }
@@ -63,35 +63,35 @@ class AvailableProjectsScreenState extends State<AvailableProjectsScreen> {
 
   Widget renderListView(BuildContext context) {
     return ListView.builder(
-        itemCount: this.surveys.length, itemBuilder: _listViewItemBuilder);
+        itemCount: this.projects.length, itemBuilder: _listViewItemBuilder);
   }
 
   Widget _listViewItemBuilder(BuildContext context, int index) {
-    final survey = this.surveys[index];
+    final project = this.projects[index];
     return GestureDetector(
-      onTap: () => _navigationToSurveyDetail(context, survey.id),
+      onTap: () => _navigationToProjectDetail(context, project.id),
       child: Container(
         height: ListItemHeight,
         child: Stack(
           children: [
-            BannerImage(url: survey.imageUrl, height: 300.0),
-            _tileFooter(survey),
+            BannerImage(url: project.imageUrl, height: 300.0),
+            _tileFooter(project),
           ],
         ),
       ),
     );
   }
 
-  void _navigationToSurveyDetail(BuildContext context, int surveyID) {
-    Navigator.of(context).pushNamed('/survey_detail', arguments: surveyID);
+  void _navigationToProjectDetail(BuildContext context, int projectID) {
+    Navigator.of(context).pushNamed('/project_detail', arguments: projectID);
   }
 
-  Widget _tileFooter(Project survey) {
+  Widget _tileFooter(Project project) {
     final overlay = Container(
       padding: EdgeInsets.symmetric(
           vertical: 5.0, horizontal: Styles.horizontalPaddingDefault),
       decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
-      child: ProjectTile(project: survey, darkTheme: true),
+      child: ProjectTile(project: project, darkTheme: true),
     );
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,

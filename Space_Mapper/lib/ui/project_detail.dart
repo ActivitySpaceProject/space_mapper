@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import '../models/app_localizations.dart';
 import '../components/banner_image.dart';
 import '../components/project_tile.dart';
-import '../mocks/mock_survey.dart';
+import '../mocks/mock_project.dart';
 import '../models/project.dart';
 import '../models/custom_locations.dart';
 import '../styles.dart';
@@ -17,12 +17,12 @@ const BodyVerticalPadding = 20.0;
 const FooterHeight = 100.0;
 
 class ProjectDetail extends StatefulWidget {
-  final int surveyID;
+  final int projectID;
 
-  ProjectDetail(this.surveyID);
+  ProjectDetail(this.projectID);
 
   @override
-  _ProjectDetailState createState() => _ProjectDetailState(surveyID);
+  _ProjectDetailState createState() => _ProjectDetailState(projectID);
 }
 
 class _ProjectDetailState extends State<ProjectDetail> {
@@ -56,18 +56,18 @@ class _ProjectDetailState extends State<ProjectDetail> {
   }
 
   loadData() {
-    final survey = MockProject.fetchByID(this.projectID);
+    final project = MockProject.fetchByID(this.projectID);
 
     if (mounted) {
       setState(() {
-        this.project = survey;
+        this.project = project;
       });
     }
   }
 
-  Widget _renderBody(BuildContext context, Project survey) {
+  Widget _renderBody(BuildContext context, Project project) {
     var result = <Widget>[];
-    result.add(BannerImage(url: survey.imageUrl, height: BannerImageHeight));
+    result.add(BannerImage(url: project.imageUrl, height: BannerImageHeight));
     result.add(_renderHeader());
     result.add(_renderConsentForm());
     if (consent) result.add(_renderFrequencyChooser());
@@ -98,7 +98,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
           height: FooterHeight,
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
-            child: _renderTakeSurveyButton(),
+            child: _renderParticipateInProjectButton(),
           ),
         )
       ],
@@ -183,7 +183,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
     );
   }
 
-  Widget _renderTakeSurveyButton() {
+  Widget _renderParticipateInProjectButton() {
     return TextButton(
       //color: Styles.accentColor,
       //textColor: Styles.textColorBright,
@@ -191,7 +191,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
         backgroundColor: MaterialStateProperty.all(Colors.blue),
       ),
       onPressed: () => {
-        _navigationToSurvey(context),
+        _navigationToProject(context),
       },
       child: Text(
         'Participate'.toUpperCase(),
@@ -235,7 +235,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
     }
   }
 
-  Future<void> _navigationToSurvey(BuildContext context) async {
+  Future<void> _navigationToProject(BuildContext context) async {
     String locationHistoryJSON = await getLocationsToShare(dropdownValue);
 
     project.participate(context, locationHistoryJSON);

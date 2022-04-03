@@ -1,4 +1,4 @@
-import 'package:asm/mocks/mock_survey.dart';
+import 'package:asm/mocks/mock_project.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

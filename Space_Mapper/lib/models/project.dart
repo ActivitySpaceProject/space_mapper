@@ -28,7 +28,7 @@ class Project {
     if (projectScreen != null) {
       // Navigate to the project screen within the app
       Navigator.of(context)
-          .pushNamed('/project_tiger_in_car');
+          .pushNamed(projectScreen.toString());
     } else if (webUrl != null) {
       // Open a web view with the project url
 

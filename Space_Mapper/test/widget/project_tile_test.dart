@@ -1,5 +1,5 @@
 import 'package:asm/components/project_tile.dart';
-import 'package:asm/mocks/mock_survey.dart';
+import 'package:asm/mocks/mock_project.dart';
 import 'package:asm/models/project.dart';
 import 'package:asm/styles.dart';
 import 'package:flutter/material.dart';

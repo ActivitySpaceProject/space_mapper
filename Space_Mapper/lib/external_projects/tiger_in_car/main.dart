@@ -66,33 +66,36 @@ class _TigerInCarState extends State<TigerInCar>
       crossAxisCellCount: width,
       mainAxisCellCount: height,
       child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Material(
-            color: backgroundColor,
-            elevation: 14.0,
-            borderRadius: BorderRadius.circular(24.0),
-            shadowColor: Color(0x802196F3),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-              child: SizedBox(
-                  height: 250,
-                  child: Column(
-                    children: [
-                      Text(
-                        text,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20.0,
-                        ),
-                      ),
-                      Icon(
-                        icon,
-                        size: 60.0,
-                      )
-                    ],
-                  )),
+        padding: const EdgeInsets.all(8.0),
+        child: Material(
+          color: backgroundColor,
+          elevation: 14.0,
+          borderRadius: BorderRadius.circular(24.0),
+          shadowColor: Color(0x802196F3),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+            child: SizedBox(
+              height: 250,
+              child: Column(
+                children: [
+                  Text(
+                    text,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
+                  ),
+                  SizedBox(height: 11.0),
+                  Icon(
+                    icon,
+                    size: 60.0,
+                  ),
+                ],
+              ),
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

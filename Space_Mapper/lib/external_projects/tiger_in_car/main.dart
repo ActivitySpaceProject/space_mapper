@@ -9,7 +9,6 @@ class TigerInCar extends StatefulWidget {
 class _TigerInCarState extends State<TigerInCar>
     with SingleTickerProviderStateMixin {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final int numberOfScreens = 2;
 
   @override
   void initState() {
@@ -19,21 +18,18 @@ class _TigerInCarState extends State<TigerInCar>
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DefaultTabController(
-        length: numberOfScreens,
-        child: Scaffold(
-          appBar: AppBar(
-              title: Text("Tiger in Car"),
-              leading: IconButton(
-                icon: Icon(
-                  Icons.arrow_back,
-                ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              )),
-          body: displayButtons(),
-        ),
+      home: Scaffold(
+        appBar: AppBar(
+            title: Text("Tiger in Car"),
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )),
+        body: displayButtons(),
       ),
     );
   }
@@ -50,17 +46,17 @@ class _TigerInCarState extends State<TigerInCar>
             // The following functions require 2 arguments: width and height
             // Width is an int that goes from 1 to 4 and it's relative to the screen's size => 1=25% of the screen's width, 2=50%, 3=75% and 4=100%
             // Height is a float
-            displayCard("Initiate Experiment",
+            displayCardBtn("Initiate Experiment",
                 Color.fromARGB(255, 255, 255, 255), Icons.not_started, 4, 1.65),
-            displayCard("Is the mosquito still alive?",
+            displayCardBtn("Is the mosquito still alive?",
                 Color.fromARGB(255, 155, 255, 155), Icons.sync, 4, 1.65),
-            displayCard("Is the mosquito dead?",
+            displayCardBtn("Is the mosquito dead?",
                 Color.fromARGB(255, 255, 155, 155), Icons.stop_circle, 4, 1.65),
           ],
         )));
   }
 
-  Widget displayCard(String text, Color backgroundColor, IconData icon,
+  Widget displayCardBtn(String text, Color backgroundColor, IconData icon,
       int width, num height) {
     return StaggeredGridTile.count(
       crossAxisCellCount: width,
@@ -76,21 +72,24 @@ class _TigerInCarState extends State<TigerInCar>
             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
             child: SizedBox(
               height: 250,
-              child: Column(
-                children: [
-                  Text(
-                    text,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20.0,
+              child: TextButton(
+                onPressed: () {},
+                child: Column(
+                  children: [
+                    Text(
+                      text,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 20.0, color: Color.fromARGB(255, 0, 0, 0)),
                     ),
-                  ),
-                  SizedBox(height: 11.0),
-                  Icon(
-                    icon,
-                    size: 60.0,
-                  ),
-                ],
+                    SizedBox(height: 8.0),
+                    Icon(
+                      icon,
+                      size: 60.0,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

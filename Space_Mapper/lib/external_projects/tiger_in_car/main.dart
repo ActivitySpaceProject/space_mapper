@@ -1,3 +1,4 @@
+import 'package:asm/external_projects/tiger_in_car/trajects.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -9,6 +10,7 @@ class TigerInCar extends StatefulWidget {
 class _TigerInCarState extends State<TigerInCar>
     with SingleTickerProviderStateMixin {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  TigerInCarRoute tigerInCarRoute = new TigerInCarRoute();
 
   @override
   void initState() {
@@ -46,18 +48,28 @@ class _TigerInCarState extends State<TigerInCar>
             // The following functions require 2 arguments: width and height
             // Width is an int that goes from 1 to 4 and it's relative to the screen's size => 1=25% of the screen's width, 2=50%, 3=75% and 4=100%
             // Height is a float
-            displayCardBtn("Initiate Experiment",
-                Color.fromARGB(255, 255, 255, 255), Icons.not_started, 4, 1.65),
+            displayCardBtn(
+                "Initiate Experiment",
+                Color.fromARGB(255, 255, 255, 255),
+                Icons.not_started,
+                4,
+                1.65,
+                0),
             displayCardBtn("Is the mosquito still alive?",
-                Color.fromARGB(255, 155, 255, 155), Icons.sync, 4, 1.65),
-            displayCardBtn("Is the mosquito dead?",
-                Color.fromARGB(255, 255, 155, 155), Icons.stop_circle, 4, 1.65),
+                Color.fromARGB(255, 155, 255, 155), Icons.sync, 4, 1.65, 1),
+            displayCardBtn(
+                "Is the mosquito dead?",
+                Color.fromARGB(255, 255, 155, 155),
+                Icons.stop_circle,
+                4,
+                1.65,
+                2),
           ],
         )));
   }
 
   Widget displayCardBtn(String text, Color backgroundColor, IconData icon,
-      int width, num height) {
+      int width, num height, int action) {
     return StaggeredGridTile.count(
       crossAxisCellCount: width,
       mainAxisCellCount: height,
@@ -73,7 +85,21 @@ class _TigerInCarState extends State<TigerInCar>
             child: SizedBox(
               height: 250,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  switch (action) {
+                    case 0:
+                      tigerInCarRoute.setStartDate(DateTime.now());
+                      break;
+                    case 1:
+                      tigerInCarRoute.addMosquitoAlive(DateTime.now());
+                      break;
+                    case 2:
+                      tigerInCarRoute.endExperiment(DateTime.now());
+                      break;
+                    default:
+                      break;
+                  }
+                },
                 child: Column(
                   children: [
                     Text(

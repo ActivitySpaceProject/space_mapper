@@ -39,7 +39,7 @@ class StorageDatabase {
     ''');
   }
 
-  Future<Contact> create(Contact contact) async {
+  Future<Contact> createContact(Contact contact) async {
     final db = await instance.database;
 
     final id = await db.insert(tableContacts, contact.toJson());
@@ -71,7 +71,7 @@ class StorageDatabase {
     return result.map((json) => Contact.fromJson(json)).toList();
   }
 
-  Future<int> update(Contact contact) async {
+  Future<int> updateContact(Contact contact) async {
     final db = await instance.database;
 
     return db.update(
@@ -82,7 +82,7 @@ class StorageDatabase {
     );
   }
 
-  Future<int> delete(int id) async {
+  Future<int> deleteContact(int id) async {
     final db = await instance.database;
 
     return await db.delete(tableContacts,

@@ -159,6 +159,6 @@ class MyCustomFormState extends State<MyCustomForm> {
     DateTime date = DateTime.now();
     final contact = Contact(gender: gender, ageGroup: ageGroup, date: date);
 
-    await StorageDatabase.instance.create(contact);
+    await StorageDatabase.instance.createContact(contact);
   }
 }

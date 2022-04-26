@@ -2,18 +2,20 @@ import 'package:asm/models/contacts.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../external_projects/tiger_in_car/models/tiger_in_car_state.dart';
+
 // Used to store the data submitted by the user, such as contacts, mosquito bites, etc.
-class StorageDatabase {
-  static final StorageDatabase instance = StorageDatabase._init();
+class TigerInCarDatabase {
+  static final TigerInCarDatabase instance = TigerInCarDatabase._init();
 
   static Database? _database;
 
-  StorageDatabase._init();
+  TigerInCarDatabase._init();
 
   Future<Database> get database async {
     if (_database != null) return _database!;
 
-    _database = await _initDB('storage.db');
+    _database = await _initDB('tigerInCarStorage.db');
     return _database!;
   }
 
@@ -27,26 +29,24 @@ class StorageDatabase {
   Future _createDB(Database db, int version) async {
     final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     final stringType = 'STRING NOT NULL';
-    //final integerType = 'INTEGER NOT NULL';
 
     await db.execute('''
-      CREATE TABLE $tableContacts(
-        ${ContactFields.id} $idType,
-        ${ContactFields.gender} $stringType,
-        ${ContactFields.ageGroup} $stringType,
-        ${ContactFields.millisecondsSinceEpoch} $stringType
+      CREATE TABLE $tableTigerInCar(
+        ${TigerInCarFields.id} $idType,
+        ${TigerInCarFields.millisecondsSinceEpoch} $stringType,
+        ${TigerInCarFields.isAlive} $stringType,
       )   
     ''');
   }
 
-  Future<Contact> createContact(Contact contact) async {
+  Future<TigerInCarState> create(TigerInCarState state) async {
     final db = await instance.database;
 
-    final id = await db.insert(tableContacts, contact.toJson());
-    return contact.copy(id: id);
+    final id = await db.insert(tableTigerInCar, state.toJson());
+    return state.copy(id: id);
   }
 
-  Future<Contact> readContact(int id) async {
+  Future<Contact> readState(int id) async {
     final db = await instance.database;
 
     final maps = await db.query(

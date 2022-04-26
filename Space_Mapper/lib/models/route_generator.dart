@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../external_projects/tiger_in_car/main.dart';
+import '../external_projects/tiger_in_car/screens/main.dart';
 import '../ui/form_view.dart';
 import '../ui/home_view.dart';
 import '../ui/list_view.dart';

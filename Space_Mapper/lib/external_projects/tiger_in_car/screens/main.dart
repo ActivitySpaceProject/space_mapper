@@ -1,4 +1,4 @@
-import 'package:asm/external_projects/tiger_in_car/trajects.dart';
+import 'package:asm/external_projects/tiger_in_car/models/trajects.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 

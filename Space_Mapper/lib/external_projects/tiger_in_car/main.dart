@@ -55,10 +55,10 @@ class _TigerInCarState extends State<TigerInCar>
                 4,
                 1.65,
                 0),
-            displayCardBtn("Is the mosquito still alive?",
+            displayCardBtn("Press if the mosquito is alive now",
                 Color.fromARGB(255, 155, 255, 155), Icons.sync, 4, 1.65, 1),
             displayCardBtn(
-                "Is the mosquito dead?",
+                "Finish experiment",
                 Color.fromARGB(255, 255, 155, 155),
                 Icons.stop_circle,
                 4,
@@ -94,7 +94,7 @@ class _TigerInCarState extends State<TigerInCar>
                       tigerInCarRoute.addMosquitoAlive(DateTime.now());
                       break;
                     case 2:
-                      tigerInCarRoute.endExperiment(DateTime.now());
+                      tigerInCarRoute.finishExperiment(DateTime.now());
                       break;
                     default:
                       break;

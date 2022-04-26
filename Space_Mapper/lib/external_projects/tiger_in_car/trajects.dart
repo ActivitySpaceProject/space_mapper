@@ -6,7 +6,9 @@ class TigerInCarRoute {
 
   void setStartDate(DateTime startDate) {
     if (_startDate == null)
+    {
       _startDate = startDate;
+    }      
   }
 
   void addMosquitoAlive(DateTime date) {
@@ -15,7 +17,7 @@ class TigerInCarRoute {
     _mosquitoAlive.add(date);
   }
 
-  void endExperiment(DateTime date) {
+  void finishExperiment(DateTime date) {
     _mosquitoDeath = date;
     sendReport();
   }

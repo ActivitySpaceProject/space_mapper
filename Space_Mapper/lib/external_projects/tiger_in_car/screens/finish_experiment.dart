@@ -2,20 +2,29 @@ import 'package:asm/external_projects/tiger_in_car/models/tiger_in_car_state.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-import '../../../db/database_tiger_in_car.dart';
+class FinishExperiment extends StatefulWidget {
+  final TigerInCarState tigerInCarRoute;
+  FinishExperiment(this.tigerInCarRoute);
 
-class TigerInCar extends StatefulWidget {
   @override
-  _TigerInCarState createState() => _TigerInCarState();
+  _FinishExperimentState createState() =>
+      _FinishExperimentState(tigerInCarRoute);
 }
 
-class _TigerInCarState extends State<TigerInCar>
+class _FinishExperimentState extends State<FinishExperiment>
     with SingleTickerProviderStateMixin {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  TigerInCarState tigerInCarRoute;
+  _FinishExperimentState(this.tigerInCarRoute);
 
   @override
   void initState() {
     super.initState();
+  }
+
+  String getFinishCause(String cause) {
+    return cause;
   }
 
   @override
@@ -86,16 +95,16 @@ class _TigerInCarState extends State<TigerInCar>
             child: SizedBox(
               height: 250,
               child: TextButton(
-                onPressed: () async {
+                onPressed: () {
                   switch (action) {
                     case 0:
-                      addMosquitoState(action, true, await getAmountOfRows());
+                      //tigerInCarRoute.setStartDate(DateTime.now());
                       break;
                     case 1:
-                      addMosquitoState(action, true, await getAmountOfRows());
+                      //tigerInCarRoute.addMosquitoAlive(DateTime.now());
                       break;
                     case 2:
-                      addMosquitoState(action, false, await getAmountOfRows());
+                      //tigerInCarRoute.finishExperiment(DateTime.now());
                       break;
                     default:
                       break;
@@ -123,31 +132,5 @@ class _TigerInCarState extends State<TigerInCar>
         ),
       ),
     );
-  }
-
-  Future<int> getAmountOfRows() async {
-    int? count = await TigerInCarDatabase.instance.getAmountOfRows();
-    if (count == null) throw Exception();
-
-    return count;
-  }
-
-  void addMosquitoState(int btnIndex, bool isAlive, int amountOfRows) async {
-    DateTime date = DateTime.now();
-    final state = TigerInCarState(isAlive: isAlive, date: date);
-
-    switch(btnIndex){
-      case 0:
-        await TigerInCarDatabase.instance.createRecord(state);
-      break;
-      case 1:
-        await TigerInCarDatabase.instance.createRecord(state);
-      break;
-      case 2:
-        await TigerInCarDatabase.instance.createRecord(state);
-      break;
-      default:
-      throw Exception();
-    }    
   }
 }

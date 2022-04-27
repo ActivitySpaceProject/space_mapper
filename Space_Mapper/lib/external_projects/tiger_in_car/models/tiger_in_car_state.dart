@@ -23,7 +23,7 @@ class TigerInCarState {
 
   static TigerInCarState fromJson(Map<String, Object?> json) => TigerInCarState(
       id: json[TigerInCarFields.id] as int?,
-      isAlive: json[TigerInCarFields.isAlive] as bool,
+      isAlive: json[TigerInCarFields.isAlive] == 1,
       date: DateTime.fromMillisecondsSinceEpoch(
           json[TigerInCarFields.millisecondsSinceEpoch] as int));
 

@@ -1,10 +1,9 @@
-import 'package:asm/models/contacts.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../external_projects/tiger_in_car/models/tiger_in_car_state.dart';
 
-// Used to store the data submitted by the user, such as contacts, mosquito bites, etc.
+// Used to store the data related to the tiger in car prototype
 class TigerInCarDatabase {
   static final TigerInCarDatabase instance = TigerInCarDatabase._init();
 
@@ -34,59 +33,48 @@ class TigerInCarDatabase {
       CREATE TABLE $tableTigerInCar(
         ${TigerInCarFields.id} $idType,
         ${TigerInCarFields.millisecondsSinceEpoch} $stringType,
-        ${TigerInCarFields.isAlive} $stringType,
+        ${TigerInCarFields.isAlive} $stringType
       )   
     ''');
   }
 
-  Future<TigerInCarState> create(TigerInCarState state) async {
+  Future<TigerInCarState> createRecord(TigerInCarState state) async {
     final db = await instance.database;
 
     final id = await db.insert(tableTigerInCar, state.toJson());
     return state.copy(id: id);
   }
 
-  Future<Contact> readState(int id) async {
+  Future<TigerInCarState> readState(int id) async {
     final db = await instance.database;
 
     final maps = await db.query(
-      tableContacts,
-      columns: ContactFields.values,
-      where: '${ContactFields.id} = ?',
+      tableTigerInCar,
+      columns: TigerInCarFields.values,
+      where: '${TigerInCarFields.id} = ?',
       whereArgs: [id],
     );
 
     if (maps.isNotEmpty) {
-      return Contact.fromJson(maps.first);
+      return TigerInCarState.fromJson(maps.first);
     } else {
       throw Exception('ID $id not found');
     }
   }
 
-  Future<List<Contact>> readAllContacts() async {
+  Future<List<TigerInCarState>> readAllRecords() async {
     final db = await instance.database;
 
-    final result = await db.query(tableContacts);
+    final result = await db.query(tableTigerInCar);
 
-    return result.map((json) => Contact.fromJson(json)).toList();
+    return result.map((json) => TigerInCarState.fromJson(json)).toList();
   }
 
-  Future<int> updateContact(Contact contact) async {
+  Future<int> deleteRecord(int id) async {
     final db = await instance.database;
 
-    return db.update(
-      tableContacts,
-      contact.toJson(),
-      where: '${ContactFields.id} = ?',
-      whereArgs: [contact.id],
-    );
-  }
-
-  Future<int> deleteContact(int id) async {
-    final db = await instance.database;
-
-    return await db.delete(tableContacts,
-        where: '${ContactFields.id} = ?', whereArgs: [id]);
+    return await db.delete(tableTigerInCar,
+        where: '${TigerInCarFields.id} = ?', whereArgs: [id]);
   }
 
   Future close() async {
@@ -94,4 +82,12 @@ class TigerInCarDatabase {
 
     db.close();
   }
+
+  Future<int?> getAmountOfRows() async{
+    final db = await instance.database;
+
+    int? count = Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM $tableTigerInCar'));
+
+    return count;
+  }  
 }

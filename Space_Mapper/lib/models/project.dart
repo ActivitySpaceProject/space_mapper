@@ -37,8 +37,7 @@ class Project {
       arguments['selectedUrl'] = webUrl ?? '';
       arguments['locationHistoryJSON'] = locationHistoryJSON;
 
-      Navigator.of(context)
-          .pushNamed('/navigation_to_webview', arguments: arguments);
+      Navigator.of(context).pushNamed('/navigation_to_webview', arguments: arguments);
     } else {
       throw Exception('Both projectScreen and webUrl were null');
     }

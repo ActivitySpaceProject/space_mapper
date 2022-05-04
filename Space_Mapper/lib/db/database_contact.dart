@@ -27,7 +27,6 @@ class ContactDatabase {
   Future _createDB(Database db, int version) async {
     final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     final stringType = 'STRING NOT NULL';
-    //final integerType = 'INTEGER NOT NULL';
 
     await db.execute('''
       CREATE TABLE $tableContacts(

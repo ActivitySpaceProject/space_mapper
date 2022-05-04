@@ -135,16 +135,17 @@ class _TigerInCarState extends State<TigerInCar>
   void addMosquitoState(int btnIndex, bool isAlive, int amountOfRows) async {
     DateTime date = DateTime.now();
     final state = TigerInCarState(isAlive: isAlive, date: date);
+    await TigerInCarDatabase.instance.createRecord(state);
 
     switch(btnIndex){
       case 0:
-        await TigerInCarDatabase.instance.createRecord(state);
+        // TODO
       break;
       case 1:
-        await TigerInCarDatabase.instance.createRecord(state);
+        // TODO
       break;
       case 2:
-        await TigerInCarDatabase.instance.createRecord(state);
+        Navigator.of(context).pushNamed('/tiger_in_car_finish_experiment', arguments: state);
       break;
       default:
       throw Exception();

@@ -32,7 +32,7 @@ class _FinishExperimentState extends State<FinishExperiment>
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-            title: Text("Tiger in Car"),
+            title: Text("Why did the experiment finish?"),
             leading: IconButton(
               icon: Icon(
                 Icons.arrow_back,
@@ -59,21 +59,21 @@ class _FinishExperimentState extends State<FinishExperiment>
             // Width is an int that goes from 1 to 4 and it's relative to the screen's size => 1=25% of the screen's width, 2=50%, 3=75% and 4=100%
             // Height is a float
             displayCardBtn(
-                "Initiate Experiment",
+                "The mosquito died",
                 Color.fromARGB(255, 255, 255, 255),
-                Icons.not_started,
+                Icons.cancel_outlined,
                 4,
                 1.65,
                 0),
-            displayCardBtn("Press if the mosquito is alive now",
-                Color.fromARGB(255, 155, 255, 155), Icons.sync, 4, 1.65, 1),
             displayCardBtn(
-                "Finish experiment",
-                Color.fromARGB(255, 255, 155, 155),
-                Icons.stop_circle,
+                "The mosquito escaped",
+                Color.fromARGB(255, 255, 255, 255),
+                Icons.airline_stops,
                 4,
                 1.65,
-                2),
+                1),
+            displayCardBtn("Other", Color.fromARGB(255, 255, 255, 255),
+                Icons.apps, 4, 1.65, 2),
           ],
         )));
   }

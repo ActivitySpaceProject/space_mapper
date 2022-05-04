@@ -1,7 +1,7 @@
-import 'package:asm/db/database.dart';
 import 'package:charts_flutter/flutter.dart' as Charts;
 import 'package:flutter/material.dart';
 
+import '../../../db/database_contact.dart';
 import '../../contacts.dart';
 
 class ContactByGenderData {
@@ -12,7 +12,7 @@ class ContactByGenderData {
   ContactByGenderData(this.gender, this.value, this.color);
 
   static Future<List<ContactByGenderData>> getData() async {
-    List<Contact> contacts = await StorageDatabase.instance.readAllContacts();
+    List<Contact> contacts = await ContactDatabase.instance.readAllContacts();
     List<ContactByGenderData> _contactByGenderData = [];
 
     // Initialize data

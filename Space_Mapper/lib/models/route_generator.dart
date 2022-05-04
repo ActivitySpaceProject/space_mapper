@@ -1,5 +1,7 @@
+import 'package:asm/external_projects/tiger_in_car/models/tiger_in_car_state.dart';
 import 'package:flutter/material.dart';
 
+import '../external_projects/tiger_in_car/screens/finish_experiment.dart';
 import '../external_projects/tiger_in_car/screens/main.dart';
 import '../ui/form_view.dart';
 import '../ui/home_view.dart';
@@ -42,6 +44,11 @@ class RouteGenerator {
         return _errorRoute();
       case '/project_tiger_in_car':
         return MaterialPageRoute(builder: (_) => TigerInCar());
+      case '/tiger_in_car_finish_experiment':
+        if(args is TigerInCarState){
+          return MaterialPageRoute(builder: (_) => FinishExperiment(args));
+        }
+        return _errorRoute();
       default:
         // If there is no such named route in the switch statement, e.g. /third
         return _errorRoute();

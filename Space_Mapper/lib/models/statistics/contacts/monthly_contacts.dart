@@ -1,7 +1,7 @@
-import 'package:asm/db/database.dart';
 import 'package:charts_flutter/flutter.dart' as Charts;
 import 'package:flutter/material.dart';
 
+import '../../../db/database_contact.dart';
 import '../../contacts.dart';
 
 class MonthlyContactData {
@@ -12,7 +12,7 @@ class MonthlyContactData {
   MonthlyContactData(this.id, this.value, this.date);
 
   static Future<List<MonthlyContactData>> getData() async {
-    List<Contact> contacts = await StorageDatabase.instance.readAllContacts();
+    List<Contact> contacts = await ContactDatabase.instance.readAllContacts();
     List<MonthlyContactData> _monthlyContactData = [];
 
     // Initialize data at 0 values

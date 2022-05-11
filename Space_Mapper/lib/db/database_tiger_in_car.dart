@@ -28,12 +28,14 @@ class TigerInCarDatabase {
   Future _createDB(Database db, int version) async {
     final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     final stringType = 'STRING NOT NULL';
+    final stringNullableType = 'STRING';
 
     await db.execute('''
       CREATE TABLE $tableTigerInCar(
         ${TigerInCarFields.id} $idType,
         ${TigerInCarFields.millisecondsSinceEpoch} $stringType,
-        ${TigerInCarFields.isAlive} $stringType
+        ${TigerInCarFields.isAlive} $stringType,
+        ${TigerInCarFields.comment} $stringNullableType
       )   
     ''');
   }

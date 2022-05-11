@@ -70,7 +70,7 @@ class _FinishExperimentState extends State<FinishExperiment>
             displayCardBtn(
                 "The mosquito escaped",
                 Color.fromARGB(255, 255, 255, 255),
-                Icons.airline_stops,
+                Icons.airline_stops_outlined,
                 4,
                 1.65,
                 1),

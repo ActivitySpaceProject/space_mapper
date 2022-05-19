@@ -48,6 +48,8 @@ class Contact {
             date.millisecondsSinceEpoch.toString(),
       };
 
+  // Create a new instance of the class using the values passed as parameters. 
+  // When there are no values passed, the values from the current instance are copied into the new instance  
   Contact copy({
     int? id,
     String? gender,

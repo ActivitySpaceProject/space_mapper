@@ -6,33 +6,32 @@ import 'package:flutter/material.dart';
 
 import '../models/app_localizations.dart';
 import '../components/banner_image.dart';
-import '../components/survey_tile.dart';
-import '../mocks/mock_survey.dart';
-import '../models/survey.dart';
+import '../components/project_tile.dart';
+import '../mocks/mock_project.dart';
+import '../models/project.dart';
 import '../models/custom_locations.dart';
-import '../ui/web_view.dart';
 import '../styles.dart';
 
 const BannerImageHeight = 300.0;
 const BodyVerticalPadding = 20.0;
 const FooterHeight = 100.0;
 
-class SurveyDetail extends StatefulWidget {
-  final int surveyID;
+class ProjectDetail extends StatefulWidget {
+  final int projectID;
 
-  SurveyDetail(this.surveyID);
+  ProjectDetail(this.projectID);
 
   @override
-  _SurveyDetailState createState() => _SurveyDetailState(surveyID);
+  _ProjectDetailState createState() => _ProjectDetailState(projectID);
 }
 
-class _SurveyDetailState extends State<SurveyDetail> {
-  final int surveyID;
-  Survey survey = Survey.blank();
+class _ProjectDetailState extends State<ProjectDetail> {
+  final int projectID;
+  Project project = Project.blank();
   bool consent = false;
   int dropdownValue = 7;
 
-  _SurveyDetailState(this.surveyID);
+  _ProjectDetailState(this.projectID);
 
   @override
   void initState() {
@@ -49,7 +48,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
                   "")),
       body: Stack(
         children: [
-          _renderBody(context, survey),
+          _renderBody(context, project),
           _renderFooter(context),
         ],
       ),
@@ -57,18 +56,18 @@ class _SurveyDetailState extends State<SurveyDetail> {
   }
 
   loadData() {
-    final survey = MockSurvey.fetchByID(this.surveyID);
+    final project = MockProject.fetchByID(this.projectID);
 
     if (mounted) {
       setState(() {
-        this.survey = survey;
+        this.project = project;
       });
     }
   }
 
-  Widget _renderBody(BuildContext context, Survey survey) {
+  Widget _renderBody(BuildContext context, Project project) {
     var result = <Widget>[];
-    result.add(BannerImage(url: survey.imageUrl, height: BannerImageHeight));
+    result.add(BannerImage(url: project.imageUrl, height: BannerImageHeight));
     result.add(_renderHeader());
     result.add(_renderConsentForm());
     if (consent) result.add(_renderFrequencyChooser());
@@ -85,7 +84,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
       padding: EdgeInsets.symmetric(
           vertical: BodyVerticalPadding,
           horizontal: Styles.horizontalPaddingDefault),
-      child: SurveyTile(survey: survey, darkTheme: false),
+      child: ProjectTile(project: project, darkTheme: false),
     );
   }
 
@@ -99,7 +98,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
           height: FooterHeight,
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
-            child: _renderTakeSurveyButton(),
+            child: _renderParticipateInProjectButton(),
           ),
         )
       ],
@@ -111,10 +110,10 @@ class _SurveyDetailState extends State<SurveyDetail> {
         AppLocalizations.of(context)?.translate("consent_form") ?? "";
     String text = AppLocalizations.of(context)
             ?.translate("do_you_agree_to_share_your_anonymous_location_with") ??
-        "" + "${survey.name}?";
+        "" + "${project.name}?";
 
     return Container(
-      height: SurveyTileHeight,
+      height: ProjectTileHeight,
       padding: EdgeInsets.symmetric(
           //vertical: BodyVerticalPadding,
           horizontal: Styles.horizontalPaddingDefault),
@@ -125,7 +124,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
           Text('$title',
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
-              style: Styles.surveyTileTitleLight),
+              style: Styles.projectTileTitleLight),
           Row(
             children: [
               Checkbox(
@@ -140,7 +139,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
                 child: Text('$text',
                     overflow: TextOverflow.ellipsis,
                     maxLines: 3,
-                    style: Styles.surveyTileCaption),
+                    style: Styles.projectTileCaption),
               )
             ],
           ),
@@ -153,7 +152,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
     String title = "Days to share";
 
     return Container(
-      height: SurveyTileHeight,
+      height: ProjectTileHeight,
       padding: EdgeInsets.symmetric(
           //vertical: BodyVerticalPadding,
           horizontal: Styles.horizontalPaddingDefault),
@@ -164,7 +163,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
           Text('$title',
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
-              style: Styles.surveyTileTitleLight),
+              style: Styles.projectTileTitleLight),
           DropdownButton(
             value: dropdownValue,
             onChanged: (int? newValue) {
@@ -184,7 +183,7 @@ class _SurveyDetailState extends State<SurveyDetail> {
     );
   }
 
-  Widget _renderTakeSurveyButton() {
+  Widget _renderParticipateInProjectButton() {
     return TextButton(
       //color: Styles.accentColor,
       //textColor: Styles.textColorBright,
@@ -192,10 +191,10 @@ class _SurveyDetailState extends State<SurveyDetail> {
         backgroundColor: MaterialStateProperty.all(Colors.blue),
       ),
       onPressed: () => {
-        _navigationToSurvey(context),
+        _navigationToProject(context),
       },
       child: Text(
-        'Take Survey'.toUpperCase(),
+        'Participate'.toUpperCase(),
         style: Styles.textCTAButton,
       ),
     );
@@ -236,14 +235,10 @@ class _SurveyDetailState extends State<SurveyDetail> {
     }
   }
 
-  Future<void> _navigationToSurvey(BuildContext context) async {
+  Future<void> _navigationToProject(BuildContext context) async {
     String locationHistoryJSON = await getLocationsToShare(dropdownValue);
 
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) =>
-                MyWebView(survey.webUrl, locationHistoryJSON)));
+    project.participate(context, locationHistoryJSON);
   }
 
   Widget _renderBottomSpacer() {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
+import '../db/database_contact.dart';
 import '../models/app_localizations.dart';
-import '../db/database.dart';
 import '../models/contacts.dart';
 
 class FormView extends StatelessWidget {
@@ -63,7 +63,6 @@ class MyCustomFormState extends State<MyCustomForm> {
               'date': DateTime.now(),
               'accept_terms': false,
             },
-            //autovalidate: true, //TODO: The parameter autovalidate isn't defined
             child: Column(
               children: <Widget>[
                 FormBuilderChoiceChip(
@@ -159,6 +158,6 @@ class MyCustomFormState extends State<MyCustomForm> {
     DateTime date = DateTime.now();
     final contact = Contact(gender: gender, ageGroup: ageGroup, date: date);
 
-    await StorageDatabase.instance.create(contact);
+    await ContactDatabase.instance.createContact(contact);
   }
 }

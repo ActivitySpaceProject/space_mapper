@@ -1,3 +1,4 @@
+import 'package:asm/models/route_generator.dart';
 import 'package:asm/util/env.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -8,7 +9,6 @@ import 'package:flutter_background_geolocation/flutter_background_geolocation.da
 import 'package:background_fetch/background_fetch.dart';
 
 import 'models/app_localizations.dart';
-import 'ui/home_view.dart';
 import 'package:uuid/uuid.dart';
 
 /// Receive events from BackgroundGeolocation in Headless state.
@@ -125,11 +125,9 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final String appName = "Space Mapper";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: appName,
       supportedLocales: [
         Locale('en',
             ''), // English, no country code. The first element of this list is the default language
@@ -156,7 +154,8 @@ class MyApp extends StatelessWidget {
         // from the list (English, in this case).
         return supportedLocales.first;
       },
-      home: HomeView(appName),
+      initialRoute: '/',
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }

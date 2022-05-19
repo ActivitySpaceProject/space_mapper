@@ -1,4 +1,3 @@
-import 'package:asm/ui/form_view.dart';
 import 'package:asm/ui/side_drawer.dart';
 import 'package:asm/util/env.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +46,7 @@ class HomeViewState extends State<HomeView>
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
 
     //_isMoving = false;
     _enabled = true;
@@ -382,8 +381,7 @@ class HomeViewState extends State<HomeView>
       body: MapView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => FormView()));
+          Navigator.of(context).pushNamed('/record_contact');
           _onClickGetCurrentPosition();
         },
         child: Icon(Icons.person),

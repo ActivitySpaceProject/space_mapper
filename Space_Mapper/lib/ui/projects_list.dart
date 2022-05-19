@@ -2,22 +2,20 @@ import 'package:flutter/material.dart';
 
 import '../models/app_localizations.dart';
 import '../components/banner_image.dart';
-import '../components/survey_tile.dart';
-import '../mocks/mock_survey.dart';
-import '../models/survey.dart';
+import '../components/project_tile.dart';
+import '../mocks/mock_project.dart';
+import '../models/project.dart';
 import '../styles.dart';
-
-import 'survey_detail.dart';
 
 const ListItemHeight = 245.0;
 
-class AvailableSurveysScreen extends StatefulWidget {
+class AvailableProjectsScreen extends StatefulWidget {
   @override
-  _AvailableSurveysScreenState createState() => _AvailableSurveysScreenState();
+  AvailableProjectsScreenState createState() => AvailableProjectsScreenState();
 }
 
-class _AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
-  List<Survey> surveys = [];
+class AvailableProjectsScreenState extends State<AvailableProjectsScreen> {
+  List<Project> projects = [];
   bool loading = false;
 
   @override
@@ -31,7 +29,7 @@ class _AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
     return Scaffold(
         appBar: AppBar(
             title: Text(
-                AppLocalizations.of(context)?.translate("take_survey") ?? "")),
+                AppLocalizations.of(context)?.translate("participate_in_a_project") ?? "")),
         body: RefreshIndicator(
           onRefresh: loadData,
           child: Column(
@@ -46,9 +44,9 @@ class _AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
   Future<void> loadData() async {
     if (this.mounted) {
       setState(() => this.loading = true);
-      final surveys = await MockSurvey.fetchAll();
+      final projects = await MockProject.fetchAll();
       setState(() {
-        this.surveys = surveys;
+        this.projects = projects;
         this.loading = false;
       });
     }
@@ -65,36 +63,35 @@ class _AvailableSurveysScreenState extends State<AvailableSurveysScreen> {
 
   Widget renderListView(BuildContext context) {
     return ListView.builder(
-        itemCount: this.surveys.length, itemBuilder: _listViewItemBuilder);
+        itemCount: this.projects.length, itemBuilder: _listViewItemBuilder);
   }
 
   Widget _listViewItemBuilder(BuildContext context, int index) {
-    final survey = this.surveys[index];
+    final project = this.projects[index];
     return GestureDetector(
-      onTap: () => _navigationToLocationDetail(context, survey.id),
+      onTap: () => _navigationToProjectDetail(context, project.id),
       child: Container(
         height: ListItemHeight,
         child: Stack(
           children: [
-            BannerImage(url: survey.imageUrl, height: 300.0),
-            _tileFooter(survey),
+            BannerImage(url: project.imageUrl, height: 300.0),
+            _tileFooter(project),
           ],
         ),
       ),
     );
   }
 
-  void _navigationToLocationDetail(BuildContext context, int surveyID) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => SurveyDetail(surveyID)));
+  void _navigationToProjectDetail(BuildContext context, int projectID) {
+    Navigator.of(context).pushNamed('/project_detail', arguments: projectID);
   }
 
-  Widget _tileFooter(Survey survey) {
+  Widget _tileFooter(Project project) {
     final overlay = Container(
       padding: EdgeInsets.symmetric(
           vertical: 5.0, horizontal: Styles.horizontalPaddingDefault),
       decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
-      child: SurveyTile(survey: survey, darkTheme: true),
+      child: ProjectTile(project: project, darkTheme: true),
     );
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,

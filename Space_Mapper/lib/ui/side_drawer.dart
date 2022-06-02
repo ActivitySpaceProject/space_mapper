@@ -7,8 +7,6 @@ import 'package:share/share.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
 
-import '../models/send_data_to_api.dart';
-
 class SpaceMapperSideDrawer extends StatelessWidget {
   _shareLocations() async {
     var now = new DateTime.now();
@@ -121,16 +119,6 @@ class SpaceMapperSideDrawer extends StatelessWidget {
               },
             ),
           ),
-          Card(
-            child: ListTile(
-              leading: const Icon(Icons.bar_chart),
-              title: Text("Send test data to API"),
-              onTap: () {
-                SendDataToAPI test = SendDataToAPI();
-                test.submitData();
-              },
-            ),
-          )
         ],
       ),
     );

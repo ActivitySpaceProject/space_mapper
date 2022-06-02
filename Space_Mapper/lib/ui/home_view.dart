@@ -12,6 +12,7 @@ import 'package:background_fetch/background_fetch.dart';
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
 
+import '../models/send_data_to_api.dart';
 import 'map_view.dart';
 
 import '../util/dialog.dart' as util;
@@ -249,6 +250,9 @@ class HomeViewState extends State<HomeView>
   void _onLocation(bg.Location location) {
     print('[${bg.Event.LOCATION}] - $location');
 
+    SendDataToAPI sender = SendDataToAPI();
+    sender.submitData(location);
+    
     setState(() {
       //_odometer = (location.odometer / 1000.0).toStringAsFixed(1);
     });

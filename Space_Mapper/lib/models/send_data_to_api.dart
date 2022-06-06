@@ -13,7 +13,7 @@ class SendDataToAPI {
     String os = 'os not detected';
     if(Platform.isAndroid) os = 'Android';
     else if(Platform.isIOS) os = 'iOS';
-
+    
     Map<String, dynamic> body = {
       'user_UUID': '00000000-0000-0000-0000-000000000000',
       'user_code': '00000000',
@@ -23,7 +23,7 @@ class SendDataToAPI {
       'message': '',      
       'lon': location.coords.longitude,
       'lat': location.coords.latitude,
-      //'unix_time': 0 /*location.timestamp*/,
+      'unix_time': timestampInUTCFromStringToInt(location.timestamp),
       'speed': location.coords.speed,
       'activity': location.activity.type,
       'altitude': location.coords.altitude,
@@ -46,5 +46,26 @@ class SendDataToAPI {
     } else {
       print("----- API request failed -----");
     }
+  }
+
+  int timestampInUTCFromStringToInt(String locationTimestamp){
+    String yearText = locationTimestamp[0] + locationTimestamp[1] + locationTimestamp[2] + locationTimestamp[3];
+    String monthText = locationTimestamp[5] + locationTimestamp[6];
+    String dayText = locationTimestamp[8] + locationTimestamp[9];
+    String hourText = locationTimestamp[11] + locationTimestamp[12];
+    String minuteText = locationTimestamp[14] + locationTimestamp[15];
+    String secondText = locationTimestamp[17] + locationTimestamp[18];
+    String millisecondText = locationTimestamp[20] + locationTimestamp[21] + locationTimestamp[22];
+
+    int year = int.parse(yearText);
+    int month = int.parse(monthText);
+    int day = int.parse(dayText);
+    int hour = int.parse(hourText);
+    int minute = int.parse(minuteText);
+    int second = int.parse(secondText);
+    int millisecond = int.parse(millisecondText);
+
+    DateTime timestamp = DateTime(year, month, day, hour, minute, second, millisecond);
+    return timestamp.millisecondsSinceEpoch;
   }
 }

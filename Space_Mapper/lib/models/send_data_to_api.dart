@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SendDataToAPI {
@@ -14,6 +15,8 @@ class SendDataToAPI {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userUuid = prefs.getString("user_uuid");
 
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
     String os = 'OS not detected';
     if (Platform.isAndroid)
       os = 'Android';
@@ -22,7 +25,7 @@ class SendDataToAPI {
     Map<String, dynamic> body = {
       'user_UUID': userUuid,
       'user_code': '00000000',
-      'app_version': '0.0.0',
+      'app_version': "${packageInfo.version}+${packageInfo.buildNumber}",
       'os': os,
       'type_of_data': '0000000000',
       'message': '',

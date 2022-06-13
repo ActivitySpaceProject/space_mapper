@@ -103,12 +103,10 @@ void main() {
 
   SharedPreferences.getInstance().then((SharedPreferences prefs) {
     // create random user ID if not yet created
-    // ignore: non_constant_identifier_names
-    String? sample_id = prefs.getString("sample_id");
-    // ignore: non_constant_identifier_names
-    String? user_uuid = prefs.getString("user_uuid");
+    String? sampleId = prefs.getString("sample_id");
+    String? userUuid = prefs.getString("user_uuid");
 
-    if (sample_id == null || user_uuid == null) {
+    if (sampleId == null || userUuid == null) {
       prefs.setString("user_uuid", Uuid().v4());
       prefs.setString("sample_id", ENV.DEFAULT_SAMPLE_ID);
     }

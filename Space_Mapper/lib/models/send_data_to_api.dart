@@ -12,8 +12,7 @@ class SendDataToAPI {
     final headers = {'Content-Type': 'application/json'};
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    // ignore: non_constant_identifier_names
-    String? user_uuid = prefs.getString("user_uuid");
+    String? userUuid = prefs.getString("user_uuid");
 
     String os = 'OS not detected';
     if (Platform.isAndroid)
@@ -21,7 +20,7 @@ class SendDataToAPI {
     else if (Platform.isIOS) os = 'iOS';
 
     Map<String, dynamic> body = {
-      'user_UUID': user_uuid,
+      'user_UUID': userUuid,
       'user_code': '00000000',
       'app_version': '0.0.0',
       'os': os,

@@ -13,7 +13,7 @@ class SendDataToAPI {
     final headers = {'Content-Type': 'application/json'};
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? userUuid = prefs.getString("user_uuid");
+    String? userUUID = prefs.getString("user_uuid");
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
@@ -23,11 +23,11 @@ class SendDataToAPI {
     else if (Platform.isIOS) os = 'iOS';
 
     Map<String, dynamic> body = {
-      'user_UUID': userUuid,
+      'user_UUID': userUUID,
       'user_code': '00000000',
       'app_version': "${packageInfo.version}+${packageInfo.buildNumber}",
       'os': os,
-      'type_of_data': '0000000000',
+      'type_of_data': 'location',
       'message': '',
       'lon': location.coords.longitude,
       'lat': location.coords.latitude,
@@ -51,10 +51,13 @@ class SendDataToAPI {
 
     if (statusCode == 201) {
       print(responseBody);
+      sendStoredLocations();
     } else {
-      print("----- API request failed -----");
+      // TODO: The data could not be sent to the API, so it stored and will try again to re-send it
     }
   }
+
+  void sendStoredLocations() {}
 
   int timestampInUTCFromStringToInt(String locationTimestamp) {
     String yearText = locationTimestamp[0] +

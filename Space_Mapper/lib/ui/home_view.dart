@@ -68,14 +68,14 @@ class HomeViewState extends State<HomeView>
   void initPlatformState() async {
     SharedPreferences prefs = await _prefs;
     String? sampleId = prefs.getString("sample_id");
-    String? userUuid = prefs.getString("user_uuid");
+    String? userUUID = prefs.getString("user_uuid");
 
-    if (sampleId == null || userUuid == null) {
+    if (sampleId == null || userUUID == null) {
       prefs.setString("user_uuid", Uuid().v4());
       prefs.setString("sample_id", ENV.DEFAULT_SAMPLE_ID);
     }
 
-    _configureBackgroundGeolocation(userUuid, sampleId);
+    _configureBackgroundGeolocation(userUUID, sampleId);
     _configureBackgroundFetch();
   }
 

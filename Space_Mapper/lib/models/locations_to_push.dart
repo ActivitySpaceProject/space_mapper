@@ -8,17 +8,17 @@ class LocationToPushFields {
     longitude, latitude, unixTime, speed, activity, altitude
   ];
 
-  // Titles for the database columns
+  // Titles for the database columns. They must coincide with the fields from the API
   static final String id = '_id';
-  static final String userUUID = 'userUUID';
-  static final String userCode = 'userCode';
-  static final String appVersion = 'appVersion';
-  static final String operativeSystem = 'operativeSystem';
-  static final String typeOfData = 'typeOfData';
+  static final String userUUID = 'user_UUID';
+  static final String userCode = 'user_code';
+  static final String appVersion = 'app_version';
+  static final String operativeSystem = 'os';
+  static final String typeOfData = 'type_of_data';
   static final String message = 'message';
-  static final String longitude = 'longitude';
-  static final String latitude = 'latitude';
-  static final String unixTime = 'unixTime';
+  static final String longitude = 'lon';
+  static final String latitude = 'lat';
+  static final String unixTime = 'unix_time';
   static final String speed = 'speed';
   static final String activity = 'activity';
   static final String altitude = 'altitude';
@@ -72,6 +72,21 @@ class LocationToPush {
 
   Map<String, Object?> toJson() => {
         LocationToPushFields.id: id,
+        LocationToPushFields.userUUID: userUUID,
+        LocationToPushFields.userCode: userCode,
+        LocationToPushFields.appVersion: appVersion,
+        LocationToPushFields.operativeSystem: operativeSystem,
+        LocationToPushFields.typeOfData: typeOfData,
+        LocationToPushFields.message: message,
+        LocationToPushFields.longitude: longitude,
+        LocationToPushFields.latitude: latitude,
+        LocationToPushFields.unixTime: unixTime,
+        LocationToPushFields.speed: speed,
+        LocationToPushFields.activity: activity,
+        LocationToPushFields.altitude: altitude,
+      };
+
+      Map<String, Object?> toJsonWithoutId() => {
         LocationToPushFields.userUUID: userUUID,
         LocationToPushFields.userCode: userCode,
         LocationToPushFields.appVersion: appVersion,

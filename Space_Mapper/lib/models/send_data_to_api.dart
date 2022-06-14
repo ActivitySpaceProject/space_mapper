@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:asm/models/locations_to_push.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
@@ -22,21 +23,20 @@ class SendDataToAPI {
       os = 'Android';
     else if (Platform.isIOS) os = 'iOS';
 
-    Map<String, dynamic> body = {
-      'user_UUID': userUUID,
-      'user_code': '00000000',
-      'app_version': "${packageInfo.version}+${packageInfo.buildNumber}",
-      'os': os,
-      'type_of_data': 'location',
-      'message': '',
-      'lon': location.coords.longitude,
-      'lat': location.coords.latitude,
-      'unix_time': timestampInUTCFromStringToInt(location.timestamp),
-      'speed': location.coords.speed,
-      'activity': location.activity.type,
-      'altitude': location.coords.altitude,
-    };
-    String jsonBody = json.encode(body);
+    LocationToPush locationToPush = LocationToPush(
+        userUUID: userUUID,
+        userCode: '00000000',
+        appVersion: "${packageInfo.version}+${packageInfo.buildNumber}",
+        operativeSystem: os,
+        typeOfData: 'location',
+        message: '',
+        longitude: location.coords.longitude,
+        latitude: location.coords.latitude,
+        unixTime: timestampInUTCFromStringToInt(location.timestamp).toString(),
+        activity: location.activity.type,
+        altitude: location.coords.altitude.toString());
+
+    String jsonBody = json.encode(locationToPush.toJsonWithoutId());
     final encoding = Encoding.getByName('utf-8');
 
     http.Response response = await http.post(

@@ -26,22 +26,22 @@ class LocationToPushFields {
 
 class LocationToPush {
   final int? id;
-  final String? userUUID;
+  final String userUUID;
   final String? userCode;
   final String? appVersion;
   final String? operativeSystem;
   final String? typeOfData;
-  final String? message;
+  late String? message;
   final double? longitude;
   final double? latitude;
   final String? unixTime;
-  final double? speed;
+  final num? speed;
   final String? activity;
   final String? altitude;
 
-  const LocationToPush(
+  LocationToPush(
       {this.id,
-      this.userUUID,
+      required this.userUUID,
       this.userCode,
       this.appVersion,
       this.operativeSystem,
@@ -57,17 +57,17 @@ class LocationToPush {
   static LocationToPush fromJson(Map<String, Object?> json) => LocationToPush(
         id: json[LocationToPushFields.id] as int?,
         userUUID: json[LocationToPushFields.userUUID] as String,
-        userCode: json[LocationToPushFields.userCode] as String,
+        userCode: json[LocationToPushFields.userCode].toString(),
         appVersion: json[LocationToPushFields.appVersion] as String,
         operativeSystem: json[LocationToPushFields.operativeSystem] as String,
         typeOfData: json[LocationToPushFields.typeOfData] as String,
         message: json[LocationToPushFields.message] as String,
         longitude: json[LocationToPushFields.longitude] as double,
         latitude: json[LocationToPushFields.latitude] as double,
-        unixTime: json[LocationToPushFields.unixTime] as String,
-        speed: json[LocationToPushFields.speed] as double,
+        unixTime: json[LocationToPushFields.unixTime].toString(),
+        speed: json[LocationToPushFields.speed] as num,
         activity: json[LocationToPushFields.activity] as String,
-        altitude: json[LocationToPushFields.altitude] as String,
+        altitude: json[LocationToPushFields.altitude].toString(),
       );
 
   Map<String, Object?> toJson() => {
@@ -114,7 +114,7 @@ class LocationToPush {
     double? longitude,
     double? latitude,
     String? unixTime,
-    double? speed,
+    num? speed,
     String? activity,
     String? altitude,
   }) =>

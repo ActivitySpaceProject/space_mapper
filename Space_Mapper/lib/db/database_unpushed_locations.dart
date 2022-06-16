@@ -5,11 +5,12 @@ import '../models/locations_to_push.dart';
 
 // Store the locations that have not been pushed to the API, to later try again to push them
 // How to use
-// 1. Try to submit the location to the API using the SendDataToAPI class. 
+// 1. Try to submit the location to the API using the SendDataToAPI class.
 // 2. If it fails, the location is then stored on this local database
-// 3. After a successful submit to the server API, the program will try again to send the locations stored locally 
+// 3. After a successful submit to the server API, the program will try again to send the locations stored locally
 class UnPushedLocationsDatabase {
-  static final UnPushedLocationsDatabase instance = UnPushedLocationsDatabase._init();
+  static final UnPushedLocationsDatabase instance =
+      UnPushedLocationsDatabase._init();
 
   static Database? _database;
 
@@ -37,15 +38,15 @@ class UnPushedLocationsDatabase {
     await db.execute('''
       CREATE TABLE $tableName(
         "_id" $idType,
-        "userUUID" $stringType,
+        "user_UUID" $stringType,
         "user_code" $stringType,
         "app_version" $stringType,
-        "operativeSystem" $stringType,
-        "typeOfData" $stringType,
+        "os" $stringType,
+        "type_of_data" $stringType,
         "message" $stringType,
-        "longitude" $doubleType,
-        "latitude" $doubleType,
-        "unixTime" $stringType,
+        "lon" $doubleType,
+        "lat" $doubleType,
+        "unix_time" $stringType,
         "speed" $stringType,
         "activity" $stringType,
         "altitude" $stringType
@@ -60,7 +61,7 @@ class UnPushedLocationsDatabase {
     return location.copy(id: id);
   }
 
-  Future<LocationToPush> readState(int id) async {
+  Future<LocationToPush> readLocation(int id) async {
     final db = await instance.database;
 
     final maps = await db.query(
@@ -98,11 +99,15 @@ class UnPushedLocationsDatabase {
     db.close();
   }
 
-  Future<int?> getAmountOfRows() async{
+  Future<int> getAmountOfRows() async {
     final db = await instance.database;
 
-    int? count = Sqflite.firstIntValue(await db.rawQuery('SELECT COUNT(*) FROM $tableName'));
+    int? count = Sqflite.firstIntValue(
+        await db.rawQuery('SELECT COUNT(*) FROM $tableName'));
 
-    return count;
-  }  
+    if (count != null)
+      return count;
+    else
+      return 0;
+  }
 }

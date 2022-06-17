@@ -51,7 +51,7 @@ class SendDataToAPI {
     int numOfStoredLocations =
         await UnPushedLocationsDatabase.instance.getAmountOfRows();
 
-    //if (numOfStoredLocations == 0) return;
+    if (numOfStoredLocations == 0) return;
 
     List<LocationToPush> allLocationsToPush =
         await UnPushedLocationsDatabase.instance.readAllRecords();
@@ -73,7 +73,9 @@ class SendDataToAPI {
 
   Future<LocationToPush> generateLocationToPush(bg.Location location) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String userUUID = prefs.getString("user_uuid") ?? "";
+    String userUUID = prefs.getString("user_uuid") ?? "null UUID";
+    String userCode =
+        userUUID[0] + userUUID[1] + userUUID[2] + userUUID[3] + userUUID[4];
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
@@ -84,7 +86,7 @@ class SendDataToAPI {
 
     LocationToPush locationToPush = LocationToPush(
         userUUID: userUUID,
-        userCode: 'abcd',
+        userCode: userCode,
         appVersion: "${packageInfo.version}+${packageInfo.buildNumber}",
         operativeSystem: os,
         typeOfData: 'location',

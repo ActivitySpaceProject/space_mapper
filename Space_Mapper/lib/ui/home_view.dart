@@ -12,6 +12,7 @@ import 'package:background_fetch/background_fetch.dart';
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
 
+import '../models/send_data_to_api.dart';
 import 'map_view.dart';
 
 import '../util/dialog.dart' as util;
@@ -66,17 +67,15 @@ class HomeViewState extends State<HomeView>
 
   void initPlatformState() async {
     SharedPreferences prefs = await _prefs;
-    // ignore: non_constant_identifier_names
-    String? sample_id = prefs.getString("sample_id");
-    // ignore: non_constant_identifier_names
-    String? user_uuid = prefs.getString("user_uuid");
+    String? sampleId = prefs.getString("sample_id");
+    String? userUUID = prefs.getString("user_uuid");
 
-    if (sample_id == null || user_uuid == null) {
+    if (sampleId == null || userUUID == null) {
       prefs.setString("user_uuid", Uuid().v4());
       prefs.setString("sample_id", ENV.DEFAULT_SAMPLE_ID);
     }
 
-    _configureBackgroundGeolocation(user_uuid, sample_id);
+    _configureBackgroundGeolocation(userUUID, sampleId);
     _configureBackgroundFetch();
   }
 
@@ -249,6 +248,9 @@ class HomeViewState extends State<HomeView>
   void _onLocation(bg.Location location) {
     print('[${bg.Event.LOCATION}] - $location');
 
+    SendDataToAPI sender = SendDataToAPI();
+    sender.submitData(location);
+    
     setState(() {
       //_odometer = (location.odometer / 1000.0).toStringAsFixed(1);
     });

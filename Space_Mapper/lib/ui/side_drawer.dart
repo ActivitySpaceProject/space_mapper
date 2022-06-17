@@ -118,7 +118,7 @@ class SpaceMapperSideDrawer extends StatelessWidget {
                 Navigator.of(context).pushNamed('/my_statistics');
               },
             ),
-          )
+          ),
         ],
       ),
     );

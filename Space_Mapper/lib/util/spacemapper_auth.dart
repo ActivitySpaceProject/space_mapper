@@ -31,18 +31,16 @@ class TransistorAuth {
     try {
       SharedPreferences prefs = await _prefs;
       // Request a JWT from server
-      // ignore: non_constant_identifier_names
-      String? sample_id = prefs.getString("sample_id");
-      // ignore: non_constant_identifier_names
-      String? user_uuid = prefs.getString("user_uuid");
-      if (sample_id == null || user_uuid == null) {
+      String? sampleId = prefs.getString("sample_id");
+      String? userUUID = prefs.getString("user_uuid");
+      if (sampleId == null || userUUID == null) {
         // TODO throw an Error instead.
         return false;
       }
 
       bg.TransistorAuthorizationToken jwt =
           await bg.TransistorAuthorizationToken.findOrCreate(
-              sample_id, user_uuid, ENV.TRACKER_HOST);
+              sampleId, userUUID, ENV.TRACKER_HOST);
 
       await bg.BackgroundGeolocation.setConfig(
           bg.Config(transistorAuthorizationToken: jwt));

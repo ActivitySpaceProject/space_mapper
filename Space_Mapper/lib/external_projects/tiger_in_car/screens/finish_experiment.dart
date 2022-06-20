@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../../db/database_tiger_in_car.dart';
+import '../models/send_data_to_api.dart';
 
 class FinishExperiment extends StatefulWidget {
   final TigerInCarState tigerInCarRoute;
@@ -80,7 +81,7 @@ class _FinishExperimentState extends State<FinishExperiment>
         )));
   }
 
-  Widget displayCardBtn(String text, Color backgroundColor, IconData icon,
+  Widget displayCardBtn(String message, Color backgroundColor, IconData icon,
       int width, num height, int action) {
     return StaggeredGridTile.count(
       crossAxisCellCount: width,
@@ -98,12 +99,15 @@ class _FinishExperimentState extends State<FinishExperiment>
               height: 250,
               child: TextButton(
                 onPressed: () {
-                  addMosquitoDeathToDatabase(text);
+                  SendTigerInCarDataToAPI sendToAPI = SendTigerInCarDataToAPI();
+                  tigerInCarRoute.message = message;
+                  sendToAPI.submitData(tigerInCarRoute);
+                  addMosquitoDeathToDatabase(message);
                 },
                 child: Column(
                   children: [
                     Text(
-                      text,
+                      message,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 20.0, color: Color.fromARGB(255, 0, 0, 0)),
@@ -124,9 +128,9 @@ class _FinishExperimentState extends State<FinishExperiment>
     );
   }
 
-  void addMosquitoDeathToDatabase(String comment) async {
+  void addMosquitoDeathToDatabase(String message) async {
     DateTime date = DateTime.now();
-    final state = TigerInCarState(isAlive: false, date: date, comment: comment);
+    final state = TigerInCarState(isAlive: false, date: date, message: message);
     await TigerInCarDatabase.instance.createRecord(state);
   }
 }

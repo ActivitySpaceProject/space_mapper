@@ -35,7 +35,7 @@ class TigerInCarDatabase {
         ${TigerInCarFields.id} $idType,
         ${TigerInCarFields.millisecondsSinceEpoch} $stringType,
         ${TigerInCarFields.isAlive} $stringType,
-        ${TigerInCarFields.comment} $stringNullableType
+        ${TigerInCarFields.message} $stringNullableType
       )   
     ''');
   }

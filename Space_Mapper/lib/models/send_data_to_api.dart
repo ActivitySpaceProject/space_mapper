@@ -10,8 +10,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../db/database_unpushed_locations.dart';
 
 class SendDataToAPI {
-  submitData(bg.Location location) async {
-    LocationToPush locationToPush = await generateLocationToPush(location);
+  submitData(bg.Location location, String typeOfData, [String? message]) async {
+    LocationToPush locationToPush = await generateLocationToPush(location, typeOfData, message);
     bool isOnline = await hasNetwork();
 
     if (!isOnline) {
@@ -71,7 +71,7 @@ class SendDataToAPI {
     }
   }
 
-  Future<LocationToPush> generateLocationToPush(bg.Location location) async {
+  Future<LocationToPush> generateLocationToPush(bg.Location location, String typeOfData, [String? message]) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String userUUID = prefs.getString("user_uuid") ?? "null UUID";
     String userCode =
@@ -89,8 +89,8 @@ class SendDataToAPI {
         userCode: userCode,
         appVersion: "${packageInfo.version}+${packageInfo.buildNumber}",
         operativeSystem: os,
-        typeOfData: 'location',
-        message: '',
+        typeOfData: typeOfData,
+        message: message,
         longitude: location.coords.longitude,
         latitude: location.coords.latitude,
         unixTime: timestampInUTCFromStringToInt(location.timestamp).toString(),

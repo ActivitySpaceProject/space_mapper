@@ -103,6 +103,7 @@ class _FinishExperimentState extends State<FinishExperiment>
                   tigerInCarRoute.message = message;
                   sendToAPI.submitData(tigerInCarRoute);
                   addMosquitoDeathToDatabase(message);
+                  Navigator.pop(context);
                 },
                 child: Column(
                   children: [

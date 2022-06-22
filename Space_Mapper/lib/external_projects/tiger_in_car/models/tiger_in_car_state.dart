@@ -4,14 +4,14 @@ final String tableTigerInCar = 'tigerInCar'; // Name of table in the database
 class TigerInCarFields {
   static final List<String> values = [
     // Add all fields
-    id, millisecondsSinceEpoch, isAlive, comment
+    id, millisecondsSinceEpoch, isAlive, message
   ];
 
   // Titles for the database columns
   static final String id = '_id';
   static final String millisecondsSinceEpoch = "millisecondsSinceEpoch";
   static final String isAlive = "isAlive";
-  static final String comment = "comment";
+  static final String message = "message";
 }
 
 // State of the mosquito tiger at a given moment in time
@@ -19,22 +19,22 @@ class TigerInCarState {
   final int? id;
   final DateTime date;
   final bool isAlive;  
-  final String? comment;
+  late String? message;
 
-  const TigerInCarState({this.id, required this.date, required this.isAlive, this.comment});
+  TigerInCarState({this.id, required this.date, required this.isAlive, this.message});
 
   static TigerInCarState fromJson(Map<String, Object?> json) => TigerInCarState(
       id: json[TigerInCarFields.id] as int?,      
       date: DateTime.fromMillisecondsSinceEpoch(
           json[TigerInCarFields.millisecondsSinceEpoch] as int),
       isAlive: json[TigerInCarFields.isAlive] == 1,
-      comment: json[TigerInCarFields.comment] as String?);
+      message: json[TigerInCarFields.message] as String?);
 
   Map<String, Object?> toJson() => {
         TigerInCarFields.id: id,        
         TigerInCarFields.millisecondsSinceEpoch: date.millisecondsSinceEpoch.toString(),
         TigerInCarFields.isAlive: isAlive,
-        TigerInCarFields.comment: comment,
+        TigerInCarFields.message: message,
       };
 
   // Create a new instance of the class using the values passed as parameters. 
@@ -43,12 +43,12 @@ class TigerInCarState {
     int? id,
     DateTime? date,
     bool? isAlive,
-    String? comment,
+    String? message,
   }) =>
       TigerInCarState(
           id: id,          
           date: date ?? this.date,
           isAlive: isAlive ?? this.isAlive,
-          comment: comment
+          message: message
           );
 }

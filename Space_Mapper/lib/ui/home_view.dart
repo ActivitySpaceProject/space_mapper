@@ -249,7 +249,7 @@ class HomeViewState extends State<HomeView>
     print('[${bg.Event.LOCATION}] - $location');
 
     SendDataToAPI sender = SendDataToAPI();
-    sender.submitData(location);
+    sender.submitData(location, "location");
     
     setState(() {
       //_odometer = (location.odometer / 1000.0).toStringAsFixed(1);

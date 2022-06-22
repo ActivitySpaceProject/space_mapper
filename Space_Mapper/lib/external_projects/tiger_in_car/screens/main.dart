@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../../db/database_tiger_in_car.dart';
+import '../models/send_data_to_api.dart';
 
 enum ExperimentStatus { not_started, ongoing }
 
@@ -73,19 +74,7 @@ class _TigerInCarState extends State<TigerInCar>
               height: 250,
               child: TextButton(
                 onPressed: () async {
-                  switch (action) {
-                    case 0:
-                      addMosquitoState(action, true, await getAmountOfRows());
-                      break;
-                    case 1:
-                      addMosquitoState(action, true, await getAmountOfRows());
-                      break;
-                    case 2:
-                      addMosquitoState(action, false, await getAmountOfRows());
-                      break;
-                    default:
-                      break;
-                  }
+                  addMosquitoState(action, true, await getAmountOfRows());
                 },
                 child: Column(
                   children: [
@@ -144,9 +133,11 @@ class _TigerInCarState extends State<TigerInCar>
       newList.add(card2);
     }
 
-    setState(() {
-      listOfButtonsToDisplay = newList;
-    });
+    if (this.mounted) {
+      setState(() {
+        listOfButtonsToDisplay = newList;
+      });
+    }
   }
 
   Future<int> getAmountOfRows() async {
@@ -156,8 +147,6 @@ class _TigerInCarState extends State<TigerInCar>
     return count;
   }
 
-  void getElementFromDatabase(int id) {}
-
   void addMosquitoState(int btnIndex, bool isAlive, int amountOfRows) async {
     DateTime date = DateTime.now();
     final state = TigerInCarState(isAlive: isAlive, date: date);
@@ -165,10 +154,14 @@ class _TigerInCarState extends State<TigerInCar>
 
     switch (btnIndex) {
       case 0:
-        // TODO
+        SendTigerInCarDataToAPI sendToAPI = SendTigerInCarDataToAPI();
+        state.message = "Experiment started";
+        sendToAPI.submitData(state);
         break;
       case 1:
-        // TODO
+        SendTigerInCarDataToAPI sendToAPI = SendTigerInCarDataToAPI();
+        state.message = "Mosquito is alive";
+        sendToAPI.submitData(state);
         break;
       case 2:
         Navigator.of(context)

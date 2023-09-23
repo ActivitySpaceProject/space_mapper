@@ -4,12 +4,12 @@ mixin MockProject implements Project {
   static final List<Project> items = [
     Project(
       0,
-      "Tiger in Car",
-      "Tiger in Car is a citizen science project for studying the survival rate of mosquitos that get into a car and are moved to other places transporting diseases.",
+      "Tiger in a Car",
+      "Tiger in Car es a citizen science project for studying the survival rate of mosquitos that get into a car and are moved to other places transporting diseases.",
       null,
       '/project_tiger_in_car',
       "https://www.periodismociudadano.com/wp-content/uploads/2020/11/mosquito-49141_640.jpg",      
-    ),
+    )/*,
     Project(
       1,
       "Mosquito Alert",
@@ -34,7 +34,7 @@ mixin MockProject implements Project {
       "https://ee.kobotoolbox.org/x/AG5j1vFN",
       null,
       "https://raw.githubusercontent.com/ActivitySpaceProject/space_mapper/master/Assets/images/3.0.2%2B18_screenshots.png",      
-    )
+    )*/
   ];
 
   static Project fetchFirst() {

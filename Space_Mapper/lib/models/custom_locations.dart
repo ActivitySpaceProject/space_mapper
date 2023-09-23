@@ -15,14 +15,18 @@ class CustomLocationsManager {
     List recordedLocations = await bg.BackgroundGeolocation.locations;
 
     // n is the minimum value of either the specified maximum amount of elements (maxElements), or the current size of recordedLocations
-    int n;
-    if (maxElements <= recordedLocations.length)
-      n = maxElements;
-    else
-      n = recordedLocations.length;
+    int n = recordedLocations.length;
 
-    // Fill the custom locations list, to display beautiful tiles instead of json data
-    for (int i = n - 1; i >= 0; --i) {
+      int startIndex = n - 1;  // Start at the last index
+      int endIndex = n - maxElements;  // End at the specified maxElements
+
+      // Ensure the endIndex is not less than 0
+      if (endIndex < 0) {
+        endIndex = 0;
+      }
+
+      // Fill the custom locations list with the specified maxElements
+      for (int i = startIndex; i >= endIndex; i--) {
       // Check if there's already a location with the same UUID
       for (int j = customLocations.length - 1; j >= 0; --j) {
         if (recordedLocations[i]['uuid'] == customLocations[j].getUUID())
@@ -34,7 +38,7 @@ class CustomLocationsManager {
               recordedLocations[i]);
       customLocations.add(newLocation);
     }
-    return customLocations;
+    return customLocations; 
   }
 
   /// Makes timestamp readable by a human

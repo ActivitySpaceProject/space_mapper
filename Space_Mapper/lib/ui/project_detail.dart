@@ -11,6 +11,8 @@ import '../mocks/mock_project.dart';
 import '../models/project.dart';
 import '../models/custom_locations.dart';
 import '../styles.dart';
+//import '../external_projects/tiger_in_car/models/participating_projects.dart';
+//import '../db/database_project.dart';
 
 const BannerImageHeight = 300.0;
 const BodyVerticalPadding = 20.0;
@@ -61,6 +63,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
     if (mounted) {
       setState(() {
         this.project = project;
+        print('Fetched project details: ${project.name}');
       });
     }
   }
@@ -106,11 +109,15 @@ class _ProjectDetailState extends State<ProjectDetail> {
   }
 
   Widget _renderConsentForm() {
+    print('Project name in _renderConsentForm: ${project.name}');
     String title =
         AppLocalizations.of(context)?.translate("consent_form") ?? "";
-    String text = AppLocalizations.of(context)
+  /*  String text = AppLocalizations.of(context)
             ?.translate("do_you_agree_to_share_your_anonymous_location_with") ??
-        "" + "${project.name}?";
+        "" + "${project.name}?";*/
+String text = (AppLocalizations.of(context)
+        ?.translate("do_you_agree_to_share_your_anonymous_location_with") ??
+    "") + "${project.name}?";
 
     return Container(
       height: ProjectTileHeight,
@@ -188,11 +195,16 @@ class _ProjectDetailState extends State<ProjectDetail> {
       //color: Styles.accentColor,
       //textColor: Styles.textColorBright,
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Colors.blue),
-      ),
-      onPressed: () => {
-        _navigationToProject(context),
-      },
+                          backgroundColor: consent
+                            ? MaterialStateProperty.all(Colors.blue)
+                            : MaterialStateProperty.all(Colors.grey),  // Use grey color when consent is false
+                          foregroundColor: consent
+                            ? MaterialStateProperty.all(Colors.white)
+                            : MaterialStateProperty.all(Colors.black),  // Use appropriate text color based on consent
+                        ),      
+      onPressed: consent ? () => 
+        _navigationToProject(context) : null,
+      
       child: Text(
         'Participate'.toUpperCase(),
         style: Styles.textCTAButton,
@@ -200,6 +212,73 @@ class _ProjectDetailState extends State<ProjectDetail> {
     );
   }
 
+
+/*
+//Buggy Participating 
+  Widget _renderParticipateInProjectButton() {
+    return FutureBuilder<bool>(
+    future: checkParticipationStatus(),
+    builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return CircularProgressIndicator(); // Display a loader while checking status
+      } else if (snapshot.hasError) {
+        return Text('Error: ${snapshot.error}');
+      } else {
+        bool isParticipating = snapshot.data ?? false;
+
+        print('Particpation status : ${isParticipating}');
+
+        return TextButton(
+          style: ButtonStyle(
+            backgroundColor: isParticipating
+                ? MaterialStateProperty.all(Colors.grey)
+                : MaterialStateProperty.all(Colors.blue),
+            foregroundColor: isParticipating
+                ? MaterialStateProperty.all(Colors.black)
+                : MaterialStateProperty.all(Colors.white),
+          ),
+          onPressed: isParticipating ? null : () => _navigationToProject(context),
+          child: Text(
+            isParticipating ? 'Participating' : 'Participate'.toUpperCase(),
+            style: Styles.textCTAButton,
+          ),
+        );
+      }
+    },
+  );
+}
+
+  Future<bool> checkParticipationStatus() async {
+    // Get the current date and time
+    DateTime currentDate = DateTime.now();
+
+    // Fetch the project details
+    final project = await ProjectDatabase.instance.readProject(projectID);
+
+    print('Project id : ${project.projectId}');
+    print('Project id : ${project.startDate}');
+    print('Project id : ${project.endDate}');
+
+      if (project.projectId == -1) {
+    // Allow participation if project ID is -1
+    return false;
+  }
+  else
+  {
+    // Check if a record exists and if the current date and time are within the participation period
+    if (currentDate.isAfter(project.startDate) && currentDate.isBefore(project.endDate)) {
+      // The user is participating, disable the button and display "Participating"
+      /*setState(() {
+        consent = true;
+        print('here?');
+      });*/ //commented out because it causes a loop
+      return true;
+    } else {
+      return false;
+    }
+  }
+  }
+*/
   Future<String> getLocationsToShare(int maxDays) async {
     if (!consent)
       return "I do not consent to share my location history.";
@@ -235,12 +314,36 @@ class _ProjectDetailState extends State<ProjectDetail> {
     }
   }
 
+
   Future<void> _navigationToProject(BuildContext context) async {
     String locationHistoryJSON = await getLocationsToShare(dropdownValue);
 
     project.participate(context, locationHistoryJSON);
   }
 
+/*
+  Future<void> _navigationToProject(BuildContext context) async {
+    String locationHistoryJSON = await getLocationsToShare(dropdownValue);
+
+    // Calculate enddate based on startdate and duration
+    DateTime startDate = DateTime.now();
+    DateTime endDate = startDate.add(Duration(days: dropdownValue));
+
+    // Create a Project instance with the provided data
+    Particpating_Project projectRecord = Particpating_Project(
+      projectId: projectID,
+      projectName: project.name,
+      duration: dropdownValue,
+      startDate: startDate,
+      endDate: endDate,
+    );
+
+  // Insert the record into the database
+  await ProjectDatabase.instance.createProject(projectRecord);
+
+    project.participate(context, locationHistoryJSON);
+  }
+*/
   Widget _renderBottomSpacer() {
     return Container(height: FooterHeight);
   }

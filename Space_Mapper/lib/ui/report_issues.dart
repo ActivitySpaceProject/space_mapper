@@ -17,7 +17,7 @@ class ReportAnIssue extends StatelessWidget {
 }
 
 Widget reportIssueBody(BuildContext context) {
-  List<String> emails = ['john.palmer@upf.edu', 'pablogalve100@gmail.com'];
+  List<String> emails = ['john.palmer@upf.edu','otis.johnson@upf.edu', 'pablogalve100@gmail.com'];
 
   return Padding(
       padding: EdgeInsets.all(ReportAnIssueStyle.screenPadding),

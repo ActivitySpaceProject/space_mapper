@@ -109,7 +109,11 @@ class _TigerInCarState extends State<TigerInCar>
     int rows = await getAmountOfRows();
     final project = await ProjectDatabase.instance.getOngoingProjects();
 print('Project id : ${project.projectId}');
-   /* if (project.projectId == -1) {
+print('Project number : ${project.projectNumber}');
+print('Project status : ${project.projectstatus}');
+
+
+   if (project.projectId == -1) {
       print('it got to here : ${project.projectId}');
 List<Widget> newList = [];
 
@@ -139,7 +143,7 @@ Widget card3 = displayCardBtn("cowboy",
     }
 else {
         print('but not here : ${project.projectId}');
-*/
+
     if (rows == 0) {
       experimentStatus = ExperimentStatus.not_started;
     } else {
@@ -182,7 +186,7 @@ Widget card3 = displayCardBtn("cowboy",
     }
     }
     }
-  //}
+  }
 
   Future<int> getAmountOfRows() async {
     int? count = await TigerInCarDatabase.instance.getAmountOfRows();

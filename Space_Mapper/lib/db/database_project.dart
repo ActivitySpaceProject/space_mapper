@@ -27,11 +27,13 @@ class ProjectDatabase {
 
   Future _createDB(Database db, int version) async {
     final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
+    final intType = 'INTEGER NOT NULL';
     final stringType = 'STRING NOT NULL';
 
     await db.execute('''
       CREATE TABLE $tableProject(
-        ${ProjectFields.projectId} $idType,
+        ${ProjectFields.projectNumber} $idType,
+        ${ProjectFields.projectId} $intType,
         ${ProjectFields.projectName} $stringType,
         ${ProjectFields.duration} $stringType,
         ${ProjectFields.startDate} $stringType,

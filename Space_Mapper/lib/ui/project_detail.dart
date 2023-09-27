@@ -32,6 +32,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
   Project project = Project.blank();
   bool consent = false;
   int dropdownValue = 7;
+  bool alreadyParticipating = false;
 
   _ProjectDetailState(this.projectID);
 
@@ -39,6 +40,11 @@ class _ProjectDetailState extends State<ProjectDetail> {
   void initState() {
     super.initState();
     loadData();
+    checkParticipationStatus().then((status) {
+      setState(() {
+        alreadyParticipating = status;
+      });
+    });
   }
 
   @override
@@ -68,6 +74,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
     }
   }
 
+/*
   Widget _renderBody(BuildContext context, Project project) {
     var result = <Widget>[];
     result.add(BannerImage(url: project.imageUrl, height: BannerImageHeight));
@@ -81,6 +88,48 @@ class _ProjectDetailState extends State<ProjectDetail> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: result));
   }
+*/
+Widget _renderBody(BuildContext context, Project project) {
+  var result = <Widget>[];
+  result.add(BannerImage(url: project.imageUrl, height: BannerImageHeight));
+  result.add(_renderHeader());
+
+  // Check if the user is already participating
+  if (alreadyParticipating) {
+    result.add(_renderAlreadyParticipatingMessage());
+  } else {
+    result.add(_renderConsentForm());
+    result.add(_renderFrequencyChooser());
+  }
+
+  result.add(_renderBottomSpacer());
+  return SingleChildScrollView(
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: result));
+}
+
+Widget _renderAlreadyParticipatingMessage() {
+  return Padding(
+    padding: EdgeInsets.all(16.0),
+    child: Column(
+      children: [
+        Text(
+          "You are already participating in a project. You can go to your active project by clicking the button below.",
+          style: TextStyle(fontSize: 16.0),
+        ),
+        SizedBox(height: 20.0),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed('/active_projects');
+          },
+          child: Text("Go to Active Project"),
+        ),
+      ],
+    ),
+  );
+}
 
   Widget _renderHeader() {
     return Container(
@@ -191,6 +240,14 @@ String text = (AppLocalizations.of(context)
   }
 
   Widget _renderParticipateInProjectButton() {
+
+  // Hide the button if already participating
+  if (alreadyParticipating) {
+    return SizedBox.shrink();
+  }
+
+    print('status : ${alreadyParticipating}');
+
     return TextButton(
       //color: Styles.accentColor,
       //textColor: Styles.textColorBright,
@@ -209,76 +266,45 @@ String text = (AppLocalizations.of(context)
         'Participate'.toUpperCase(),
         style: Styles.textCTAButton,
       ),
+      /*onPressed: () {
+      if (!alreadyParticipating) {
+        _navigationToProject(context);
+      } else {
+        Navigator.of(context).pushNamed('/active_projects');
+      }
+    },
+    child: Text(
+      alreadyParticipating
+          ? AppLocalizations.of(context)?.translate("active_projects") ?? ""
+          : 'Participate'.toUpperCase(),
+      style: Styles.textCTAButton,
+    ),*/
     );
   }
 
 
-/*
-//Buggy Participating 
-  Widget _renderParticipateInProjectButton() {
-    return FutureBuilder<bool>(
-    future: checkParticipationStatus(),
-    builder: (context, snapshot) {
-      if (snapshot.connectionState == ConnectionState.waiting) {
-        return CircularProgressIndicator(); // Display a loader while checking status
-      } else if (snapshot.hasError) {
-        return Text('Error: ${snapshot.error}');
-      } else {
-        bool isParticipating = snapshot.data ?? false;
-
-        print('Particpation status : ${isParticipating}');
-
-        return TextButton(
-          style: ButtonStyle(
-            backgroundColor: isParticipating
-                ? MaterialStateProperty.all(Colors.grey)
-                : MaterialStateProperty.all(Colors.blue),
-            foregroundColor: isParticipating
-                ? MaterialStateProperty.all(Colors.black)
-                : MaterialStateProperty.all(Colors.white),
-          ),
-          onPressed: isParticipating ? null : () => _navigationToProject(context),
-          child: Text(
-            isParticipating ? 'Participating' : 'Participate'.toUpperCase(),
-            style: Styles.textCTAButton,
-          ),
-        );
-      }
-    },
-  );
-}
-
   Future<bool> checkParticipationStatus() async {
-    // Get the current date and time
-    DateTime currentDate = DateTime.now();
 
     // Fetch the project details
-    final project = await ProjectDatabase.instance.readProject(projectID);
+    final project = await ProjectDatabase.instance.getOngoingProjects();
 
     print('Project id : ${project.projectId}');
-    print('Project id : ${project.startDate}');
-    print('Project id : ${project.endDate}');
+    print('Project Number : ${project.projectNumber}');
+    print('Project status : ${project.projectstatus}');
 
-      if (project.projectId == -1) {
-    // Allow participation if project ID is -1
-    return false;
-  }
-  else
-  {
-    // Check if a record exists and if the current date and time are within the participation period
-    if (currentDate.isAfter(project.startDate) && currentDate.isBefore(project.endDate)) {
-      // The user is participating, disable the button and display "Participating"
-      /*setState(() {
-        consent = true;
-        print('here?');
-      });*/ //commented out because it causes a loop
+    if (project.projectstatus == 'ongoing') 
+    {
+      print('it is true : ${project.projectId}');
       return true;
-    } else {
-      return false;
     }
+    else
+    {
+        print('it is false : ${project.projectId}');
+        return false;
+    } 
   }
-  }
-*/
+
+
   Future<String> getLocationsToShare(int maxDays) async {
     if (!consent)
       return "I do not consent to share my location history.";

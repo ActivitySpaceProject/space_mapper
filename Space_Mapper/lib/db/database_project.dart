@@ -35,7 +35,8 @@ class ProjectDatabase {
         ${ProjectFields.projectName} $stringType,
         ${ProjectFields.duration} $stringType,
         ${ProjectFields.startDate} $stringType,
-        ${ProjectFields.endDate} $stringType
+        ${ProjectFields.endDate} $stringType,
+        ${ProjectFields.projectstatus} $stringType
       )   
     ''');
   }
@@ -66,8 +67,34 @@ class ProjectDatabase {
       duration: -1,
       startDate: DateTime.now(),
       endDate: DateTime.now(),
+      projectstatus: '-1',
     );
     }
+  }
+
+  Future<Particpating_Project> getOngoingProjects() async {
+    final db = await instance.database;
+    final maps = await db.query(
+      tableProject,
+      where: '${ProjectFields.projectstatus} = ?',
+      whereArgs: ['ongoing'],
+    );
+
+    if (maps.isNotEmpty) 
+    {
+      return Particpating_Project.fromJson(maps.first);
+    } 
+    else 
+    {
+      return Particpating_Project(
+      projectId: -1,
+      projectName: '-1',
+      duration: -1,
+      startDate: DateTime.now(),
+      endDate: DateTime.now(),
+      projectstatus: '-1',
+    );
+    } 
   }
 
   Future<List<Particpating_Project>> readAllProjects() async {
@@ -95,6 +122,17 @@ class ProjectDatabase {
     return await db.delete(tableProject,
         where: '${ProjectFields.projectId} = ?', whereArgs: [id]);
   }
+
+  Future<void> updateAllProjectStatusToFinish() async {
+    final db = await instance.database;
+
+    // Update all records to have projectstatus as "finish"
+    await db.update(
+      tableProject,
+      {ProjectFields.projectstatus: 'finish'},
+    );
+  }
+
 
   Future close() async {
     final db = await instance.database;

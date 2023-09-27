@@ -11,8 +11,8 @@ import '../mocks/mock_project.dart';
 import '../models/project.dart';
 import '../models/custom_locations.dart';
 import '../styles.dart';
-//import '../external_projects/tiger_in_car/models/participating_projects.dart';
-//import '../db/database_project.dart';
+import '../external_projects/tiger_in_car/models/participating_projects.dart';
+import '../db/database_project.dart';
 
 const BannerImageHeight = 300.0;
 const BodyVerticalPadding = 20.0;
@@ -314,21 +314,22 @@ String text = (AppLocalizations.of(context)
     }
   }
 
-
+/*
   Future<void> _navigationToProject(BuildContext context) async {
     String locationHistoryJSON = await getLocationsToShare(dropdownValue);
 
     project.participate(context, locationHistoryJSON);
   }
+*/
 
-/*
   Future<void> _navigationToProject(BuildContext context) async {
     String locationHistoryJSON = await getLocationsToShare(dropdownValue);
 
     // Calculate enddate based on startdate and duration
     DateTime startDate = DateTime.now();
     DateTime endDate = startDate.add(Duration(days: dropdownValue));
-
+    String projectstatus = "ongoing";
+    
     // Create a Project instance with the provided data
     Particpating_Project projectRecord = Particpating_Project(
       projectId: projectID,
@@ -336,6 +337,7 @@ String text = (AppLocalizations.of(context)
       duration: dropdownValue,
       startDate: startDate,
       endDate: endDate,
+      projectstatus: projectstatus,
     );
 
   // Insert the record into the database
@@ -343,7 +345,7 @@ String text = (AppLocalizations.of(context)
 
     project.participate(context, locationHistoryJSON);
   }
-*/
+
   Widget _renderBottomSpacer() {
     return Container(height: FooterHeight);
   }

@@ -4,6 +4,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../../db/database_tiger_in_car.dart';
 import '../models/send_data_to_api.dart';
+//import '../external_projects/tiger_in_car/models/participating_projects.dart';
+import '../../../db/database_project.dart';
 
 class FinishExperiment extends StatefulWidget {
   final TigerInCarState tigerInCarRoute;
@@ -133,5 +135,6 @@ class _FinishExperimentState extends State<FinishExperiment>
     DateTime date = DateTime.now();
     final state = TigerInCarState(isAlive: false, date: date, message: message);
     await TigerInCarDatabase.instance.createRecord(state);
+    await ProjectDatabase.instance.updateAllProjectStatusToFinish();
   }
 }

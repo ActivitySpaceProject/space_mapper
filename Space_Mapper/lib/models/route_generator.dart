@@ -22,6 +22,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => HomeView('Space Mapper'));
       case '/participate_in_a_project':
         return MaterialPageRoute(builder: (_) => AvailableProjectsScreen());
+      case '/active_projects':
+        return MaterialPageRoute(builder: (_) => TigerInCar());
       case '/locations_history':
         return MaterialPageRoute(builder: (_) => STOListView());
       case '/report_an_issue':

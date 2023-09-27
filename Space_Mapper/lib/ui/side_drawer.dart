@@ -59,6 +59,15 @@ class SpaceMapperSideDrawer extends StatelessWidget {
           ),
           Card(
               child: ListTile(
+                  leading: const Icon(Icons.all_inclusive),
+                  title: Text(
+                      AppLocalizations.of(context)?.translate("active_projects") ??
+                          ""),
+                  onTap: () {
+                    Navigator.of(context).pushNamed('/active_projects');
+                  })),
+          Card(
+              child: ListTile(
                   leading: const Icon(Icons.edit),
                   title: Text(
                       AppLocalizations.of(context)?.translate("participate_in_a_project") ??

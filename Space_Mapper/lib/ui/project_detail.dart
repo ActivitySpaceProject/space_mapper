@@ -368,7 +368,7 @@ String text = (AppLocalizations.of(context)
 
   // Insert the record into the database
   await ProjectDatabase.instance.createProject(projectRecord);
-
+Navigator.pop(context, true);
     project.participate(context, locationHistoryJSON);
   }
 

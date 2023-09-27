@@ -136,5 +136,6 @@ class _FinishExperimentState extends State<FinishExperiment>
     final state = TigerInCarState(isAlive: false, date: date, message: message);
     await TigerInCarDatabase.instance.createRecord(state);
     await ProjectDatabase.instance.updateAllProjectStatusToFinish();
+    Navigator.pop(context, true); // Pass true to indicate a refresh is needed
   }
 }

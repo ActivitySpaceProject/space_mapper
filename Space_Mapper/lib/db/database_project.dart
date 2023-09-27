@@ -141,4 +141,25 @@ class ProjectDatabase {
 
     db.close();
   }
+
+  Future<void> updateProjectStatusBasedOnEndDate() async {
+  final db = await instance.database;
+  final currentTime = DateTime.now();
+
+  final projects = await db.query(tableProject);
+
+  for (var project in projects) {
+    final endDate = DateTime.parse(ProjectFields.endDate);
+    
+    // Check if today's date and time is greater than the end date
+    if (currentTime.isAfter(endDate)) {
+      await db.update(
+        tableProject,
+        {ProjectFields.projectstatus: 'finish'},
+        where: '${ProjectFields.projectNumber} = ?',
+        whereArgs: [project[ProjectFields.projectNumber]],
+      );
+    }
+  }
+}
 }

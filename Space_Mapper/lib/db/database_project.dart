@@ -149,10 +149,13 @@ class ProjectDatabase {
   final projects = await db.query(tableProject);
 
   for (var project in projects) {
-    final endDate = DateTime.parse(ProjectFields.endDate);
+    print('Project end date pre : ${project[ProjectFields.endDate]}');
+    final endDate = project[ProjectFields.endDate];
+    print('Project current time : ${currentTime}');
+    print('Project end date post : ${DateTime.parse(endDate.toString())}');
     
     // Check if today's date and time is greater than the end date
-    if (currentTime.isAfter(endDate)) {
+    if (currentTime.isAfter(DateTime.parse(endDate.toString()))) {
       await db.update(
         tableProject,
         {ProjectFields.projectstatus: 'finish'},

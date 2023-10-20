@@ -45,6 +45,9 @@ class _ProjectDetailState extends State<ProjectDetail> {
         alreadyParticipating = status;
       });
     });
+
+    // Call the function to update project status based on end date
+    ProjectDatabase.instance.updateProjectStatusBasedOnEndDate();
   }
 
   @override
@@ -102,6 +105,7 @@ Widget _renderBody(BuildContext context, Project project) {
     result.add(_renderFrequencyChooser());
   }
 
+
   result.add(_renderBottomSpacer());
   return SingleChildScrollView(
       child: Column(
@@ -120,12 +124,6 @@ Widget _renderAlreadyParticipatingMessage() {
           style: TextStyle(fontSize: 16.0),
         ),
         SizedBox(height: 20.0),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).pushNamed('/active_projects');
-          },
-          child: Text("Go to Active Project"),
-        ),
       ],
     ),
   );
@@ -227,7 +225,7 @@ String text = (AppLocalizations.of(context)
                 dropdownValue = newValue!;
               });
             },
-            items: <int>[7, 30, 365].map<DropdownMenuItem<int>>((int value) {
+            items: <int>[1, 7, 30, 365].map<DropdownMenuItem<int>>((int value) {
               return DropdownMenuItem<int>(
                 value: value,
                 child: Text("$value"),
@@ -243,23 +241,23 @@ String text = (AppLocalizations.of(context)
 
   // Hide the button if already participating
   if (alreadyParticipating) {
-    return SizedBox.shrink();
+    //return SizedBox.shrink();
   }
 
-    print('status : ${alreadyParticipating}');
+    print('is person already paticipating in project : ${alreadyParticipating}');
 
     return TextButton(
       //color: Styles.accentColor,
       //textColor: Styles.textColorBright,
       style: ButtonStyle(
-                          backgroundColor: consent
+                          backgroundColor: (consent || alreadyParticipating)
                             ? MaterialStateProperty.all(Colors.blue)
                             : MaterialStateProperty.all(Colors.grey),  // Use grey color when consent is false
-                          foregroundColor: consent
+                          foregroundColor: (consent || alreadyParticipating)
                             ? MaterialStateProperty.all(Colors.white)
                             : MaterialStateProperty.all(Colors.black),  // Use appropriate text color based on consent
                         ),      
-      onPressed: consent ? () => 
+      onPressed: (consent || alreadyParticipating) ? () => 
         _navigationToProject(context) : null,
       
       child: Text(
@@ -283,26 +281,27 @@ String text = (AppLocalizations.of(context)
   }
 
 
-  Future<bool> checkParticipationStatus() async {
+Future<bool> checkParticipationStatus() async {
+  // Fetch the participating projects
+  final List<Particpating_Project> projects = await ProjectDatabase.instance.readAllProjects();
 
-    // Fetch the project details
-    final project = await ProjectDatabase.instance.getOngoingProjects();
+  print('Project count : ${projects.length}');
 
+  for (final project in projects) {
     print('Project id : ${project.projectId}');
     print('Project Number : ${project.projectNumber}');
     print('Project status : ${project.projectstatus}');
 
-    if (project.projectstatus == 'ongoing') 
-    {
-      print('it is true : ${project.projectId}');
-      return true;
+    if (project.projectId == projectID && project.projectstatus == 'ongoing') {
+      print('match Project id : ${project.projectId}');
+      print('match Project status : ${project.projectstatus}');
+      return true; // If projectId matches p_id and status is ongoing, return true.
     }
-    else
-    {
-        print('it is false : ${project.projectId}');
-        return false;
-    } 
   }
+
+  // Return a default value if there are no ongoing projects
+  return false;
+}
 
 
   Future<String> getLocationsToShare(int maxDays) async {
@@ -367,9 +366,13 @@ String text = (AppLocalizations.of(context)
     );
 
   // Insert the record into the database
-  await ProjectDatabase.instance.createProject(projectRecord);
-Navigator.pop(context, true);
-    project.participate(context, locationHistoryJSON);
+  if (!alreadyParticipating) {
+    await ProjectDatabase.instance.createProject(projectRecord);
+    print('Project inserted');
+  }
+  
+  Navigator.pop(context, true);
+  project.participate(context, locationHistoryJSON);
   }
 
   Widget _renderBottomSpacer() {

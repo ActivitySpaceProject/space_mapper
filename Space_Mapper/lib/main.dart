@@ -11,6 +11,10 @@ import 'package:background_fetch/background_fetch.dart';
 import 'models/app_localizations.dart';
 import 'package:uuid/uuid.dart';
 
+class GlobalData {
+  static String userUUID = "";
+}
+
 /// Receive events from BackgroundGeolocation in Headless state.
 void backgroundGeolocationHeadlessTask(bg.HeadlessEvent headlessEvent) async {
   print('📬 --> $headlessEvent');
@@ -110,6 +114,11 @@ void main() {
       prefs.setString("user_uuid", Uuid().v4());
       prefs.setString("sample_id", ENV.DEFAULT_SAMPLE_ID);
     }
+
+    GlobalData.userUUID = userUUID ?? ""; // Set the global userUUID
+
+    print('userUUID: $userUUID'); 
+    print('sampleId: $sampleId'); 
 
     runApp(new MyApp());
   });

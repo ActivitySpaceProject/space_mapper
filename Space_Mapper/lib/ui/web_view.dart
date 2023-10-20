@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import '../../main.dart';
 
 const String userUUID_element = '/asRrkkAw4mUtpTDkjdzZzt/group_survey/userUUID';
 const String userUUID_label = userUUID_element + ':label';
@@ -18,6 +20,7 @@ final Set<JavascriptChannel> jsChannels = [
 class MyWebView extends StatefulWidget {
   final String selectedUrl;
   final String locationHistoryJSON;
+  //String userUUID = '';
   MyWebView(this.selectedUrl, this.locationHistoryJSON);
   @override
   _MyWebViewState createState() =>
@@ -27,7 +30,7 @@ class MyWebView extends StatefulWidget {
 class _MyWebViewState extends State<MyWebView> {
   final String selectedUrl;
   final String locationHistoryJSON;
-
+  String userUUID= GlobalData.userUUID;
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
   late WebViewController _webViewcontroller;
@@ -38,7 +41,10 @@ class _MyWebViewState extends State<MyWebView> {
   void initState() {
     super.initState();
     if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
+
+
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +59,9 @@ class _MyWebViewState extends State<MyWebView> {
       // We're using a Builder here so we have a context that is below the Scaffold
       // to allow calling Scaffold.of(context) so we can show a snackbar.
       body: Builder(builder: (BuildContext context) {
+              print('userUUID web 2: $userUUID'); 
         return WebView(
-          initialUrl: selectedUrl,
+          initialUrl: selectedUrl + userUUID,
           javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: (WebViewController webViewController) {
             _controller.complete(webViewController);

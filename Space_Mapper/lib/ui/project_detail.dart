@@ -13,6 +13,7 @@ import '../models/custom_locations.dart';
 import '../styles.dart';
 import '../external_projects/tiger_in_car/models/participating_projects.dart';
 import '../db/database_project.dart';
+//import '../../main.dart';
 
 const BannerImageHeight = 300.0;
 const BodyVerticalPadding = 20.0;

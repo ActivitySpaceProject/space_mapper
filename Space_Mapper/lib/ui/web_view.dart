@@ -59,6 +59,7 @@ class _MyWebViewState extends State<MyWebView> {
       // We're using a Builder here so we have a context that is below the Scaffold
       // to allow calling Scaffold.of(context) so we can show a snackbar.
       body: Builder(builder: (BuildContext context) {
+              print('userURL web 2: $selectedUrl'); 
               print('userUUID web 2: $userUUID'); 
         return WebView(
           initialUrl: selectedUrl + userUUID,

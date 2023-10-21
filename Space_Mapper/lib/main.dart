@@ -110,12 +110,16 @@ void main() {
     String? sampleId = prefs.getString("sample_id");
     String? userUUID = prefs.getString("user_uuid");
 
+    GlobalData.userUUID = userUUID ?? ""; // Set the global userUUID
+
     if (sampleId == null || userUUID == null) {
       prefs.setString("user_uuid", Uuid().v4());
       prefs.setString("sample_id", ENV.DEFAULT_SAMPLE_ID);
+
+      GlobalData.userUUID = prefs.getString("user_uuid") ?? ""; // Set the global userUUID
     }
 
-    GlobalData.userUUID = userUUID ?? ""; // Set the global userUUID
+    
 
     print('userUUID: $userUUID'); 
     print('sampleId: $sampleId'); 

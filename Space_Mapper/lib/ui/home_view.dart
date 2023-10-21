@@ -16,6 +16,9 @@ import '../models/send_data_to_api.dart';
 import 'map_view.dart';
 
 import '../util/dialog.dart' as util;
+import '../external_projects/tiger_in_car/models/participating_projects.dart';
+import '../db/database_project.dart';
+
 
 // For pretty-printing location JSON
 JsonEncoder encoder = new JsonEncoder.withIndent("     ");
@@ -43,6 +46,8 @@ class HomeViewState extends State<HomeView>
 
   HomeViewState(this.appName);
 
+  List<Particpating_Project> projects = [];
+
   @override
   void initState() {
     super.initState();
@@ -55,7 +60,22 @@ class HomeViewState extends State<HomeView>
     //_odometer = '0';
 
     initPlatformState();
+    fetchProjects();
   }
+
+  // Fetch the projects from the database
+  void fetchProjects() async {
+    try {
+      List<Particpating_Project> fetchedProjects = await await ProjectDatabase.instance.readAllProjects();
+      setState(() {
+        projects = fetchedProjects;
+      });
+    } catch (e) {
+      // Handle errors, if any
+      print('Error fetching projects: $e');
+    }
+  }
+
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -388,8 +408,29 @@ class HomeViewState extends State<HomeView>
         },
         child: Icon(Icons.person),
         backgroundColor: Colors.blue,
+      ),);
+      /*floatingActionButton: Row(
+        children: projects.map((project) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: FloatingActionButton(
+              onPressed: () {
+                // Handle button click for the project here.
+                // You can use the project information to customize the behavior.
+                // For example, project.projectName contains the project name.
+                // Navigate or perform actions related to the selected project.
+              },
+              child: Text(project.projectName), // Set the project name as the button label.
+              backgroundColor: Colors.blue,
+            ),
+          );
+        }).toList(),
       ),
     );
+  */
+
+
+    
   }
 
   @override

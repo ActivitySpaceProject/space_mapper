@@ -9,6 +9,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../db/database_unpushed_locations.dart';
 
+class GlobalSendDatatoAPI {
+  static int? unix;
+}
+
 class SendDataToAPI {
   submitData(bg.Location location, String typeOfData, [String? message]) async {
     LocationToPush locationToPush = await generateLocationToPush(location, typeOfData, message);
@@ -84,6 +88,8 @@ class SendDataToAPI {
       os = 'Android';
     else if (Platform.isIOS) os = 'iOS';
 
+    GlobalSendDatatoAPI.unix = timestampInUTCFromStringToInt(location.timestamp);
+
     LocationToPush locationToPush = LocationToPush(
         userUUID: userUUID,
         userCode: userCode,
@@ -93,7 +99,8 @@ class SendDataToAPI {
         message: message,
         longitude: location.coords.longitude,
         latitude: location.coords.latitude,
-        unixTime: timestampInUTCFromStringToInt(location.timestamp).toString(),
+        //unixTime: timestampInUTCFromStringToInt(location.timestamp).toString(),
+        unixTime: GlobalSendDatatoAPI.unix.toString(),
         speed: location.coords.speed,
         activity: location.activity.type,
         altitude: location.coords.altitude.toString());

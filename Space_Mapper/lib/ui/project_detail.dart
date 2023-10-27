@@ -4,7 +4,7 @@ import 'package:asm/main.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
 import 'package:flutter/material.dart';
-
+import '../models/send_data_to_api.dart';
 import '../models/app_localizations.dart';
 import '../components/banner_image.dart';
 import '../components/project_tile.dart';
@@ -15,6 +15,8 @@ import '../styles.dart';
 import '../external_projects/tiger_in_car/models/participating_projects.dart';
 import '../db/database_project.dart';
 //import '../../main.dart';
+import 'package:asm/external_projects/tiger_in_car/models/tiger_in_car_state.dart';
+import 'package:asm/external_projects/tiger_in_car/models/send_data_to_api.dart';
 
 const BannerImageHeight = 300.0;
 const BodyVerticalPadding = 20.0;
@@ -389,7 +391,9 @@ Future<bool> checkParticipationStatus() async {
     DateTime startDate = DateTime.now();
     DateTime endDate = startDate.add(Duration(days: dropdownValue));
     String projectstatus = "ongoing";
-  
+
+
+
     if(endButtonPressed)
     {
       await ProjectDatabase.instance.updateProjectStatusBasedOnProjectNUmber(GlobalProjectData.active_project_number);
@@ -400,8 +404,14 @@ Future<bool> checkParticipationStatus() async {
     
     if(projectID == 0)
     {
+
+      DateTime date = DateTime.now();
+      final state = TigerInCarState(isAlive: true, date: date);
+      SendTigerInCarDataToAPI sendToAPI = SendTigerInCarDataToAPI();
+      sendToAPI.submitData(state);
+
       active_project_url = project.webUrl ?? "";
-      GlobalProjectData.generatedUrl = active_project_url + "?&d[user_id]=" + GlobalData.userUUID + "&d[experiment_status]=" + projectstatus;
+      GlobalProjectData.generatedUrl = active_project_url + "?&d[user_id]=" + GlobalData.userUUID + "&d[experiment_status]=" + projectstatus + "&d[unix_time]=" + GlobalSendDatatoAPI.unix.toString();
     }
     else
     {

@@ -29,12 +29,17 @@ class ProjectDatabase {
     final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     final intType = 'INTEGER NOT NULL';
     final stringType = 'STRING NOT NULL';
+    final NullstringType = 'STRING';
 
     await db.execute('''
       CREATE TABLE $tableProject(
         ${ProjectFields.projectNumber} $idType,
         ${ProjectFields.projectId} $intType,
         ${ProjectFields.projectName} $stringType,
+        ${ProjectFields.projectDescription} $stringType,
+        ${ProjectFields.externalLink} $NullstringType,
+        ${ProjectFields.internalLink} $NullstringType,
+        ${ProjectFields.projectImageLocation} $stringType,
         ${ProjectFields.duration} $stringType,
         ${ProjectFields.startDate} $stringType,
         ${ProjectFields.endDate} $stringType,
@@ -56,7 +61,7 @@ class ProjectDatabase {
     final maps = await db.query(
       tableProject,
       columns: ProjectFields.values,
-      where: '${ProjectFields.projectId} = ?',
+      where: '${ProjectFields.projectNumber} = ?',
       whereArgs: [id],
     );
 
@@ -66,6 +71,10 @@ class ProjectDatabase {
       return Particpating_Project(
       projectId: -1,
       projectName: '-1',
+      projectDescription: '-1',
+      externalLink: '-1',
+      internalLink: '-1',
+      projectImageLocation: '-1',
       duration: -1,
       startDate: DateTime.now(),
       endDate: DateTime.now(),
@@ -74,29 +83,17 @@ class ProjectDatabase {
     }
   }
 
-  Future<Particpating_Project> getOngoingProjects() async {
+  Future<List<Particpating_Project>> getOngoingProjects() async {
     final db = await instance.database;
+    
     final maps = await db.query(
       tableProject,
       where: '${ProjectFields.projectstatus} = ?',
       whereArgs: ['ongoing'],
     );
 
-    if (maps.isNotEmpty) 
-    {
-      return Particpating_Project.fromJson(maps.first);
-    } 
-    else 
-    {
-      return Particpating_Project(
-      projectId: -1,
-      projectName: '-1',
-      duration: -1,
-      startDate: DateTime.now(),
-      endDate: DateTime.now(),
-      projectstatus: '-1',
-    );
-    } 
+    return maps.map((json) => Particpating_Project.fromJson(json)).toList();
+
   }
 
   Future<List<Particpating_Project>> readAllProjects() async {
@@ -165,4 +162,16 @@ class ProjectDatabase {
     }
   }
 }
+
+Future<void> updateProjectStatusBasedOnProjectNUmber(int? id) async {
+final db = await instance.database;
+
+    await db.update(
+      tableProject,
+      {ProjectFields.projectstatus: 'finish'},
+      where: '${ProjectFields.projectNumber} = ?', 
+      whereArgs: [id]);
+  }
+
 }
+

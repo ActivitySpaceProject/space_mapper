@@ -8,7 +8,7 @@ mixin MockProject implements Project {
       0,
       "Tiger in a Car",
       "Tiger in Car is a citizen science project for studying the survival rate of mosquitos that get into a car and are moved to other places transporting diseases.",
-      "https://ee-eu.kobotoolbox.org/x/l9xeEIGB/?&d[user_id]=",
+      "https://ee-eu.kobotoolbox.org/x/l9xeEIGB/",
       null,//'/project_tiger_in_car',
       "https://www.periodismociudadano.com/wp-content/uploads/2020/11/mosquito-49141_640.jpg",      
     ),

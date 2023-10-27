@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:asm/ui/project_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -19,6 +20,7 @@ final Set<JavascriptChannel> jsChannels = [
 // ignore: must_be_immutable
 class MyWebView extends StatefulWidget {
   final String selectedUrl;
+  String generatedUrl = "";
   final String locationHistoryJSON;
   //String userUUID = '';
   MyWebView(this.selectedUrl, this.locationHistoryJSON);
@@ -29,6 +31,7 @@ class MyWebView extends StatefulWidget {
 
 class _MyWebViewState extends State<MyWebView> {
   final String selectedUrl;
+  String generatedUrl = "";
   final String locationHistoryJSON;
   String userUUID= GlobalData.userUUID;
   final Completer<WebViewController> _controller =
@@ -59,10 +62,13 @@ class _MyWebViewState extends State<MyWebView> {
       // We're using a Builder here so we have a context that is below the Scaffold
       // to allow calling Scaffold.of(context) so we can show a snackbar.
       body: Builder(builder: (BuildContext context) {
+        //generatedUrl = selectedUrl + "?&d[user_id]=" + userUUID + "&d[experiment_status]=" + GlobalProjectData.active_project_status;
               print('userURL web 2: $selectedUrl'); 
               print('userUUID web 2: $userUUID'); 
+              print('userUUID web 2: $GlobalProjectData.generatedUrl'); 
         return WebView(
-          initialUrl: selectedUrl + userUUID,
+          //initialUrl: selectedUrl + userUUID,
+          initialUrl: GlobalProjectData.generatedUrl,
           javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: (WebViewController webViewController) {
             _controller.complete(webViewController);

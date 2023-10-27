@@ -403,10 +403,12 @@ class HomeViewState extends State<HomeView>
       body: MapView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).pushNamed('/record_contact');
+          //Navigator.of(context).pushNamed('/record_contact');
+          Navigator.of(context).pushNamed('/active_projects');
           _onClickGetCurrentPosition();
         },
-        child: Icon(Icons.person),
+        //child: Icon(Icons.person),
+        child: Icon(Icons.all_inclusive),
         backgroundColor: Colors.blue,
       ),);
       /*floatingActionButton: Row(

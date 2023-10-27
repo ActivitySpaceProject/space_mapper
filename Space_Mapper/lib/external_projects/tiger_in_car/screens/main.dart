@@ -7,6 +7,7 @@ import '../../../db/database_tiger_in_car.dart';
 import '../models/send_data_to_api.dart';
 //import '../external_projects/tiger_in_car/models/participating_projects.dart';
 import '../../../db/database_project.dart';
+import '../../../ui/project_detail.dart';
 
 enum ExperimentStatus { not_started, ongoing }
 
@@ -107,7 +108,7 @@ class _TigerInCarState extends State<TigerInCar>
     ExperimentStatus experimentStatus;
 
     int rows = await getAmountOfRows();
-    final project = await ProjectDatabase.instance.getOngoingProjects();
+    final project = await ProjectDatabase.instance.readProject(GlobalProjectData.active_project_number ?? -1);
 print('Project id : ${project.projectId}');
 print('Project number : ${project.projectNumber}');
 print('Project status : ${project.projectstatus}');

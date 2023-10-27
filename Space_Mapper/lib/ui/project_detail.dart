@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:asm/main.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
 import 'package:flutter/material.dart';
@@ -19,6 +20,12 @@ const BannerImageHeight = 300.0;
 const BodyVerticalPadding = 20.0;
 const FooterHeight = 100.0;
 
+class GlobalProjectData {
+  static int? active_project_number;
+  static String active_project_status = "";
+  static String generatedUrl = "";
+}
+
 class ProjectDetail extends StatefulWidget {
   final int projectID;
 
@@ -34,6 +41,9 @@ class _ProjectDetailState extends State<ProjectDetail> {
   bool consent = false;
   int dropdownValue = 7;
   bool alreadyParticipating = false;
+  //int? active_project_number;
+  String active_project_url = "";
+  bool endButtonPressed = false;
 
   _ProjectDetailState(this.projectID);
 
@@ -247,7 +257,26 @@ String text = (AppLocalizations.of(context)
 
     print('is person already paticipating in project : ${alreadyParticipating}');
 
-    return TextButton(
+    return Row (children: [
+      if (alreadyParticipating)
+        Expanded(
+          child: TextButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.red),
+            foregroundColor: MaterialStateProperty.all(Colors.white),
+          ),
+          onPressed: () {
+            endButtonPressed = true; // Set the flag when the "End" button is pressed
+            _navigationToProject(context);
+          },
+          child: Text(
+            'End'.toUpperCase(),
+            style: Styles.textCTAButton,
+          ),
+        ),
+        ),
+        Expanded(
+          child: TextButton(
       //color: Styles.accentColor,
       //textColor: Styles.textColorBright,
       style: ButtonStyle(
@@ -278,6 +307,9 @@ String text = (AppLocalizations.of(context)
           : 'Participate'.toUpperCase(),
       style: Styles.textCTAButton,
     ),*/
+    ),
+        ),
+    ],
     );
   }
 
@@ -296,6 +328,8 @@ Future<bool> checkParticipationStatus() async {
     if (project.projectId == projectID && project.projectstatus == 'ongoing') {
       print('match Project id : ${project.projectId}');
       print('match Project status : ${project.projectstatus}');
+      print('match Project number : ${project.projectNumber}');
+      GlobalProjectData.active_project_number = project.projectNumber;
       return true; // If projectId matches p_id and status is ongoing, return true.
     }
   }
@@ -355,11 +389,35 @@ Future<bool> checkParticipationStatus() async {
     DateTime startDate = DateTime.now();
     DateTime endDate = startDate.add(Duration(days: dropdownValue));
     String projectstatus = "ongoing";
+  
+    if(endButtonPressed)
+    {
+      await ProjectDatabase.instance.updateProjectStatusBasedOnProjectNUmber(GlobalProjectData.active_project_number);
+      projectstatus = "ending";
+      print('This project is set to finish. Project number : ${GlobalProjectData.active_project_number}');
+      Navigator.pop(context, true);
+    }
     
+    if(projectID == 0)
+    {
+      active_project_url = project.webUrl ?? "";
+      GlobalProjectData.generatedUrl = active_project_url + "?&d[user_id]=" + GlobalData.userUUID + "&d[experiment_status]=" + projectstatus;
+    }
+    else
+    {
+      GlobalProjectData.generatedUrl = project.webUrl ?? "";
+    }
+
+    print('Project full url : ${GlobalProjectData.generatedUrl}');
+    print('Project web URL : ${project.webUrl}');
     // Create a Project instance with the provided data
     Particpating_Project projectRecord = Particpating_Project(
       projectId: projectID,
       projectName: project.name,
+      projectDescription: project.summary,
+      externalLink: project.webUrl,
+      internalLink: project.projectScreen,
+      projectImageLocation: project.imageUrl,
       duration: dropdownValue,
       startDate: startDate,
       endDate: endDate,
@@ -373,7 +431,11 @@ Future<bool> checkParticipationStatus() async {
   }
   
   Navigator.pop(context, true);
-  project.participate(context, locationHistoryJSON);
+  
+  if(!endButtonPressed || (endButtonPressed && projectID == 0))
+  {
+    project.participate(context, locationHistoryJSON);
+  }
   }
 
   Widget _renderBottomSpacer() {

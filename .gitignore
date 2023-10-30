@@ -1,3 +1,6 @@
+# fvm
+.fvm/flutter_sdk
+
 # Keys
 android/key.properties
 Space_Mapper/android/key.properties

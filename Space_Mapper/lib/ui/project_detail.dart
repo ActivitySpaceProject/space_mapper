@@ -115,7 +115,8 @@ Widget _renderBody(BuildContext context, Project project) {
     result.add(_renderAlreadyParticipatingMessage());
   } else {
     result.add(_renderConsentForm());
-    result.add(_renderFrequencyChooser());
+    // NOTE TEMPORARILY TAKING THIS OUT:
+    // result.add(_renderFrequencyChooser());
   }
 
 
@@ -260,6 +261,42 @@ String text = (AppLocalizations.of(context)
     print('is person already paticipating in project : ${alreadyParticipating}');
 
     return Row (children: [
+      Expanded(
+        child: TextButton(
+          //color: Styles.accentColor,
+          //textColor: Styles.textColorBright,
+          style: ButtonStyle(
+            backgroundColor: (consent || alreadyParticipating)
+                ? MaterialStateProperty.all(Colors.blue)
+                : MaterialStateProperty.all(Colors.grey),  // Use grey color when consent is false
+            foregroundColor: (consent || alreadyParticipating)
+                ? MaterialStateProperty.all(Colors.white)
+                : MaterialStateProperty.all(Colors.black),  // Use appropriate text color based on consent
+          ),
+          onPressed: (consent || alreadyParticipating) ? () =>
+              _navigationToProject(context) : null,
+
+          child: Text(
+            (alreadyParticipating)
+                ? 'Annotate'.toUpperCase()
+                : 'Start'.toUpperCase(),
+            style: Styles.textCTAButton,
+          ),
+          /*onPressed: () {
+      if (!alreadyParticipating) {
+        _navigationToProject(context);
+      } else {
+        Navigator.of(context).pushNamed('/active_projects');
+      }
+    },
+    child: Text(
+      alreadyParticipating
+          ? AppLocalizations.of(context)?.translate("active_projects") ?? ""
+          : 'Participate'.toUpperCase(),
+      style: Styles.textCTAButton,
+    ),*/
+        ),
+      ),
       if (alreadyParticipating)
         Expanded(
           child: TextButton(
@@ -277,40 +314,7 @@ String text = (AppLocalizations.of(context)
           ),
         ),
         ),
-        Expanded(
-          child: TextButton(
-      //color: Styles.accentColor,
-      //textColor: Styles.textColorBright,
-      style: ButtonStyle(
-                          backgroundColor: (consent || alreadyParticipating)
-                            ? MaterialStateProperty.all(Colors.blue)
-                            : MaterialStateProperty.all(Colors.grey),  // Use grey color when consent is false
-                          foregroundColor: (consent || alreadyParticipating)
-                            ? MaterialStateProperty.all(Colors.white)
-                            : MaterialStateProperty.all(Colors.black),  // Use appropriate text color based on consent
-                        ),      
-      onPressed: (consent || alreadyParticipating) ? () => 
-        _navigationToProject(context) : null,
-      
-      child: Text(
-        'Participate'.toUpperCase(),
-        style: Styles.textCTAButton,
-      ),
-      /*onPressed: () {
-      if (!alreadyParticipating) {
-        _navigationToProject(context);
-      } else {
-        Navigator.of(context).pushNamed('/active_projects');
-      }
-    },
-    child: Text(
-      alreadyParticipating
-          ? AppLocalizations.of(context)?.translate("active_projects") ?? ""
-          : 'Participate'.toUpperCase(),
-      style: Styles.textCTAButton,
-    ),*/
-    ),
-        ),
+
     ],
     );
   }
@@ -393,13 +397,12 @@ Future<bool> checkParticipationStatus() async {
     String projectstatus = "ongoing";
 
 
-
     if(endButtonPressed)
     {
       await ProjectDatabase.instance.updateProjectStatusBasedOnProjectNUmber(GlobalProjectData.active_project_number);
       projectstatus = "ending";
       print('This project is set to finish. Project number : ${GlobalProjectData.active_project_number}');
-      Navigator.pop(context, true);
+     Navigator.pop(context, true);
     }
     
     if(projectID == 0)

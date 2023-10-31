@@ -55,11 +55,14 @@ class _MyWebViewState extends State<MyWebView> {
       appBar: AppBar(
         title: const Text('Project'),
         // This drop down menu demonstrates that Flutter widgets can be shown over the web view.
-        actions: <Widget>[
-          NavigationControls(_controller.future),
-        ],
+      leading: IconButton(icon: Icon(Icons.arrow_back),
+         onPressed: () {
+    Navigator.of(context).pushNamed('/');},
+  //      actions: <Widget>[
+   //       NavigationControls(_controller.future),
+    //    ],
       ),
-      // We're using a Builder here so we have a context that is below the Scaffold
+          ), // We're using a Builder here so we have a context that is below the Scaffold
       // to allow calling Scaffold.of(context) so we can show a snackbar.
       body: Builder(builder: (BuildContext context) {
         //generatedUrl = selectedUrl + "?&d[user_id]=" + userUUID + "&d[experiment_status]=" + GlobalProjectData.active_project_status;

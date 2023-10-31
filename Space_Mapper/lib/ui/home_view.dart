@@ -398,13 +398,14 @@ class HomeViewState extends State<HomeView>
           ),
         ],
       ),
-      //body: body,
+
+    //body: body,
       drawer: new SpaceMapperSideDrawer(),
       body: MapView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           //Navigator.of(context).pushNamed('/record_contact');
-          Navigator.of(context).pushNamed('/active_projects');
+          Navigator.of(context).pushNamed('/project_detail', arguments: 0);
           _onClickGetCurrentPosition();
         },
         //child: Icon(Icons.person),

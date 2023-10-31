@@ -66,7 +66,8 @@ class SpaceMapperSideDrawer extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).pushNamed('/active_projects');
                   })), */
-          Card(
+          // TEMPORARILY OUT:
+ /*         Card(
               child: ListTile(
                   leading: const Icon(Icons.edit),
                   title: Text(
@@ -74,7 +75,7 @@ class SpaceMapperSideDrawer extends StatelessWidget {
                           ""),
                   onTap: () {
                     Navigator.of(context).pushNamed('/participate_in_a_project');
-                  })),
+                  })),*/
           Card(
             child: ListTile(
               leading: const Icon(Icons.list),

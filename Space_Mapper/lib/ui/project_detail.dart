@@ -115,7 +115,8 @@ Widget _renderBody(BuildContext context, Project project) {
     result.add(_renderAlreadyParticipatingMessage());
   } else {
     result.add(_renderConsentForm());
-    result.add(_renderFrequencyChooser());
+    // NOTE TEMPORARILY TAKING THIS OUT:
+    // result.add(_renderFrequencyChooser());
   }
 
 
@@ -260,22 +261,38 @@ String text = (AppLocalizations.of(context)
     print('is person already paticipating in project : ${alreadyParticipating}');
 
     return Row (children: [
-      if (alreadyParticipating)
+      /*if (alreadyParticipating)
         Expanded(
-          child: TextButton(
+          child: TextButton(*/
+          Expanded(
+        child: TextButton(
+          //color: Styles.accentColor,
+          //textColor: Styles.textColorBright,
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.red),
-            foregroundColor: MaterialStateProperty.all(Colors.white),
+            //backgroundColor: MaterialStateProperty.all(Colors.red),
+            //foregroundColor: MaterialStateProperty.all(Colors.white),
+            backgroundColor: (consent || alreadyParticipating)
+                ? MaterialStateProperty.all(Colors.blue)
+                : MaterialStateProperty.all(Colors.grey),  // Use grey color when consent is false
+            foregroundColor: (consent || alreadyParticipating)
+                ? MaterialStateProperty.all(Colors.white)
+                : MaterialStateProperty.all(Colors.black),
           ),
-          onPressed: () {
+          /*onPressed: () {
             endButtonPressed = true; // Set the flag when the "End" button is pressed
             _navigationToProject(context);
-          },
+          },*/
+          onPressed: (consent || alreadyParticipating) ? () =>
+              _navigationToProject(context) : null,
+
           child: Text(
-            'End'.toUpperCase(),
+            //'End'.toUpperCase(),
+            (alreadyParticipating)
+                ? 'Annotate'.toUpperCase()
+                : 'Start'.toUpperCase(),
             style: Styles.textCTAButton,
           ),
-        ),
+       /* ),
         ),
         Expanded(
           child: TextButton(
@@ -295,7 +312,7 @@ String text = (AppLocalizations.of(context)
       child: Text(
         'Participate'.toUpperCase(),
         style: Styles.textCTAButton,
-      ),
+      ),*/
       /*onPressed: () {
       if (!alreadyParticipating) {
         _navigationToProject(context);
@@ -309,7 +326,25 @@ String text = (AppLocalizations.of(context)
           : 'Participate'.toUpperCase(),
       style: Styles.textCTAButton,
     ),*/
-    ),
+    //),
+        ),
+         ),
+      if (alreadyParticipating)
+        Expanded(
+          child: TextButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.red),
+            foregroundColor: MaterialStateProperty.all(Colors.white),
+          ),
+          onPressed: () {
+            endButtonPressed = true; // Set the flag when the "End" button is pressed
+            _navigationToProject(context);
+          },
+          child: Text(
+            'End'.toUpperCase(),
+            style: Styles.textCTAButton,
+          ),
+        ),
         ),
     ],
     );
@@ -399,7 +434,7 @@ Future<bool> checkParticipationStatus() async {
       await ProjectDatabase.instance.updateProjectStatusBasedOnProjectNUmber(GlobalProjectData.active_project_number);
       projectstatus = "ending";
       print('This project is set to finish. Project number : ${GlobalProjectData.active_project_number}');
-      Navigator.pop(context, true);
+      //Navigator.pop(context, true);
     }
     
     if(projectID == 0)

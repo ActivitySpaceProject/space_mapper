@@ -1,6 +1,4 @@
-import 'package:asm/ui/web_view.dart';
 import '../models/project.dart';
-import '../external_projects/tiger_in_car/models/participating_projects.dart';
 import '../db/database_project.dart';
 
 mixin ParticpatingProjects implements Project {

@@ -11,7 +11,6 @@ import '../ui/statistics/statistics.dart';
 import '../ui/project_detail.dart';
 import '../ui/projects_list.dart';
 import '../ui/web_view.dart';
-import '../mocks/active_projects_view.dart';
 
 
 class GlobalRouteData {

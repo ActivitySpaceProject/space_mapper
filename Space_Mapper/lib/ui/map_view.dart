@@ -102,12 +102,10 @@ class MapViewState extends State<MapView>
 
     _updateCurrentPositionMarker(ll);
 
-    if (location.sample != null) {
-      if (location.sample == true) {
-        return;
-      }
+    if (location.sample == true) {
+      return;
     }
-
+  
     // Add a point to the tracking polyline.
     _polyline.add(ll);
     // Add a marker for the recorded location.

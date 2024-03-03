@@ -17,7 +17,7 @@ class ReportAnIssue extends StatelessWidget {
 }
 
 Widget reportIssueBody(BuildContext context) {
-  List<String> emails = ['john.palmer@upf.edu', 'pablogalve100@gmail.com'];
+  List<String> emails = ['john.palmer@upf.edu','otis.johnson@upf.edu', 'pablogalve100@gmail.com'];
 
   return Padding(
       padding: EdgeInsets.all(ReportAnIssueStyle.screenPadding),
@@ -92,9 +92,9 @@ Widget reportIssueBody(BuildContext context) {
 
 _launchUrl(String url) async {
   //The url must be valid
-
-  if (await canLaunch(url)) {
-    await launch(url);
+  final Uri _url = Uri.parse(url);
+  if (await canLaunchUrl(_url)) {
+    await launchUrl(_url, mode: LaunchMode.externalApplication);
   } else {
     throw 'Could not launch $url';
   }
@@ -119,7 +119,7 @@ Future<bool> launchMailto(
   // Convert the Mailto instance into a string.
   // Use either Dart's string interpolation
   // or the toString() method.
-  await launch('$mailtoLink');
+  await launchUrl(Uri.parse('$mailtoLink'), mode: LaunchMode.externalApplication);
   return true;
 }
 

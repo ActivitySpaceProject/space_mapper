@@ -8,6 +8,14 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../db/database_unpushed_locations.dart';
+import 'package:fast_rsa/fast_rsa.dart' as fastRsa;
+
+final String publicKey = 'asdad';
+// TODO load this from embedded unique to each project
+
+class GlobalSendDatatoAPI {
+  static int? unix;
+}
 
 class SendDataToAPI {
   submitData(bg.Location location, String typeOfData, [String? message]) async {
@@ -29,12 +37,21 @@ class SendDataToAPI {
     }
   }
 
-  Future<int> submitLocation(LocationToPush location) async {
+  Future<String> encryptRSA({required payload}) async => await fastRsa.RSA
+      .encryptOAEP(payload, '', fastRsa.Hash.SHA256, publicKey);
+
+  Future<int> submitLocation(LocationToPush location, [bool encrypt = false]) async {
     final uri =
         Uri.parse('https://testingserver.activityspaceproject.com/api/write');
     final headers = {'Content-Type': 'application/json'};
 
     String jsonBody = json.encode(location.toJsonWithoutId());
+
+    if (encrypt){
+      jsonBody = await fastRsa.RSA
+          .encryptOAEP(jsonBody, '', fastRsa.Hash.SHA256, publicKey);
+    }
+
     final encoding = Encoding.getByName('utf-8');
 
     http.Response response = await http.post(
@@ -84,6 +101,8 @@ class SendDataToAPI {
       os = 'Android';
     else if (Platform.isIOS) os = 'iOS';
 
+    GlobalSendDatatoAPI.unix = timestampInUTCFromStringToInt(location.timestamp);
+
     LocationToPush locationToPush = LocationToPush(
         userUUID: userUUID,
         userCode: userCode,
@@ -93,7 +112,8 @@ class SendDataToAPI {
         message: message,
         longitude: location.coords.longitude,
         latitude: location.coords.latitude,
-        unixTime: timestampInUTCFromStringToInt(location.timestamp).toString(),
+        //unixTime: timestampInUTCFromStringToInt(location.timestamp).toString(),
+        unixTime: GlobalSendDatatoAPI.unix.toString(),
         speed: location.coords.speed,
         activity: location.activity.type,
         altitude: location.coords.altitude.toString());

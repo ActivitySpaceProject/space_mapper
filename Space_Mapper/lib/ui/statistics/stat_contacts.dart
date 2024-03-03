@@ -1,3 +1,7 @@
+// COMMENTING OUT BECAUSE NEED TO CHANGE CHART PACKAGE
+
+
+/*
 import 'package:asm/models/statistics/contacts/contacts_by_age.dart';
 import 'package:asm/models/statistics/contacts/contacts_by_gender.dart';
 import 'package:asm/models/statistics/contacts/contacts_data.dart';
@@ -164,3 +168,4 @@ class _StatsContactsState extends State<StatsContacts> {
     });
   }
 }
+*/

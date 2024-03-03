@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:asm/ui/project_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import '../../main.dart';
 
 const String userUUID_element = '/asRrkkAw4mUtpTDkjdzZzt/group_survey/userUUID';
 const String userUUID_label = userUUID_element + ':label';
@@ -17,7 +19,9 @@ final Set<JavascriptChannel> jsChannels = [
 // ignore: must_be_immutable
 class MyWebView extends StatefulWidget {
   final String selectedUrl;
+  String generatedUrl = "";
   final String locationHistoryJSON;
+  //String userUUID = '';
   MyWebView(this.selectedUrl, this.locationHistoryJSON);
   @override
   _MyWebViewState createState() =>
@@ -26,8 +30,9 @@ class MyWebView extends StatefulWidget {
 
 class _MyWebViewState extends State<MyWebView> {
   final String selectedUrl;
+  String generatedUrl = "";
   final String locationHistoryJSON;
-
+  String userUUID= GlobalData.userUUID;
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
   late WebViewController _webViewcontroller;
@@ -38,7 +43,10 @@ class _MyWebViewState extends State<MyWebView> {
   void initState() {
     super.initState();
     if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
+
+
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -46,15 +54,26 @@ class _MyWebViewState extends State<MyWebView> {
       appBar: AppBar(
         title: const Text('Project'),
         // This drop down menu demonstrates that Flutter widgets can be shown over the web view.
-        actions: <Widget>[
+        /*actions: <Widget>[
           NavigationControls(_controller.future),
-        ],
+        ],*/
+        leading: IconButton(icon: Icon(Icons.arrow_back),
+         onPressed: () {
+    Navigator.of(context).pushNamed('/');},
+  //      actions: <Widget>[
+   //       NavigationControls(_controller.future),
+    //    ],
       ),
-      // We're using a Builder here so we have a context that is below the Scaffold
+      ),// We're using a Builder here so we have a context that is below the Scaffold
       // to allow calling Scaffold.of(context) so we can show a snackbar.
       body: Builder(builder: (BuildContext context) {
+        //generatedUrl = selectedUrl + "?&d[user_id]=" + userUUID + "&d[experiment_status]=" + GlobalProjectData.active_project_status;
+              print('userURL web 2: $selectedUrl'); 
+              print('userUUID web 2: $userUUID'); 
+              print('userUUID web 2: $GlobalProjectData.generatedUrl'); 
         return WebView(
-          initialUrl: selectedUrl,
+          //initialUrl: selectedUrl + userUUID,
+          initialUrl: GlobalProjectData.generatedUrl,
           javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: (WebViewController webViewController) {
             _controller.complete(webViewController);
@@ -93,7 +112,7 @@ class _MyWebViewState extends State<MyWebView> {
     sleep(Duration(seconds: 1));
 
     await _webViewcontroller.runJavascript(
-        'var event = new Event("change", {bubbles: true,});                                                                                             var this_input = document.getElementsByName("/awLRwRXn4GTpdcq3aJE2WQ/Location_History")[0];                                               this_input.value = "test2";                                                                                                                 this_input.dispatchEvent(event);');
+        'var event = new Event("change", {bubbles: true,});                                                                                             var this_input = document.getElementsByName("/aMz7EhF3ZpzMvNUMwtR4eN/participating_button_group/location_history")[0];                                               this_input.value = "test2";                                                                                                                 this_input.dispatchEvent(event);');
     print("Location History updated in webview.");
   }
 }

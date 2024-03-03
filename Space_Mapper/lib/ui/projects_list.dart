@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-
+import '../mocks/active_projects_view.dart';
 import '../models/app_localizations.dart';
 import '../components/banner_image.dart';
 import '../components/project_tile.dart';
 import '../mocks/mock_project.dart';
 import '../models/project.dart';
 import '../styles.dart';
+import '../models/route_generator.dart';
 
 const ListItemHeight = 245.0;
 
@@ -44,11 +45,28 @@ class AvailableProjectsScreenState extends State<AvailableProjectsScreen> {
   Future<void> loadData() async {
     if (this.mounted) {
       setState(() => this.loading = true);
-      final projects = await MockProject.fetchAll();
-      setState(() {
-        this.projects = projects;
-        this.loading = false;
-      });
+      print('ping number 1'); 
+      print(GlobalRouteData.user_route); 
+
+      if(GlobalRouteData.user_route == "/active_projects") {
+        final projects = await ParticpatingProjects.fetchAll();
+        print('ping number 3'); 
+        setState(() {
+          this.projects = projects;
+          this.loading = false;
+        });
+      }
+
+
+      if(GlobalRouteData.user_route == "/participate_in_a_project") {
+        final projects = await MockProject.fetchAll();
+        setState(() {
+          this.projects = projects;
+          this.loading = false;
+        });
+        print('ping number 2'); 
+      } 
+      
     }
   }
 

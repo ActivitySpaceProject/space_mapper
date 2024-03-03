@@ -7,27 +7,38 @@ import '../ui/form_view.dart';
 import '../ui/home_view.dart';
 import '../ui/list_view.dart';
 import '../ui/report_issues.dart';
-import '../ui/statistics/statistics.dart';
 import '../ui/project_detail.dart';
 import '../ui/projects_list.dart';
 import '../ui/web_view.dart';
+
+
+class GlobalRouteData {
+  static String? user_route = "brown";
+}
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     // Getting arguments passed in while calling Navigator.pushNamed
     final args = settings.arguments;
-
+    print('project rouite ping 1: $settings.name'); 
+    GlobalRouteData.user_route = settings.name;
+    //print(settings.name);
+    print(GlobalRouteData.user_route); 
+    print('project rouite ping 2: ($GlobalRouteData.user_route)'); 
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => HomeView('Space Mapper'));
       case '/participate_in_a_project':
         return MaterialPageRoute(builder: (_) => AvailableProjectsScreen());
+      case '/active_projects':
+        //return MaterialPageRoute(builder: (_) => TigerInCar());
+        return MaterialPageRoute(builder: (_) => AvailableProjectsScreen());
       case '/locations_history':
         return MaterialPageRoute(builder: (_) => STOListView());
       case '/report_an_issue':
         return MaterialPageRoute(builder: (_) => ReportAnIssue());
-      case '/my_statistics':
-        return MaterialPageRoute(builder: (_) => MyStatistics());
+//      case '/my_statistics':
+ //       return MaterialPageRoute(builder: (_) => MyStatistics());
       case '/navigation_to_webview':
         if (args is Map<String, String>) {
           return MaterialPageRoute(

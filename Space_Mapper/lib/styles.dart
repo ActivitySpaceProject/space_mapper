@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class Styles {
   static const _textSizeLarge = 25.0;
+  static const _textSizeMedium = 18.0;
   static const _textSizeSmall = 12.0;
   static const horizontalPaddingDefault = 12.0;
   static final Color _textColorStrong = _hexToColor('000000');
@@ -12,7 +13,8 @@ class Styles {
 
   static final textCTAButton = TextStyle(
     fontFamily: _fontNameDefault,
-    fontSize: _textSizeLarge,
+    //fontSize: _textSizeLarge,
+    fontSize: _textSizeMedium,
     color: textColorBright,
   );
 

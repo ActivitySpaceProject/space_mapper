@@ -29,9 +29,9 @@ class SpaceMapperSideDrawer extends StatelessWidget {
   }
 
   _launchProjectURL() async {
-    const url = 'http://activityspaceproject.com/';
-    if (await canLaunch(url)) {
-      await launch(url);
+    final Uri url = Uri.parse('http://activityspaceproject.com/');
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
     } else {
       throw 'Could not launch $url';
     }
@@ -57,6 +57,15 @@ class SpaceMapperSideDrawer extends StatelessWidget {
               ),
             ),
           ),
+         Card(
+              child: ListTile(
+                  leading: const Icon(Icons.all_inclusive),
+                  title: Text(
+                      AppLocalizations.of(context)?.translate("active_projects") ??
+                          ""),
+                  onTap: () {
+                    Navigator.of(context).pushNamed('/active_projects');
+                  })),
           Card(
               child: ListTile(
                   leading: const Icon(Icons.edit),

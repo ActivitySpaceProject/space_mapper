@@ -1,9 +1,13 @@
 import 'package:asm/external_projects/tiger_in_car/models/tiger_in_car_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:asm/models/app_localizations.dart';
 
 import '../../../db/database_tiger_in_car.dart';
 import '../models/send_data_to_api.dart';
+//import '../external_projects/tiger_in_car/models/participating_projects.dart';
+import '../../../db/database_project.dart';
+import '../../../ui/project_detail.dart';
 
 enum ExperimentStatus { not_started, ongoing }
 
@@ -104,6 +108,42 @@ class _TigerInCarState extends State<TigerInCar>
     ExperimentStatus experimentStatus;
 
     int rows = await getAmountOfRows();
+    final project = await ProjectDatabase.instance.readProject(GlobalProjectData.active_project_number ?? -1);
+print('Project id : ${project.projectId}');
+print('Project number : ${project.projectNumber}');
+print('Project status : ${project.projectstatus}');
+
+
+   if (project.projectId == -1) {
+      print('it got to here : ${project.projectId}');
+List<Widget> newList = [];
+
+Widget card3 = displayCardBtn("cowboy",
+          Color.fromARGB(255, 255, 255, 255), Icons.not_started, 4, 1.65, 0);
+      newList.add(card3);
+
+
+      TextButton(
+  onPressed: () {
+    Navigator.of(context).pushNamed('/participate_in_a_project');
+  },
+  style: ButtonStyle(
+    backgroundColor: MaterialStateProperty.all(Colors.red),  // Adjust the background color as needed
+    elevation: MaterialStateProperty.all(2.0),  // Adjust the elevation as needed
+    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(8.0),  // Adjust the border radius as needed
+    )),
+  ),
+  child: ListTile(
+    leading: const Icon(Icons.edit),
+    title: Text(
+      AppLocalizations.of(context)?.translate("participate_in_a_project") ?? "",
+    ),
+  ),
+);
+    }
+else {
+        print('but not here : ${project.projectId}');
 
     if (rows == 0) {
       experimentStatus = ExperimentStatus.not_started;
@@ -117,7 +157,14 @@ class _TigerInCarState extends State<TigerInCar>
     }
 
     List<Widget> newList = [];
+if (project.projectId == -1) {
+      print('it got to here : ${project.projectId}');
 
+Widget card3 = displayCardBtn("cowboy",
+          Color.fromARGB(255, 255, 255, 255), Icons.account_box_sharp, 4, 1.65, 0);
+      newList.add(card3);
+} else {
+   print('nopes, got to here : ${project.projectId}');
     // Display buttons depending on the experiment status
     if (experimentStatus == ExperimentStatus.not_started) {
       Widget card = displayCardBtn("Initiate Experiment",
@@ -137,6 +184,8 @@ class _TigerInCarState extends State<TigerInCar>
       setState(() {
         listOfButtonsToDisplay = newList;
       });
+    }
+    }
     }
   }
 

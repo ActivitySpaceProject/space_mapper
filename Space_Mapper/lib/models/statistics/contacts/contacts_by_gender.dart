@@ -1,3 +1,8 @@
+// COMMENTING OUT BECAUSE NEED TO CHANGE CHART PACKAGE
+
+/*
+
+
 import 'package:charts_flutter/flutter.dart' as Charts;
 import 'package:flutter/material.dart';
 
@@ -141,3 +146,4 @@ class ContactByGenderData {
     );
   }
 }
+*/

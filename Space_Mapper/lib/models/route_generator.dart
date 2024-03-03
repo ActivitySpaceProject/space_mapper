@@ -38,8 +38,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => STOListView());
       case '/report_an_issue':
         return MaterialPageRoute(builder: (_) => ReportAnIssue());
-      case '/my_statistics':
-        return MaterialPageRoute(builder: (_) => MyStatistics());
+//      case '/my_statistics':
+ //       return MaterialPageRoute(builder: (_) => MyStatistics());
       case '/navigation_to_webview':
         if (args is Map<String, String>) {
           return MaterialPageRoute(

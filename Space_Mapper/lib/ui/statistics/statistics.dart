@@ -1,3 +1,7 @@
+// COMMENTING OUT BECAUSE NEED TO CHANGE CHART PACKAGE
+
+
+/*
 import 'package:asm/ui/statistics/stat_contacts.dart';
 
 import 'package:flutter/material.dart';
@@ -49,3 +53,4 @@ class _MyStatisticsState extends State<MyStatistics>
     ));
   }
 }
+*/

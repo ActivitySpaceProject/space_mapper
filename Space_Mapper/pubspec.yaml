@@ -15,7 +15,7 @@ version: 3.1.0+19
 publish_to: none
 
 environment:
-  sdk: ">=2.14.0 <3.0.0"
+  sdk: ">=2.14.0 <=3.3.0"
 
 dependencies:
   flutter:
@@ -38,11 +38,9 @@ dependencies:
   mailto: ^2.0.0
   geocoding: ^2.0.1
   faker: ^2.0.0
-  charts_flutter: ^0.12.0
   flutter_staggered_grid_view: ^0.6.1
   cached_network_image: ^3.2.0
   mockito: ^5.1.0
-  #package_info_plus: ^1.4.2
   package_info_plus: ^4.2.0
   fast_rsa: ^3.6.1
 

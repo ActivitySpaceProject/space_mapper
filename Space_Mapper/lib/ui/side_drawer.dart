@@ -57,7 +57,7 @@ class SpaceMapperSideDrawer extends StatelessWidget {
               ),
             ),
           ),
-         /* Card(
+         Card(
               child: ListTile(
                   leading: const Icon(Icons.all_inclusive),
                   title: Text(
@@ -65,8 +65,8 @@ class SpaceMapperSideDrawer extends StatelessWidget {
                           ""),
                   onTap: () {
                     Navigator.of(context).pushNamed('/active_projects');
-                  })), */
-          /*Card(
+                  })),
+          Card(
               child: ListTile(
                   leading: const Icon(Icons.edit),
                   title: Text(
@@ -74,7 +74,7 @@ class SpaceMapperSideDrawer extends StatelessWidget {
                           ""),
                   onTap: () {
                     Navigator.of(context).pushNamed('/participate_in_a_project');
-                  })),*/
+                  })),
           Card(
             child: ListTile(
               leading: const Icon(Icons.list),

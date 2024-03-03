@@ -1,3 +1,7 @@
+// COMMENTING OUT BECAUSE NEED TO CHANGE CHART PACKAGE
+
+/*
+
 import 'package:asm/models/statistics/contacts/monthly_contacts.dart';
 import 'package:flutter/material.dart';
 
@@ -92,3 +96,4 @@ class ContactsData {
     );
   }
 }
+*/

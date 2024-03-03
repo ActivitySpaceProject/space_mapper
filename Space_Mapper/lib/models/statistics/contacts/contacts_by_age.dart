@@ -1,3 +1,6 @@
+// COMMENTING OUT BECAUSE NEED TO CHANGE CHART PACKAGE
+
+/*
 
 import 'package:asm/models/contacts.dart';
 import 'package:charts_flutter/flutter.dart' as Charts;
@@ -86,3 +89,4 @@ class ContactsByAgeData {
     );
   }
 }
+*/

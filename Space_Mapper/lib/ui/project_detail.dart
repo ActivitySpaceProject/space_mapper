@@ -216,7 +216,8 @@ String text = (AppLocalizations.of(context)
     );
   }
 
-  Widget _renderFrequencyChooser() {
+// COMMENTING THIS OUT UNTIL WE START USING IT
+/*   Widget _renderFrequencyChooser() {
     String title = "Days to share";
 
     return Container(
@@ -250,7 +251,7 @@ String text = (AppLocalizations.of(context)
       ),
     );
   }
-
+ */
   Widget _renderParticipateInProjectButton() {
 
   // Hide the button if already participating

@@ -26,6 +26,7 @@ class MyWebView extends StatefulWidget {
   @override
   _MyWebViewState createState() =>
       _MyWebViewState(selectedUrl, locationHistoryJSON);
+
 }
 
 class _MyWebViewState extends State<MyWebView> {
@@ -43,7 +44,6 @@ class _MyWebViewState extends State<MyWebView> {
   void initState() {
     super.initState();
     if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
-
 
   }
 
@@ -86,7 +86,12 @@ class _MyWebViewState extends State<MyWebView> {
             _toasterJavascriptChannel(context),
           },
           onPageStarted: (String url) {
-            print('Page started loading: $url');
+             print('Page started loading: $url');
+             if(url == "https://ee.kobotoolbox.org/thanks"){
+              print('MOVING TO THANKS PAGE');
+              Navigator.pop(context);
+             }
+
           },
           onPageFinished: (String url) {
             _setFormLocationHistory();
@@ -112,7 +117,7 @@ class _MyWebViewState extends State<MyWebView> {
     sleep(Duration(seconds: 1));
 
     await _webViewcontroller.runJavascript(
-        'var event = new Event("change", {bubbles: true,});                                                                                             var this_input = document.getElementsByName("/aMz7EhF3ZpzMvNUMwtR4eN/participating_button_group/location_history")[0];                                               this_input.value = "test2";                                                                                                                 this_input.dispatchEvent(event);');
+        'var event = new Event("change", {bubbles: true,});                                                                                             var this_input = document.getElementsByName("/aMz7EhF3ZpzMvNUMwtR4eN/participating_button_group/location_history")[0];                                               this_input.value = "$locationHistoryJSON";                                                                                                                 this_input.dispatchEvent(event);');
     print("Location History updated in webview.");
   }
 }

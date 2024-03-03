@@ -13,6 +13,7 @@ void _onHttp(bg.HttpEvent event) async {
       if (success) {
         bg.BackgroundGeolocation.sync().catchError((error) {
           print("[sync] error: $error");
+          return error;
         });
       }
       break;

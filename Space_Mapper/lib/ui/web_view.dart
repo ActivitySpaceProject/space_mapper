@@ -112,7 +112,7 @@ class _MyWebViewState extends State<MyWebView> {
     sleep(Duration(seconds: 1));
 
     await _webViewcontroller.runJavascript(
-        'var event = new Event("change", {bubbles: true,});                                                                                             var this_input = document.getElementsByName("/awLRwRXn4GTpdcq3aJE2WQ/Location_History")[0];                                               this_input.value = "test2";                                                                                                                 this_input.dispatchEvent(event);');
+        'var event = new Event("change", {bubbles: true,});                                                                                             var this_input = document.getElementsByName("/aMz7EhF3ZpzMvNUMwtR4eN/participating_button_group/location_history")[0];                                               this_input.value = "test2";                                                                                                                 this_input.dispatchEvent(event);');
     print("Location History updated in webview.");
   }
 }

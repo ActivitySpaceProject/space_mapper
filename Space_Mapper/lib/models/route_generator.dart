@@ -7,7 +7,6 @@ import '../ui/form_view.dart';
 import '../ui/home_view.dart';
 import '../ui/list_view.dart';
 import '../ui/report_issues.dart';
-import '../ui/statistics/statistics.dart';
 import '../ui/project_detail.dart';
 import '../ui/projects_list.dart';
 import '../ui/web_view.dart';

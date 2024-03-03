@@ -61,7 +61,8 @@ dev_dependencies:
 
 dependency_overrides:
   intl: ^0.18.1
-
+  fast_rsa: ^3.6.1
+  
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

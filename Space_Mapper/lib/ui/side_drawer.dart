@@ -123,7 +123,7 @@ class SpaceMapperSideDrawer extends StatelessWidget {
               },
             ),
           ),
-          Card(
+/*           Card(
             child: ListTile(
               leading: const Icon(Icons.bar_chart),
               title: Text("Statistics"),
@@ -132,7 +132,7 @@ class SpaceMapperSideDrawer extends StatelessWidget {
               },
             ),
           ),
-        ],
+ */        ],
       ),
     );
   }

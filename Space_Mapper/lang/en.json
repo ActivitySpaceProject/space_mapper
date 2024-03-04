@@ -26,6 +26,6 @@
     "reset": "Reset",
     "gender": "gender",
     "about_the_project": "About the project",
-    "consent_form" : "Consent Form",
-    "do_you_agree_to_share_your_anonymous_location_with" : "Do you agree to share your anonymous locations to "
+    "consent_form" : "Informed Consent",
+    "do_you_agree_to_share_your_anonymous_location_with" : "This survey will be used by volunteers participating in research related human mobility in the context of climate change. We are currently carrying out closed testing to improve the app, which collects not only survey data by also automated background data on location, bearing, speed, and activity mode. By checking this box, you confirm that you have understood this information, and that you consent to having any data you shared used in this way."
 }

@@ -192,7 +192,7 @@ Widget _renderAlreadyParticipatingMessage() {
         "" + "${project.name}?";*/
 String text = (AppLocalizations.of(context)
         ?.translate("do_you_agree_to_share_your_anonymous_location_with") ??
-    "") + "${project.name}?";
+    "");
 
     return Container(
       height: ProjectTileHeight,

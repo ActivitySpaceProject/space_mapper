@@ -405,7 +405,7 @@ class HomeViewState extends State<HomeView>
         onPressed: () {
           //Navigator.of(context).pushNamed('/record_contact');
           //Navigator.of(context).pushNamed('/active_projects');
-          Navigator.of(context).pushNamed('/project_detail', arguments: 0);
+          Navigator.of(context).pushNamed('/participate_in_a_project');
           _onClickGetCurrentPosition();
         },
         //child: Icon(Icons.person),

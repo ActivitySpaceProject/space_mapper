@@ -21,11 +21,12 @@ class MyWebView extends StatefulWidget {
   final String selectedUrl;
   String generatedUrl = "";
   final String locationHistoryJSON;
+  final String locationSharingMethod;
   //String userUUID = '';
-  MyWebView(this.selectedUrl, this.locationHistoryJSON);
+  MyWebView(this.selectedUrl, this.locationHistoryJSON, this.locationSharingMethod);
   @override
   _MyWebViewState createState() =>
-      _MyWebViewState(selectedUrl, locationHistoryJSON);
+      _MyWebViewState(selectedUrl, locationHistoryJSON, locationSharingMethod);
 
 }
 
@@ -33,12 +34,13 @@ class _MyWebViewState extends State<MyWebView> {
   final String selectedUrl;
   String generatedUrl = "";
   final String locationHistoryJSON;
+  final String locationSharingMethod;
   String userUUID= GlobalData.userUUID;
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
   late WebViewController _webViewcontroller;
 
-  _MyWebViewState(this.selectedUrl, this.locationHistoryJSON);
+  _MyWebViewState(this.selectedUrl, this.locationHistoryJSON, this.locationSharingMethod);
 
   @override
   void initState() {
@@ -94,8 +96,12 @@ class _MyWebViewState extends State<MyWebView> {
 
           },
           onPageFinished: (String url) {
+
+          if(url != "https://ee.kobotoolbox.org/thanks" && (locationSharingMethod == '1' || locationSharingMethod == '3') ){
+
             _setFormLocationHistory();
             print('Page finished loading: $url');
+          }
           },
           gestureNavigationEnabled: true,
         );
@@ -117,9 +123,8 @@ class _MyWebViewState extends State<MyWebView> {
     sleep(Duration(seconds: 1));
 
     await _webViewcontroller.runJavascript(
-        'var event = new Event("change", {bubbles: true,});                                                                                             var this_input = document.getElementsByName("/aMz7EhF3ZpzMvNUMwtR4eN/participating_button_group/location_history")[0];                                               this_input.value = "$locationHistoryJSON";                                                                                                                 this_input.dispatchEvent(event);');
-    print("Location History updated in webview.");
-  }
+        'var event = new Event("change", {bubbles: true,}); var this_input = document.getElementsByName("/aMz7EhF3ZpzMvNUMwtR4eN/participating_button_group/location_history")[0]; this_input.value = "$locationHistoryJSON"; this_input.dispatchEvent(event);');
+   }
 }
 
 class NavigationControls extends StatelessWidget {

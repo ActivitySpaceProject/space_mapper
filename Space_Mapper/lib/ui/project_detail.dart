@@ -42,7 +42,9 @@ class _ProjectDetailState extends State<ProjectDetail> {
   Project project = Project.blank();
   bool consent = false;
   int dropdownValue = 7;
-  bool alreadyParticipating = false;
+  bool createNewRecord = true;
+  String statusToSet = 'ongoing';
+  String surveyType = 'starting';
   //int? active_project_number;
   String active_project_url = "";
   bool endButtonPressed = false;
@@ -55,7 +57,19 @@ class _ProjectDetailState extends State<ProjectDetail> {
     loadData();
     checkParticipationStatus().then((status) {
       setState(() {
-        alreadyParticipating = status;
+        if(status == 'empty'){ // If empty, the user has never participated, so we need a new record in the DB. Survey is starting and status will be set as ongoing for next time.
+          createNewRecord = true;
+          surveyType = 'starting';
+          statusToSet = 'ongoing';
+        } else if(status == 'ongoing'){
+          createNewRecord = false;
+          surveyType = 'ongoing';
+          statusToSet = 'ongoing';
+        } else if(status == 'ending'){ //In this case the user pressed end the last time so status was set to ending. User is now starting again, so survey type is starting the status will be saved as ongoing
+          createNewRecord = false;
+          surveyType = 'starting';
+          statusToSet = 'ongoing';
+        }
       });
     });
 
@@ -111,7 +125,7 @@ Widget _renderBody(BuildContext context, Project project) {
   result.add(_renderHeader());
 
   // Check if the user is already participating
-  if (alreadyParticipating) {
+  if (surveyType != 'starting') {
     result.add(_renderAlreadyParticipatingMessage());
   } else {
     result.add(_renderConsentForm());
@@ -255,11 +269,11 @@ String text = (AppLocalizations.of(context)
   Widget _renderParticipateInProjectButton() {
 
   // Hide the button if already participating
-  if (alreadyParticipating) {
+  if (!createNewRecord) {
     //return SizedBox.shrink();
   }
 
-    print('is person already paticipating in project : ${alreadyParticipating}');
+    print('is person already paticipating in project : ${!createNewRecord}');
 
     return Row (children: [
       /*if (alreadyParticipating)
@@ -272,10 +286,10 @@ String text = (AppLocalizations.of(context)
           style: ButtonStyle(
             //backgroundColor: MaterialStateProperty.all(Colors.red),
             //foregroundColor: MaterialStateProperty.all(Colors.white),
-            backgroundColor: (consent || alreadyParticipating)
+            backgroundColor: (consent || surveyType == 'ongoing')
                 ? MaterialStateProperty.all(Colors.blue)
                 : MaterialStateProperty.all(Colors.grey),  // Use grey color when consent is false
-            foregroundColor: (consent || alreadyParticipating)
+            foregroundColor: (consent || surveyType == 'ongoing')
                 ? MaterialStateProperty.all(Colors.white)
                 : MaterialStateProperty.all(Colors.black),
           ),
@@ -283,12 +297,11 @@ String text = (AppLocalizations.of(context)
             endButtonPressed = true; // Set the flag when the "End" button is pressed
             _navigationToProject(context);
           },*/
-          onPressed: (consent || alreadyParticipating) ? () =>
-              _navigationToProject(context) : null,
-
+          onPressed: (consent || surveyType == 'ongoing') ? () =>
+             _navigationToProject(context) : null,
           child: Text(
             //'End'.toUpperCase(),
-            (alreadyParticipating)
+            (surveyType == 'ongoing')
                 ? 'Annotate'.toUpperCase()
                 : 'Start'.toUpperCase(),
             style: Styles.textCTAButton,
@@ -330,7 +343,7 @@ String text = (AppLocalizations.of(context)
     //),
         ),
          ),
-      if (alreadyParticipating)
+      if (surveyType == 'ongoing')
         Expanded(
           child: TextButton(
           style: ButtonStyle(
@@ -352,7 +365,9 @@ String text = (AppLocalizations.of(context)
   }
 
 
-Future<bool> checkParticipationStatus() async {
+Future<String> checkParticipationStatus() async {
+  
+  String status = 'empty';
   // Fetch the participating projects
   final List<Particpating_Project> projects = await ProjectDatabase.instance.readAllProjects();
 
@@ -361,26 +376,23 @@ Future<bool> checkParticipationStatus() async {
   for (final project in projects) {
     print('Project id : ${project.projectId}');
     print('Project Number : ${project.projectNumber}');
-    print('Project status : ${project.projectstatus}');
+    print('Project status : ${project.projectStatus}');
 
-    if (project.projectId == projectID && project.projectstatus == 'ongoing') {
+    if (project.projectId == projectID) {
       print('match Project id : ${project.projectId}');
-      print('match Project status : ${project.projectstatus}');
+      print('match Project status : ${project.projectStatus}');
       print('match Project number : ${project.projectNumber}');
       GlobalProjectData.active_project_number = project.projectNumber;
-      return true; // If projectId matches p_id and status is ongoing, return true.
-    }
+      status = project.projectStatus; // If projectId matches p_id and status is ongoing, return true.
+      print("Check project status returning: $status");
+} 
   }
 
-  // Return a default value if there are no ongoing projects
-  return false;
+  return status;
 }
 
 
   Future<String> getLocationsToShare(int maxDays) async {
-    if (!consent)
-      return "I do not consent to share my location history.";
-    else {
       String ret = "";
       DateTime now = DateTime.now();
 
@@ -409,7 +421,7 @@ Future<bool> checkParticipationStatus() async {
           "'"); //We replace " into ' to avoid a javascript exception when we post it in the webview's form
 
       return ret;
-    }
+    
   }
 
 /*
@@ -421,39 +433,39 @@ Future<bool> checkParticipationStatus() async {
 */
 
   Future<void> _navigationToProject(BuildContext context) async {
-    String locationHistoryJSON = await getLocationsToShare(dropdownValue);
+
+  String locationHistoryJSON = '';
+
+   if(project.locationSharingMethod == 1 || project.locationSharingMethod == 3){
+      locationHistoryJSON = await getLocationsToShare(dropdownValue);
+   }
 
     // Calculate enddate based on startdate and duration
     DateTime startDate = DateTime.now();
     DateTime endDate = startDate.add(Duration(days: dropdownValue));
-    String projectstatus = "ongoing";
-
-
 
     if(endButtonPressed)
     {
-      await ProjectDatabase.instance.updateProjectStatusBasedOnProjectNUmber(GlobalProjectData.active_project_number);
-      projectstatus = "ending";
+      statusToSet = "ending";
+      surveyType = "ending";
       print('This project is set to finish. Project number : ${GlobalProjectData.active_project_number}');
       //Navigator.pop(context, true);
     }
-    
-    if(projectID == 0)
-    {
 
+      await ProjectDatabase.instance.updateProjectStatusBasedOnProjectNUmber(GlobalProjectData.active_project_number, statusToSet);
+
+
+    // Special for Tiger on Board project (make sure this projectID number matches)
+    if(projectID == 2)
+    {
       DateTime date = DateTime.now();
       final state = TigerInCarState(isAlive: true, date: date);
       SendTigerInCarDataToAPI sendToAPI = SendTigerInCarDataToAPI();
       sendToAPI.submitData(state);
-
+    }
       active_project_url = project.webUrl ?? "";
-      GlobalProjectData.generatedUrl = active_project_url + "?&d[user_id]=" + GlobalData.userUUID + "&d[experiment_status]=" + projectstatus + "&d[unix_time]=" + GlobalSendDatatoAPI.unix.toString();
-    }
-    else
-    {
-      GlobalProjectData.generatedUrl = project.webUrl ?? "";
-    }
-
+      GlobalProjectData.generatedUrl = active_project_url + "?&d[user_id]=" + GlobalData.userUUID + "&d[experiment_status]=" + surveyType + "&d[unix_time]=" + GlobalSendDatatoAPI.unix.toString();
+   
     print('Project full url : ${GlobalProjectData.generatedUrl}');
     print('Project web URL : ${project.webUrl}');
     // Create a Project instance with the provided data
@@ -467,21 +479,20 @@ Future<bool> checkParticipationStatus() async {
       duration: dropdownValue,
       startDate: startDate,
       endDate: endDate,
-      projectstatus: projectstatus,
+      projectStatus: statusToSet,
+      locationSharingMethod: project.locationSharingMethod,
     );
 
   // Insert the record into the database
-  if (!alreadyParticipating) {
+  if (createNewRecord) {
     await ProjectDatabase.instance.createProject(projectRecord);
     print('Project inserted');
   }
   
   Navigator.pop(context, true);
   
-  if(!endButtonPressed || (endButtonPressed && projectID == 0))
-  {
-    project.participate(context, locationHistoryJSON);
-  }
+  project.participate(context, locationHistoryJSON);
+
   }
 
   Widget _renderBottomSpacer() {

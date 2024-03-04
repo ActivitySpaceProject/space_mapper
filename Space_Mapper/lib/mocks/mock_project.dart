@@ -7,9 +7,10 @@ mixin MockProject implements Project {
       0,
       "Human Mobility Project",
       "The Human Mobility Project is aimed at better understanding how patterns of human movement and activities are changing in the context of climate change.",
-      "https://ee.kobotoolbox.org/x/O5DDmZ06",
+      "https://ee.kobotoolbox.org/single/O5DDmZ06",
       null,
       "https://activityspaceproject.com/images/BuffSim3D_sampleof10.png",
+      1 // location sharing only through form
     ),
     Project(
       1,
@@ -18,6 +19,7 @@ mixin MockProject implements Project {
       "https://ee.kobotoolbox.org/single/1FUvZ7RD",
       null,
       "https://upload.wikimedia.org/wikipedia/commons/e/e8/Barcelona_2016-307.jpg",
+      1 // location sharing only through form
     ),
       Project(
       2,
@@ -27,6 +29,7 @@ mixin MockProject implements Project {
       "https://ee-eu.kobotoolbox.org/single/l9xeEIGB",
       null,//'/project_tiger_in_car',
       "https://www.periodismociudadano.com/wp-content/uploads/2020/11/mosquito-49141_640.jpg",      
+      2 // location sharing only through server streaming
     )
   ];
 

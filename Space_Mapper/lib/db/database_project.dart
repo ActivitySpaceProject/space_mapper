@@ -43,7 +43,8 @@ class ProjectDatabase {
         ${ProjectFields.duration} $stringType,
         ${ProjectFields.startDate} $stringType,
         ${ProjectFields.endDate} $stringType,
-        ${ProjectFields.projectstatus} $stringType
+        ${ProjectFields.projectStatus} $stringType,
+        ${ProjectFields.locationSharingMethod} $intType
       )   
     ''');
   }
@@ -78,7 +79,8 @@ class ProjectDatabase {
       duration: -1,
       startDate: DateTime.now(),
       endDate: DateTime.now(),
-      projectstatus: '-1',
+      projectStatus: '-1',
+      locationSharingMethod: -1,
     );
     }
   }
@@ -88,7 +90,7 @@ class ProjectDatabase {
     
     final maps = await db.query(
       tableProject,
-      where: '${ProjectFields.projectstatus} = ?',
+      where: '${ProjectFields.projectStatus} = ?',
       whereArgs: ['ongoing'],
     );
 
@@ -128,7 +130,7 @@ class ProjectDatabase {
     // Update all records to have projectstatus as "finish"
     await db.update(
       tableProject,
-      {ProjectFields.projectstatus: 'finish'},
+      {ProjectFields.projectStatus: 'ending'},
     );
   }
 
@@ -155,7 +157,7 @@ class ProjectDatabase {
     if (currentTime.isAfter(DateTime.parse(endDate.toString()))) {
       await db.update(
         tableProject,
-        {ProjectFields.projectstatus: 'finish'},
+        {ProjectFields.projectStatus: 'ending'},
         where: '${ProjectFields.projectNumber} = ?',
         whereArgs: [project[ProjectFields.projectNumber]],
       );
@@ -163,12 +165,12 @@ class ProjectDatabase {
   }
 }
 
-Future<void> updateProjectStatusBasedOnProjectNUmber(int? id) async {
+Future<void> updateProjectStatusBasedOnProjectNUmber(int? id, String status) async {
 final db = await instance.database;
 
     await db.update(
       tableProject,
-      {ProjectFields.projectstatus: 'finish'},
+      {ProjectFields.projectStatus: status},
       where: '${ProjectFields.projectNumber} = ?', 
       whereArgs: [id]);
   }

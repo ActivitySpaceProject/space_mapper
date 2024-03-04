@@ -11,9 +11,11 @@ class Project {
   final String? webUrl;
   final String? projectScreen;
   final String imageUrl;
+  final int locationSharingMethod; // 0 = no sharing, 1 = through form only, 2 = stream to server only, 3 = both.
+
 
   Project(this.id, this.name, this.summary, this.webUrl, this.projectScreen,
-      this.imageUrl);
+      this.imageUrl, this.locationSharingMethod);
 
   Project.blank()
       : id = 0,
@@ -22,7 +24,8 @@ class Project {
         projectScreen = null,
         imageUrl =
             '', // Leave this without space ('' instead of ' ') to avoid an exception
-        summary = ' ';
+        summary = ' ',
+        locationSharingMethod = 0;
 
   void participate(BuildContext context, String locationHistoryJSON) {
     if (projectScreen != null) {
@@ -36,6 +39,7 @@ class Project {
       Map<String, String> arguments = Map();
       arguments['selectedUrl'] = webUrl ?? '';
       arguments['locationHistoryJSON'] = locationHistoryJSON;
+      arguments['locationSharingMethod'] = this.locationSharingMethod.toString();
 
       Navigator.of(context).pushNamed('/navigation_to_webview', arguments: arguments);
     } else {

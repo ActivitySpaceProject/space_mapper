@@ -111,7 +111,7 @@ class _TigerInCarState extends State<TigerInCar>
     final project = await ProjectDatabase.instance.readProject(GlobalProjectData.active_project_number ?? -1);
 print('Project id : ${project.projectId}');
 print('Project number : ${project.projectNumber}');
-print('Project status : ${project.projectstatus}');
+print('Project status : ${project.projectStatus}');
 
 
    if (project.projectId == -1) {

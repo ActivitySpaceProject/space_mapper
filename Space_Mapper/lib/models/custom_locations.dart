@@ -109,14 +109,18 @@ class ShareLocation {
   late final String _timestamp;
   final double _lat;
   final double _long;
+  final double _accuracy;
+  final String _userUUID;
 
-  ShareLocation(this._timestamp, this._lat, this._long);
+  ShareLocation(this._timestamp, this._lat, this._long, this._accuracy, this._userUUID);
 
   Map<String, dynamic> toJson() => {
         'timestamp': _timestamp,
         'coords': {
           'latitude': _lat,
           'longitude': _long,
+          'accuracy': _accuracy,
+          'user_uuid': _userUUID,
         }
       };
 

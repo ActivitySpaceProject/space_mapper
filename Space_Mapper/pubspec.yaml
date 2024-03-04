@@ -58,6 +58,14 @@ dev_dependencies:
     sdk: flutter
   test: ^1.17.10
   network_image_mock: ^2.0.1
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+
 
 dependency_overrides:
   intl: ^0.18.1

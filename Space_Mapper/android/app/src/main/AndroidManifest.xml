@@ -13,7 +13,7 @@
         tools:replace="android:label"
         android:name="${applicationName}"
         android:label="Space Mapper"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/launcher_icon"
         >
         <meta-data android:name="com.transistorsoft.locationmanager.license" android:value="0cf9fe39cfbff51b391264cfd2acbe89c19e920944ac2c80747bafac1ffae3f1" />
 

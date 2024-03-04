@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:asm/main.dart';
 import 'package:asm/models/app_localizations.dart';
 import 'package:asm/models/custom_locations.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,10 @@ class SpaceMapperSideDrawer extends StatelessWidget {
       ShareLocation _loc = new ShareLocation(
           bg.Location(thisLocation).timestamp,
           bg.Location(thisLocation).coords.latitude,
-          bg.Location(thisLocation).coords.longitude);
+          bg.Location(thisLocation).coords.longitude,
+          bg.Location(thisLocation).coords.accuracy,
+          GlobalData.userUUID
+          );
       customLocation.add(_loc);
     }
 

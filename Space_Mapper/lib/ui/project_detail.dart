@@ -405,7 +405,9 @@ Future<String> checkParticipationStatus() async {
         ShareLocation _loc = new ShareLocation(
             bg.Location(thisLocation).timestamp,
             bg.Location(thisLocation).coords.latitude,
-            bg.Location(thisLocation).coords.longitude);
+            bg.Location(thisLocation).coords.longitude,
+            bg.Location(thisLocation).coords.accuracy,
+            GlobalData.userUUID);
 
         // Filter locations to share based on the dates provided by the user
         var difference =

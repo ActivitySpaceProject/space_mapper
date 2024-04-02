@@ -4,7 +4,7 @@ final String tableProject = 'project'; // Name of the table in the database
 class ProjectFields {
   static final List<String> values = [
     // Add all fields
-    'project_number','project_id', 'project_name','project_description','external_link','internal_link','project_image_location', 'duration', 'startdate', 'enddate','projectstatus', 'location_sharing_method',
+    'project_number','project_id', 'project_name','project_description','external_link','internal_link','project_image_location', 'duration', 'startdate', 'enddate','projectstatus', 'location_sharing_method', 'surveyElementCode',
   ];
 
   // Titles for the database columns
@@ -20,6 +20,7 @@ class ProjectFields {
   static final String endDate = 'enddate';
   static final String projectStatus = 'projectstatus';
   static final String locationSharingMethod = 'location_sharing_method';
+  static final String surveyElementCode = 'surveyElementCode';
 }
 
 // Project details
@@ -36,6 +37,7 @@ class Particpating_Project {
   final DateTime endDate;
   final String projectStatus;
   final int locationSharingMethod;
+  final String surveyElementCode;
 
   Particpating_Project({
     this.projectNumber,
@@ -49,7 +51,8 @@ class Particpating_Project {
     required this.startDate,
     required this.endDate,
     required this.projectStatus,
-    required this.locationSharingMethod
+    required this.locationSharingMethod,
+    required this.surveyElementCode,
   });
 
   static Particpating_Project fromJson(Map<String, Object?> json) => Particpating_Project(
@@ -65,6 +68,7 @@ class Particpating_Project {
         endDate: DateTime.parse(json[ProjectFields.endDate] as String),
         projectStatus: json[ProjectFields.projectStatus] as String,
         locationSharingMethod: json[ProjectFields.locationSharingMethod] as int,
+        surveyElementCode: json[ProjectFields.surveyElementCode] as String,
       );
 
   Map<String, Object?> toJson() => {
@@ -80,6 +84,7 @@ class Particpating_Project {
         ProjectFields.endDate: endDate.toIso8601String(),
         ProjectFields.projectStatus: projectStatus,
         ProjectFields.locationSharingMethod: locationSharingMethod,
+        ProjectFields.surveyElementCode: surveyElementCode,
       };
 
   // Create a new instance of the class using the values passed as parameters.
@@ -97,6 +102,7 @@ class Particpating_Project {
     DateTime? endDate,
     String? projectStatus,
     int? locationSharingMethod,
+    String? surveyElementCode,
   }) =>
       Particpating_Project(
         projectNumber: projectNumber ?? this.projectNumber,
@@ -111,5 +117,6 @@ class Particpating_Project {
         endDate: endDate ?? this.endDate,
         projectStatus: projectStatus ?? this.projectStatus,
         locationSharingMethod: locationSharingMethod ?? this.locationSharingMethod,
+        surveyElementCode: surveyElementCode ?? this.surveyElementCode,
       );
 }

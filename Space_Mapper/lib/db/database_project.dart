@@ -44,7 +44,8 @@ class ProjectDatabase {
         ${ProjectFields.startDate} $stringType,
         ${ProjectFields.endDate} $stringType,
         ${ProjectFields.projectStatus} $stringType,
-        ${ProjectFields.locationSharingMethod} $intType
+        ${ProjectFields.locationSharingMethod} $intType,
+        ${ProjectFields.surveyElementCode} $stringType
       )   
     ''');
   }
@@ -81,6 +82,7 @@ class ProjectDatabase {
       endDate: DateTime.now(),
       projectStatus: '-1',
       locationSharingMethod: -1,
+      surveyElementCode: '-1',
     );
     }
   }

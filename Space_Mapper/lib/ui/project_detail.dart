@@ -483,6 +483,7 @@ Future<String> checkParticipationStatus() async {
       endDate: endDate,
       projectStatus: statusToSet,
       locationSharingMethod: project.locationSharingMethod,
+      surveyElementCode: project.surveyElementCode,
     );
 
   // Insert the record into the database

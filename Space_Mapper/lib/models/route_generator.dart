@@ -43,7 +43,7 @@ class RouteGenerator {
         if (args is Map<String, String>) {
           return MaterialPageRoute(
               builder: (_) => MyWebView(args['selectedUrl'] ?? '',
-                  args['locationHistoryJSON'] ?? '', args['locationSharingMethod'] ?? ''));
+                  args['locationHistoryJSON'] ?? '', args['locationSharingMethod'] ?? '', args['surveyElementCode'] ?? ''));
         }
         return _errorRoute();
       case '/record_contact':

@@ -16,6 +16,7 @@ mixin ParticpatingProjects implements Project {
         project.internalLink, // Replace with the actual field name from your database
         project.projectImageLocation ?? "", // Replace with the actual field name from your database
         project.locationSharingMethod,
+        project.surveyElementCode,
       );
     }).toList();
   }

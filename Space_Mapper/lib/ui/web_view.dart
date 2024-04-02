@@ -5,9 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../../main.dart';
 
-const String userUUID_element = '/asRrkkAw4mUtpTDkjdzZzt/group_survey/userUUID';
-const String userUUID_label = userUUID_element + ':label';
-
 final Set<JavascriptChannel> jsChannels = [
   JavascriptChannel(
       name: 'Print',
@@ -22,11 +19,12 @@ class MyWebView extends StatefulWidget {
   String generatedUrl = "";
   final String locationHistoryJSON;
   final String locationSharingMethod;
+  final String surveyElementCode;
   //String userUUID = '';
-  MyWebView(this.selectedUrl, this.locationHistoryJSON, this.locationSharingMethod);
+  MyWebView(this.selectedUrl, this.locationHistoryJSON, this.locationSharingMethod, this.surveyElementCode);
   @override
   _MyWebViewState createState() =>
-      _MyWebViewState(selectedUrl, locationHistoryJSON, locationSharingMethod);
+      _MyWebViewState(selectedUrl, locationHistoryJSON, locationSharingMethod, surveyElementCode);
 
 }
 
@@ -35,12 +33,13 @@ class _MyWebViewState extends State<MyWebView> {
   String generatedUrl = "";
   final String locationHistoryJSON;
   final String locationSharingMethod;
+  final String surveyElementCode;
   String userUUID= GlobalData.userUUID;
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
   late WebViewController _webViewcontroller;
 
-  _MyWebViewState(this.selectedUrl, this.locationHistoryJSON, this.locationSharingMethod);
+  _MyWebViewState(this.selectedUrl, this.locationHistoryJSON, this.locationSharingMethod, this.surveyElementCode);
 
   @override
   void initState() {
@@ -89,7 +88,7 @@ class _MyWebViewState extends State<MyWebView> {
           },
           onPageStarted: (String url) {
              print('Page started loading: $url');
-             if(url == "https://ee.kobotoolbox.org/thanks"){
+             if(url == "https://ee.kobotoolbox.org/thanks" || url == "https://ee-eu.kobotoolbox.org/thanks"){
               print('MOVING TO THANKS PAGE');
               Navigator.pop(context);
              }
@@ -97,10 +96,11 @@ class _MyWebViewState extends State<MyWebView> {
           },
           onPageFinished: (String url) {
 
-          if(url != "https://ee.kobotoolbox.org/thanks" && (locationSharingMethod == '1' || locationSharingMethod == '3') ){
+          if(url != "https://ee.kobotoolbox.org/thanks" &&  url != "https://ee-eu.kobotoolbox.org/thanks" && (locationSharingMethod == '1' || locationSharingMethod == '3') ){
 
             _setFormLocationHistory();
             print('Page finished loading: $url');
+            print('var event = new Event("change", {bubbles: true,}); var this_input = document.getElementsByName("/$surveyElementCode/location_history")[0]; this_input.value = "$locationHistoryJSON"; this_input.dispatchEvent(event);');
           }
           },
           gestureNavigationEnabled: true,
@@ -123,7 +123,7 @@ class _MyWebViewState extends State<MyWebView> {
     sleep(Duration(seconds: 1));
 
     await _webViewcontroller.runJavascript(
-        'var event = new Event("change", {bubbles: true,}); var this_input = document.getElementsByName("/aMz7EhF3ZpzMvNUMwtR4eN/participating_button_group/location_history")[0]; this_input.value = "$locationHistoryJSON"; this_input.dispatchEvent(event);');
+        'var event = new Event("change", {bubbles: true,}); var this_input = document.getElementsByName("/$surveyElementCode/location_history")[0]; this_input.style.visibility="hidden"; this_input.value = "$locationHistoryJSON"; this_input.dispatchEvent(event);');
    }
 }
 

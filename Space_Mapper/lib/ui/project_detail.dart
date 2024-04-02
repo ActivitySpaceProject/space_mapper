@@ -410,12 +410,14 @@ Future<String> checkParticipationStatus() async {
             GlobalData.userUUID);
 
         // Filter locations to share based on the dates provided by the user
-        var difference =
-            now.difference(_loc.timestampToDateTime(_loc.getTimestamp()));
-        if (difference.inDays <= maxDays)
-          customLocation.add(_loc);
-        else
-          break;
+ //       var difference =
+ //           now.difference(_loc.timestampToDateTime(_loc.getTimestamp()));
+ //       if (difference.inDays <= maxDays)
+ //         customLocation.add(_loc);
+  //      else
+   //       break;
+if(_loc.getTimestamp() >= project.startDate.)
+
       }
 
       ret = jsonEncode(customLocation);

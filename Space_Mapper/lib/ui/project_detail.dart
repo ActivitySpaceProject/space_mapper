@@ -45,6 +45,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
   bool createNewRecord = true;
   String statusToSet = 'ongoing';
   String surveyType = 'starting';
+  DateTime? startTime = null;
   //int? active_project_number;
   String active_project_url = "";
   bool endButtonPressed = false;
@@ -55,20 +56,27 @@ class _ProjectDetailState extends State<ProjectDetail> {
   void initState() {
     super.initState();
     loadData();
-    checkParticipationStatus().then((status) {
+    checkParticipationStatus().then((participation_info) {
+      String status = participation_info['status'];
+      DateTime? start_time = participation_info['start_time'];
       setState(() {
-        if(status == 'empty'){ // If empty, the user has never participated, so we need a new record in the DB. Survey is starting and status will be set as ongoing for next time.
+        if (status == 'empty') {
+          // If empty, the user has never participated, so we need a new record in the DB. Survey is starting and status will be set as ongoing for next time.
           createNewRecord = true;
           surveyType = 'starting';
           statusToSet = 'ongoing';
-        } else if(status == 'ongoing'){
+          startTime = DateTime.now();
+        } else if (status == 'ongoing') {
           createNewRecord = false;
           surveyType = 'ongoing';
           statusToSet = 'ongoing';
-        } else if(status == 'ending'){ //In this case the user pressed end the last time so status was set to ending. User is now starting again, so survey type is starting the status will be saved as ongoing
+          startTime = start_time;
+        } else if (status == 'ending') {
+          //In this case the user pressed end the last time so status was set to ending. User is now starting again, so survey type is starting the status will be saved as ongoing
           createNewRecord = false;
           surveyType = 'starting';
           statusToSet = 'ongoing';
+          startTime = start_time;
         }
       });
     });
@@ -119,43 +127,42 @@ class _ProjectDetailState extends State<ProjectDetail> {
             children: result));
   }
 */
-Widget _renderBody(BuildContext context, Project project) {
-  var result = <Widget>[];
-  result.add(BannerImage(url: project.imageUrl, height: BannerImageHeight));
-  result.add(_renderHeader());
+  Widget _renderBody(BuildContext context, Project project) {
+    var result = <Widget>[];
+    result.add(BannerImage(url: project.imageUrl, height: BannerImageHeight));
+    result.add(_renderHeader());
 
-  // Check if the user is already participating
-  if (surveyType != 'starting') {
-    result.add(_renderAlreadyParticipatingMessage());
-  } else {
-    result.add(_renderConsentForm());
-    // NOTE TEMPORARILY TAKING THIS OUT:
-    // result.add(_renderFrequencyChooser());
+    // Check if the user is already participating
+    if (surveyType != 'starting') {
+      result.add(_renderAlreadyParticipatingMessage());
+    } else {
+      result.add(_renderConsentForm());
+      // NOTE TEMPORARILY TAKING THIS OUT:
+      // result.add(_renderFrequencyChooser());
+    }
+
+    result.add(_renderBottomSpacer());
+    return SingleChildScrollView(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: result));
   }
 
-
-  result.add(_renderBottomSpacer());
-  return SingleChildScrollView(
+  Widget _renderAlreadyParticipatingMessage() {
+    return Padding(
+      padding: EdgeInsets.all(16.0),
       child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: result));
-}
-
-Widget _renderAlreadyParticipatingMessage() {
-  return Padding(
-    padding: EdgeInsets.all(16.0),
-    child: Column(
-      children: [
-        Text(
-          "You are already participating in a project. You can go to your active project by clicking the button below.",
-          style: TextStyle(fontSize: 16.0),
-        ),
-        SizedBox(height: 20.0),
-      ],
-    ),
-  );
-}
+        children: [
+          Text(
+            "You are already participating in a project. You can go to your active project by clicking the button below.",
+            style: TextStyle(fontSize: 16.0),
+          ),
+          SizedBox(height: 20.0),
+        ],
+      ),
+    );
+  }
 
   Widget _renderHeader() {
     return Container(
@@ -187,12 +194,12 @@ Widget _renderAlreadyParticipatingMessage() {
     print('Project name in _renderConsentForm: ${project.name}');
     String title =
         AppLocalizations.of(context)?.translate("consent_form") ?? "";
-  /*  String text = AppLocalizations.of(context)
+    /*  String text = AppLocalizations.of(context)
             ?.translate("do_you_agree_to_share_your_anonymous_location_with") ??
         "" + "${project.name}?";*/
-String text = (AppLocalizations.of(context)
-        ?.translate("do_you_agree_to_share_your_anonymous_location_with") ??
-    "");
+    String text = (AppLocalizations.of(context)
+            ?.translate("do_you_agree_to_share_your_anonymous_location_with") ??
+        "");
 
     return Container(
       height: ProjectTileHeight,
@@ -267,46 +274,48 @@ String text = (AppLocalizations.of(context)
   }
  */
   Widget _renderParticipateInProjectButton() {
-
-  // Hide the button if already participating
-  if (!createNewRecord) {
-    //return SizedBox.shrink();
-  }
+    // Hide the button if already participating
+    if (!createNewRecord) {
+      //return SizedBox.shrink();
+    }
 
     print('is person already paticipating in project : ${!createNewRecord}');
 
-    return Row (children: [
-      /*if (alreadyParticipating)
+    return Row(
+      children: [
+        /*if (alreadyParticipating)
         Expanded(
           child: TextButton(*/
-          Expanded(
-        child: TextButton(
-          //color: Styles.accentColor,
-          //textColor: Styles.textColorBright,
-          style: ButtonStyle(
-            //backgroundColor: MaterialStateProperty.all(Colors.red),
-            //foregroundColor: MaterialStateProperty.all(Colors.white),
-            backgroundColor: (consent || surveyType == 'ongoing')
-                ? MaterialStateProperty.all(Colors.blue)
-                : MaterialStateProperty.all(Colors.grey),  // Use grey color when consent is false
-            foregroundColor: (consent || surveyType == 'ongoing')
-                ? MaterialStateProperty.all(Colors.white)
-                : MaterialStateProperty.all(Colors.black),
-          ),
-          /*onPressed: () {
+        Expanded(
+          child: TextButton(
+            //color: Styles.accentColor,
+            //textColor: Styles.textColorBright,
+            style: ButtonStyle(
+              //backgroundColor: MaterialStateProperty.all(Colors.red),
+              //foregroundColor: MaterialStateProperty.all(Colors.white),
+              backgroundColor: (consent || surveyType == 'ongoing')
+                  ? MaterialStateProperty.all(Colors.blue)
+                  : MaterialStateProperty.all(
+                      Colors.grey), // Use grey color when consent is false
+              foregroundColor: (consent || surveyType == 'ongoing')
+                  ? MaterialStateProperty.all(Colors.white)
+                  : MaterialStateProperty.all(Colors.black),
+            ),
+            /*onPressed: () {
             endButtonPressed = true; // Set the flag when the "End" button is pressed
             _navigationToProject(context);
           },*/
-          onPressed: (consent || surveyType == 'ongoing') ? () =>
-             _navigationToProject(context) : null,
-          child: Text(
-            //'End'.toUpperCase(),
-            (surveyType == 'ongoing')
-                ? 'Annotate'.toUpperCase()
-                : 'Start'.toUpperCase(),
-            style: Styles.textCTAButton,
-          ),
-       /* ),
+            onPressed: (consent || surveyType == 'ongoing')
+                ? () => _navigationToProject(context)
+                : null,
+            child: Text(
+              //'End'.toUpperCase(),
+              (surveyType == 'ongoing')
+                  ? 'Annotate'.toUpperCase()
+                  : 'Start'.toUpperCase(),
+              style: Styles.textCTAButton,
+            ),
+            /* ),
         ),
         Expanded(
           child: TextButton(
@@ -327,7 +336,7 @@ String text = (AppLocalizations.of(context)
         'Participate'.toUpperCase(),
         style: Styles.textCTAButton,
       ),*/
-      /*onPressed: () {
+            /*onPressed: () {
       if (!alreadyParticipating) {
         _navigationToProject(context);
       } else {
@@ -340,61 +349,66 @@ String text = (AppLocalizations.of(context)
           : 'Participate'.toUpperCase(),
       style: Styles.textCTAButton,
     ),*/
-    //),
-        ),
-         ),
-      if (surveyType == 'ongoing')
-        Expanded(
-          child: TextButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.red),
-            foregroundColor: MaterialStateProperty.all(Colors.white),
-          ),
-          onPressed: () {
-            endButtonPressed = true; // Set the flag when the "End" button is pressed
-            _navigationToProject(context);
-          },
-          child: Text(
-            'End'.toUpperCase(),
-            style: Styles.textCTAButton,
+            //),
           ),
         ),
-        ),
-    ],
+        if (surveyType == 'ongoing')
+          Expanded(
+            child: TextButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.red),
+                foregroundColor: MaterialStateProperty.all(Colors.white),
+              ),
+              onPressed: () {
+                endButtonPressed =
+                    true; // Set the flag when the "End" button is pressed
+                _navigationToProject(context);
+              },
+              child: Text(
+                'End'.toUpperCase(),
+                style: Styles.textCTAButton,
+              ),
+            ),
+          ),
+      ],
     );
   }
 
+  Future<Map<String, dynamic>> checkParticipationStatus() async {
+    String status = 'empty';
+    DateTime? start_time = null;
+    // Fetch the participating projects
+    final List<Particpating_Project> projects =
+        await ProjectDatabase.instance.readAllProjects();
 
-Future<String> checkParticipationStatus() async {
-  
-  String status = 'empty';
-  // Fetch the participating projects
-  final List<Particpating_Project> projects = await ProjectDatabase.instance.readAllProjects();
+    print('Project count : ${projects.length}');
 
-  print('Project count : ${projects.length}');
+    for (final project in projects) {
+      print('Project id : ${project.projectId}');
+      print('Project Number : ${project.projectNumber}');
+      print('Project status : ${project.projectStatus}');
 
-  for (final project in projects) {
-    print('Project id : ${project.projectId}');
-    print('Project Number : ${project.projectNumber}');
-    print('Project status : ${project.projectStatus}');
+      if (project.projectId == projectID) {
+        print('match Project id : ${project.projectId}');
+        print('match Project status : ${project.projectStatus}');
+        print('match Project number : ${project.projectNumber}');
+        GlobalProjectData.active_project_number = project.projectNumber;
+        status = project
+            .projectStatus; // If projectId matches p_id and status is ongoing, return true.
+        print("Check project status returning: $status");
+        start_time = project.startDate;
+      }
+    }
 
-    if (project.projectId == projectID) {
-      print('match Project id : ${project.projectId}');
-      print('match Project status : ${project.projectStatus}');
-      print('match Project number : ${project.projectNumber}');
-      GlobalProjectData.active_project_number = project.projectNumber;
-      status = project.projectStatus; // If projectId matches p_id and status is ongoing, return true.
-      print("Check project status returning: $status");
-} 
+    return {'status': status, 'start_time': start_time};
   }
 
-  return status;
-}
-
-
   Future<String> getLocationsToShare(int maxDays) async {
-      String ret = "";
-      DateTime now = DateTime.now();
+    String ret = "";
+    if (startTime == null) {
+      return ('');
+    } else {
+      DateTime this_start_time = startTime ?? DateTime.now();
 
       /// var difference = berlinWallFell.difference(moonLanding);
       /// assert(difference.inDays == 7416);
@@ -410,14 +424,17 @@ Future<String> checkParticipationStatus() async {
             GlobalData.userUUID);
 
         // Filter locations to share based on the dates provided by the user
- //       var difference =
- //           now.difference(_loc.timestampToDateTime(_loc.getTimestamp()));
- //       if (difference.inDays <= maxDays)
- //         customLocation.add(_loc);
-  //      else
-   //       break;
-if(_loc.getTimestamp() >= project.startDate.)
+        //       var difference =
+        //           now.difference(_loc.timestampToDateTime(_loc.getTimestamp()));
+        //       if (difference.inDays <= maxDays)
+        //         customLocation.add(_loc);
+        //      else
+        //       break;
 
+        bool is_after =
+            DateTime.parse(_loc.getTimestamp()).isAfter(this_start_time);
+
+        if (is_after) ;
       }
 
       ret = jsonEncode(customLocation);
@@ -425,7 +442,7 @@ if(_loc.getTimestamp() >= project.startDate.)
           "'"); //We replace " into ' to avoid a javascript exception when we post it in the webview's form
 
       return ret;
-    
+    }
   }
 
 /*
@@ -437,39 +454,44 @@ if(_loc.getTimestamp() >= project.startDate.)
 */
 
   Future<void> _navigationToProject(BuildContext context) async {
+    String locationHistoryJSON = '';
 
-  String locationHistoryJSON = '';
-
-   if(project.locationSharingMethod == 1 || project.locationSharingMethod == 3){
+    if (project.locationSharingMethod == 1 ||
+        project.locationSharingMethod == 3) {
       locationHistoryJSON = await getLocationsToShare(dropdownValue);
-   }
+    }
 
     // Calculate enddate based on startdate and duration
     DateTime startDate = DateTime.now();
     DateTime endDate = startDate.add(Duration(days: dropdownValue));
 
-    if(endButtonPressed)
-    {
+    if (endButtonPressed) {
       statusToSet = "ending";
       surveyType = "ending";
-      print('This project is set to finish. Project number : ${GlobalProjectData.active_project_number}');
+      print(
+          'This project is set to finish. Project number : ${GlobalProjectData.active_project_number}');
       //Navigator.pop(context, true);
     }
 
-      await ProjectDatabase.instance.updateProjectStatusBasedOnProjectNUmber(GlobalProjectData.active_project_number, statusToSet);
-
+    await ProjectDatabase.instance.updateProjectStatusBasedOnProjectNUmber(
+        GlobalProjectData.active_project_number, statusToSet);
 
     // Special for Tiger on Board project (make sure this projectID number matches)
-    if(projectID == 2)
-    {
+    if (projectID == 2) {
       DateTime date = DateTime.now();
       final state = TigerInCarState(isAlive: true, date: date);
       SendTigerInCarDataToAPI sendToAPI = SendTigerInCarDataToAPI();
       sendToAPI.submitData(state);
     }
-      active_project_url = project.webUrl ?? "";
-      GlobalProjectData.generatedUrl = active_project_url + "?&d[user_id]=" + GlobalData.userUUID + "&d[experiment_status]=" + surveyType + "&d[unix_time]=" + GlobalSendDatatoAPI.unix.toString();
-   
+    active_project_url = project.webUrl ?? "";
+    GlobalProjectData.generatedUrl = active_project_url +
+        "?&d[user_id]=" +
+        GlobalData.userUUID +
+        "&d[experiment_status]=" +
+        surveyType +
+        "&d[unix_time]=" +
+        GlobalSendDatatoAPI.unix.toString();
+
     print('Project full url : ${GlobalProjectData.generatedUrl}');
     print('Project web URL : ${project.webUrl}');
     // Create a Project instance with the provided data
@@ -488,16 +510,15 @@ if(_loc.getTimestamp() >= project.startDate.)
       surveyElementCode: project.surveyElementCode,
     );
 
-  // Insert the record into the database
-  if (createNewRecord) {
-    await ProjectDatabase.instance.createProject(projectRecord);
-    print('Project inserted');
-  }
-  
-  Navigator.pop(context, true);
-  
-  project.participate(context, locationHistoryJSON);
+    // Insert the record into the database
+    if (createNewRecord) {
+      await ProjectDatabase.instance.createProject(projectRecord);
+      print('Project inserted');
+    }
 
+    Navigator.pop(context, true);
+
+    project.participate(context, locationHistoryJSON);
   }
 
   Widget _renderBottomSpacer() {

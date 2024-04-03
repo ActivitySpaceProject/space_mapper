@@ -3,7 +3,7 @@ import '../models/project.dart';
 
 mixin MockProject implements Project {
   static final List<Project> items = [
-    Project(
+/*     Project(
       0,
       "Human Mobility Project",
       "The Human Mobility Project is aimed at better understanding how patterns of human movement and activities are changing in the context of climate change.",
@@ -23,8 +23,8 @@ mixin MockProject implements Project {
       1,
       'aC4pD9cVr5NSZaFCFWyg4Z' // location sharing only through form
     ),
-      Project(
-      2,
+ */      Project(
+      0,
       "Mosquito On Board",
       "'Mosquito On Board' is a closed project being carried out by scientists in Spain to study the survival of tiger mosquitoes in cars. You must be registered to participate.",
       "https://ee.kobotoolbox.org/single/aCVvkv5V",

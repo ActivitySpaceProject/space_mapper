@@ -4,7 +4,6 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:asm/models/app_localizations.dart';
 
 import '../../../db/database_tiger_in_car.dart';
-import '../models/send_data_to_api.dart';
 //import '../external_projects/tiger_in_car/models/participating_projects.dart';
 import '../../../db/database_project.dart';
 import '../../../ui/project_detail.dart';
@@ -203,14 +202,14 @@ Widget card3 = displayCardBtn("cowboy",
 
     switch (btnIndex) {
       case 0:
-        SendTigerInCarDataToAPI sendToAPI = SendTigerInCarDataToAPI();
+//        SendTigerInCarDataToAPI sendToAPI = SendTigerInCarDataToAPI();
         state.message = "Experiment started";
-        sendToAPI.submitData(state);
+ //       sendToAPI.submitData(state);
         break;
       case 1:
-        SendTigerInCarDataToAPI sendToAPI = SendTigerInCarDataToAPI();
+   //     SendTigerInCarDataToAPI sendToAPI = SendTigerInCarDataToAPI();
         state.message = "Mosquito is alive";
-        sendToAPI.submitData(state);
+     //   sendToAPI.submitData(state);
         break;
       case 2:
         Navigator.of(context)

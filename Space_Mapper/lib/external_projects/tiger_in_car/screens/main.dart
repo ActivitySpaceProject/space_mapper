@@ -42,6 +42,8 @@ class _TigerInCarState extends State<TigerInCar>
             )),
         body: displayButtons(),
       ),
+      debugShowCheckedModeBanner: false,
+
     );
   }
 
@@ -196,7 +198,7 @@ Widget card3 = displayCardBtn("cowboy",
   }
 
   void addMosquitoState(int btnIndex, bool isAlive, int amountOfRows) async {
-    DateTime date = DateTime.now();
+    DateTime date = DateTime.now().toUtc();
     final state = TigerInCarState(isAlive: isAlive, date: date);
     await TigerInCarDatabase.instance.createRecord(state);
 

@@ -29,7 +29,7 @@ mixin MockProject implements Project {
       "'Mosquito On Board' is a closed project being carried out by scientists in Spain to study the survival of tiger mosquitoes in cars. You must be registered to participate.",
       "https://ee.kobotoolbox.org/single/aCVvkv5V",
       null,//'/project_tiger_in_car',
-      "https://www.periodismociudadano.com/wp-content/uploads/2020/11/mosquito-49141_640.jpg",      
+      "https://www.cdc.gov/mosquitoes/gallery/aedes/images/LVV7_Aedes_albopictus_Adult_Feeding_2022_001-medium.jpg?_=82603",      
       1, // location sharing only through form
       'aKNGJqKdqjLMfJEtYk7f5U'
     )

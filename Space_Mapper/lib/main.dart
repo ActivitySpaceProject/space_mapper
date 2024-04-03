@@ -139,6 +139,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       supportedLocales: [
         Locale('en',
             ''), // English, no country code. The first element of this list is the default language

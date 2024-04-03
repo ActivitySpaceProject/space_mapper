@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../../db/database_tiger_in_car.dart';
-import '../models/send_data_to_api.dart';
 //import '../external_projects/tiger_in_car/models/participating_projects.dart';
 import '../../../db/database_project.dart';
 
@@ -101,9 +100,9 @@ class _FinishExperimentState extends State<FinishExperiment>
               height: 250,
               child: TextButton(
                 onPressed: () {
-                  SendTigerInCarDataToAPI sendToAPI = SendTigerInCarDataToAPI();
+             //     SendTigerInCarDataToAPI sendToAPI = SendTigerInCarDataToAPI();
                   tigerInCarRoute.message = message;
-                  sendToAPI.submitData(tigerInCarRoute);
+               //   sendToAPI.submitData(tigerInCarRoute);
                   addMosquitoDeathToDatabase(message);
                   Navigator.pop(context);
                 },

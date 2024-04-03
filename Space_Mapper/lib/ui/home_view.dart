@@ -12,7 +12,6 @@ import 'package:background_fetch/background_fetch.dart';
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
 
-import '../models/send_data_to_api.dart';
 import 'map_view.dart';
 
 import '../util/dialog.dart' as util;
@@ -104,7 +103,7 @@ class HomeViewState extends State<HomeView>
     // 1.  Listen to events (See docs for all 13 available events).
     bg.BackgroundGeolocation.onLocation(_onLocation, _onLocationError);
     bg.BackgroundGeolocation.onMotionChange(_onMotionChange);
-    bg.BackgroundGeolocation.onActivityChange(_onActivityChange);
+//    bg.BackgroundGeolocation.onActivityChange(_onActivityChange);
     bg.BackgroundGeolocation.onProviderChange(_onProviderChange);
     bg.BackgroundGeolocation.onHttp(_onHttp);
     bg.BackgroundGeolocation.onConnectivityChange(_onConnectivityChange);
@@ -268,8 +267,8 @@ class HomeViewState extends State<HomeView>
   void _onLocation(bg.Location location) {
     print('[${bg.Event.LOCATION}] - $location');
 
-    SendDataToAPI sender = SendDataToAPI();
-    sender.submitData(location, "location");
+//    SendDataToAPI sender = SendDataToAPI();
+ //   sender.submitData(location, "location");
     
     setState(() {
       //_odometer = (location.odometer / 1000.0).toStringAsFixed(1);
@@ -288,12 +287,12 @@ class HomeViewState extends State<HomeView>
     });
   }
 
-  void _onActivityChange(bg.ActivityChangeEvent event) {
-    print('[${bg.Event.ACTIVITYCHANGE}] - $event');
-    setState(() {
+//  void _onActivityChange(bg.ActivityChangeEvent event) {
+//    print('[${bg.Event.ACTIVITYCHANGE}] - $event');
+//    setState(() {
       //_motionActivity = event.activity;
-    });
-  }
+//    });
+//  }
 
   void _onProviderChange(bg.ProviderChangeEvent event) {
     print('[${bg.Event.PROVIDERCHANGE}] - $event');

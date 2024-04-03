@@ -103,7 +103,7 @@ class HomeViewState extends State<HomeView>
     // 1.  Listen to events (See docs for all 13 available events).
     bg.BackgroundGeolocation.onLocation(_onLocation, _onLocationError);
     bg.BackgroundGeolocation.onMotionChange(_onMotionChange);
-    bg.BackgroundGeolocation.onActivityChange(_onActivityChange);
+//    bg.BackgroundGeolocation.onActivityChange(_onActivityChange);
     bg.BackgroundGeolocation.onProviderChange(_onProviderChange);
     bg.BackgroundGeolocation.onHttp(_onHttp);
     bg.BackgroundGeolocation.onConnectivityChange(_onConnectivityChange);
@@ -287,12 +287,12 @@ class HomeViewState extends State<HomeView>
     });
   }
 
-  void _onActivityChange(bg.ActivityChangeEvent event) {
-    print('[${bg.Event.ACTIVITYCHANGE}] - $event');
-    setState(() {
+//  void _onActivityChange(bg.ActivityChangeEvent event) {
+//    print('[${bg.Event.ACTIVITYCHANGE}] - $event');
+//    setState(() {
       //_motionActivity = event.activity;
-    });
-  }
+//    });
+//  }
 
   void _onProviderChange(bg.ProviderChangeEvent event) {
     print('[${bg.Event.PROVIDERCHANGE}] - $event');

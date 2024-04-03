@@ -63,7 +63,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
           createNewRecord = true;
           surveyType = 'starting';
           statusToSet = 'ongoing';
-          startTime = DateTime.now();
+          startTime = DateTime.now().toUtc();
         } else if (status == 'ongoing') {
           createNewRecord = false;
           surveyType = 'ongoing';
@@ -404,7 +404,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
       print('start time was null so no locations');
       return ('');
     } else {
-      DateTime this_start_time = startTime ?? DateTime.now();
+      DateTime this_start_time = startTime ?? DateTime.now().toUtc();
 
       print('this start time is $this_start_time');
       /// var difference = berlinWallFell.difference(moonLanding);
@@ -429,7 +429,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
         //       break;
 
         bool is_after =
-            DateTime.parse(_loc.getTimestamp()).isAfter(this_start_time.toUtc().subtract(const Duration(minutes: 15)));
+            DateTime.parse(_loc.getTimestamp()).isAfter(this_start_time.toUtc().subtract(const Duration(minutes: 15))); //15 min buffer to ensure initial location of trip is grabbed.
 
         print('is_after $is_after');
 
@@ -464,7 +464,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
     }
 
     // Calculate enddate based on startdate and duration
-    DateTime startDate = DateTime.now();
+    DateTime startDate = DateTime.now().toUtc();
     DateTime endDate = startDate.add(Duration(days: dropdownValue));
 
     if (endButtonPressed) {
@@ -491,7 +491,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
         GlobalData.userUUID +
         "&d[experiment_status]=" +
         surveyType +
-        "&d[unix_time]=" + DateTime.now().toString();
+        "&d[unix_time]=" + DateTime.now().toUtc().toString();
 
     print('Project full url : ${GlobalProjectData.generatedUrl}');
     print('Project web URL : ${project.webUrl}');

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import '../external_projects/tiger_in_car/models/project_list.dart';
+import '../db/database_project_list.dart';
+
 class ProjectCreation extends StatefulWidget {
   @override
   _ProjectCreationState createState() => _ProjectCreationState();
@@ -10,29 +13,53 @@ class ProjectCreation extends StatefulWidget {
 class _ProjectCreationState extends State<ProjectCreation> {
   final TextEditingController _controller = TextEditingController();
   String finalUrl = '';
-  Map<String, dynamic> fetchedData = {}; // A map to store the fetched JSON data
+  Map<String, dynamic> fetchedData = {};
+  bool isDataFetched = false; // To check if the data is fetched and ready for display
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  Future<void> fetchJsonData(String url) async {
+  Future<void> fetchProjectData(String url) async {
     try {
       final response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
-        // If server returns an OK response, parse the JSON
         setState(() {
           fetchedData = json.decode(response.body);
+          isDataFetched = true;
         });
       } else {
-        // If the server did not return a 200 OK response,
-        // throw an exception.
+        setState(() {
+          isDataFetched = false;
+        });
         throw Exception('Failed to load project');
       }
     } catch (e) {
-      print(e); // You might want to handle the error more gracefully in a production app
+      print(e);
+      setState(() {
+        isDataFetched = false;
+      });
+      // Optionally, show an alert dialog with the error
+    }
+  }
+
+  Future<void> insertProjectIntoDB() async {
+    try {
+      // Create a ProjectList instance using the fetched data
+      ProjectList project = ProjectList(
+        projectName: fetchedData['projectName'],
+        projectDescription: fetchedData['projectDescription'],
+        externalLink: fetchedData['externalLink'],
+        internalLink: fetchedData['internalLink'],
+        projectImageLocation: fetchedData['projectImageLocation'],
+        locationSharingMethod: fetchedData['locationSharingMethod'],
+        surveyElementCode: fetchedData['surveyElementCode'],
+        projectURL: finalUrl,
+      );
+
+      // Insert the project into the database
+      await ProjectDatabaseList.instance.createProject(project);
+      print("Project inserted successfully.");
+      // Optionally, show a success message or navigate away
+    } catch (e) {
+      print(e);
+      // Handle errors, perhaps show an alert or a Snackbar
     }
   }
 
@@ -58,34 +85,22 @@ class _ProjectCreationState extends State<ProjectCreation> {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                setState(() {
-                  String projectName = _controller.text.trim();
-                  finalUrl = "https://stuffjoy.github.io/space-mapper-projects/$projectName.json";
-                });
-                fetchJsonData(finalUrl);
+                String projectName = _controller.text.trim();
+                finalUrl = "https://stuffjoy.github.io/space-mapper-projects/$projectName.json";
+                fetchProjectData(finalUrl);
               },
-              child: Text('Submit'),
+              child: Text('Fetch Project'),
             ),
-            if (finalUrl.isNotEmpty)
-              Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: Text(
-                  'URL: $finalUrl',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
+            if (isDataFetched) ...[
+              Text('Name: ${fetchedData['projectName']}'),
+              Text('Description: ${fetchedData['projectDescription']}'),
+              ElevatedButton(
+                onPressed: insertProjectIntoDB,
+                child: Text('Confirm and Save Project'),
               ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: fetchedData.length,
-                itemBuilder: (BuildContext context, int index) {
-                  String key = fetchedData.keys.elementAt(index);
-                  return ListTile(
-                    title: Text("$key"),
-                    subtitle: Text("${fetchedData[key]}"),
-                  );
-                },
-              ),
-            ),
+            ] else if (!isDataFetched && finalUrl.isNotEmpty) ...[
+              Text('No project data found or failed to fetch project.'),
+            ],
           ],
         ),
       ),

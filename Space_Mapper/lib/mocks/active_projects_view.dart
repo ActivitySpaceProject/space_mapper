@@ -5,16 +5,16 @@ mixin ParticpatingProjects implements Project {
   static List<Project> items = [];
 
   static Future<void> populateItemsFromDatabase() async {
-    final projects = await ProjectDatabase.instance.getOngoingProjects(); // Assuming this function fetches data from your database
+    final projects = await ProjectDatabase.instance.getOngoingProjects(); 
 
     items = projects.map((project) {
       return Project(
-        project.projectId ?? -1, // Replace with the actual field name from your database
-        project.projectName, // Replace with the actual field name from your database
-        project.projectDescription ?? "", // Replace with the actual field name from your database
-        project.externalLink, // Replace with the actual field name from your database
-        project.internalLink, // Replace with the actual field name from your database
-        project.projectImageLocation ?? "", // Replace with the actual field name from your database
+        project.projectId ?? -1, 
+        project.projectName, 
+        project.projectDescription ?? "", 
+        project.externalLink, 
+        project.internalLink, 
+        project.projectImageLocation ?? "", 
         project.locationSharingMethod,
         project.surveyElementCode,
       );

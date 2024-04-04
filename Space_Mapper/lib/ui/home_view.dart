@@ -401,6 +401,7 @@ class HomeViewState extends State<HomeView>
       //body: body,
       drawer: new SpaceMapperSideDrawer(),
       body: MapView(),
+      /*
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           //Navigator.of(context).pushNamed('/record_contact');
@@ -411,7 +412,38 @@ class HomeViewState extends State<HomeView>
         //child: Icon(Icons.person),
         child: Icon(Icons.all_inclusive),
         backgroundColor: Colors.blue,
-      ),);
+      ),);    
+      */
+
+floatingActionButton: Stack(
+        alignment: Alignment.bottomRight,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(bottom: 80), // Distance from the original FAB
+            child: FloatingActionButton(
+              heroTag: "btn_new_project",
+              onPressed: () {
+                Navigator.of(context).pushNamed('/new_project');
+                print("Second FAB pressed");
+              },
+              child: Icon(Icons.add_circle),
+              backgroundColor: Colors.green,
+            ),
+          ),
+          FloatingActionButton(
+            heroTag: "btn_participate",
+            onPressed: () {
+              // Existing action
+              Navigator.of(context).pushNamed('/participate_in_a_project');
+              _onClickGetCurrentPosition();
+            },
+            child: Icon(Icons.all_inclusive),
+            backgroundColor: Colors.blue,
+          ),
+        ],
+      ),
+    );
+
       /*floatingActionButton: Row(
         children: projects.map((project) {
           return Padding(

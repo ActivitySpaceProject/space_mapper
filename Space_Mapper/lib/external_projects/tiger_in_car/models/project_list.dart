@@ -1,6 +1,7 @@
-final String tableProject = 'project_list';
+import 'package:asm/models/project.dart';
+final String tableProjectList = 'project_list';
 
-class ProjectFields {
+class ProjectListFields {
   static final List<String> values = [
     projectId, projectName, projectDescription, externalLink, internalLink, projectImageLocation, locationSharingMethod, surveyElementCode, projectURL,
   ];
@@ -40,27 +41,27 @@ class ProjectList {
   });
 
   static ProjectList fromJson(Map<String, Object?> json) => ProjectList(
-        projectId: json[ProjectFields.projectId] as int?,
-        projectName: json[ProjectFields.projectName] as String,
-        projectDescription: json[ProjectFields.projectDescription] as String?,
-        externalLink: json[ProjectFields.externalLink] as String?,
-        internalLink: json[ProjectFields.internalLink] as String?,
-        projectImageLocation: json[ProjectFields.projectImageLocation] as String?,
-        locationSharingMethod: json[ProjectFields.locationSharingMethod] as int,
-        surveyElementCode: json[ProjectFields.surveyElementCode] as String,
-        projectURL: json[ProjectFields.projectURL] as String?,
+        projectId: json[ProjectListFields.projectId] as int?,
+        projectName: json[ProjectListFields.projectName] as String,
+        projectDescription: json[ProjectListFields.projectDescription] as String?,
+        externalLink: json[ProjectListFields.externalLink] as String?,
+        internalLink: json[ProjectListFields.internalLink] as String?,
+        projectImageLocation: json[ProjectListFields.projectImageLocation] as String?,
+        locationSharingMethod: json[ProjectListFields.locationSharingMethod] as int,
+        surveyElementCode: json[ProjectListFields.surveyElementCode] as String,
+        projectURL: json[ProjectListFields.projectURL] as String?,
       );
 
   Map<String, Object?> toJson() => {
-        ProjectFields.projectId: projectId,
-        ProjectFields.projectName: projectName,
-        ProjectFields.projectDescription: projectDescription,
-        ProjectFields.externalLink: externalLink,
-        ProjectFields.internalLink: internalLink,
-        ProjectFields.projectImageLocation: projectImageLocation,
-        ProjectFields.locationSharingMethod: locationSharingMethod,
-        ProjectFields.surveyElementCode: surveyElementCode,
-        ProjectFields.projectURL: projectURL,
+        ProjectListFields.projectId: projectId,
+        ProjectListFields.projectName: projectName,
+        ProjectListFields.projectDescription: projectDescription,
+        ProjectListFields.externalLink: externalLink,
+        ProjectListFields.internalLink: internalLink,
+        ProjectListFields.projectImageLocation: projectImageLocation,
+        ProjectListFields.locationSharingMethod: locationSharingMethod,
+        ProjectListFields.surveyElementCode: surveyElementCode,
+        ProjectListFields.projectURL: projectURL,
       };
 
   // Create a new instance of the class using the values passed as parameters.
@@ -85,5 +86,22 @@ class ProjectList {
         locationSharingMethod: locationSharingMethod ?? this.locationSharingMethod,
         surveyElementCode: surveyElementCode ?? this.surveyElementCode,
       );
+
+
+  // Inside ProjectList class
+  Project toProject() {
+  // Assuming ProjectList has all necessary fields to create a Project instance
+  return Project(
+    projectId ?? 0,
+    projectName,
+    projectDescription ?? "",
+    externalLink,
+    internalLink,
+    projectImageLocation ?? "",
+    locationSharingMethod,
+    surveyElementCode,
+  );
+}
+
 }
 

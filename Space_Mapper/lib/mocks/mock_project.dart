@@ -56,7 +56,7 @@ mixin MockProject implements Project {
   static List<Project> items = [];
 
   static Future<void> populateItemsFromDatabase() async {
-    final projects = await ProjectDatabase.instance.readAllProjects(); 
+    final projects = await ProjectDatabase.instance.FetchAllProjects(); 
 
     items = projects.map((project) {
       return Project(

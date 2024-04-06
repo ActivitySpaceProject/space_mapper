@@ -434,7 +434,7 @@ floatingActionButton: Stack(
             heroTag: "btn_participate",
             onPressed: () {
               // Existing action
-              Navigator.of(context).pushNamed('/participate_in_a_project');
+              Navigator.of(context).pushNamed('/active_projects');
               _onClickGetCurrentPosition();
             },
             child: Icon(Icons.all_inclusive),

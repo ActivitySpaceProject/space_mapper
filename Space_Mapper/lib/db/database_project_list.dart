@@ -1,3 +1,5 @@
+/* Page to be deleted
+
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import '../external_projects/tiger_in_car/models/project_list.dart';
@@ -18,7 +20,7 @@ class ProjectDatabaseList {
   Future<Database> _initDB(String filePath) async {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, filePath);
-    return await openDatabase(path, version: 1, onCreate: _createDB);
+    return await openDatabase(path, version: 2, onCreate: _createDB, onUpgrade: _onUpgrade);
   }
 
   Future _createDB(Database db, int version) async {
@@ -27,32 +29,42 @@ class ProjectDatabaseList {
     final nullStringType = 'TEXT';
 
     await db.execute('''
-    CREATE TABLE $tableProject (
-      ${ProjectFields.projectId} $idType,
-      ${ProjectFields.projectName} $stringType,
-      ${ProjectFields.projectDescription} $stringType,
-      ${ProjectFields.externalLink} $nullStringType,
-      ${ProjectFields.internalLink} $nullStringType,
-      ${ProjectFields.projectImageLocation} $stringType,
-      ${ProjectFields.locationSharingMethod} INTEGER NOT NULL,
-      ${ProjectFields.surveyElementCode} $stringType,
-      ${ProjectFields.projectURL} $stringType
+    CREATE TABLE $tableProjectList (
+      ${ProjectListFields.projectId} $idType,
+      ${ProjectListFields.projectName} $stringType,
+      ${ProjectListFields.projectDescription} $stringType,
+      ${ProjectListFields.externalLink} $nullStringType,
+      ${ProjectListFields.internalLink} $nullStringType,
+      ${ProjectListFields.projectImageLocation} $stringType,
+      ${ProjectListFields.locationSharingMethod} INTEGER NOT NULL,
+      ${ProjectListFields.surveyElementCode} $stringType,
+      ${ProjectListFields.projectURL} $stringType
     )
     ''');
   }
 
+  Future _onUpgrade(Database db, int oldVersion, int newVersion) async {
+    if (oldVersion < 2) {
+      // If old version is less than 2, create the 'project_list' table
+      print("_onUpgrade old version is $oldVersion and new version is $newVersion");
+      await _createDB(db, newVersion); // You can call _createDB directly if version 2 is where you introduce the 'project_list' table
+    }
+    // Add further schema upgrade logic here for future versions
+  }
+
   Future<ProjectList> createProject(ProjectList project) async {
     final db = await instance.database;
-    final id = await db.insert(tableProject, project.toJson());
+    print("It made it into createProject");
+    final id = await db.insert(tableProjectList, project.toJson());
     return project.copy(projectId: id);
   }
 
   Future<ProjectList> readProject(int id) async {
     final db = await instance.database;
     final maps = await db.query(
-      tableProject,
-      columns: ProjectFields.values,
-      where: '${ProjectFields.projectId} = ?',
+      tableProjectList,
+      columns: ProjectListFields.values,
+      where: '${ProjectListFields.projectId} = ?',
       whereArgs: [id],
     );
 
@@ -65,16 +77,16 @@ class ProjectDatabaseList {
 
   Future<List<ProjectList>> readAllProjects() async {
     final db = await instance.database;
-    final result = await db.query(tableProject);
+    final result = await db.query(tableProjectList);
     return result.map((json) => ProjectList.fromJson(json)).toList();
   }
 
   Future<int> updateProject(ProjectList project) async {
     final db = await instance.database;
     return db.update(
-      tableProject,
+      tableProjectList,
       project.toJson(),
-      where: '${ProjectFields.projectId} = ?',
+      where: '${ProjectListFields.projectId} = ?',
       whereArgs: [project.projectId],
     );
   }
@@ -82,14 +94,16 @@ class ProjectDatabaseList {
   Future<int> deleteProject(int id) async {
     final db = await instance.database;
     return await db.delete(
-      tableProject,
-      where: '${ProjectFields.projectId} = ?',
+      tableProjectList,
+      where: '${ProjectListFields.projectId} = ?',
       whereArgs: [id],
     );
   }
+  
 
   Future close() async {
     final db = await instance.database;
     db.close();
   }
 }
+*/

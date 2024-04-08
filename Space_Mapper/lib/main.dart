@@ -13,6 +13,8 @@ import 'package:uuid/uuid.dart';
 
 class GlobalData {
   static String userUUID = "";
+  static bool user_active_projects = false;
+  static bool user_available_projects = false;
 }
 
 /// Receive events from BackgroundGeolocation in Headless state.
@@ -116,13 +118,12 @@ void main() {
       prefs.setString("user_uuid", Uuid().v4());
       prefs.setString("sample_id", ENV.DEFAULT_SAMPLE_ID);
 
-      GlobalData.userUUID = prefs.getString("user_uuid") ?? ""; // Set the global userUUID
+      GlobalData.userUUID =
+          prefs.getString("user_uuid") ?? ""; // Set the global userUUID
     }
 
-    
-
-    print('userUUID: $userUUID'); 
-    print('sampleId: $sampleId'); 
+    print('userUUID: $userUUID');
+    print('sampleId: $sampleId');
 
     runApp(new MyApp());
   });

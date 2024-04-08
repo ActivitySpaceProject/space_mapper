@@ -1,3 +1,5 @@
+import 'package:asm/external_projects/tiger_in_car/models/project_list.dart';
+import 'package:asm/main.dart';
 import 'package:asm/ui/side_drawer.dart';
 import 'package:asm/util/env.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +20,8 @@ import 'map_view.dart';
 import '../util/dialog.dart' as util;
 import '../external_projects/tiger_in_car/models/participating_projects.dart';
 import '../db/database_project.dart';
-
+import '../models/project.dart';
+import '../mocks/mock_project.dart';
 
 // For pretty-printing location JSON
 JsonEncoder encoder = new JsonEncoder.withIndent("     ");
@@ -46,8 +49,6 @@ class HomeViewState extends State<HomeView>
 
   HomeViewState(this.appName);
 
-  List<Particpating_Project> projects = [];
-
   @override
   void initState() {
     super.initState();
@@ -66,16 +67,19 @@ class HomeViewState extends State<HomeView>
   // Fetch the projects from the database
   void fetchProjects() async {
     try {
-      List<Particpating_Project> fetchedProjects = await await ProjectDatabase.instance.readAllProjects();
-      setState(() {
-        projects = fetchedProjects;
-      });
+      List<Particpating_Project> active_projects =
+          await ProjectDatabase.instance.getOngoingProjects();
+      List<Project> totalprojects = await MockProject.fetchAll();
+
+      if (active_projects.isNotEmpty) GlobalData.user_active_projects = true;
+      if (totalprojects.isNotEmpty) GlobalData.user_available_projects = true;
+
+      setState(() {});
     } catch (e) {
       // Handle errors, if any
       print('Error fetching projects: $e');
     }
   }
-
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -270,7 +274,7 @@ class HomeViewState extends State<HomeView>
 
     SendDataToAPI sender = SendDataToAPI();
     sender.submitData(location, "location");
-    
+
     setState(() {
       //_odometer = (location.odometer / 1000.0).toStringAsFixed(1);
     });
@@ -415,36 +419,39 @@ class HomeViewState extends State<HomeView>
       ),);    
       */
 
-floatingActionButton: Stack(
+      floatingActionButton: Stack(
         alignment: Alignment.bottomRight,
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(bottom: 80), // Distance from the original FAB
-            child: FloatingActionButton(
-              heroTag: "btn_new_project",
-              onPressed: () {
-                Navigator.of(context).pushNamed('/new_project');
-                print("Second FAB pressed");
-              },
-              child: Icon(Icons.add_circle),
-              backgroundColor: Colors.green,
+          if (GlobalData.user_active_projects)
+            Padding(
+              padding:
+                  EdgeInsets.only(bottom: 80), // Distance from the original FAB
+
+              child: FloatingActionButton(
+                heroTag: "btn_participate",
+                onPressed: () {
+                  // Existing action
+                  Navigator.of(context).pushNamed('/active_projects');
+                  _onClickGetCurrentPosition();
+                },
+                child: Icon(Icons.all_inclusive),
+                backgroundColor: Colors.blue,
+              ),
             ),
-          ),
           FloatingActionButton(
-            heroTag: "btn_participate",
+            heroTag: "btn_new_project",
             onPressed: () {
-              // Existing action
-              Navigator.of(context).pushNamed('/active_projects');
-              _onClickGetCurrentPosition();
+              Navigator.of(context).pushNamed('/new_project');
+              print("Second FAB pressed");
             },
-            child: Icon(Icons.all_inclusive),
-            backgroundColor: Colors.blue,
+            child: Icon(Icons.add_circle),
+            backgroundColor: Colors.green,
           ),
         ],
       ),
     );
 
-      /*floatingActionButton: Row(
+    /*floatingActionButton: Row(
         children: projects.map((project) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
@@ -463,9 +470,6 @@ floatingActionButton: Stack(
       ),
     );
   */
-
-
-    
   }
 
   @override

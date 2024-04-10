@@ -52,7 +52,8 @@ class _ProjectCreationState extends State<ProjectCreation> {
         await ProjectDatabase.instance.RetrieveProjectbyURL(finalUrl!);
     if (project_exists.projectId != -1) {
       // Project exists
-      print("Project already exists.");
+      print(
+          "Project already exists: project_exists.projectId ${project_exists.projectId}");
       setState(() {
         this.projectExists = true;
         existingprojectImageLocation = project_exists.projectImageLocation;
@@ -61,6 +62,8 @@ class _ProjectCreationState extends State<ProjectCreation> {
     } else {
       setState(() {
         this.projectExists = false;
+        print(
+            "Project does not exists: project_exists.projectId ${project_exists.projectId}");
         //finalUrl = constructedUrl; // Update finalUrl for subsequent actions
         fetchProjectData(finalUrl);
       });
@@ -218,7 +221,9 @@ class _ProjectCreationState extends State<ProjectCreation> {
                 ProjectTile(project: existingProject!, darkTheme: false),
                 ElevatedButton(
                   onPressed: () {
-                    _navigationToProjectDetail(context, existingProject!.id);
+                    //_navigationToProjectDetail(context, existingProject!.id); Commented out before it would sometimes create a duplicate project entry
+                    Navigator.of(context)
+                        .pushNamed('/participate_in_a_project');
                   },
                   child: Text('View Project'),
                 ),

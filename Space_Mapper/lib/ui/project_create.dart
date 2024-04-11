@@ -20,7 +20,7 @@ class _ProjectCreationState extends State<ProjectCreation> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _repoNameController =
       TextEditingController(text: 'space-mapper-projects');
-  String finalUrl = '';
+  String? finalUrl;
   Map<String, dynamic> fetchedData = {};
   bool isDataFetched =
       false; // To check if the data is fetched and ready for display
@@ -40,6 +40,7 @@ class _ProjectCreationState extends State<ProjectCreation> {
                   Navigator.of(context).pop(); // Close the QR scan page
                   print("scan data ${scanData.code}");
                   _handleFetchProject(scanData.code);
+                  finalUrl = scanData.code;
                   // You may want to parse `finalUrl` or directly use it
                 });
               },
@@ -54,6 +55,7 @@ class _ProjectCreationState extends State<ProjectCreation> {
       // Project exists
       print(
           "Project already exists: project_exists.projectId ${project_exists.projectId}");
+      print("it does exist: $finalUrl");
       setState(() {
         this.projectExists = true;
         existingprojectImageLocation = project_exists.projectImageLocation;
@@ -64,6 +66,7 @@ class _ProjectCreationState extends State<ProjectCreation> {
         this.projectExists = false;
         print(
             "Project does not exists: project_exists.projectId ${project_exists.projectId}");
+        print("it does NOT exist: $finalUrl");
         //finalUrl = constructedUrl; // Update finalUrl for subsequent actions
         fetchProjectData(finalUrl);
       });

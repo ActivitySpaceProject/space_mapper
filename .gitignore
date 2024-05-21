@@ -13,6 +13,7 @@ Space_Mapper/android/key.properties
 .buildlog/
 .history
 .svn/
+.fvm/
 
 # IntelliJ related
 *.iml
@@ -116,3 +117,5 @@ app.*.symbols
 !/dev/ci/**/Gemfile.lock
 Space_Mapper/android/app/space_mapper.keystore
 Space_Mapper/space_mapper.keystore
+Space_Mapper/.fvm/flutter_sdk
+Space_Mapper/.fvm/fvm_config.json

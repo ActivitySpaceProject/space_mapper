@@ -49,7 +49,11 @@ class AvailableProjectsScreenState extends State<AvailableProjectsScreen> {
       print(GlobalRouteData.user_route); 
 
       if(GlobalRouteData.user_route == "/active_projects") {
-        final projects = await ParticpatingProjects.fetchAll();
+        projects = await ParticpatingProjects.fetchAll();
+        //print("projects are $projects, is empty is ${projects.isEmpty}");
+        if (projects.isEmpty) {
+          projects = await MockProject.fetchAll();
+        } 
         print('ping number 3'); 
         setState(() {
           this.projects = projects;
@@ -59,7 +63,11 @@ class AvailableProjectsScreenState extends State<AvailableProjectsScreen> {
 
 
       if(GlobalRouteData.user_route == "/participate_in_a_project") {
-        final projects = await MockProject.fetchAll();
+        projects = await MockProject.fetchAll();
+        print("projects are $projects, is empty is ${projects.isEmpty}");
+        if (projects.isEmpty) {
+          Navigator.of(context).pushNamed('/new_project');
+        } 
         setState(() {
           this.projects = projects;
           this.loading = false;

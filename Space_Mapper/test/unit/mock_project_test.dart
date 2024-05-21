@@ -8,14 +8,14 @@ void main() {
     expect(mockProject.name, isNotEmpty);
   });
 
-  test('test fetchAll', () {
-    final mockProject = MockProject.fetchAll();
+  test('test fetchAll', () async {
+    final mockProject = await MockProject.fetchAll();
     expect(mockProject.length, greaterThan(0));
     expect(mockProject[0].name, isNotEmpty);
   });
 
-  test('test fetch', () {
-    final mockProject = MockProject.fetchByID(0);
+  test('test fetch', () async{
+    final mockProject = await MockProject.fetchByID(0);
     expect(mockProject, isNotNull);
     expect(mockProject.name, isNotEmpty);
   });

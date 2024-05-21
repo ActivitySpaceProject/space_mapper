@@ -99,6 +99,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
     );
   }
 
+/*
   loadData() {
     final project = MockProject.fetchByID(this.projectID);
 
@@ -107,6 +108,21 @@ class _ProjectDetailState extends State<ProjectDetail> {
         this.project = project;
         print('Fetched project details: ${project.name}');
       });
+    }
+  }*/
+  void loadData() async {
+    try {
+      final project = await MockProject.fetchByID(this.projectID);
+      print("we are trying to fecth: ${this.projectID}");
+      if (mounted) {
+        setState(() {
+          this.project = project;
+          print('Fetched project details: ${project.name}');
+        });
+      }
+    } catch (error) {
+      print('Failed to load project details: $error + ${this.projectID}');
+      // Handle the error or inform the user as needed
     }
   }
 
@@ -514,6 +530,8 @@ class _ProjectDetailState extends State<ProjectDetail> {
     // Insert the record into the database
     if (createNewRecord) {
       await ProjectDatabase.instance.createProject(projectRecord);
+      GlobalData.user_active_projects == true;
+      setState(() {});
       print('Project inserted');
     }
 

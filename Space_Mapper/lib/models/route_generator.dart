@@ -1,4 +1,5 @@
 import 'package:asm/external_projects/tiger_in_car/models/tiger_in_car_state.dart';
+import 'package:asm/ui/project_create.dart';
 import 'package:flutter/material.dart';
 
 import '../external_projects/tiger_in_car/screens/finish_experiment.dart';
@@ -53,6 +54,8 @@ class RouteGenerator {
           return MaterialPageRoute(builder: (_) => ProjectDetail(args));
         }
         return _errorRoute();
+      case '/new_project':
+      return MaterialPageRoute(builder: (_) => ProjectCreation());
       case '/project_tiger_in_car':
         return MaterialPageRoute(builder: (_) => TigerInCar());
       case '/tiger_in_car_finish_experiment':

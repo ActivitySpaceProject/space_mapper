@@ -1,49 +1,54 @@
-
 import '../models/project.dart';
+import '../db/database_project.dart';
 
 mixin MockProject implements Project {
-  static final List<Project> items = [
-/*     Project(
-      0,
-      "Human Mobility Project",
-      "The Human Mobility Project is aimed at better understanding how patterns of human movement and activities are changing in the context of climate change.",
-      "https://ee.kobotoolbox.org/single/O5DDmZ06",
-      null,
-      "https://activityspaceproject.com/images/BuffSim3D_sampleof10.png",
-      1,
-      'aMz7EhF3ZpzMvNUMwtR4eN' // location sharing only through form
-    ),
-    Project(
-      1,
-      "Public Space Observer",
-      "This project is for sociologists carrying out systematic observations of public spaces.",
-      "https://ee.kobotoolbox.org/single/1FUvZ7RD",
-      null,
-      "https://upload.wikimedia.org/wikipedia/commons/e/e8/Barcelona_2016-307.jpg",
-      1,
-      'aC4pD9cVr5NSZaFCFWyg4Z' // location sharing only through form
-    ),
- */      Project(
-      0,
-      "Mosquito On Board",
-      "'Mosquito On Board' is a closed project being carried out by scientists in Spain to study the survival of tiger mosquitoes in cars. You must be registered to participate.",
-      "https://ee.kobotoolbox.org/single/aCVvkv5V",
-      null,//'/project_tiger_in_car',
-      "https://www.cdc.gov/mosquitoes/gallery/aedes/images/LVV7_Aedes_albopictus_Adult_Feeding_2022_001-medium.jpg?_=82603",      
-      1, // location sharing only through form
-      'aKNGJqKdqjLMfJEtYk7f5U'
-    )
-  ];
+  static List<Project> items = [];
 
-  static Project fetchFirst() {
-    return items[0];
+  static Future<void> populateItemsFromDatabase() async {
+    final projects = await ProjectDatabase.instance.FetchAllProjects();
+
+    items = projects.map((project) {
+      return Project(
+        project.projectId ??
+            -1, // Replace with the actual field name from your database
+        project
+            .projectName, // Replace with the actual field name from your database
+        project.projectDescription ??
+            "", // Replace with the actual field name from your database
+        project
+            .externalLink, // Replace with the actual field name from your database
+        project
+            .internalLink, // Replace with the actual field name from your database
+        project.projectImageLocation ??
+            "", // Replace with the actual field name from your database
+        project.locationSharingMethod,
+        project.surveyElementCode,
+      );
+    }).toList();
   }
 
-  static fetchAll() {
+  static Project fetchFirst() {
+    populateItemsFromDatabase();
+    if (items.isNotEmpty) {
+      return items[0];
+    }
+    throw Exception('No projects available');
+  }
+
+  static Future<List<Project>> fetchAll() async {
+    await populateItemsFromDatabase();
     return items;
   }
 
-  static Project fetchByID(int index) {
-    return items[index];
+  static Future<Project> fetchByID(int projectId) async {
+    await populateItemsFromDatabase();
+
+    try {
+      // Find the project by ID instead of by index
+      final project = items.firstWhere((project) => project.id == projectId);
+      return project;
+    } catch (e) {
+      throw Exception('Project with ID $projectId not found');
+    }
   }
 }

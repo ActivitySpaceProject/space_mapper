@@ -271,8 +271,8 @@ class HomeViewState extends State<HomeView>
   void _onLocation(bg.Location location) {
     print('[${bg.Event.LOCATION}] - $location');
 
-    SendDataToAPI sender = SendDataToAPI();
-    sender.submitData(location, "location");
+//    SendDataToAPI sender = SendDataToAPI();
+//    sender.submitData(location, "location");
 
     setState(() {
       //_odometer = (location.odometer / 1000.0).toStringAsFixed(1);
@@ -294,7 +294,7 @@ class HomeViewState extends State<HomeView>
 //  void _onActivityChange(bg.ActivityChangeEvent event) {
 //    print('[${bg.Event.ACTIVITYCHANGE}] - $event');
 //    setState(() {
-      //_motionActivity = event.activity;
+  //_motionActivity = event.activity;
 //    });
 //  }
 

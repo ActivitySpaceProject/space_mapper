@@ -28,5 +28,5 @@
     "gender": "género",
     "about_the_project": "Sobre el proyecto",
     "consent_form" : "Consentimiento informado",
-    "do_you_agree_to_share_your_anonymous_location_with" : "Esta encuesta será utilizada por voluntarios que participen en investigaciones relacionadas con la movilidad humana en el contexto del cambio climático. Actualmente estamos realizando pruebas cerradas para mejorar la aplicación, que no sólo recoge datos de la encuesta, sino también datos de fondo automatizados sobre la ubicación, el rumbo, la velocidad y el modo de actividad. Al marcar esta casilla, confirmas que has comprendido esta información y que das tu consentimiento para que los datos que has compartido se utilicen de esta forma."
+    "do_you_agree_to_share_your_anonymous_location_with" : "Esta encuesta es sólo para participantes autorizados. Para participar, debe haber dado su consentimiento informado directamente al equipo de investigación. Cada vez que envíe un formulario de encuesta, la aplicación también transmitirá automáticamente su historial de localización, remontándose a la fecha en que comenzó a participar. Al marcar esta casilla, confirmas que has comprendido esta información, que estás autorizado a participar y que ya has dado tu consentimiento informado para que los datos que has compartido se utilicen de esta forma."
 }

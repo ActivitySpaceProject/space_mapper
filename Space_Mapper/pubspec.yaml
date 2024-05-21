@@ -1,5 +1,5 @@
 name: asm
-description: Flutter version of Space Mapper with 2020 upgrades
+description: A privacy-focused app for mapping your activity spaces
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -11,7 +11,7 @@ description: Flutter version of Space Mapper with 2020 upgrades
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 3.2.0+0
+version: 3.2.0+4
 publish_to: none
 
 environment:

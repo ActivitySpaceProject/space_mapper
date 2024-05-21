@@ -4,7 +4,6 @@ import 'package:asm/main.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
 import 'package:flutter/material.dart';
-import '../models/send_data_to_api.dart';
 import '../models/app_localizations.dart';
 import '../components/banner_image.dart';
 import '../components/project_tile.dart';
@@ -16,7 +15,6 @@ import '../external_projects/tiger_in_car/models/participating_projects.dart';
 import '../db/database_project.dart';
 //import '../../main.dart';
 import 'package:asm/external_projects/tiger_in_car/models/tiger_in_car_state.dart';
-import 'package:asm/external_projects/tiger_in_car/models/send_data_to_api.dart';
 
 const BannerImageHeight = 300.0;
 const BodyVerticalPadding = 20.0;
@@ -65,7 +63,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
           createNewRecord = true;
           surveyType = 'starting';
           statusToSet = 'ongoing';
-          startTime = DateTime.now();
+          startTime = DateTime.now().toUtc();
         } else if (status == 'ongoing') {
           createNewRecord = false;
           surveyType = 'ongoing';
@@ -171,7 +169,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
       child: Column(
         children: [
           Text(
-            "You are already participating in a project. You can go to your active project by clicking the button below.",
+            "You are participating in this project.",
             style: TextStyle(fontSize: 16.0),
           ),
           SizedBox(height: 20.0),
@@ -208,8 +206,8 @@ class _ProjectDetailState extends State<ProjectDetail> {
 
   Widget _renderConsentForm() {
     print('Project name in _renderConsentForm: ${project.name}');
-    String title =
-        AppLocalizations.of(context)?.translate("consent_form") ?? "";
+//    String title =
+//        AppLocalizations.of(context)?.translate("consent_form") ?? "";
     /*  String text = AppLocalizations.of(context)
             ?.translate("do_you_agree_to_share_your_anonymous_location_with") ??
         "" + "${project.name}?";*/
@@ -226,10 +224,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('$title',
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-              style: Styles.projectTileTitleLight),
+
           Row(
             children: [
               Checkbox(
@@ -422,10 +417,12 @@ class _ProjectDetailState extends State<ProjectDetail> {
   Future<String> getLocationsToShare(int maxDays) async {
     String ret = "";
     if (startTime == null) {
+      print('start time was null so no locations');
       return ('');
     } else {
-      DateTime this_start_time = startTime ?? DateTime.now();
+      DateTime this_start_time = startTime ?? DateTime.now().toUtc();
 
+      print('this start time is $this_start_time');
       /// var difference = berlinWallFell.difference(moonLanding);
       /// assert(difference.inDays == 7416);
       List allLocations = await bg.BackgroundGeolocation.locations;
@@ -448,9 +445,14 @@ class _ProjectDetailState extends State<ProjectDetail> {
         //       break;
 
         bool is_after =
-            DateTime.parse(_loc.getTimestamp()).isAfter(this_start_time);
+            DateTime.parse(_loc.getTimestamp()).isAfter(this_start_time.toUtc().subtract(const Duration(minutes: 15))); //15 min buffer to ensure initial location of trip is grabbed.
 
-        if (is_after) ;
+        print('is_after $is_after');
+
+        if (is_after)
+          customLocation.add(_loc);
+//        else
+ //           break;
       }
 
       ret = jsonEncode(customLocation);
@@ -478,7 +480,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
     }
 
     // Calculate enddate based on startdate and duration
-    DateTime startDate = DateTime.now();
+    DateTime startDate = DateTime.now().toUtc();
     DateTime endDate = startDate.add(Duration(days: dropdownValue));
 
     if (endButtonPressed) {
@@ -493,20 +495,19 @@ class _ProjectDetailState extends State<ProjectDetail> {
         GlobalProjectData.active_project_number, statusToSet);
 
     // Special for Tiger on Board project (make sure this projectID number matches)
-    if (projectID == 2) {
-      DateTime date = DateTime.now();
-      final state = TigerInCarState(isAlive: true, date: date);
-      SendTigerInCarDataToAPI sendToAPI = SendTigerInCarDataToAPI();
-      sendToAPI.submitData(state);
-    }
+   // if (projectID == 0) {
+   //   DateTime date = DateTime.now();
+    //  final state = TigerInCarState(isAlive: true, date: date);
+//      SendTigerInCarDataToAPI sendToAPI = SendTigerInCarDataToAPI();
+//      sendToAPI.submitData(state);
+   // }
     active_project_url = project.webUrl ?? "";
     GlobalProjectData.generatedUrl = active_project_url +
         "?&d[user_id]=" +
         GlobalData.userUUID +
         "&d[experiment_status]=" +
         surveyType +
-        "&d[unix_time]=" +
-        GlobalSendDatatoAPI.unix.toString();
+        "&d[unix_time]=" + DateTime.now().toUtc().toString();
 
     print('Project full url : ${GlobalProjectData.generatedUrl}');
     print('Project web URL : ${project.webUrl}');

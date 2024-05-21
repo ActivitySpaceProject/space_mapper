@@ -16,8 +16,10 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleDisplayName</key>
+	<string>Space Mapper</string>
 	<key>CFBundleName</key>
-	<string>asm</string>
+	<string>Space Mapper</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -36,13 +38,13 @@
 		<true/>
 	</dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Always/when in use when in use description</string>
+	<string>Space Mapper needs to access your location always and when in use in order to enable you to track your activity spaces. The location data it collects does not leave your phone unless you choose to share it by participating in a survey or by exporting it manually.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app needs access to location when in the background.</string>
+	<string>Space Mapper needs access your location when in the background in order to enable you to track your activity spaces. The location data it collects does not leave your phone unless you choose to share it by participating in a survey or by exporting it manually.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>When in use description</string>
+	<string>Space Mapper needs to access your location when in use in order to enable you to track your activity spaces. The location data it collects does not leave your phone unless you choose to share it by participating in a survey or by exporting it manually.</string>
 	<key>NSMotionUsageDescription</key>
-	<string>Motion usage description</string>
+	<string>Space Mapper access your motion data in order to improve location tracking of your activity spaces. The motion and location data it collects does not leave your phone unless you choose to share it by participating in a survey or by exporting it manually.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>

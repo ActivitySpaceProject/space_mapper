@@ -156,6 +156,7 @@ class HomeViewState extends State<HomeView>
 
   // Configure BackgroundFetch (not required by BackgroundGeolocation).
   void _configureBackgroundFetch() async {
+    print("test 6");
     BackgroundFetch.configure(
         BackgroundFetchConfig(
             minimumFetchInterval: 15,
@@ -168,7 +169,7 @@ class HomeViewState extends State<HomeView>
             requiresDeviceIdle: false,
             requiredNetworkType: NetworkType.NONE), (String taskId) async {
       print("[BackgroundFetch] received event $taskId");
-
+      print("test 7");
       SharedPreferences prefs = await SharedPreferences.getInstance();
       int count = 0;
       if (prefs.get("fetch-count") != null) {
@@ -177,28 +178,29 @@ class HomeViewState extends State<HomeView>
       prefs.setInt("fetch-count", ++count);
       print('[BackgroundFetch] count: $count');
 
+      //If condition below commented out by Otis, not sure how or why taskId would have this value
+      //if (taskId == 'flutter_background_fetch') {
       // Test scheduling a custom-task in fetch event.
-
-      if (taskId == 'flutter_background_fetch') {
-        BackgroundFetch.scheduleTask(TaskConfig(
-            taskId: "com.transistorsoft.customtask",
-            delay: 5000,
-            periodic: false,
-            forceAlarmManager: true,
-            stopOnTerminate: false,
-            enableHeadless: true));
-      }
+      BackgroundFetch.scheduleTask(TaskConfig(
+          taskId: "com.transistorsoft.spacemapper",
+          delay: 5000,
+          periodic: false,
+          forceAlarmManager: true,
+          stopOnTerminate: false,
+          enableHeadless: true));
+      //}
       BackgroundFetch.finish(taskId);
     });
-
+/*
     // Test scheduling a custom-task.
     BackgroundFetch.scheduleTask(TaskConfig(
-        taskId: "com.transistorsoft.customtask",
+        taskId: "com.transistorsoft.spacemapper",
         delay: 10000,
         periodic: false,
         forceAlarmManager: true,
         stopOnTerminate: false,
         enableHeadless: true));
+        */
   }
 
   void _onClickEnable(enabled) async {

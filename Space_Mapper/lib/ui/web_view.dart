@@ -3,12 +3,16 @@ import 'dart:io';
 import 'package:asm/ui/project_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:webview_flutter_android/webview_flutter_android.dart';
+import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
+import 'package:webview_flutter_platform_interface/webview_flutter_platform_interface.dart';
 import '../../main.dart';
+import 'dart:convert';
 
-final Set<JavascriptChannel> jsChannels = [
-  JavascriptChannel(
+final Set<JavaScriptChannelParams> jsChannels = [
+  JavaScriptChannelParams(
       name: 'Print',
-      onMessageReceived: (JavascriptMessage message) {
+      onMessageReceived: (JavaScriptMessage message) {
         print(message.message);
       }),
 ].toSet();
@@ -21,11 +25,11 @@ class MyWebView extends StatefulWidget {
   final String locationSharingMethod;
   final String surveyElementCode;
   //String userUUID = '';
-  MyWebView(this.selectedUrl, this.locationHistoryJSON, this.locationSharingMethod, this.surveyElementCode);
+  MyWebView(this.selectedUrl, this.locationHistoryJSON,
+      this.locationSharingMethod, this.surveyElementCode);
   @override
-  _MyWebViewState createState() =>
-      _MyWebViewState(selectedUrl, locationHistoryJSON, locationSharingMethod, surveyElementCode);
-
+  _MyWebViewState createState() => _MyWebViewState(selectedUrl,
+      locationHistoryJSON, locationSharingMethod, surveyElementCode);
 }
 
 class _MyWebViewState extends State<MyWebView> {
@@ -34,20 +38,79 @@ class _MyWebViewState extends State<MyWebView> {
   final String locationHistoryJSON;
   final String locationSharingMethod;
   final String surveyElementCode;
-  String userUUID= GlobalData.userUUID;
+  String userUUID = GlobalData.userUUID;
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
   late WebViewController _webViewcontroller;
 
-  _MyWebViewState(this.selectedUrl, this.locationHistoryJSON, this.locationSharingMethod, this.surveyElementCode);
+  _MyWebViewState(this.selectedUrl, this.locationHistoryJSON,
+      this.locationSharingMethod, this.surveyElementCode);
 
   @override
   void initState() {
     super.initState();
-    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
+    //if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
+    // Initialize platform-specific controller
+    late final PlatformWebViewControllerCreationParams params;
+    if (Platform.isAndroid) {
+      params = const PlatformWebViewControllerCreationParams();
+    } else if (Platform.isIOS) {
+      params = WebKitWebViewControllerCreationParams(
+        allowsInlineMediaPlayback: true,
+        mediaTypesRequiringUserAction: const <PlaybackMediaTypes>{},
+      );
+    } else {
+      params = const PlatformWebViewControllerCreationParams();
+    }
 
+    final WebViewController controller =
+        WebViewController.fromPlatformCreationParams(params);
+
+    controller
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(const Color(0x00000000))
+      //..loadRequest(Uri.parse(selectedUrl))
+      ..addJavaScriptChannel(
+        'Toaster',
+        onMessageReceived: (JavaScriptMessage message) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(message.message)),
+          );
+        },
+      )
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onPageStarted: (String url) {
+            debugPrint('Page started loading: $url');
+            if (url == "https://ee.kobotoolbox.org/thanks" ||
+                url == "https://ee-eu.kobotoolbox.org/thanks") {
+              debugPrint('MOVING TO THANKS PAGE');
+              Navigator.pop(context);
+            }
+          },
+          onPageFinished: (String url) {
+            if (url != "https://ee.kobotoolbox.org/thanks" &&
+                url != "https://ee-eu.kobotoolbox.org/thanks" &&
+                (locationSharingMethod == '1' ||
+                    locationSharingMethod == '3')) {
+              _setFormLocationHistory();
+              debugPrint('Page finished loading: $url');
+            }
+          },
+          onProgress: (int progress) {
+            debugPrint("WebView is loading (progress : $progress%)");
+          },
+          // New method to enable gesture navigation
+          onNavigationRequest: (NavigationRequest request) {
+            return NavigationDecision.navigate;
+          },
+        ),
+      )
+      ..loadRequest(Uri.parse(GlobalProjectData.generatedUrl));
+
+    _webViewcontroller = controller;
+    _controller.complete(controller);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -58,61 +121,34 @@ class _MyWebViewState extends State<MyWebView> {
         /*actions: <Widget>[
           NavigationControls(_controller.future),
         ],*/
-        leading: IconButton(icon: Icon(Icons.arrow_back),
-         onPressed: () {
-    Navigator.of(context).pushNamed('/');},
-  //      actions: <Widget>[
-   //       NavigationControls(_controller.future),
-    //    ],
-      ),
-      ),// We're using a Builder here so we have a context that is below the Scaffold
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pushNamed('/');
+          },
+          //      actions: <Widget>[
+          //       NavigationControls(_controller.future),
+          //    ],
+        ),
+      ), // We're using a Builder here so we have a context that is below the Scaffold
       // to allow calling Scaffold.of(context) so we can show a snackbar.
       body: Builder(builder: (BuildContext context) {
         //generatedUrl = selectedUrl + "?&d[user_id]=" + userUUID + "&d[experiment_status]=" + GlobalProjectData.active_project_status;
-              print('userURL web 2: $selectedUrl'); 
-              print('userUUID web 2: $userUUID'); 
-              print('userUUID web 2: $GlobalProjectData.generatedUrl'); 
-        return WebView(
-          //initialUrl: selectedUrl + userUUID,
-          initialUrl: GlobalProjectData.generatedUrl,
-          javascriptMode: JavascriptMode.unrestricted,
-          onWebViewCreated: (WebViewController webViewController) {
-            _controller.complete(webViewController);
-            _webViewcontroller = webViewController;
-          },
-          onProgress: (int progress) {
-            print("WebView is loading (progress : $progress%)");
-          },
-          javascriptChannels: <JavascriptChannel>{
-            _toasterJavascriptChannel(context),
-          },
-          onPageStarted: (String url) {
-             print('Page started loading: $url');
-             if(url == "https://ee.kobotoolbox.org/thanks" || url == "https://ee-eu.kobotoolbox.org/thanks"){
-              print('MOVING TO THANKS PAGE');
-              Navigator.pop(context);
-             }
-
-          },
-          onPageFinished: (String url) {
-
-          if(url != "https://ee.kobotoolbox.org/thanks" &&  url != "https://ee-eu.kobotoolbox.org/thanks" && (locationSharingMethod == '1' || locationSharingMethod == '3') ){
-
-            _setFormLocationHistory();
-            print('Page finished loading: $url');
-            print('var event = new Event("change", {bubbles: true,}); var this_input = document.getElementsByName("/$surveyElementCode/location_history")[0]; this_input.value = "$locationHistoryJSON"; this_input.dispatchEvent(event);');
-          }
-          },
-          gestureNavigationEnabled: true,
+        print('userURL web 2: $selectedUrl');
+        print('userUUID web 2: $userUUID');
+        print(
+            'Generated URL: ${GlobalProjectData.generatedUrl}'); // Fix this line
+        return WebViewWidget(
+          controller: _webViewcontroller,
         );
       }),
     );
   }
 
-  JavascriptChannel _toasterJavascriptChannel(BuildContext context) {
-    return JavascriptChannel(
+  JavaScriptChannelParams _toasterJavascriptChannel(BuildContext context) {
+    return JavaScriptChannelParams(
         name: 'Toaster',
-        onMessageReceived: (JavascriptMessage message) {
+        onMessageReceived: (JavaScriptMessage message) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(message.message)),
           );
@@ -120,11 +156,40 @@ class _MyWebViewState extends State<MyWebView> {
   }
 
   void _setFormLocationHistory() async {
-    sleep(Duration(seconds: 1));
+    //sleep(Duration(seconds: 1));
 
-    await _webViewcontroller.runJavascript(
-        'var event = new Event("change", {bubbles: true,}); var this_input = document.getElementsByName("/$surveyElementCode/location_history")[0]; this_input.style.visibility="hidden"; this_input.value = "$locationHistoryJSON"; this_input.dispatchEvent(event);');
-   }
+    //await _webViewcontroller.runJavaScript(
+    //'var event = new Event("change", {bubbles: true,}); var this_input = document.getElementsByName("/$surveyElementCode/location_history")[0]; this_input.style.visibility="hidden"; this_input.value = "$locationHistoryJSON"; this_input.dispatchEvent(event);');
+    try {
+      await _webViewcontroller.runJavaScript('''
+      try {
+        var event = new Event("change", {bubbles: true});
+        var elementName = "/${surveyElementCode}/location_history";
+        var this_input = document.getElementsByName(elementName)[0];
+        
+        if (!this_input) {
+          console.error("Element not found: " + elementName);
+          return;
+        }
+        
+        this_input.style.visibility = "hidden";
+        this_input.value = ${_escapeJsString(locationHistoryJSON)};
+        this_input.dispatchEvent(event);
+      } catch(e) {
+        console.error("JavaScript error: " + e.message);
+      }
+    ''');
+    } catch (e) {
+      debugPrint('Error executing JavaScript: $e');
+    }
+  }
+}
+
+// Helper to properly escape strings for JavaScript
+String _escapeJsString(String input) {
+  // JSON encode gives us proper JS string escaping
+  String jsonEncoded = json.encode(input);
+  return jsonEncoded;
 }
 
 class NavigationControls extends StatelessWidget {

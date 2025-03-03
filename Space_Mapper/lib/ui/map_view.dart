@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_background_geolocation/flutter_background_geolocation.dart'
     as bg;
 import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_map/plugin_api.dart';
+//import 'package:flutter_map/plugin_api.dart';
 import 'package:latlong2/latlong.dart';
 
 class MapView extends StatefulWidget {
@@ -34,9 +34,9 @@ class MapViewState extends State<MapView>
   void initState() {
     super.initState();
     _mapOptions = new MapOptions(
-      onPositionChanged: _onPositionChanged,
-      center: _center,
-      zoom: 16.0,
+      onMapEvent: _onPositionChanged, // Changed from onPositionChanged
+      initialCenter: _center, // Changed from center
+      initialZoom: 16.0,
     );
     _mapController = new MapController();
 
@@ -44,7 +44,8 @@ class MapViewState extends State<MapView>
     bg.BackgroundGeolocation.onMotionChange(_onMotionChange);
     bg.BackgroundGeolocation.onEnabledChange(_onEnabledChange);
 
-    _mapController.onReady.then((_) {
+    // Replace onReady with a different initialization approach
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       _displayStoredLocations();
     });
   }
@@ -71,7 +72,7 @@ class MapViewState extends State<MapView>
 
     _updateCurrentPositionMarker(ll);
 
-    _mapController.move(ll, _mapController.zoom);
+    _mapController.move(ll, _mapOptions.initialZoom);
 
     // clear the big red stationaryRadius circle.
     _stationaryMarker.clear();
@@ -98,14 +99,17 @@ class MapViewState extends State<MapView>
 
   void _onLocation(bg.Location location) {
     LatLng ll = new LatLng(location.coords.latitude, location.coords.longitude);
-    _mapController.move(ll, _mapController.zoom);
-
+    // Only move if controller is ready
+    if (_mapController != null) {
+      _mapController.move(ll, _mapOptions.initialZoom);
+    }
+    print('hee 2');
     _updateCurrentPositionMarker(ll);
 
     if (location.sample == true) {
       return;
     }
-  
+
     // Add a point to the tracking polyline.
     _polyline.add(ll);
     // Add a marker for the recorded location.
@@ -153,8 +157,15 @@ class MapViewState extends State<MapView>
         radius: 20);
   }
 
-  void _onPositionChanged(MapPosition pos, bool hasGesture) {
-    _mapOptions.crs.scale(_mapController.zoom);
+  //void _onPositionChanged(MapPosition pos, bool hasGesture) {
+  //   _mapOptions.crs.scale(_mapController.zoom);
+  // }
+
+  void _onPositionChanged(MapEvent event) {
+    if (event is MapEventMove) {
+      _mapOptions.crs
+          .scale(event.camera.zoom); // Use camera.zoom instead of zoom
+    }
   }
 
   @override
@@ -163,28 +174,31 @@ class MapViewState extends State<MapView>
     return FlutterMap(
       mapController: _mapController,
       options: _mapOptions,
-      layers: [
-        new TileLayerOptions(
+      children: [
+        TileLayer(
             urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
             subdomains: ['a', 'b', 'c']),
-        new PolylineLayerOptions(
-          polylines: [
-            new Polyline(
-              points: _polyline,
-              strokeWidth: 10.0,
-              color: Color.fromRGBO(0, 179, 253, 0.8),
-            ),
-          ],
-        ),
+        if (_polyline.isNotEmpty)
+          PolylineLayer(
+            polylines: [
+              new Polyline(
+                points: _polyline,
+                strokeWidth: 10.0,
+                color: Color.fromRGBO(0, 179, 253, 0.8),
+              ),
+            ],
+          ),
         // Big red stationary radius while in stationary state.
-        new CircleLayerOptions(circles: _stationaryMarker),
+        if (_stationaryMarker.isNotEmpty)
+          CircleLayer(circles: _stationaryMarker),
         // Polyline joining last stationary location to motionchange:true location.
-        new PolylineLayerOptions(polylines: _motionChangePolylines),
+        if (_motionChangePolylines.isNotEmpty)
+          PolylineLayer(polylines: _motionChangePolylines),
         // Recorded locations.
-        new CircleLayerOptions(circles: _locations),
+        if (_locations.isNotEmpty) CircleLayer(circles: _locations),
         // Small, red circles showing where motionchange:false events fired.
-        new CircleLayerOptions(circles: _stopLocations),
-        new CircleLayerOptions(circles: _currentPosition),
+        if (_stopLocations.isNotEmpty) CircleLayer(circles: _stopLocations),
+        if (_currentPosition.isNotEmpty) CircleLayer(circles: _currentPosition),
       ],
     );
   }

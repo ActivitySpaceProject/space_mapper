@@ -51,7 +51,7 @@ class HomeViewState extends State<HomeView>
   @override
   void initState() {
     super.initState();
-
+    print("here 1");
     WidgetsBinding.instance.addObserver(this);
 
     //_isMoving = false;

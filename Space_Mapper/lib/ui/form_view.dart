@@ -52,6 +52,15 @@ class MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
+
+    // Add these translation variables at the start of the build method
+    final String maleText =
+        AppLocalizations.of(context)?.translate("male") ?? "";
+    final String femaleText =
+        AppLocalizations.of(context)?.translate("female") ?? "";
+    final String otherText =
+        AppLocalizations.of(context)?.translate("other") ?? "";
+
     return Padding(
       padding: EdgeInsets.all(10),
       child: SingleChildScrollView(
@@ -71,23 +80,17 @@ class MyCustomFormState extends State<MyCustomForm> {
                       labelText: AppLocalizations.of(context)
                           ?.translate("was_the_contact_male_female?")),
                   options: [
-                    FormBuilderFieldOption(
+                    FormBuilderChipOption(
                       value: "male",
-                      child: Text(
-                          AppLocalizations.of(context)?.translate("male") ??
-                              ""),
+                      child: Text(maleText),
                     ),
-                    FormBuilderFieldOption(
+                    FormBuilderChipOption(
                       value: "female",
-                      child: Text(
-                          AppLocalizations.of(context)?.translate("female") ??
-                              ""),
+                      child: Text(femaleText),
                     ),
-                    FormBuilderFieldOption(
+                    FormBuilderChipOption(
                       value: "other",
-                      child: Text(
-                          AppLocalizations.of(context)?.translate("other") ??
-                              ""),
+                      child: Text(otherText),
                     ),
                   ],
                   onChanged: (value) => setState(() {

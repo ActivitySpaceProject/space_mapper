@@ -21,8 +21,7 @@ class SpaceMapperSideDrawer extends StatelessWidget {
           bg.Location(thisLocation).coords.latitude,
           bg.Location(thisLocation).coords.longitude,
           bg.Location(thisLocation).coords.accuracy,
-          GlobalData.userUUID
-          );
+          GlobalData.userUUID);
       customLocation.add(_loc);
     }
 
@@ -61,24 +60,36 @@ class SpaceMapperSideDrawer extends StatelessWidget {
               ),
             ),
           ),
-         Card(
-              child: ListTile(
-                  leading: const Icon(Icons.all_inclusive),
-                  title: Text(
-                      AppLocalizations.of(context)?.translate("active_projects") ??
-                          ""),
-                  onTap: () {
-                    Navigator.of(context).pushNamed('/active_projects');
-                  })),
           Card(
               child: ListTile(
-                  leading: const Icon(Icons.edit),
+                  leading: const Icon(Icons.add_circle_outline),
                   title: Text(
-                      AppLocalizations.of(context)?.translate("participate_in_a_project") ??
+                      AppLocalizations.of(context)?.translate("new_project") ??
                           ""),
                   onTap: () {
-                    Navigator.of(context).pushNamed('/participate_in_a_project');
+                    Navigator.of(context).pushNamed('/new_project');
                   })),
+          if (GlobalData.user_active_projects)
+            Card(
+                child: ListTile(
+                    leading: const Icon(Icons.all_inclusive),
+                    title: Text(AppLocalizations.of(context)
+                            ?.translate("active_projects") ??
+                        ""),
+                    onTap: () {
+                      Navigator.of(context).pushNamed('/active_projects');
+                    })),
+          if (GlobalData.user_available_projects)
+            Card(
+                child: ListTile(
+                    leading: const Icon(Icons.edit),
+                    title: Text(AppLocalizations.of(context)
+                            ?.translate("participate_in_a_project") ??
+                        ""),
+                    onTap: () {
+                      Navigator.of(context)
+                          .pushNamed('/participate_in_a_project');
+                    })),
           Card(
             child: ListTile(
               leading: const Icon(Icons.list),
@@ -132,7 +143,8 @@ class SpaceMapperSideDrawer extends StatelessWidget {
               },
             ),
           ),
- */        ],
+ */
+        ],
       ),
     );
   }

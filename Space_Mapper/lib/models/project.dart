@@ -29,6 +29,11 @@ class Project {
         locationSharingMethod = 0,
         surveyElementCode = ' ';
 
+@override
+  String toString() {
+    return 'Project{id: $id, name: $name, summary: $summary, webUrl: $webUrl, projectScreen: $projectScreen, imageUrl: $imageUrl, locationSharingMethod: $locationSharingMethod, surveyElementCode: $surveyElementCode}';
+  }
+
   void participate(BuildContext context, String locationHistoryJSON) {
     if (projectScreen != null) {
       // Navigate to the project screen within the app

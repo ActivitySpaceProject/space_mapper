@@ -1,3 +1,5 @@
+import 'package:asm/external_projects/tiger_in_car/models/project_list.dart';
+import 'package:asm/main.dart';
 import 'package:asm/ui/side_drawer.dart';
 import 'package:asm/util/env.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +19,8 @@ import 'map_view.dart';
 import '../util/dialog.dart' as util;
 import '../external_projects/tiger_in_car/models/participating_projects.dart';
 import '../db/database_project.dart';
-
+import '../models/project.dart';
+import '../mocks/mock_project.dart';
 
 // For pretty-printing location JSON
 JsonEncoder encoder = new JsonEncoder.withIndent("     ");
@@ -45,8 +48,6 @@ class HomeViewState extends State<HomeView>
 
   HomeViewState(this.appName);
 
-  List<Particpating_Project> projects = [];
-
   @override
   void initState() {
     super.initState();
@@ -65,16 +66,19 @@ class HomeViewState extends State<HomeView>
   // Fetch the projects from the database
   void fetchProjects() async {
     try {
-      List<Particpating_Project> fetchedProjects = await await ProjectDatabase.instance.readAllProjects();
-      setState(() {
-        projects = fetchedProjects;
-      });
+      List<Particpating_Project> active_projects =
+          await ProjectDatabase.instance.getOngoingProjects();
+      List<Project> totalprojects = await MockProject.fetchAll();
+
+      if (active_projects.isNotEmpty) GlobalData.user_active_projects = true;
+      if (totalprojects.isNotEmpty) GlobalData.user_available_projects = true;
+
+      setState(() {});
     } catch (e) {
       // Handle errors, if any
       print('Error fetching projects: $e');
     }
   }
-
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -152,6 +156,7 @@ class HomeViewState extends State<HomeView>
 
   // Configure BackgroundFetch (not required by BackgroundGeolocation).
   void _configureBackgroundFetch() async {
+    print("test 6");
     BackgroundFetch.configure(
         BackgroundFetchConfig(
             minimumFetchInterval: 15,
@@ -164,7 +169,7 @@ class HomeViewState extends State<HomeView>
             requiresDeviceIdle: false,
             requiredNetworkType: NetworkType.NONE), (String taskId) async {
       print("[BackgroundFetch] received event $taskId");
-
+      print("test 7");
       SharedPreferences prefs = await SharedPreferences.getInstance();
       int count = 0;
       if (prefs.get("fetch-count") != null) {
@@ -173,28 +178,29 @@ class HomeViewState extends State<HomeView>
       prefs.setInt("fetch-count", ++count);
       print('[BackgroundFetch] count: $count');
 
+      //If condition below commented out by Otis, not sure how or why taskId would have this value
+      //if (taskId == 'flutter_background_fetch') {
       // Test scheduling a custom-task in fetch event.
-
-      if (taskId == 'flutter_background_fetch') {
-        BackgroundFetch.scheduleTask(TaskConfig(
-            taskId: "com.transistorsoft.customtask",
-            delay: 5000,
-            periodic: false,
-            forceAlarmManager: true,
-            stopOnTerminate: false,
-            enableHeadless: true));
-      }
+      BackgroundFetch.scheduleTask(TaskConfig(
+          taskId: "com.transistorsoft.spacemapper",
+          delay: 5000,
+          periodic: false,
+          forceAlarmManager: true,
+          stopOnTerminate: false,
+          enableHeadless: true));
+      //}
       BackgroundFetch.finish(taskId);
     });
-
+/*
     // Test scheduling a custom-task.
     BackgroundFetch.scheduleTask(TaskConfig(
-        taskId: "com.transistorsoft.customtask",
+        taskId: "com.transistorsoft.spacemapper",
         delay: 10000,
         periodic: false,
         forceAlarmManager: true,
         stopOnTerminate: false,
         enableHeadless: true));
+        */
   }
 
   void _onClickEnable(enabled) async {
@@ -268,8 +274,8 @@ class HomeViewState extends State<HomeView>
     print('[${bg.Event.LOCATION}] - $location');
 
 //    SendDataToAPI sender = SendDataToAPI();
- //   sender.submitData(location, "location");
-    
+//    sender.submitData(location, "location");
+
     setState(() {
       //_odometer = (location.odometer / 1000.0).toStringAsFixed(1);
     });
@@ -290,7 +296,7 @@ class HomeViewState extends State<HomeView>
 //  void _onActivityChange(bg.ActivityChangeEvent event) {
 //    print('[${bg.Event.ACTIVITYCHANGE}] - $event');
 //    setState(() {
-      //_motionActivity = event.activity;
+  //_motionActivity = event.activity;
 //    });
 //  }
 
@@ -400,6 +406,7 @@ class HomeViewState extends State<HomeView>
       //body: body,
       drawer: new SpaceMapperSideDrawer(),
       body: MapView(),
+      /*
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           //Navigator.of(context).pushNamed('/record_contact');
@@ -410,8 +417,42 @@ class HomeViewState extends State<HomeView>
         //child: Icon(Icons.person),
         child: Icon(Icons.all_inclusive),
         backgroundColor: Colors.blue,
-      ),);
-      /*floatingActionButton: Row(
+      ),);    
+      */
+
+      floatingActionButton: Stack(
+        alignment: Alignment.bottomRight,
+        children: <Widget>[
+          if (GlobalData.user_active_projects)
+            Padding(
+              padding:
+                  EdgeInsets.only(bottom: 80), // Distance from the original FAB
+
+              child: FloatingActionButton(
+                heroTag: "btn_participate",
+                onPressed: () {
+                  // Existing action
+                  Navigator.of(context).pushNamed('/active_projects');
+                  _onClickGetCurrentPosition();
+                },
+                child: Icon(Icons.all_inclusive),
+                backgroundColor: Colors.blue,
+              ),
+            ),
+          FloatingActionButton(
+            heroTag: "btn_new_project",
+            onPressed: () {
+              Navigator.of(context).pushNamed('/new_project');
+              print("Second FAB pressed");
+            },
+            child: Icon(Icons.add_circle),
+            backgroundColor: Colors.green,
+          ),
+        ],
+      ),
+    );
+
+    /*floatingActionButton: Row(
         children: projects.map((project) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
@@ -430,9 +471,6 @@ class HomeViewState extends State<HomeView>
       ),
     );
   */
-
-
-    
   }
 
   @override

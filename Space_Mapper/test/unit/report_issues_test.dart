@@ -1,4 +1,4 @@
-import '../../lib/ui/report_issues.dart';
+import 'package:asm/ui/report_issues.dart';
 import 'package:test/test.dart';
 
 void main() {

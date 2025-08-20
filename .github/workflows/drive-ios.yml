@@ -45,12 +45,12 @@ jobs:
           shutdown_after_job: true
       # The branch or tag ref that triggered the workflow will be checked out.
       # https://github.com/marketplace/actions/checkout
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       # Sets up a flutter environment.
       # https://github.com/marketplace/actions/flutter-action
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.0.0'
+          flutter-version: '3.24.0'
           channel: 'stable' # or: 'dev' or 'beta'
       - run: "flutter clean"
         working-directory: Space_Mapper
